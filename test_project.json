@@ -1,0 +1,73 @@
+{
+  "id": 5,
+  "type": "Forschung",
+  "title": "Auswirkungen einer Regulierung des Bankensektors",
+  "status": "laufend",
+  "endDate": "2005-05-20",
+  "persons": [
+    {
+      "id": 429,
+      "role": "Projektleiter\/-in",
+      "person": "Heidi Fuchs",
+      "endDate": "2005-05-20",
+      "startDate": "2006-08-18",
+      "organization": {
+        "id": 22,
+        "name": "Institut f\u00fcr Banken und Finanzierung"
+      }
+    },
+    {
+      "id": 2653,
+      "role": "Wiss. Mitarbeiter\/-in",
+      "person": "Gabriela Huber",
+      "endDate": "2005-05-20",
+      "startDate": "2006-08-18",
+      "organization": {
+        "id": 22,
+        "name": "Institut f\u00fcr Banken und Finanzierung"
+      }
+    },
+    {
+      "id": 2660,
+      "role": "Wiss. Mitarbeiter\/-in",
+      "person": "Anja K\u00f6hler",
+      "endDate": "2005-05-20",
+      "startDate": "2006-08-18",
+      "organization": {
+        "id": 22,
+        "name": "Institut f\u00fcr Banken und Finanzierung"
+      }
+    },
+    {
+      "id": 2663,
+      "role": "Projektleiter\/-in",
+      "person": "Ulrich Wolff",
+      "endDate": "2005-05-20",
+      "startDate": "2006-08-18",
+      "organization": {
+        "id": 22,
+        "name": "Institut f\u00fcr Banken und Finanzierung"
+      }
+    }
+  ],
+  "abstract": "Die Bankenregulierung ist eine Form der staatlichen Regulierung, die Banken bestimmten Anforderungen, Beschr\u00e4nkungen und Richtlinien unterwirft, um Markttransparenz zu schaffen und Situationen zu vermeiden, in denen es erforderlich ist, dass Banken staatliche Unterst\u00fctzung erhalten. Zweiteres liegt in der Sorge begr\u00fcndet, dass die Kontrolle der Finanzinstitute \u00fcber die Wirtschaft zu gro\u00df ist als dass das Scheitern einer Bank keine enormen globalen Auswirkungen haben k\u00f6nnte. Aus diesem Grund erhalten Banken oder andere Finanzinstitute, die kurz vor dem Zusammenbruch zu stehen scheinen, staatliche Unterst\u00fctzung, um ein systemisches Versagen der gesamten Wirtschaft zu verhindern. Angesichts der Vernetzung des Bankensektors und des Vertrauens, das die Wirtschaft den Banken entgegenbringt, ist es f\u00fcr die Regulierungsbeh\u00f6rden wichtig, die Kontrolle \u00fcber die standardisierten Praktiken dieser Institute zu behalten.\r\n\r\nWelche Auswirkungen die Regulierung des Bankensektors genau hat und, wie dies mit der Rolle der Banken in der Eurokrise zusammenspielt, sind die Fragestellungen, die in diesem Projekt genauer untersucht werden sollen.",
+  "keywords": [
+    "Bankensektor",
+    "Regulierung",
+    "Eurokrise",
+    "Banken",
+    "Bankregulierung"
+  ],
+  "language": "deutsch",
+  "objective": "Forschung",
+  "startDate": "2006-08-18",
+  "visibility": "\u00f6ffentlich",
+  "subjectAreas": [
+    "Bankwesen"
+  ],
+  "researchAreas": [
+    "Finanz- und Kapitalm\u00e4rkte",
+    "Intra- und interorganisatorische Beziehungen"
+  ],
+  "fundingPrograms": []
+}

@@ -1,0 +1,89 @@
+{
+  "id": 63,
+  "type": "Journalartikel",
+  "title": "Bank regulation and early warning systems for banking crises",
+  "access": "Open Access",
+  "status": "validiert",
+  "journal": {
+    "issue": "11",
+    "title": "International Journal of Financial Studies",
+    "volume": "10",
+    "pageRange": "75-98",
+    "publisher": "MDPI (Basel)",
+    "releaseYear": 2021
+  },
+  "persons": [
+    {
+      "id": 2605,
+      "name": "Dr. Gudrun Kr\u00fcger",
+      "organization": {
+        "id": 22,
+        "name": "Institut f\u00fcr Banken und Finanzierung"
+      },
+      "researchPartner": null
+    },
+    {
+      "id": 488,
+      "name": "Professor Dr. Armin Graf",
+      "organization": {
+        "id": 53,
+        "name": "Institut f\u00fcr Finanzwissenschaft"
+      },
+      "researchPartner": null
+    },
+    {
+      "id": 2660,
+      "name": "Master of Science Anja K\u00f6hler",
+      "organization": {
+        "id": 22,
+        "name": "Institut f\u00fcr Banken und Finanzierung"
+      },
+      "researchPartner": null
+    },
+    {
+      "id": 2651,
+      "name": "Carola Mayer",
+      "organization": {
+        "id": 53,
+        "name": "Institut f\u00fcr Finanzwissenschaft"
+      },
+      "researchPartner": null
+    },
+    {
+      "id": 2663,
+      "name": "Dr. Ulrich Wolff",
+      "organization": {
+        "id": 22,
+        "name": "Institut f\u00fcr Banken und Finanzierung"
+      },
+      "researchPartner": null
+    }
+  ],
+  "abstract": "Early warning systems (EWS) for banking crises generally exclude bank capital, bank liquidity and real estate prices. The majority of work on EMS has been conducted for global samples which are dominated by emerging market crises, typically lacking time series on banks' capital adequacy and real estate prices. In this article we estimate Logit crisis models for OECD countries, identify significant effects of equity and liquidity ratios, property prices and are able to exclude traditional variables. Increased capital adequacy and liquidity ratios have a pronounced influence on crisis probabilities, which provides long-term benefits to compensate for some of the costs that such regulations may impose.",
+  "document": "Wissenschaftlicher Artikel",
+  "keywords": [
+    "Banking Crisis",
+    "Banking Sector",
+    "Credit Market Crisis",
+    "Early Warning Systems",
+    "Financial Crisis",
+    "Real Estate Crisis"
+  ],
+  "resource": "Text",
+  "reviewed": "ja",
+  "subtitle": null,
+  "languages": [
+    {
+      "name": "deutsch",
+      "iso_639_1": "de"
+    }
+  ],
+  "conference": null,
+  "visibility": "\u00f6ffentlich",
+  "globalIdentifiers": [
+    {
+      "id": "103321\/ijfs61236584",
+      "type": "DOI"
+    }
+  ]
+}

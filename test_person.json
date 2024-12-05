@@ -1,0 +1,93 @@
+{
+  "id": 488,
+  "name": "Prof. Dr. Armin Graf",
+  "projects": [
+    {
+      "id": 36,
+      "type": null,
+      "title": "Corona-Krise: Wirtschaftliche Implikationen und wirtschaftspolitische Ma\u00dfnahmen",
+      "status": "geplant",
+      "endDate": "2008-02-14",
+      "language": "deutsch",
+      "objective": "Forschung",
+      "startDate": "2007-12-15"
+    },
+    {
+      "id": 15,
+      "type": "Forschung",
+      "title": "TEST Auswirkungen der US-Immobilienkrise auf den Bankensektor",
+      "status": "beendet",
+      "endDate": "2008-05-01",
+      "language": "deutsch",
+      "objective": "Forschung",
+      "startDate": "2001-08-26"
+    }
+  ],
+  "publications": [
+    {
+      "id": 63,
+      "type": "Journalartikel",
+      "title": "Bank regulation and early warning systems for banking crises",
+      "journal": {
+        "issue": "11",
+        "title": "International Journal of Financial Studies",
+        "volume": "10",
+        "pageRange": "75-98",
+        "publisher": "MDPI (Basel)",
+        "releaseYear": 2021
+      },
+      "document": "Wissenschaftlicher Artikel",
+      "resource": "Text",
+      "reviewed": "ja",
+      "subtitle": null,
+      "conference": null
+    },
+    {
+      "id": 60,
+      "type": "Monographie",
+      "title": "How globally contagious was the  US real estate market crisis?",
+      "journal": null,
+      "document": "Sonstiger Dokumenttyp",
+      "resource": null,
+      "reviewed": null,
+      "subtitle": null,
+      "conference": null
+    },
+    {
+      "id": 59,
+      "type": "Journalartikel",
+      "title": "TEST A finance- and real estate-driven regime in the US",
+      "journal": {
+        "issue": "6",
+        "title": "International Journal of Financial Studies",
+        "volume": "7",
+        "pageRange": "28-36",
+        "publisher": "MDPI (Basel)",
+        "releaseYear": 2018
+      },
+      "document": "Wissenschaftlicher Artikel",
+      "resource": null,
+      "reviewed": "ja",
+      "subtitle": null,
+      "conference": null
+    },
+    {
+      "id": 58,
+      "type": "Journalartikel",
+      "title": "Von der US-Immobilienkrise zur globalen Finanz-und Bankenkrise",
+      "journal": {
+        "issue": "3",
+        "title": "Finanzwissenschaft",
+        "volume": "23",
+        "pageRange": "68-83",
+        "publisher": "Springer (Berlin, Heidelberg)",
+        "releaseYear": 2019
+      },
+      "document": "Wissenschaftlicher Artikel",
+      "resource": null,
+      "reviewed": "ja",
+      "subtitle": null,
+      "conference": null
+    }
+  ]
+}

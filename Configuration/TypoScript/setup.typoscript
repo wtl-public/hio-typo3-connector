@@ -1,0 +1,71 @@
+# Import the default setup of EXT:fluid_styled_content
+@import 'EXT:fluid_styled_content/Configuration/TypoScript/setup.typoscript'
+
+# Import the default CSS of EXT:fluid_styled_content
+@import 'EXT:fluid_styled_content/Configuration/TypoScript/Styling/setup.typoscript'
+
+lib.dynamicContent = COA
+lib.dynamicContent {
+  10 = LOAD_REGISTER
+  10.colPos.cObject = TEXT
+  10.colPos.cObject {
+    field = colPos
+    ifEmpty.cObject = TEXT
+    ifEmpty.cObject {
+      value.current = 1
+      ifEmpty = 0
+    }
+  }
+  20 = CONTENT
+  20 {
+    table = tt_content
+    select {
+      orderBy = sorting
+      where = colPos={register:colPos}
+      where.insertData = 1
+    }
+  }
+  90 = RESTORE_REGISTER
+}
+
+page = PAGE
+page {
+  meta.viewport = width=device-width, initial-scale=1
+  // Part 1: Fluid template section
+  10 = FLUIDTEMPLATE
+  10 {
+    templateName = Default
+    templateRootPaths {
+      0 = EXT:hio_typo3_connector/Resources/Private/Templates/
+    }
+    partialRootPaths {
+      0 = EXT:hio_typo3_connector/Resources/Private/Partials/
+    }
+    layoutRootPaths {
+      0 = EXT:hio_typo3_connector/Resources/Private/Layouts/
+    }
+  }
+}
+
+plugin.tx_hiotypo3connector {
+  settings {
+    entriesPerPage = 10
+    singleViewPageUid = {$plugin.tx_hiotypo3connector.settings.singleViewPageUid}
+    publications {
+      personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.publications.personTargetPageUid}
+    }
+    projects {
+      personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.projects.personTargetPageUid}
+    }
+    persons {
+      publicationTargetPageUid = {$plugin.tx_hiotypo3connector.settings.persons.publicationTargetPageUid}
+      projectTargetPageUid = {$plugin.tx_hiotypo3connector.settings.persons.projectTargetPageUid}
+    }
+  }
+  view {
+    defaultPid = auto
+  }
+  persistence {
+    storagePid = {$plugin.tx_hiotypo3connector.persistence.storagePid}
+  }
+}

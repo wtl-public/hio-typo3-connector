@@ -1,0 +1,17 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true" lang="en">
+
+<f:if condition="{person}">
+    <p class="py-0">
+    <f:link.action action="show"
+                   controller="Person"
+                   pageUid="{settings.projects.personTargetPageUid}"
+                   arguments="{person: person.id}"
+                   class="text-gray-700 hover:underline hover:text-primary px-0">
+        {person.person}
+    </f:link.action>
+    </p>
+</f:if>
+
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <sheetTitle>
+                    LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.sheet.general
+                </sheetTitle>
+                <type>array</type>
+                <el>
+                    <settings.personUid>
+                        <label>LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.projectlist.personUid
+                        </label>
+                        <config>
+                            <type>group</type>
+                            <internal_type>db</internal_type>
+                            <allowed>tx_hiotypo3connector_domain_model_person</allowed>
+                            <size>1</size>
+                            <maxitems>1</maxitems>
+                            <minitems>0</minitems>
+                        </config>
+                    </settings.personUid>
+                    <settings.externalLink>
+                        <label>
+                            LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.projectlist.externalLink
+                        </label>
+                        <config>
+                            <type>input</type>
+                            <size>50</size>
+                            <max>255</max>
+                            <eval>trim</eval>
+                        </config>
+                    </settings.externalLink>
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>

@@ -1,0 +1,35 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true" lang="en">
+
+<f:if condition="{publications}">
+    <f:then>
+        <div class="max-w-3xl text-base/7">
+            <f:groupedFor each="{publications}" as="publicationsOfThisType" groupBy="{settings.groupBy}"
+                          groupKey="publicationType">
+                <h4 class="mt-2 text-primary font-semibold">{publicationType}</h4>
+                <ul>
+                    <f:for each="{publicationsOfThisType}" as="publication">
+                        <li class="py-1">
+                            <strong>{publication.title}</strong><br />
+                            <f:if condition="{publication.details.persons}">
+                                <span class="text-gray-700">
+                                    <f:for each="{publication.details.persons}" as="person" key="personIndex">
+                                        <f:render partial="Publication/List/Authors" arguments="{person: person}" />
+                                    </f:for>
+                                </span>
+                                    </f:if>
+                                    <f:if condition="{publication.details.journal}">
+                                <span class="text-gray-700">
+                                    {publication.details.journal.title}, {publication.details.journal.releaseYear}, S. {publication.details.journal.pageRange}
+                                </span>
+                            </f:if>
+                        </li>
+                    </f:for>
+                </ul>
+            </f:groupedFor>
+        </div>
+    </f:then>
+</f:if>
+
+</html>

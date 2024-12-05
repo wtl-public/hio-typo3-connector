@@ -1,0 +1,32 @@
+<html
+        xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+        data-namespace-typo3-fluid="true" lang="en">
+
+<f:layout name="Default"/>
+
+<f:section name="Main">
+    <f:if condition="{publications}">
+        <div class="bg-white px-6 py-6 lg:px-8">
+            <f:if condition="{settings.groupBy  == none}">
+                <f:then>
+                    <f:render partial="SelectedPerson/PublicationList" arguments="{publications: publications}"/>
+                </f:then>
+                <f:else>
+                    <f:if condition="{groupedPublications}}">
+                        <f:render partial="SelectedPerson/GroupedPublicationList"
+                                  arguments="{publications: groupedPublications}"/>
+                    </f:if>
+                    <f:if condition="{ungroupedPublications}}">
+                        <h4 class="mt-2 text-primary font-semibold">
+                            <f:translate key="hio.show.person.ungroupedPublications" extensionName="HioTypo3Connector" />
+                        </h4>
+                        <f:render partial="SelectedPerson/PublicationList"
+                                  arguments="{publications: ungroupedPublications}"/>
+                    </f:if>
+                </f:else>
+            </f:if>
+        </div>
+    </f:if>
+</f:section>
+
+</html>

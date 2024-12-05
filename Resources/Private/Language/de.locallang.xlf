@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="de" datatype="plaintext" original="EXT:hio_typo3_connector/Resources/Private/Language/Modules/locallang.xlf" date="2024-10-17T00:00:00Z" product-name="hio_typo3_connector">
+        <header/>
+        <body>
+            <trans-unit id="mlang_tabs_tab" resname="mlang_tabs_tab" approved="yes">
+                <source>HIO Connector</source>
+                <target>HIO Connector</target>
+            </trans-unit>
+            <trans-unit id="titlePublications" resname="titlePublications" approved="yes">
+                <source>HIO Publications</source>
+                <target>HIO Publikationen</target>
+            </trans-unit>
+            <trans-unit id="titlePublicationDetails" resname="titlePublicationDetails">
+                <source>HIO Publication Details</source>
+                <target>HIO Publikation Detailansicht</target>
+            </trans-unit>
+
+            <trans-unit id="publicationsTable" resname="publicationsTable" approved="yes">
+                <source>HIO Publications</source>
+                <target>Publikationen</target>
+            </trans-unit>
+            <trans-unit id="noPublications" resname="noPublications">
+                <source>No publications found.</source>
+                <target>Keine Publikationen gefunden.</target>
+            </trans-unit>
+            <trans-unit id="titleProjects" resname="titleProjects" approved="yes">
+                <source>HIO Connector Projects</source>
+                <target>HIO Connector Projekte</target>
+            </trans-unit>
+            <trans-unit id="projectsTable" resname="projectsTable" approved="yes">
+                <source>HIO Projects</source>
+                <target>HIO Projekte</target>
+            </trans-unit>
+            <trans-unit id="noProjects" resname="noProjects">
+                <source>No projects found.</source>
+                <target>Keine Projekte gefunden.</target>
+            </trans-unit>
+
+
+            <trans-unit id="titlePersonPublications" resname="titlePersonPublications">
+                <source>HISinOne publications for person</source>
+                <target>HISinOne Publikationen zur Person</target>
+            </trans-unit>
+            <trans-unit id="flexform.publicationlist.personUid" resname="flexform.publicationlist.personUid">
+                <source>Select person please</source>
+                <target>Person auswählen</target>
+            </trans-unit>
+            <trans-unit id="flexform.publicationlist.externalLink" resname="flexform.publicationlist.externalLink">
+                <source>Link to publication details (optional)</source>
+                <target>Link zu Publikationsdetails (optional)</target>
+            </trans-unit>
+            <trans-unit id="flexform.publicationlist.orderBy" resname="flexform.publicationlist.orderBy">
+                <source>Order by</source>
+                <target>Sortierung</target>
+            </trans-unit>
+            <trans-unit id="flexform.publicationlist.orderBy.uid" resname="flexform.publicationlist.orderBy.uid">
+                <source>none</source>
+                <target>keine Sortierung</target>
+            </trans-unit>
+            <trans-unit id="flexform.publicationlist.orderBy.title" resname="flexform.publicationlist.orderBy.title">
+                <source>alphabetical</source>
+                <target>alphabetisch</target>
+            </trans-unit>
+            <trans-unit id="flexform.publicationlist.orderBy.titleDesc" resname="flexform.publicationlist.orderBy.titleDesc">
+                <source>alphabetical descending</source>
+                <target>alphabetisch absteigend</target>
+            </trans-unit>
+            <trans-unit id="flexform.publicationlist.orderBy.releaseYear" resname="flexform.publicationlist.orderBy.releaseYear">
+                <source>Release year ascending</source>
+                <target>Veröffentlichungsjahr</target>
+            </trans-unit>
+            <trans-unit id="flexform.publicationlist.orderBy.releaseYearDesc" resname="flexform.publicationlist.orderBy.releaseYearDesc">
+                <source>Release year descending</source>
+                <target>Veröffentlichungsjahr absteigend</target>
+            </trans-unit>
+            <trans-unit id="flexform.publicationlist.orderBy.type" resname="flexform.publicationlist.orderBy.type">
+                <source>Type ascending</source>
+                <target>Typ aufsteigend</target>
+            </trans-unit>
+            <trans-unit id="flexform.publicationlist.orderBy.typeDesc" resname="flexform.publicationlist.orderBy.typeDesc">
+                <source>Type descending</source>
+                <target>Typ absteigend</target>
+            </trans-unit>
+            <trans-unit id="flexform.publicationlist.groupBy" resname="flexform.publicationlist.groupBy">
+                <source>Group by</source>
+                <target>Gruppierung</target>
+            </trans-unit>
+            <trans-unit id="flexform.publicationlist.groupBy.none" resname="flexform.publicationlist.groupBy.none">
+                <source>none</source>
+                <target>keine Gruppierung</target>
+            </trans-unit>
+            <trans-unit id="flexform.publicationlist.groupBy.type" resname="flexform.publicationlist.groupBy.type">
+                <source>type of publication</source>
+                <target>Publikationstyp</target>
+            </trans-unit>
+            <trans-unit id="flexform.publicationlist.groupBy.releaseYear" resname="flexform.publicationlist.groupBy.releaseYear">
+                <source>Release year</source>
+                <target>Veröffentlichungsjahr</target>
+            </trans-unit>
+
+            <trans-unit id="titlePersonProjects" resname="titlePersonProjects">
+                <source>HISinOne projects for person</source>
+                <target>HISinOne Projekte zur Person</target>
+            </trans-unit>
+            <trans-unit id="flexform.projectlist.personUid" resname="flexform.projectlist.personUid">
+                <source>Select person please</source>
+                <target>Person auswählen</target>
+            </trans-unit>
+            <trans-unit id="flexform.projectlist.externalLink" resname="flexform.projectlist.externalLink">
+                <source>Link to project details (optional)</source>
+                <target>Link zu Projektdetails (optional)</target>
+            </trans-unit>
+
+
+            <trans-unit id="ListPaginationPrevious" resname="ListPaginationPrevious">
+                <source>Previous</source>
+                <target>Zurück</target>
+            </trans-unit>
+            <trans-unit id="ListPaginationNext" resname="ListPaginationNext">
+                <source>Next</source>
+                <target>Weiter</target>
+            </trans-unit>
+            <trans-unit id="ShowBackToList" resname="ShowBackToList">
+                <source>Back</source>
+                <target>Zurück</target>
+            </trans-unit>
+
+            <trans-unit id="hio.show.project.projectLead" resname="hio.show.project.projectLead">
+                <source>Project lead</source>
+            </trans-unit>
+            <trans-unit id="hio.show.project.type" resname="hio.show.project.type">
+                <source>Type</source>
+                <target>Projektart</target>
+            </trans-unit>
+            <trans-unit id="hio.show.project.status" resname="hio.show.project.status">
+                <source>Status</source>
+                <target>Status</target>
+            </trans-unit>
+            <trans-unit id="hio.show.project.startDate" resname="hio.show.project.startDate">
+                <source>Begin</source>
+                <target>Beginn</target>
+            </trans-unit>
+            <trans-unit id="hio.show.project.endDate" resname="hio.show.project.endDate">
+                <source>End</source>
+                <target>Ende</target>
+            </trans-unit>
+            <trans-unit id="hio.show.project.persons" resname="hio.show.project.persons">
+                <source>Persons</source>
+                <target>Projektbeteiligte</target>
+            </trans-unit>
+            <trans-unit id="hio.show.project.objective" resname="hio.show.project.objective">
+                <source>Objective</source>
+                <target>Zweck</target>
+            </trans-unit>
+            <trans-unit id="hio.show.project.subjectAreas" resname="hio.show.project.subjectAreas">
+                <source>Subject area(s)</source>
+                <target>Fachgebiet(e)</target>
+            </trans-unit>
+            <trans-unit id="hio.show.project.subjectArea" resname="hio.show.project.subjectArea">
+                <source>Subject area</source>
+                <target>Fachgebiet</target>
+            </trans-unit>
+            <trans-unit id="hio.show.project.researchAreas" resname="hio.show.project.researchAreas">
+                <source>Research areas</source>
+                <target>Forschungsbereiche</target>
+            </trans-unit>
+            <trans-unit id="hio.show.project.researchArea" resname="hio.show.project.researchArea">
+                <source>Research area</source>
+                <target>Forschungsbereich</target>
+            </trans-unit>
+            <trans-unit id="hio.show.project.abstract" resname="hio.show.project.abstract">
+                <source>Abstract</source>
+                <target>Beschreibung</target>
+            </trans-unit>
+            <trans-unit id="hio.show.project.cooperation" resname="hio.show.project.cooperation">
+                <source>Cooperation</source>
+                <target>Kooperationen</target>
+            </trans-unit>
+            <trans-unit id="hio.show.project.downloads" resname="hio.show.project.downloads">
+                <source>Downloads</source>
+                <target>Downloads</target>
+            </trans-unit>
+            <trans-unit id="hio.show.project.selectTab" resname="hio.show.project.selectTab">
+                <source>Select a tab</source>
+                <targer>Bitte Tab auswählen</targer>
+            </trans-unit>
+            <trans-unit id="hio.show.project.noCooperation" resname="hio.show.project.noCooperation">
+                <source>No cooperation information available.</source>
+                <target>Keine Kooperationen verfügbar.</target>
+            </trans-unit>
+            <trans-unit id="hio.show.project.noDownloads" resname="hio.show.project.noDownloads">
+                <source>No downloads available.</source>
+                <target>Keine Downloads verfügbar.</target>
+            </trans-unit>
+
+            <trans-unit id="hio.show.publication.authors" resname="hio.show.publication.authors">
+                <source>Authors</source>
+                <target>Autoren</target>
+            </trans-unit>
+            <trans-unit id="hio.show.publication.author" resname="hio.show.publication.author">
+                <source>Author</source>
+                <target>Autor</target>
+            </trans-unit>
+            <trans-unit id="hio.show.publication.journal" resname="hio.show.publication.journal">
+                <source>Journal</source>
+                <target>Normierter Zeitschriftentitel</target>
+            </trans-unit>
+            <trans-unit id="hio.show.publication.globalIdentifiers.doi" resname="hio.show.publication.globalIdentifiers.doi">
+                <source>DOI</source>
+                <target>DOI</target>
+            </trans-unit>
+            <trans-unit id="hio.show.publication.keywords" resname="hio.show.publication.keywords">
+                <source>Keywords</source>
+                <target>Schlagwörter</target>
+            </trans-unit>
+            <trans-unit id="hio.show.publication.keyword" resname="hio.show.publication.keyword">
+                <source>Keyword</source>
+                <target>Schlagwort</target>
+            </trans-unit>
+
+            <trans-unit id="hio.show.publication.conference.name" resname="hio.show.publication.conference.name">
+                <source>Conference</source>
+                <target>Konferenz / Tagung</target>
+            </trans-unit>
+            <trans-unit id="hio.show.publication.conference.date" resname="hio.show.publication.conference.date">
+                <source>Date</source>
+                <target>Zeitraum</target>
+            </trans-unit>
+            <trans-unit id="hio.show.publication.conference.language" resname="hio.show.publication.conference.language">
+                <source>Language</source>
+                <target>Sprache</target>
+            </trans-unit>
+            <trans-unit id="hio.show.publication.conference.type" resname="hio.show.publication.conference.type">
+                <source>Type</source>
+                <target>Veranstaltungsart</target>
+            </trans-unit>
+
+            <trans-unit id="hio.show.publication.journal.title" resname="hio.show.publication.journal.title">
+                <source>Journal</source>
+                <target>Journal</target>
+            </trans-unit>
+            <trans-unit id="hio.show.publication.journal.issue" resname="hio.show.publication.journal.issue">
+                <source>Issue</source>
+                <target>Ausgabe</target>
+            </trans-unit>
+            <trans-unit id="hio.show.publication.journal.releaseYear" resname="hio.show.publication.journal.releaseYear">
+                <source>Release year</source>
+                <target>Erscheinungsjahr</target>
+            </trans-unit>
+            <trans-unit id="hio.show.publication.journal.pageRange" resname="hio.show.publication.journal.pageRange">
+                <source>Page range</source>
+                <target>Seiten</target>
+            </trans-unit>
+            <trans-unit id="hio.show.publication.journal.volume" resname="hio.show.publication.journal.volume">
+                <source>Volume</source>
+                <target>Auflage</target>
+            </trans-unit>
+
+            <trans-unit id="hio.show.person.ungroupedPublications" resname="hio.show.person.ungroupedPublications">
+                <source>Other publications</source>
+                <target>Weitere Veröffentlichungen</target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

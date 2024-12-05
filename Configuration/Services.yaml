@@ -1,0 +1,26 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+  Wtl\HioTypo3Connector\:
+    resource: '../Classes/*'
+  Wtl\HioTypo3Connector\Controller\PublicationController:
+    tags: ['backend.controller']
+  Wtl\HioTypo3Connector\Controller\ProjectController:
+    tags: ['backend.controller']
+  Wtl\HioTypo3Connector\Command\PublicationsImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:publications:import'
+        description: 'Import publication data from HISinOne'
+  Wtl\HioTypo3Connector\Command\ProjectsImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:projects:import'
+        description: 'Import project data from HISinOne'
+  Wtl\HioTypo3Connector\Command\PersonsImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:persons:import'
+        description: 'Import person data from HISinOne'
