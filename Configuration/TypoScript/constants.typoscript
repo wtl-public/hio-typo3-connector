@@ -1,6 +1,3 @@
-# Import the default constants of EXT:fluid_styled_content
-@import 'EXT:fluid_styled_content/Configuration/TypoScript/constants.typoscript'
-
 plugin.tx_hiotypo3connector {
   settings {
     singleViewPageUid =
