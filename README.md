@@ -6,6 +6,28 @@ Im TYPO3 Backend:
 * unter `Admin Tools` -> `Extensions` -> `Extension Manager` die Extension `hio-typo3-connector` installieren
 * im Modul `Page` die Speicherseiten (Storage pages) `HISinOne Personen`, `HISinOne Projekte` und `HISinOne Publikationen` anlegen
 
+## Configuration
+
+Im TYPO3 Backend:
+* Anpassung der TypoScript Konfiguration für die jeweiligen Speicherseiten der einzelnen Datentypen.
+
+```
+plugin.tx_hiotypo3connector {
+    settings {
+      publications {
+        personTargetPageUid = 9
+      }
+      persons {
+        publicationTargetPageUid = 7
+        projectTargetPageUid = 8
+      }
+      projects {
+        personTargetPageUid = 9
+      }
+    }
+}
+```
+
 ## Scheduler import commands
 
 Im TYPO3 Backend:
