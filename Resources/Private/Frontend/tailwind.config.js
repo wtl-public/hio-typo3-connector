@@ -7,17 +7,6 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                'primary': {
-                    DEFAULT: '#3e566c',
-                    50: '#b3c1d0',
-                    100: '#a7b6c7',
-                    200: '#8e9fb5',
-                    300: '#7588a3',
-                    400: '#4a657d',
-                    500: '#3e566c',
-                    600: '#32475b',
-                    700: '#253746',
-                },
                 'wtl-red-dark': {
                     DEFAULT: '#AA0033',
                     50: '#FF6392',
