@@ -7,7 +7,7 @@
         <div class="max-w-3xl text-base/7">
             <f:groupedFor each="{publications}" as="publicationsOfThisType" groupBy="{settings.groupBy}"
                           groupKey="publicationType">
-                <h4 class="mt-2 font-semibold">{publicationType}</h4>
+                <h4 class="mt-2 text-wtl-red-dark font-semibold">{publicationType}</h4>
                 <ul>
                     <f:for each="{publicationsOfThisType}" as="publication">
                         <li class="py-1">
