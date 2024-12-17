@@ -994,16 +994,6 @@ select {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-red-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(239 68 68 / var(--tw-bg-opacity));
-}
-
-.bg-green-500 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(34 197 94 / var(--tw-bg-opacity));
-}
-
 .fill-current {
   fill: currentColor;
 }
@@ -1050,11 +1040,6 @@ select {
 .py-2 {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
-}
-
-.py-32 {
-  padding-top: 8rem;
-  padding-bottom: 8rem;
 }
 
 .py-4 {
@@ -1192,14 +1177,9 @@ select {
   color: rgb(79 70 229 / var(--tw-text-opacity));
 }
 
-.text-wtl-red-500 {
+.text-wtl-red-dark {
   --tw-text-opacity: 1;
-  color: rgb(204 0 51 / var(--tw-text-opacity));
-}
-
-.text-primary {
-  --tw-text-opacity: 1;
-  color: rgb(62 86 108 / var(--tw-text-opacity));
+  color: rgb(170 0 51 / var(--tw-text-opacity));
 }
 
 .shadow {
@@ -1232,9 +1212,19 @@ select {
   color: rgb(55 65 81 / var(--tw-text-opacity));
 }
 
-.hover\:text-primary:hover {
+.hover\:text-wtl-red-500:hover {
   --tw-text-opacity: 1;
-  color: rgb(62 86 108 / var(--tw-text-opacity));
+  color: rgb(204 0 51 / var(--tw-text-opacity));
+}
+
+.hover\:text-wtl-red-dark:hover {
+  --tw-text-opacity: 1;
+  color: rgb(170 0 51 / var(--tw-text-opacity));
+}
+
+.hover\:text-wtl-red-dark-500:hover {
+  --tw-text-opacity: 1;
+  color: rgb(170 0 51 / var(--tw-text-opacity));
 }
 
 .hover\:underline:hover {
