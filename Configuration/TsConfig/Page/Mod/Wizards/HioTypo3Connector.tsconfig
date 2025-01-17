@@ -1,0 +1,17 @@
+mod.wizards {
+    hioTypo3Connector.wizardItems {
+        plugins {
+            elements {
+                hio-typo3-connector_publications {
+                    iconIdentifier = hio-typo3-connector-publications
+                    title = HisInOne Publications
+                    description = Show a list of publications
+                    tt_content_defValues {
+                        CType = list
+                        list_type = hio-typo3-connector_publications
+                    }
+                }
+            }
+        }
+    }
+}
