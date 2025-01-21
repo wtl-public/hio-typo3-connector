@@ -6,7 +6,7 @@ mod.wizards.newContentElement.wizardItems {
                 title = HisInOne Publications
                 description = Show a list of publications
                 tt_content_defValues {
-                    CType = list
+                    CType = hiotypo3connector_personselectedpublicationlist
                     list_type = hio-typo3-connector_publications
                 }
             }
