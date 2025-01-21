@@ -13,4 +13,8 @@ return [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/project-svgrepo-com.svg',
     ],
+    'tx-hio_typo3_connector-list' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/list-svgrepo-com.svg',
+    ],
 ];

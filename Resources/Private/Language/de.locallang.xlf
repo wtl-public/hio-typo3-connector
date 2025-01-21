@@ -11,6 +11,10 @@
                 <source>HIO Publications</source>
                 <target>HIO Publikationen</target>
             </trans-unit>
+            <trans-unit id="descriptionPublications" resname="descriptionPublications" approved="yes">
+                <source>List plugin for HIO Publications</source>
+                <target>Liste aller in HISinOne verfügbaren Publikationen</target>
+            </trans-unit>
             <trans-unit id="titlePublicationDetails" resname="titlePublicationDetails">
                 <source>HIO Publication Details</source>
                 <target>HIO Publikation Detailansicht</target>
@@ -28,6 +32,10 @@
                 <source>HIO Connector Projects</source>
                 <target>HIO Connector Projekte</target>
             </trans-unit>
+            <trans-unit id="descriptionProjects" resname="descriptionProjects" approved="yes">
+                <source>List plugin for HIO Projects</source>
+                <target>Liste aller in HISinOne verfügbaren Forschungsprojekte</target>
+            </trans-unit>
             <trans-unit id="projectsTable" resname="projectsTable" approved="yes">
                 <source>HIO Projects</source>
                 <target>HIO Projekte</target>
@@ -37,6 +45,14 @@
                 <target>Keine Projekte gefunden.</target>
             </trans-unit>
 
+            <trans-unit id="titlePersons" resname="titlePersons" approved="yes">
+                <source>HIO Persons</source>
+                <target>HIO Personen</target>
+            </trans-unit>
+            <trans-unit id="descriptionPersons" resname="descriptionPersons" approved="yes">
+                <source>List plugin for HIO Persons</source>
+                <target>Liste aller in HISinOne verfügbaren Personen</target>
+            </trans-unit>
 
             <trans-unit id="titlePersonPublications" resname="titlePersonPublications">
                 <source>HISinOne publications for person</source>

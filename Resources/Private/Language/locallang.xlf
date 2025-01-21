@@ -9,6 +9,9 @@
             <trans-unit id="titlePublications" resname="titlePublications">
                 <source>HIO Publications</source>
             </trans-unit>
+            <trans-unit id="descriptionPublications" resname="descriptionPublications">
+                <source>List plugin for HIO Publications</source>
+            </trans-unit>
             <trans-unit id="titlePublicationDetails" resname="titlePublicationDetails">
                 <source>HIO Publication Details</source>
             </trans-unit>
@@ -20,6 +23,9 @@
             </trans-unit>
             <trans-unit id="titleProjects" resname="titleProjects">
                 <source>HIO Connector Projects</source>
+            </trans-unit>
+            <trans-unit id="descriptionProjects" resname="descriptionProjects">
+                <source>List plugin for HIO Projects</source>
             </trans-unit>
             <trans-unit id="projectsTable" resname="projectsTable">
                 <source>HIO Projects</source>

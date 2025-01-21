@@ -1,7 +1,7 @@
 mod.wizards.newContentElement.wizardItems {
     plugins {
         elements {
-            hio-typo3-connector_publications {
+            hio-typo3-connector_publications-for-person {
                 iconIdentifier = tx-hio_typo3_connector-publication
                 title = LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePersonPublications
                 description = LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:descriptionPersonPublications
@@ -10,13 +10,22 @@ mod.wizards.newContentElement.wizardItems {
                     list_type = hio-typo3-connector_publications
                 }
             }
-            hio-typo3-connector_projects {
+            hio-typo3-connector_projects-for-person {
                 iconIdentifier = tx-hio_typo3_connector-project
                 title = LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePersonProjects
                 description = LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:descriptionPersonProjects
                 tt_content_defValues {
                     CType = hiotypo3connector_personselectedprojectlist
                     list_type = hio-typo3-connector_projects
+                }
+            }
+            hio-typo3-connector_publications {
+                iconIdentifier = tx-hio_typo3_connector-list
+                title = LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePublications
+                description = LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:descriptionPublications
+                tt_content_defValues {
+                    CType = hiotypo3connector_personselectedpublicationlist
+                    list_type = hio-typo3-connector_publications
                 }
             }
         }
