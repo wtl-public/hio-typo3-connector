@@ -13,4 +13,8 @@ return [
         'path' => '/hio/typo3/connector/person',
         'target' => 'Wtl\HioTypo3Connector\Controller\PersonController',
     ],
+    'tx_hio_typo3_connector_patent' => [
+        'path' => '/hio/typo3/connector/patent',
+        'target' => 'Wtl\HioTypo3Connector\Controller\PatentController',
+    ],
 ];
