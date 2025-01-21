@@ -7,7 +7,7 @@
                 <source>HIO Connector</source>
             </trans-unit>
             <trans-unit id="titlePublications" resname="titlePublications">
-                <source>HIO Publications</source>
+                <source>HISinOne Publications</source>
             </trans-unit>
             <trans-unit id="descriptionPublications" resname="descriptionPublications">
                 <source>List of publications available in HISinOne</source>
@@ -23,7 +23,7 @@
             </trans-unit>
 
             <trans-unit id="titleProjects" resname="titleProjects">
-                <source>HIO Connector Projects</source>
+                <source>HISinOne Projects</source>
             </trans-unit>
             <trans-unit id="descriptionProjects" resname="descriptionProjects">
                 <source>List of projects available inHISinOne</source>

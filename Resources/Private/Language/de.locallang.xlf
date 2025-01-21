@@ -8,8 +8,8 @@
                 <target>HIO Connector</target>
             </trans-unit>
             <trans-unit id="titlePublications" resname="titlePublications" approved="yes">
-                <source>HIO Publications</source>
-                <target>HIO Publikationen</target>
+                <source>HISinOne Publications</source>
+                <target>HISinOne Publikationen</target>
             </trans-unit>
             <trans-unit id="descriptionPublications" resname="descriptionPublications" approved="yes">
                 <source>List of publications available in HISinOne</source>
@@ -29,8 +29,8 @@
                 <target>Keine Publikationen gefunden.</target>
             </trans-unit>
             <trans-unit id="titleProjects" resname="titleProjects" approved="yes">
-                <source>HIO Connector Projects</source>
-                <target>HIO Connector Projekte</target>
+                <source>HISinOne Projects</source>
+                <target>HISinOne Projekte</target>
             </trans-unit>
             <trans-unit id="descriptionProjects" resname="descriptionProjects" approved="yes">
                 <source>List plugin for HIO Projects</source>
