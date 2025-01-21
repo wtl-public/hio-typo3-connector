@@ -45,6 +45,15 @@ defined('TYPO3') or die();
     // extension name, matching the PHP namespaces (but without the vendor)
         'HioTypo3Connector',
         // arbitrary, but unique plugin name (not visible in the backend)
+        'PatentList',
+        // plugin title, as visible in the drop-down in the backend, use "LLL:" for localization
+        'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePatents',
+    );
+
+    ExtensionUtilityAlias::registerPlugin(
+    // extension name, matching the PHP namespaces (but without the vendor)
+        'HioTypo3Connector',
+        // arbitrary, but unique plugin name (not visible in the backend)
         'PersonSelectedPublicationList',
         // plugin title, as visible in the drop-down in the backend, use "LLL:" for localization
         'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePersonPublications',
@@ -109,6 +118,15 @@ defined('TYPO3') or die();
         (string)$showItem
     );
     $showItem = &$GLOBALS['TCA']['tt_content']['types']['hiotypo3connector_projectlist']['showitem'];
+    $showItem = str_replace(
+        '--palette--;;headers,',
+        '
+            --palette--;;headers,
+            pages,
+        ',
+        (string)$showItem
+    );
+    $showItem = &$GLOBALS['TCA']['tt_content']['types']['hiotypo3connector_patentlist']['showitem'];
     $showItem = str_replace(
         '--palette--;;headers,',
         '
