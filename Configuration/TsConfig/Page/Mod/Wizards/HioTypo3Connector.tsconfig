@@ -10,6 +10,15 @@ mod.wizards.newContentElement.wizardItems {
                     list_type = hio-typo3-connector_publications
                 }
             }
+            hio-typo3-connector_projects {
+                iconIdentifier = tx-hio_typo3_connector-project
+                title = LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePersonProjects
+                description = LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:descriptionPersonProjects
+                tt_content_defValues {
+                    CType = hiotypo3connector_personselectedprojectlist
+                    list_type = hio-typo3-connector_projects
+                }
+            }
         }
     }
 }

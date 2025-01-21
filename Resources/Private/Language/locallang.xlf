@@ -80,6 +80,9 @@
             <trans-unit id="titlePersonProjects" resname="titlePersonProjects">
                 <source>HISinOne projects for person</source>
             </trans-unit>
+            <trans-unit id="descriptionPersonProjects" resname="descriptionPersonProjects">
+                <source>Show all HISinOne projects for the selected person</source>
+            </trans-unit>
             <trans-unit id="flexform.projectlist.personUid" resname="flexform.projectlist.personUid">
                 <source>Select person please</source>
             </trans-unit>

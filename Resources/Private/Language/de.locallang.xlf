@@ -107,6 +107,10 @@
                 <source>HISinOne projects for person</source>
                 <target>HISinOne Projekte zur Person</target>
             </trans-unit>
+            <trans-unit id="descriptionPersonProjects" resname="descriptionPersonProjects">
+                <source>Show all HISinOne projects for the selected person</source>
+                <target>Zeigt alle HISinOne Projekte zur ausgewählten Person an</target>
+            </trans-unit>
             <trans-unit id="flexform.projectlist.personUid" resname="flexform.projectlist.personUid">
                 <source>Select person please</source>
                 <target>Person auswählen</target>
