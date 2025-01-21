@@ -31,6 +31,9 @@
             <trans-unit id="titlePersonPublications" resname="titlePersonPublications">
                 <source>HISinOne publications for person</source>
             </trans-unit>
+            <trans-unit id="descriptionPersonPublications" resname="descriptionPersonPublications">
+                <source>Show all HISinOne publications for the selected person</source>
+            </trans-unit>
             <trans-unit id="flexform.publicationlist.personUid" resname="flexform.publicationlist.personUid">
                 <source>Select person please</source>
             </trans-unit>
