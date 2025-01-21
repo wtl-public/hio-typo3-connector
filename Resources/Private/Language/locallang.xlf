@@ -10,7 +10,7 @@
                 <source>HIO Publications</source>
             </trans-unit>
             <trans-unit id="descriptionPublications" resname="descriptionPublications">
-                <source>List plugin for HIO Publications</source>
+                <source>List of publications available in HISinOne</source>
             </trans-unit>
             <trans-unit id="titlePublicationDetails" resname="titlePublicationDetails">
                 <source>HIO Publication Details</source>
@@ -21,17 +21,25 @@
             <trans-unit id="noPublications" resname="noPublications">
                 <source>No publications found.</source>
             </trans-unit>
+
             <trans-unit id="titleProjects" resname="titleProjects">
                 <source>HIO Connector Projects</source>
             </trans-unit>
             <trans-unit id="descriptionProjects" resname="descriptionProjects">
-                <source>List plugin for HIO Projects</source>
+                <source>List of projects available inHISinOne</source>
             </trans-unit>
             <trans-unit id="projectsTable" resname="projectsTable">
                 <source>HIO Projects</source>
             </trans-unit>
             <trans-unit id="noProjects" resname="noProjects">
                 <source>No projects found.</source>
+            </trans-unit>
+
+            <trans-unit id="titlePersons" resname="titlePersons">
+                <source>HISinOne Persons</source>
+            </trans-unit>
+            <trans-unit id="descriptionPersons" resname="descriptionPersons">
+                <source>List of persons available in HISinOne</source>
             </trans-unit>
 
             <trans-unit id="titlePersonPublications" resname="titlePersonPublications">
