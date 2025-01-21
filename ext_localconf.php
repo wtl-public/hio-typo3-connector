@@ -7,6 +7,7 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 use Wtl\HioTypo3Connector\Controller\PersonController;
 use Wtl\HioTypo3Connector\Controller\ProjectController;
 use Wtl\HioTypo3Connector\Controller\PublicationController;
+use Wtl\HioTypo3Connector\Controller\PatentController;
 
 
 ExtensionUtility::configurePlugin(
@@ -52,6 +53,18 @@ ExtensionUtility::configurePlugin(
     pluginType:  ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     // non-cacheable actions
 );
+
+ExtensionUtility::configurePlugin(
+// extension name, matching the PHP namespaces (but without the vendor)
+    'HioTypo3Connector',
+    // arbitrary, but unique plugin name (not visible in the backend)
+    'PatentList',
+    // all actions
+    [PatentController::class => 'index, show'],
+    pluginType:  ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
+// non-cacheable actions
+);
+
 
 ExtensionUtility::configurePlugin(
 // extension name, matching the PHP namespaces (but without the vendor)
