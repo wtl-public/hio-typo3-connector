@@ -32,13 +32,11 @@
             <div class="mt-6 border-t border-gray-100">
                 <dl class="divide-y divide-gray-100">
                     <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
-                        <dt class="text-sm/6 font-medium text-gray-900"><f:translate key="hio.show.project.projectLead" /></dt>
+                        <dt class="text-sm/6 font-medium text-gray-900"><f:translate key="hio.show.patent.inventors" /></dt>
                         <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
-                            <f:for each="{project.details.persons}" as="person">
+                            <f:for each="{patent.details.inventors}" as="person">
                                 <span>
-                                    <f:if condition="{person.role} == 'Projektleiter/-in'">
-                                        <f:render partial="Project/Show/PersonLink" arguments="{person: person}" />
-                                    </f:if>
+                                    <f:render partial="Patent/Show/PersonLink" arguments="{person: person}" />
                                 </span>
                             </f:for>
                         </dd>
