@@ -10,15 +10,21 @@
         <div class="bg-white px-4 py-6 lg:p-8">
             <div class="text-base/7 text-gray-700">
                 <p class="font-semibold text-gray-600 py-0">
-                    <f:if condition="{project.details.patentNumber}">
-                        {patent.details.patentNumber}
+                    <f:if condition="{patent.details.patentNumber}">
+                        No.: {patent.details.patentNumber}
                         &middot;
                     </f:if>
-                    <f:if condition="{project.details.status}">
-                        {project.details.status}
+                    <f:if condition="{patent.details.status}">
+                        Status: {patent.details.status}
                         &middot;
                     </f:if>
-                    <f:format.date format="d.m.Y" >{patent.details.registrationDate}</f:format.date>
+                    <f:if condition="{patent.details.registrationDate}">
+                        angemeldet: <f:format.date format="d.m.Y" >{patent.details.registrationDate}</f:format.date>
+                        &middot;
+                    </f:if>
+                    <f:if condition="{patent.details.grantDate}">
+                        erteilt: <f:format.date format="d.m.Y" >{patent.details.grantDate}</f:format.date>
+                    </f:if>
                 </p>
                 <h1 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">{patent.title}</h1>
             </div>
