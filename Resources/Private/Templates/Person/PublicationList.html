@@ -7,7 +7,7 @@
 <f:section name="Main">
     <f:if condition="{publications}">
         <div class="bg-white px-6 py-6 lg:px-8">
-            <f:if condition="{settings.groupBy  == none}">
+            <f:if condition="{settings.groupBy}  == none">
                 <f:then>
                     <f:render partial="SelectedPerson/PublicationList" arguments="{publications: publications}"/>
                 </f:then>
