@@ -10,17 +10,17 @@
         <div class="bg-white px-4 py-6 lg:p-8">
             <div class="text-base/7 text-gray-700">
                 <p class="font-semibold text-gray-600 py-0">
-                    <f:if condition="{project.details.type}">
-                        {patent.details.type}
+                    <f:if condition="{project.details.patentNumber}">
+                        {patent.details.patentNumber}
                         &middot;
                     </f:if>
                     <f:if condition="{project.details.status}">
                         {project.details.status}
                         &middot;
                     </f:if>
-                    <f:format.date format="d.m.Y" >{project.details.startDate}</f:format.date> - <f:format.date format="d.m.Y" >{project.details.endDate}</f:format.date>
+                    <f:format.date format="d.m.Y" >{patent.details.registrationDate}</f:format.date>
                 </p>
-                <h1 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">{project.title}</h1>
+                <h1 class="mt-2 text-pretty text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl">{patent.title}</h1>
             </div>
 
             <div class="mt-6 border-t border-gray-100">
@@ -38,44 +38,44 @@
                         </dd>
                     </div>
                     <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
-                        <dt class="text-sm/6 font-medium text-gray-900"><f:translate key="hio.show.project.objective" /></dt>
+                        <dt class="text-sm/6 font-medium text-gray-900"><f:translate key="hio.show.patent.description" /></dt>
                         <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                {project.details.objective}
+                                {patent.details.description}
                         </dd>
                     </div>
                     <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
                         <dt class="text-sm/6 font-medium text-gray-900">
-                            <f:if condition="{project.details.subjectAreas -> f:count()} == 1">
+                            <f:if condition="{patent.details.subjectAreas -> f:count()} == 1">
                                 <f:then>
-                                    <f:translate key="hio.show.project.subjectArea" />
+                                    <f:translate key="hio.show.patent.subjectArea" />
                                 </f:then>
                                 <f:else>
-                                    <f:translate key="hio.show.project.subjectAreas" />
+                                    <f:translate key="hio.show.patent.subjectAreas" />
                                 </f:else>
                             </f:if>
                         </dt>
                         <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
-                            <f:for each="{project.details.subjectAreas}" as="subject" key="index">
+                            <f:for each="{patent.details.subjectAreas}" as="subject" key="index">
                                 <p class="py-0">
                                     {subject}
                                 </p>
                             </f:for>
                         </dd>
                     </div>
-                    <f:if condition="{project.details.researchAreas}">
+                    <f:if condition="{patent.details.researchAreas}">
                         <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
                             <dt class="text-sm/6 font-medium text-gray-900">
-                                <f:if condition="{project.details.researchAreas -> f:count()} == 1">
+                                <f:if condition="{patent.details.researchAreas -> f:count()} == 1">
                                     <f:then>
-                                        <f:translate key="hio.show.project.researchArea" />
+                                        <f:translate key="hio.show.patent.researchArea" />
                                     </f:then>
                                     <f:else>
-                                        <f:translate key="hio.show.project.researchAreas" />
+                                        <f:translate key="hio.show.patent.researchAreas" />
                                     </f:else>
                                 </f:if>
                             </dt>
                             <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
-                                <f:for each="{project.details.researchAreas}" as="researchArea" key="index">
+                                <f:for each="{patent.details.researchAreas}" as="researchArea" key="index">
                                     <span class="inline-flex items-center rounded-md bg-gray-50 px-2 py-1 mb-2 mr-1 text-sm font-medium text-gray-600 ring-1 ring-inset ring-gray-500/10">{researchArea}</span>
                                 </f:for>
                             </dd>
@@ -84,42 +84,6 @@
                 </dl>
             </div>
 
-            <div>
-                <div class="sm:hidden">
-                    <label for="tabs" class="sr-only"><f:translate key="hio.show.project.selectTab" /></label>
-                    <!-- Use an "onChange" listener to redirect the user to the selected tab URL. -->
-                    <select onchange="openTab(event, this.value)" id="tabs" name="tabs" class="block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm">
-                        <option selected value="tab-project-abstract"><f:translate key="hio.show.project.abstract" /></option>
-                        <option value="tab-project-cooperation"><f:translate key="hio.show.project.cooperation" /></option>
-                        <option value="tab-project-downloads"><f:translate key="hio.show.project.downloads" /></option>
-                    </select>
-                </div>
-                <div class="hidden sm:block">
-                    <div class="border-b border-gray-200">
-                        <nav class="-mb-px flex space-x-8" aria-label="Tabs">
-                            <a href="#" onclick="openTab(event, 'tab-project-abstract')"  class="tab-project whitespace-nowrap border-b-2 border-gray-400 px-1 py-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700 active:border-gray-500"><f:translate key="hio.show.project.abstract" /></a>
-                            <a href="#" onclick="openTab(event, 'tab-project-cooperation')" class="tab-project whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"><f:translate key="hio.show.project.cooperation" /></a>
-                            <a href="#" onclick="openTab(event, 'tab-project-downloads')" class="tab-project whitespace-nowrap border-b-2 border-transparent px-1 py-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"><f:translate key="hio.show.project.downloads" /></a>
-                        </nav>
-                    </div>
-                </div>
-
-                <div id="tab-project-abstract" class="tab-content p-4 px-0">
-                    <f:if condition="{project.abstract}">
-                        <div class="text-sm/6 text-gray-700">{project.abstract}</div>
-                    </f:if>
-                </div>
-
-                <div id="tab-project-cooperation" class="tab-content p-4 hidden px-0">
-                    <div class="text-sm/6 text-gray-700"><f:translate key="hio.show.project.noCooperation" /></div>
-                </div>
-
-                <div id="tab-project-downloads" class="tab-content p-4 hidden px-0">
-                    <div class="text-sm/6 text-gray-700"><f:translate key="hio.show.project.noDownloads" /></div>
-                </div>
-
-
-            </div>
         </div>
     </f:if>
     <div class="px-4 py-5 sm:p-6">
