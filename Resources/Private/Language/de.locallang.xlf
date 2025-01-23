@@ -119,6 +119,38 @@
                 <target>Veröffentlichungsjahr</target>
             </trans-unit>
 
+
+            <trans-unit id="titlePatents" resname="titlePatents">
+                <source>HISinOne Patents</source>
+                <target>HISinOne Patente</target>
+            </trans-unit>
+            <trans-unit id="descriptionPatents" resname="descriptionPatents">
+                <source>List of patents available inHISinOne</source>
+                <target>Liste aller in HISinOne verfügbaren Patente</target>
+            </trans-unit>
+            <trans-unit id="patentsTable" resname="patentsTable">
+                <source>HIO Patents</source>
+                <target>HIO Patente</target>
+            </trans-unit>
+            <trans-unit id="noPatents" resname="noPatents">
+                <source>No patents found.</source>
+                <target>Keine Patente gefunden.</target>
+            </trans-unit>
+
+            <trans-unit id="titlePersonPatents" resname="titlePersonPatents">
+                <source>HISinOne patents for person</source>
+                <target>HISinOne Patente zur Person</target>
+            </trans-unit>
+            <trans-unit id="descriptionPersonPatents" resname="descriptionPersonPatents">
+                <source>Show all HISinOne patents for the selected person</source>
+                <target>Zeigt alle HISinOne Patente zur ausgewählten Person an</target>
+            </trans-unit>
+            <trans-unit id="flexform.patentlist.personUid" resname="flexform.patentlist.personUid">
+                <source>Select person please</source>
+                <target>Person auswählen</target>
+            </trans-unit>
+
+
             <trans-unit id="titlePersonProjects" resname="titlePersonProjects">
                 <source>HISinOne projects for person</source>
                 <target>HISinOne Projekte zur Person</target>

@@ -35,6 +35,19 @@
                 <source>No projects found.</source>
             </trans-unit>
 
+            <trans-unit id="titlePatents" resname="titlePatents">
+                <source>HISinOne Patents</source>
+            </trans-unit>
+            <trans-unit id="descriptionPatents" resname="descriptionPatents">
+                <source>List of patents available inHISinOne</source>
+            </trans-unit>
+            <trans-unit id="patentsTable" resname="patentsTable">
+                <source>HIO Patents</source>
+            </trans-unit>
+            <trans-unit id="noPatents" resname="noPatents">
+                <source>No patents found.</source>
+            </trans-unit>
+
             <trans-unit id="titlePersons" resname="titlePersons">
                 <source>HISinOne Persons</source>
             </trans-unit>
@@ -102,6 +115,16 @@
             </trans-unit>
             <trans-unit id="flexform.projectlist.externalLink" resname="flexform.projectlist.externalLink">
                 <source>Link to project details (optional)</source>
+            </trans-unit>
+
+            <trans-unit id="titlePersonPatents" resname="titlePersonPatents">
+                <source>HISinOne patents for person</source>
+            </trans-unit>
+            <trans-unit id="descriptionPersonPatents" resname="descriptionPersonPatents">
+                <source>Show all HISinOne patents for the selected person</source>
+            </trans-unit>
+            <trans-unit id="flexform.patentlist.personUid" resname="flexform.patentlist.personUid">
+                <source>Select person please</source>
             </trans-unit>
 
             <trans-unit id="ListPaginationPrevious" resname="ListPaginationPrevious">
