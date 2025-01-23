@@ -151,11 +151,11 @@
             </trans-unit>
             <trans-unit id="hio.patent.inventor" resname="hio.patent.inventor">
                 <source>inventor</source>
-                <target>Erfinder</target
+                <target>Erfinder</target>
             </trans-unit>
             <trans-unit id="hio.patent.inventors" resname="hio.patent.inventors">
                 <source>inventors</source>
-                <target>Erfinder</target
+                <target>Erfinder</target>
             </trans-unit>
             <trans-unit id="hio.patent.patentNumber" resname="hio.patent.patentNumber">
                 <source>patent number</source>
