@@ -22,6 +22,7 @@ class HioPersonService extends HioApiService
             $personData->setDetails($person);
             $personData->setPublications($person['publications'] ?? []);
             $personData->setProjects($person['projects'] ?? []);
+            $personData->setPatents($person['patents'] ?? []);
             $persons[] = $personData;
         }
         return $persons ?? [];
