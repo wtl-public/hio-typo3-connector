@@ -9,7 +9,8 @@ Im TYPO3 Backend:
 ## Configuration
 
 Im TYPO3 Backend:
-* Anpassung der TypoScript Konfiguration für die jeweiligen Speicherseiten der einzelnen Datentypen.
+* Anpassung der TypoScript Konfiguration für die jeweiligen Details der einzelnen Datentypen.
+* Beispielkonfiguration:
 
 ```
 plugin.tx_hiotypo3connector {
@@ -24,6 +25,9 @@ plugin.tx_hiotypo3connector {
       projects {
         personTargetPageUid = 9
       }
+      patents {
+        personTargetPageUid = 9
+      }
     }
 }
 ```
@@ -35,11 +39,15 @@ Im TYPO3 Backend:
   * `hio:import:persons` - Importiert Personen aus HISinOne
   * `hio:import:projects` - Importiert Projekte aus HISinOne
   * `hio:import:publications` - Importiert Publikationen aus HISinOne
+  * `hio:import:patents` - Importiert Patente aus HISinOne
 * jeder der genannten Tasks hat folgende Parameter:
   * `Storage page ID` - die Speicherseite, unter der die importierten Datensätze gespeichert werden
   * `URL` - die URL des `Publisher für HISinOne` REST API Endpoints
   * `username` - der basic authentication username zum Zugriff auf die API
   * `password` - das basic authentication password zum Zugriff auf die API
+
+**Achtung!** Das Kommando zum Import von Personen mus nach den anderen Import Kommandos ausgeführt werden.
+Dadurch werden die zur jeweiligen Person gehörenden Publikationen, Projekte und Patente verknüpft.
 
 ## Frontend plugins
 
@@ -48,5 +56,6 @@ Im TYPO3 Backend:
   * `HISinOne Personen` - zeigt eine Liste von Personen aus HISinOne an
   * `HISinOne Projekte` - zeigt eine Liste von Projekten aus HISinOne an
   * `HISinOne Publikationen` - zeigt eine Liste von Publikationen aus HISinOne an
-  * `HISinOne Publikationen der Person` - zeigt die Liste aller Publikationen einer ausgewählten Person an
-  * `HISinOne Projekte der Person` - zeigt die Liste aller Projekte einer ausgewählten Person an
+  * `HISinOne Publikationen der Person` - zeigt die Liste aller freigegebenen Publikationen einer ausgewählten Person an
+  * `HISinOne Projekte der Person` - zeigt die Liste aller freigegebenen Projekte einer ausgewählten Person an
+  * `HISinOne Patente der Person` - zeigt die Liste aller freigegebenen Patente einer ausgewählten Person an
