@@ -3,9 +3,10 @@
   "description": null,
   "grantDate": null,
   "id": 18,
-  "inventors": [
+  "patentNumber": "EP55664822",
+  "persons": [
     {
-      "id": 27,
+      "id": 2125,
       "name": "Anna Becker",
       "organization": {
         "id": 3,
@@ -13,7 +14,7 @@
       }
     },
     {
-      "id": 28,
+      "id": 2661,
       "name": "Arne Martin",
       "organization": {
         "id": 147,
@@ -21,7 +22,6 @@
       }
     }
   ],
-  "patentNumber": "EP55664822",
   "priorityPatent": null,
   "publicationNumber": null,
   "registrationDate": "2007-11-08",
@@ -33,5 +33,5 @@
     "Feinwerktechnik (mechanisch)"
   ],
   "title": "ARTICULATED ROBOT FOR HANDLING LARGE LOADS",
-  "visibility": "\u00f6ffentlich"
+  "visibility": "public"
 }
