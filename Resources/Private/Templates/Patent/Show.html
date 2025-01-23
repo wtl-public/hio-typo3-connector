@@ -34,7 +34,7 @@
                     <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
                         <dt class="text-sm/6 font-medium text-gray-900"><f:translate key="hio.patent.inventors" /></dt>
                         <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
-                            <f:for each="{patent.details.inventors}" as="person">
+                            <f:for each="{patent.details.persons}" as="person">
                                 <span>
                                     <f:render partial="Patent/Show/PersonLink" arguments="{person: person}" />
                                 </span>

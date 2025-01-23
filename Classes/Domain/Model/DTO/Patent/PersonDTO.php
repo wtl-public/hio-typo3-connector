@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Model\DTO\Patent;
 
-class InventorDTO
+class PersonDTO
 {
     protected ?int $id = null;
     protected string $name = '';
@@ -38,12 +38,12 @@ class InventorDTO
 
     static public function fromArray(array $data): self
     {
-        $inventorData = new self();
-        $inventorData->setId($data['id']);
-        $inventorData->setName($data['name'] ?? '');
+        $personData = new self();
+        $personData->setId($data['id']);
+        $personData->setName($data['name'] ?? '');
         if (is_array($data['organization'])) {
-            $inventorData->setOrganization(OrganizationDTO::fromArray($data['organization']));
+            $personData->setOrganization(OrganizationDTO::fromArray($data['organization']));
         }
-        return $inventorData;
+        return $personData;
     }
 }

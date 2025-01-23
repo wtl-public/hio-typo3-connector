@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Model\DTO;
 
-use Wtl\HioTypo3Connector\Domain\Model\DTO\Patent\InventorDTO;
+use Wtl\HioTypo3Connector\Domain\Model\DTO\Patent\PersonDTO;
 use Wtl\HioTypo3Connector\Domain\Model\Patent;
 
 class PatentDTO
@@ -16,9 +16,9 @@ class PatentDTO
     protected string $description = '';
     protected ?\DateTime $grantDate = null;
     /**
-     * @var InventorDTO[]
+     * @var PersonDTO[]
      */
-    protected array $inventors = [];
+    protected array $persons = [];
     protected string $patentNumber = '';
     protected ?bool $priorityPatent = null;
     protected ?string $publicationNumber = null;
@@ -108,13 +108,13 @@ class PatentDTO
         $this->researchAreas = $researchAreas;
     }
 
-    public function getInventors(): array
+    public function getPersons(): array
     {
-        return $this->inventors;
+        return $this->persons;
     }
-    public function setInventors(array $inventors): void
+    public function setPersons(array $persons): void
     {
-        $this->inventors = $inventors;
+        $this->persons = $persons;
     }
 
     public function getDescription(): string
@@ -196,10 +196,10 @@ class PatentDTO
             $registrationDate = \DateTime::createFromFormat('Y-m-d', $details['registrationDate']);
         }
 
-        $inventors = [];
-        if (isset($details['inventors'])) {
-            foreach ($details['inventors'] as $inventor) {
-                $inventors[] = InventorDTO::fromArray($inventor);
+        $persons = [];
+        if (isset($details['persons'])) {
+            foreach ($details['persons'] as $person) {
+                $persons[] = PersonDTO::fromArray($person);
             }
         }
 
@@ -211,7 +211,7 @@ class PatentDTO
         $patentData->setCountryOfRegistration($details['countryOfRegistration'] ?? '');
         $patentData->setDescription($details['description'] ?? '');
         $patentData->setGrantDate($grantDate);
-        $patentData->setInventors($inventors);
+        $patentData->setPersons($persons);
         $patentData->setPatentNumber($details['patentNumber'] ?? '');
         $patentData->setPriorityPatent($details['priorityPatent'] ?? null);
         $patentData->setPublicationNumber($details['publicationNumber'] ?? null);
