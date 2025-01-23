@@ -12,6 +12,7 @@ class PersonDTO
     protected array $details = [];
     protected array $publications = [];
     protected array $projects = [];
+    protected array $patents = [];
 
     public function getObjectId(): int
     {
@@ -57,5 +58,14 @@ class PersonDTO
     public function setProjects(array $projects): void
     {
         $this->projects = $projects;
+    }
+
+    public function getPatents(): array
+    {
+        return $this->patents;
+    }
+    public function setPatents(array $patents): void
+    {
+        $this->patents = $patents;
     }
 }

@@ -23,6 +23,11 @@ class Person extends AbstractEntity
     protected ObjectStorage $projects;
 
     /**
+     * @var ObjectStorage<Patent>
+     */
+    protected ObjectStorage $patents;
+
+    /**
      * @var string
      */
     protected mixed $details;
@@ -36,6 +41,7 @@ class Person extends AbstractEntity
     {
         $this->publications = new ObjectStorage();
         $this->projects = new ObjectStorage();
+        $this->patents = new ObjectStorage();
     }
 
     public function getObjectId(): int
@@ -107,6 +113,29 @@ class Person extends AbstractEntity
     {
         if ($this->projects->contains($project)) {
             $this->projects->detach($project);
+        }
+        return $this;
+    }
+
+    public function getPatents(): ObjectStorage
+    {
+        return $this->patents;
+    }
+    public function setPatents(ObjectStorage $patents): void
+    {
+        $this->patents = $patents;
+    }
+    public function addPatent(Patent $patent): self
+    {
+        if (!$this->patents->contains($patent)) {
+            $this->patents->attach($patent);
+        }
+        return $this;
+    }
+    public function removePatent(Patent $patent): self
+    {
+        if ($this->patents->contains($patent)) {
+            $this->patents->detach($patent);
         }
         return $this;
     }

@@ -1,0 +1,41 @@
+{
+  "countryOfRegistration": "Deutschland",
+  "description": "Durch Unterst\u00fctzung der k\u00fcnstlichen Intelligenz, soll eine Erh\u00f6hung der Lebenszyklen von Akkus erh\u00f6ht werden.",
+  "grantDate": null,
+  "id": 15,
+  "inventors": [
+    {
+      "id": 21,
+      "name": "Hanna Ahrens",
+      "organization": null
+    },
+    {
+      "id": 22,
+      "name": "Anna Becker",
+      "organization": {
+        "id": 3,
+        "name": "Technische Fakult\u00e4t"
+      }
+    },
+    {
+      "id": 23,
+      "name": "Kim Mahler",
+      "organization": null
+    }
+  ],
+  "patentNumber": "DK320644451",
+  "priorityPatent": null,
+  "publicationNumber": null,
+  "registrationDate": "2005-09-19",
+  "researchAreas": [
+    "Energieerzeugung und Energieumwandlung"
+  ],
+  "status": "ver\u00f6ffentlicht",
+  "subjectAreas": [
+    "Elektrotechnik allgemein",
+    "Feinwerktechnik (mechanisch)",
+    "Mechatronik"
+  ],
+  "title": "Lebensdauer von Akkumulatoren erh\u00f6hen",
+  "visibility": "\u00f6ffentlich"
+}

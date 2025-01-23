@@ -118,6 +118,15 @@ return [
                 'foreign_table' => 'tx_hiotypo3connector_domain_model_project',
                 'MM' => 'tx_hiotypo3connector_person_project_mm',
             ],
+        ],
+        'patents' => [
+            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_person.patents',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'tx_hiotypo3connector_domain_model_patent',
+                'MM' => 'tx_hiotypo3connector_person_patent_mm',
+            ],
         ]
     ],
     'types' => [
