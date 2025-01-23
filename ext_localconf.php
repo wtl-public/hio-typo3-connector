@@ -86,5 +86,15 @@ ExtensionUtility::configurePlugin(
     pluginType:  ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 // non-cacheable actions
 );
+ExtensionUtility::configurePlugin(
+// extension name, matching the PHP namespaces (but without the vendor)
+    'HioTypo3Connector',
+    // arbitrary, but unique plugin name (not visible in the backend)
+    'PersonSelectedPatentList',
+    // all actions
+    [PersonController::class => 'patentList'],
+    pluginType:  ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
+// non-cacheable actions
+);
 
 
