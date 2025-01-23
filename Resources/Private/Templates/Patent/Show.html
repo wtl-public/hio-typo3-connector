@@ -32,7 +32,7 @@
             <div class="mt-6 border-t border-gray-100">
                 <dl class="divide-y divide-gray-100">
                     <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
-                        <dt class="text-sm/6 font-medium text-gray-900"><f:translate key="hio.show.patent.inventors" /></dt>
+                        <dt class="text-sm/6 font-medium text-gray-900"><f:translate key="hio.patent.inventors" /></dt>
                         <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
                             <f:for each="{patent.details.inventors}" as="person">
                                 <span>
@@ -42,7 +42,7 @@
                         </dd>
                     </div>
                     <div class="py-6 sm:grid sm:grid-cols-3 sm:gap-4">
-                        <dt class="text-sm/6 font-medium text-gray-900"><f:translate key="hio.show.patent.description" /></dt>
+                        <dt class="text-sm/6 font-medium text-gray-900"><f:translate key="hio.patent.description" /></dt>
                         <dd class="mt-1 text-sm/6 text-gray-700 sm:col-span-2 sm:mt-0">
                                 {patent.details.description}
                         </dd>
@@ -51,10 +51,10 @@
                         <dt class="text-sm/6 font-medium text-gray-900">
                             <f:if condition="{patent.details.subjectAreas -> f:count()} == 1">
                                 <f:then>
-                                    <f:translate key="hio.show.patent.subjectArea" />
+                                    <f:translate key="hio.patent.subjectArea" />
                                 </f:then>
                                 <f:else>
-                                    <f:translate key="hio.show.patent.subjectAreas" />
+                                    <f:translate key="hio.patent.subjectAreas" />
                                 </f:else>
                             </f:if>
                         </dt>
@@ -71,10 +71,10 @@
                             <dt class="text-sm/6 font-medium text-gray-900">
                                 <f:if condition="{patent.details.researchAreas -> f:count()} == 1">
                                     <f:then>
-                                        <f:translate key="hio.show.patent.researchArea" />
+                                        <f:translate key="hio.patent.researchArea" />
                                     </f:then>
                                     <f:else>
-                                        <f:translate key="hio.show.patent.researchAreas" />
+                                        <f:translate key="hio.patent.researchAreas" />
                                     </f:else>
                                 </f:if>
                             </dt>

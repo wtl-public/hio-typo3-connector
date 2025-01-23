@@ -137,6 +137,72 @@
                 <target>Keine Patente gefunden.</target>
             </trans-unit>
 
+            <trans-unit id="hio.patent.countryOfRegistration" resname="hio.patent.countryOfRegistration">
+                <source>country of registration</source>
+                <target>Land der Anmeldung</target>
+            </trans-unit>
+            <trans-unit id="hio.patent.description" resname="hio.patent.description">
+                <source>description</source>
+                <target>Beschreibung</target>
+            </trans-unit>
+            <trans-unit id="hio.patent.grantDate" resname="hio.patent.grantDate">
+                <source>grant date</source>
+                <target>Erteilungsdatum</target>
+            </trans-unit>
+            <trans-unit id="hio.patent.inventor" resname="hio.patent.inventor">
+                <source>inventor</source>
+                <target>Erfinder</target
+            </trans-unit>
+            <trans-unit id="hio.patent.inventors" resname="hio.patent.inventors">
+                <source>inventors</source>
+                <target>Erfinder</target
+            </trans-unit>
+            <trans-unit id="hio.patent.patentNumber" resname="hio.patent.patentNumber">
+                <source>patent number</source>
+                <target>Patentnummer</target>
+            </trans-unit>
+            <trans-unit id="hio.patent.priorityPatent" resname="hio.patent.priorityPatent">
+                <source>priority patent</source>
+                <target>Prioritätspatent</target>
+            </trans-unit>
+            <trans-unit id="hio.patent.publicationNumber" resname="hio.patent.publicationNumber">
+                <source>publication number</source>
+                <target>Veröffentlichungsnummer</target>
+            </trans-unit>
+            <trans-unit id="hio.patent.registrationDate" resname="hio.patent.registrationDate">
+                <source>registration date</source>
+                <target>Tag der Anmeldung</target>
+            </trans-unit>
+            <trans-unit id="hio.patent.researchArea" resname="hio.patent.researchArea">
+                <source>research area</source>
+                <target>Forschungsbereich</target>
+            </trans-unit>
+            <trans-unit id="hio.patent.researchAreas" resname="hio.patent.researchAreas">
+                <source>research areas</source>
+                <target>Forschungsbereiche</target>
+            </trans-unit>
+            <trans-unit id="hio.patent.status" resname="hio.patent.status">
+                <source>status</source>
+                <target>Status</target>
+            </trans-unit>
+            <trans-unit id="hio.patent.subjectArea" resname="hio.patent.subjectArea">
+                <source>subject area</source>
+                <target>Fachgebiet</target>
+            </trans-unit>
+            <trans-unit id="hio.patent.subjectAreas" resname="hio.patent.subjectAreas">
+                <source>subject areas</source>
+                <target>Fachgebiete</target>
+            </trans-unit>
+            <trans-unit id="hio.patent.title" resname="hio.patent.title">
+                <source>title</source>
+                <target>Bezeichnung</target>
+            </trans-unit>
+            <trans-unit id="hio.patent.visibility" resname="hio.patent.visibility">
+                <source>visibility</source>
+                <target>Sichtbarkeit</target>
+            </trans-unit>
+
+
             <trans-unit id="titlePersonPatents" resname="titlePersonPatents">
                 <source>HISinOne patents for person</source>
                 <target>HISinOne Patente zur Person</target>
