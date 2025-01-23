@@ -3,7 +3,7 @@
         data-namespace-typo3-fluid="true" lang="en">
 
 <f:if condition="{person}">
-    <f:if condition="{person.id}">
+    <f:if condition="{person.id} && {settings.patents.personTargetPageUid}">
         <f:then>
             <f:link.action action="show"
                            pageUid="{settings.patents.personTargetPageUid}"

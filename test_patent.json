@@ -1,16 +1,11 @@
 {
-  "countryOfRegistration": "Deutschland",
-  "description": "Durch Unterst\u00fctzung der k\u00fcnstlichen Intelligenz, soll eine Erh\u00f6hung der Lebenszyklen von Akkus erh\u00f6ht werden.",
+  "countryOfRegistration": null,
+  "description": null,
   "grantDate": null,
-  "id": 15,
+  "id": 18,
   "inventors": [
     {
-      "id": 21,
-      "name": "Hanna Ahrens",
-      "organization": null
-    },
-    {
-      "id": 22,
+      "id": 27,
       "name": "Anna Becker",
       "organization": {
         "id": 3,
@@ -18,24 +13,25 @@
       }
     },
     {
-      "id": 23,
-      "name": "Kim Mahler",
-      "organization": null
+      "id": 28,
+      "name": "Arne Martin",
+      "organization": {
+        "id": 147,
+        "name": "Institut f\u00fcr Wirtschaftsinformatik"
+      }
     }
   ],
-  "patentNumber": "DK320644451",
+  "patentNumber": "EP55664822",
   "priorityPatent": null,
   "publicationNumber": null,
-  "registrationDate": "2005-09-19",
+  "registrationDate": "2007-11-08",
   "researchAreas": [
-    "Energieerzeugung und Energieumwandlung"
+    "Robotik"
   ],
   "status": "ver\u00f6ffentlicht",
   "subjectAreas": [
-    "Elektrotechnik allgemein",
-    "Feinwerktechnik (mechanisch)",
-    "Mechatronik"
+    "Feinwerktechnik (mechanisch)"
   ],
-  "title": "Lebensdauer von Akkumulatoren erh\u00f6hen",
+  "title": "ARTICULATED ROBOT FOR HANDLING LARGE LOADS",
   "visibility": "\u00f6ffentlich"
 }
