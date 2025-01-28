@@ -24,3 +24,8 @@ services:
       - name: console.command
         command: 'hio:persons:import'
         description: 'Import person data from HISinOne'
+  Wtl\HioTypo3Connector\Command\PatentsImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:patents:import'
+        description: 'Import patent data from HISinOne'

@@ -4,6 +4,7 @@ namespace Wtl\HioTypo3Connector\Domain\Repository;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Wtl\HioTypo3Connector\Domain\Model\DTO\PersonDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Patent;
 use Wtl\HioTypo3Connector\Domain\Model\Person;
 
 class PersonRepository extends BaseRepository
@@ -24,6 +25,7 @@ class PersonRepository extends BaseRepository
 
                 $this->attachPublicationsByObjectIds($model, $person->getPublications());
                 $this->attachProjectsByObjectIds($model, $person->getProjects());
+                $this->attachPatentsByObjectIds($model, $person->getPatents());
                 $this->add($model);
             } else {
                 $model->setObjectId($person->getObjectId());
@@ -32,6 +34,7 @@ class PersonRepository extends BaseRepository
 
                 $this->attachPublicationsByObjectIds($model, $person->getPublications());
                 $this->attachProjectsByObjectIds($model, $person->getProjects());
+                $this->attachPatentsByObjectIds($model, $person->getPatents());
                 $this->update($model);
             }
         }
@@ -70,6 +73,24 @@ class PersonRepository extends BaseRepository
         $relatedEntities = $query->execute();
         foreach ($relatedEntities as $relatedEntity) {
             $personModel->addPublication($relatedEntity);
+        }
+        return $personModel;
+    }
+
+    protected function attachPatentsByObjectIds(Person &$personModel, array $patents): Person
+    {
+        if (empty($patents)) {
+            return $personModel;
+        }
+        $patentIds = array_map(fn($patent) => $patent['id'], $patents);
+        $patentRepository = GeneralUtility::makeInstance(PatentRepository::class);
+        $query = $patentRepository->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
+        $query->matching($query->in('objectId', $patentIds));
+
+        $relatedEntities = $query->execute();
+        foreach ($relatedEntities as $relatedEntity) {
+            $personModel->addPatent($relatedEntity);
         }
         return $personModel;
     }

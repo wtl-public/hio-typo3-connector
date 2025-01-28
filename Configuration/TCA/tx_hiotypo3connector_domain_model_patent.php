@@ -11,17 +11,17 @@ $lllPrefix = 'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.x
 
 return [
     'ctrl' => [
-        'title' => $lllPrefix . 'tx_hiotypo3connector_domain_model_person',
-        'label' => 'name',
+        'title' => $lllPrefix . 'tx_hiotypo3connector_domain_model_patent',
+        'label' => 'title',
         'hideAtCopy' => true,
         'hideTable' => false,
-        'default_sortby' => 'name ASC',
+        'default_sortby' => 'title ASC',
         'sortby' => 'sorting',
         'delete' => 'deleted',
         'enablecolumns' => [
             'disabled' => 'hidden',
         ],
-        'searchFields' => 'uid,object_id,name,details',
+        'searchFields' => 'uid,object_id,title,details',
         'security' => [
             'ignorePageTypeRestriction' => true,
         ],
@@ -73,18 +73,17 @@ return [
         ],
         'object_id' => [
             'exclude' => true,
-            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_project.object_id',
+            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_patent.object_id',
             'config' => [
                 'type' => 'input',
                 'size' => 60,
                 'max' => 255,
                 'eval' => 'trim',
-                'readOnly' => true,
                 'required' => true,
             ],
         ],
-        'name' => [
-            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_project.name',
+        'title' => [
+            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_patent.title',
             'config' => [
                 'type' => 'input',
                 'size' => 60,
@@ -101,33 +100,6 @@ return [
                 'notnull' => false,
             ],
         ],
-        'publications' => [
-            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_person.publications',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectMultipleSideBySide',
-                'foreign_table' => 'tx_hiotypo3connector_domain_model_publication',
-                'MM' => 'tx_hiotypo3connector_person_publication_mm',
-            ],
-        ],
-        'projects' => [
-            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_person.projects',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectMultipleSideBySide',
-                'foreign_table' => 'tx_hiotypo3connector_domain_model_project',
-                'MM' => 'tx_hiotypo3connector_person_project_mm',
-            ],
-        ],
-        'patents' => [
-            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_person.patents',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectMultipleSideBySide',
-                'foreign_table' => 'tx_hiotypo3connector_domain_model_patent',
-                'MM' => 'tx_hiotypo3connector_person_patent_mm',
-            ],
-        ]
     ],
     'types' => [
         0 => [
@@ -141,7 +113,7 @@ return [
     ],
     'palettes' => [
         'palette_general' => [
-            'showitem' => 'object_id,  --linebreak--, publications, --linebreak--, projects, --linebreak--',
+            'showitem' => 'type, object_id, --linebreak--',
         ],
         'palette_system' => [
             'showitem' => 'hidden',

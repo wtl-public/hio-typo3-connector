@@ -1,0 +1,37 @@
+{
+  "countryOfRegistration": null,
+  "description": null,
+  "grantDate": null,
+  "id": 18,
+  "patentNumber": "EP55664822",
+  "persons": [
+    {
+      "id": 2125,
+      "name": "Anna Becker",
+      "organization": {
+        "id": 3,
+        "name": "Technische Fakult\u00e4t"
+      }
+    },
+    {
+      "id": 2661,
+      "name": "Arne Martin",
+      "organization": {
+        "id": 147,
+        "name": "Institut f\u00fcr Wirtschaftsinformatik"
+      }
+    }
+  ],
+  "priorityPatent": null,
+  "publicationNumber": null,
+  "registrationDate": "2007-11-08",
+  "researchAreas": [
+    "Robotik"
+  ],
+  "status": "ver\u00f6ffentlicht",
+  "subjectAreas": [
+    "Feinwerktechnik (mechanisch)"
+  ],
+  "title": "ARTICULATED ROBOT FOR HANDLING LARGE LOADS",
+  "visibility": "public"
+}
