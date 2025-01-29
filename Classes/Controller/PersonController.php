@@ -26,11 +26,12 @@ class PersonController extends BaseController
 
     public function __construct(
         protected readonly ModuleTemplateFactory $moduleTemplateFactory,
-        protected readonly PersonRepository $personRepository,
-        protected readonly PropertyMapper $propertyMapper,
+        protected readonly PersonRepository      $personRepository,
+        protected readonly PropertyMapper        $propertyMapper,
         protected readonly PublicationRepository $publicationRepository,
     )
-    {}
+    {
+    }
 
     public function indexAction(int $currentPage = 1): ResponseInterface
     {
@@ -88,43 +89,45 @@ class PersonController extends BaseController
         /** @var Person $selectedPerson */
         $selectedPerson = $this->personRepository->findByUid($this->settings['personUid']);
 
-        $publications = $selectedPerson->getPublications();
-        if ($orderBy !== '') {
-            [$propertyName, $order] = explode(':', $orderBy);
-            if (in_array($propertyName, ['title', 'type', 'releaseYear'])) {
-                $publications = $this->publicationRepository->getPublicationsByPerson($selectedPerson, [$propertyName => $order]);
+        if ($selectedPerson) {
+            $publications = $selectedPerson->getPublications();
+            if ($orderBy !== '') {
+                [$propertyName, $order] = explode(':', $orderBy);
+                if (in_array($propertyName, ['title', 'type', 'releaseYear'])) {
+                    $publications = $this->publicationRepository->getPublicationsByPerson($selectedPerson, [$propertyName => $order]);
+                }
             }
-        }
 
-        $groupBy = $this->settings['groupBy'] ?? '';
-        if ($groupBy !== '') {
-            $ungroupedPublications = [];
-            $groupedPublications = [];
-            switch ($groupBy) {
-                case 'releaseYear':
-                    foreach ($publications as $publication) {
-                        if ($publication->getReleaseYear() === null) {
-                            $ungroupedPublications[] = $publication;
-                        } else {
-                            $groupedPublications[] = $publication;
+            $groupBy = $this->settings['groupBy'] ?? '';
+            if ($groupBy !== '') {
+                $ungroupedPublications = [];
+                $groupedPublications = [];
+                switch ($groupBy) {
+                    case 'releaseYear':
+                        foreach ($publications as $publication) {
+                            if ($publication->getReleaseYear() === null) {
+                                $ungroupedPublications[] = $publication;
+                            } else {
+                                $groupedPublications[] = $publication;
+                            }
                         }
-                    }
-                    break;
-                case 'type':
-                    foreach ($publications as $publication) {
-                        if ($publication->getType() === '') {
-                            $ungroupedPublications[] = $publication;
-                        } else {
-                            $groupedPublications[] = $publication;
+                        break;
+                    case 'type':
+                        foreach ($publications as $publication) {
+                            if ($publication->getType() === '') {
+                                $ungroupedPublications[] = $publication;
+                            } else {
+                                $groupedPublications[] = $publication;
+                            }
                         }
-                    }
-                    break;
+                        break;
+                }
             }
         }
 
         $this->view->assignMultiple([
             'person' => $selectedPerson,
-            'publications' => $publications,
+            'publications' => $publications ?? [],
             'groupedPublications' => $groupedPublications ?? [],
             'ungroupedPublications' => $ungroupedPublications ?? [],
         ]);
