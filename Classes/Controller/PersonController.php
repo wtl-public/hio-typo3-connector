@@ -90,7 +90,7 @@ class PersonController extends BaseController
         $selectedPerson = $this->personRepository->findByUid($this->settings['personUid']);
 
         if ($selectedPerson) {
-            $publications = $selectedPerson->getPublications();
+            $publications = $selectedPerson->getPublications() ?? [];
             if ($orderBy !== '') {
                 [$propertyName, $order] = explode(':', $orderBy);
                 if (in_array($propertyName, ['title', 'type', 'releaseYear'])) {
