@@ -3,14 +3,13 @@
         data-namespace-typo3-fluid="true" lang="en">
 
 <f:if condition="{person}">
-    <f:if condition="{!isFirst}">,</f:if>
     <f:if condition="{person.id} && {settings.publications.personTargetPageUid}">
         <f:then>
             <f:link.action action="show"
                            pageUid="{settings.publications.personTargetPageUid}"
                            controller="Person"
                            arguments="{person: person.id}"
-                           class="text-gray-700 hover:underline hover:text-wtl-red-dark px-0">{person.name}</f:link.action>,
+                           class="text-gray-700 hover:underline hover:text-wtl-red-dark px-0">{person.name}</f:link.action>
         </f:then>
         <f:else>
             {person.name}
