@@ -11,7 +11,8 @@
                     <f:if condition="{publication.details.persons}">
                         <span class="text-gray-700">
                             <f:for each="{publication.details.persons}" as="person" key="personIndex">
-                                <f:render partial="Publication/List/Authors" arguments="{person: person}" />
+                                <f:variable name="isFirst" value="{personIndex === 0}"/>
+                                <f:render partial="Publication/List/Person" arguments="{person: person, isFirst: isFirst}" />
                             </f:for>
                         </span>
                     </f:if>

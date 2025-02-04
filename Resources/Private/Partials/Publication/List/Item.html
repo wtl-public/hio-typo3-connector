@@ -29,7 +29,8 @@
                 <div class="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500">
                     <p class="py-0">
                         <f:for each="{publication.details.persons}" as="person" key="personIndex">
-                            <f:render partial="Publication/List/Authors" arguments="{person: person}" />
+                            <f:variable name="isFirst" value="{personIndex === 0}"/>
+                            <f:render partial="Publication/List/Person" arguments="{person: person, isFirst: isFirst}" />
                         </f:for>
                     </p>
                 </div>
