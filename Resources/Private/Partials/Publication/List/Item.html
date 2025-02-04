@@ -27,7 +27,7 @@
             </p>
             <f:if condition="{publication.details.persons}">
                 <div class="mt-1 flex items-center gap-x-2 text-xs leading-5 text-gray-500">
-                    <p class="py-0 px-0">
+                    <p class="py-0 truncate">
                         <f:for each="{publication.details.persons}" as="person" key="personIndex">
                             <f:if condition="{personIndex} > 0"><f:then><span>, </span></f:then></f:if>
                             <f:render partial="Publication/List/Person" arguments="{person: person}" />
