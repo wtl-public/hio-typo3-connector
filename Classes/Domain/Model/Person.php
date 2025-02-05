@@ -47,6 +47,7 @@ class Person extends AbstractEntity
         $this->publications = new ObjectStorage();
         $this->projects = new ObjectStorage();
         $this->patents = new ObjectStorage();
+        $this->doctorates = new ObjectStorage();
     }
 
     public function getObjectId(): int
