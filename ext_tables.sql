@@ -22,6 +22,7 @@ CREATE TABLE tx_hiotypo3connector_domain_model_person
     publications INT(11) DEFAULT '0' NOT NULL,
     projects     INT(11) DEFAULT '0' NOT NULL,
     patents      INT(11) DEFAULT '0' NOT NULL,
+    doctorates      INT(11) DEFAULT '0' NOT NULL,
 );
 
 CREATE TABLE tx_hiotypo3connector_domain_model_patent
