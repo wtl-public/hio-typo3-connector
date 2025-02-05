@@ -9,7 +9,7 @@ services:
     tags: ['backend.controller']
   Wtl\HioTypo3Connector\Controller\ProjectController:
     tags: ['backend.controller']
-  Wtl\HioTypo3Connector\Command\DoktypeImportCommand:
+  Wtl\HioTypo3Connector\Command\DoctoratesImportCommand:
     tags:
       - name: console.command
         command: 'hio:doctorates:import'
