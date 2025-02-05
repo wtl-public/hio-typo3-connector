@@ -17,4 +17,8 @@ return [
         'path' => '/hio/typo3/connector/patent',
         'target' => 'Wtl\HioTypo3Connector\Controller\PatentController',
     ],
+    'tx_hio_typo3_connector_doctorate' => [
+        'path' => '/hio/typo3/connector/doctorate',
+        'target' => 'Wtl\HioTypo3Connector\Controller\DoctorateController',
+    ],
 ];

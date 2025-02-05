@@ -8,7 +8,7 @@ use Wtl\HioTypo3Connector\Domain\Model\Patent;
 class PatentRepository extends BaseRepository
 {
     public function savePatents($patents, $storagePageId): void {
-        /** @var PatentDTO $project */
+        /** @var PatentDTO $patent */
         foreach ($patents as $patent) {
             $patentModel = $this->findOneBy(['objectId' => $patent->getObjectId()]);
 

@@ -28,6 +28,11 @@ class Person extends AbstractEntity
     protected ObjectStorage $patents;
 
     /**
+     * @var ObjectStorage<Doctorate>
+     */
+    protected ObjectStorage $doctorates;
+
+    /**
      * @var string
      */
     protected mixed $details;
@@ -136,6 +141,29 @@ class Person extends AbstractEntity
     {
         if ($this->patents->contains($patent)) {
             $this->patents->detach($patent);
+        }
+        return $this;
+    }
+
+    public function getDoctorates(): ObjectStorage
+    {
+        return $this->doctorates;
+    }
+    public function setDoctorates(ObjectStorage $doctorates): void
+    {
+        $this->doctorates = $doctorates;
+    }
+    public function addDoctorate(Doctorate $doctorate): self
+    {
+        if (!$this->doctorates->contains($doctorate)) {
+            $this->doctorates->attach($doctorate);
+        }
+        return $this;
+    }
+    public function removeDoctorate(Doctorate $doctorate): self
+    {
+        if ($this->doctorates->contains($doctorate)) {
+            $this->doctorates->detach($doctorate);
         }
         return $this;
     }

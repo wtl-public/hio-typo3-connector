@@ -30,3 +30,10 @@ CREATE TABLE tx_hiotypo3connector_domain_model_patent
     title     LONGTEXT DEFAULT '',
     details   MEDIUMBLOB,
 );
+
+CREATE TABLE tx_hiotypo3connector_domain_model_doctorate
+(
+    object_id INT(11)  DEFAULT '0' NOT NULL,
+    title     LONGTEXT DEFAULT '',
+    details   MEDIUMBLOB,
+);

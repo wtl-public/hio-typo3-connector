@@ -9,6 +9,11 @@ services:
     tags: ['backend.controller']
   Wtl\HioTypo3Connector\Controller\ProjectController:
     tags: ['backend.controller']
+  Wtl\HioTypo3Connector\Command\DoktypeImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:doctorates:import'
+        description: 'Import doctorate data from HISinOne'
   Wtl\HioTypo3Connector\Command\PublicationsImportCommand:
     tags:
       - name: console.command
