@@ -15,6 +15,9 @@ plugin.tx_hiotypo3connector {
     patents {
       personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.patents.personTargetPageUid}
     }
+    doctorates {
+      personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.doctorates.personTargetPageUid}
+    }
   }
   view {
     defaultPid = auto

@@ -28,6 +28,16 @@ mod.wizards.newContentElement.wizardItems {
                     list_type = hio-typo3-connector_patents
                 }
             }
+            hio-typo3-connector_doctorates-for-person {
+                iconIdentifier = tx-hio_typo3_connector-doctorates
+                title = LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePersonDoctorates
+                description = LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:descriptionPersonDoctorates
+                tt_content_defValues {
+                    CType = hiotypo3connector_personselecteddoctoratelist
+                    list_type = hio-typo3-connector_doctorates
+                }
+            }
+
             hio-typo3-connector_publicationlist {
                 iconIdentifier = tx-hio_typo3_connector-list-of-publications
                 title = LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePublications
@@ -62,6 +72,15 @@ mod.wizards.newContentElement.wizardItems {
                 tt_content_defValues {
                     CType = hiotypo3connector_patentlist
                     list_type = hio-typo3-connector_patents
+                }
+            }
+            hio-typo3-connector_patentlist {
+                iconIdentifier = tx-hio_typo3_connector-list-of-doctorates
+                title = LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titleDoctorates
+                description = LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:descriptionDoctorates
+                tt_content_defValues {
+                    CType = hiotypo3connector_doctoratelist
+                    list_type = hio-typo3-connector_doctorates
                 }
             }
         }
