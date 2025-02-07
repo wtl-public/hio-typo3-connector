@@ -1,17 +1,52 @@
 {
-  "id": 63,
-  "type": "Journalartikel",
-  "title": "Bank regulation and early warning systems for banking crises",
+  "abstract": null,
   "access": "Open Access",
-  "status": "validiert",
+  "citations": [
+    {
+      "citation": "Kr\u00fcger, G., Graf, A., K\u00f6hler, A., Mayer, C., & Wolff, U. (2019). Von der US-Immobilienkrise zur globalen Finanz-und Bankenkrise. Finanzwissenschaft, 23(3), 68\u201383. doi:10.3321\/fiwi2008\n",
+      "style": "apa-old-doi-prefix"
+    },
+    {
+      "citation": "Kr\u00fcger, G., Graf, A., K\u00f6hler, A., Mayer, C. and Wolff, U., 2019. Von der US-Immobilienkrise zur globalen Finanz-und Bankenkrise. Finanzwissenschaft, 23(3), pp.68\u201383.\n",
+      "style": "harvard-anglia-ruskin-university"
+    },
+    {
+      "citation": "Kr\u00fcger, Gudrun u.\u00a0a. 2019. Von der US-Immobilienkrise zur globalen Finanz-und Bankenkrise. Finanzwissenschaft 23, 3, 68\u201383.\n",
+      "style": "harvard-gesellschaft-fur-bildung-und-forschung-in-europa"
+    }
+  ],
+  "conference": null,
+  "document": "Wissenschaftlicher Artikel",
+  "globalIdentifiers": [
+    {
+      "id": "10.3321\/fiwi2008",
+      "type": "DOI"
+    }
+  ],
+  "id": 58,
   "journal": {
-    "issue": "11",
-    "title": "International Journal of Financial Studies",
-    "volume": "10",
-    "pageRange": "75-98",
-    "publisher": "MDPI (Basel)",
-    "releaseYear": 2021
+    "issue": "3",
+    "pageRange": "68-83",
+    "publisher": "Springer (Berlin, Heidelberg)",
+    "releaseYear": 2019,
+    "title": "Finanzwissenschaft",
+    "volume": "23"
   },
+  "keywords": [
+    "Auswirkung",
+    "Bankenkrise",
+    "Finanzkrise",
+    "Finanzwirtschaft",
+    "Immobilienkrise",
+    "Kreditwirtschaft",
+    "USA"
+  ],
+  "languages": [
+    {
+      "iso_639_1": "de",
+      "name": "deutsch"
+    }
+  ],
   "persons": [
     {
       "id": 2605,
@@ -59,31 +94,11 @@
       "researchPartner": null
     }
   ],
-  "abstract": "Early warning systems (EWS) for banking crises generally exclude bank capital, bank liquidity and real estate prices. The majority of work on EMS has been conducted for global samples which are dominated by emerging market crises, typically lacking time series on banks' capital adequacy and real estate prices. In this article we estimate Logit crisis models for OECD countries, identify significant effects of equity and liquidity ratios, property prices and are able to exclude traditional variables. Increased capital adequacy and liquidity ratios have a pronounced influence on crisis probabilities, which provides long-term benefits to compensate for some of the costs that such regulations may impose.",
-  "document": "Wissenschaftlicher Artikel",
-  "keywords": [
-    "Banking Crisis",
-    "Banking Sector",
-    "Credit Market Crisis",
-    "Early Warning Systems",
-    "Financial Crisis",
-    "Real Estate Crisis"
-  ],
-  "resource": "Text",
+  "resource": null,
   "reviewed": "ja",
+  "status": "validiert",
   "subtitle": null,
-  "languages": [
-    {
-      "name": "deutsch",
-      "iso_639_1": "de"
-    }
-  ],
-  "conference": null,
-  "visibility": "\u00f6ffentlich",
-  "globalIdentifiers": [
-    {
-      "id": "103321\/ijfs61236584",
-      "type": "DOI"
-    }
-  ]
+  "title": "Von der US-Immobilienkrise zur globalen Finanz-und Bankenkrise",
+  "type": "Journalartikel",
+  "visibility": "public"
 }
