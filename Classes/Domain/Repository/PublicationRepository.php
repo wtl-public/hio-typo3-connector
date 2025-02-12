@@ -33,7 +33,6 @@ class PublicationRepository extends BaseRepository
 
             if ($publication->getCitations() !== null) {
                 $citationRepository = new CitationStyleRepository();
-                $citationRepository->setPersistenceManager($this->persistenceManager);
 
                 /** @var CitationStyleDTO[] $citationStyles */
                 $citationStyles = [];
