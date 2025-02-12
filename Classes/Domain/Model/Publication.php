@@ -26,6 +26,11 @@ class Publication extends AbstractEntity
      */
     protected ObjectStorage $citationStyles;
 
+    public function __construct()
+    {
+        $this->initializeObject();
+    }
+
     public function initializeObject(): void
     {
         $this->citationStyles = new ObjectStorage();
