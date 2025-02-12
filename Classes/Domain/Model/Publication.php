@@ -20,6 +20,39 @@ class Publication extends AbstractEntity
      */
     protected mixed $details;
 
+    /**
+     * @var ObjectStorage<CitationStyle>
+     */
+    protected ObjectStorage $citationStyles;
+
+    public function initializeObject(): void
+    {
+        $this->citationStyles = new ObjectStorage();
+    }
+
+    public function getCitationStyles(): ObjectStorage
+    {
+        return $this->citationStyles;
+    }
+    public function setCitationStyles(ObjectStorage $citationStyles): void
+    {
+        $this->citationStyles = $citationStyles;
+    }
+    public function addCitationStyle(CitationStyle $citationStyle): self
+    {
+        if (!$this->citationStyles->contains($citationStyle)) {
+            $this->citationStyles->attach($citationStyle);
+        }
+        return $this;
+    }
+    public function removeCitationStyle(CitationStyle $citationStyle): self
+    {
+        if ($this->citationStyles->contains($citationStyle)) {
+            $this->citationStyles->detach($citationStyle);
+        }
+        return $this;
+    }
+
     public function getObjectId(): int
     {
         return $this->objectId;

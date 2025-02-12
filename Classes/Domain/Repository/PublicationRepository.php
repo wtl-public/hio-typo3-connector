@@ -2,6 +2,7 @@
 
 namespace Wtl\HioTypo3Connector\Domain\Repository;
 
+use Wtl\HioTypo3Connector\Domain\Model\DTO\CitationStyleDTO;
 use Wtl\HioTypo3Connector\Domain\Model\DTO\PublicationDTO;
 use Wtl\HioTypo3Connector\Domain\Model\Person;
 use Wtl\HioTypo3Connector\Domain\Model\Publication;
@@ -28,6 +29,20 @@ class PublicationRepository extends BaseRepository
                 $publicationModel->setDetails($publication->getDetails());
                 $publicationModel->setReleaseYear($publication->getReleaseYear());
                 $this->update($publicationModel);
+            }
+
+            if ($publication->getCitations() !== null) {
+                $citationRepository = new CitationStyleRepository();
+                $citationRepository->setPersistenceManager($this->persistenceManager);
+
+                /** @var CitationStyleDTO[] $citationStyles */
+                $citationStyles = [];
+                foreach ($publication->getCitations() as $citation) {
+                    $citationStyle = new CitationStyleDTO();
+                    $citationStyle->setLabel($citation->getStyle());
+                    $citationStyles[] = $citationStyle;
+                }
+                $citationRepository->saveCitationStyles($citationStyles);
             }
         }
         $this->persistenceManager->persistAll();

@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Wtl\HioTypo3Connector\Domain\Model\DTO;
 
 use Wtl\HioTypo3Connector\Domain\Model\DTO\Publication\ConferenceDTO;
+use Wtl\HioTypo3Connector\Domain\Model\DTO\Publication\CitationDTO;
 use Wtl\HioTypo3Connector\Domain\Model\DTO\Publication\GlobalIdentifierDTO;
 use Wtl\HioTypo3Connector\Domain\Model\DTO\Publication\JournalDTO;
 use Wtl\HioTypo3Connector\Domain\Model\DTO\Publication\LanguageDTO;
@@ -14,42 +15,41 @@ class PublicationDTO
 {
     protected int $extbaseUid;
     protected int $objectId = 0;
-    protected string $title = '';
-    protected string $subtitle = '';
     protected string $abstract = '';
-    protected string $type = '';
-    protected string $document = '';
-    protected string $resource = '';
-    protected string $reviewed = '';
     protected string $access = '';
-    protected string $status = '';
-    protected string $visibility = '';
-    protected ?string $releaseYear = null;
-    /**
-     * @var PersonDTO[]
-     */
-    protected array $persons = [];
-    protected ?JournalDTO $journal = null;
-
-    protected ?ConferenceDTO $conference = null;
-
     /*
-     *  @var LanguageDTO[]
+     * @var CitationDTO[]
      */
-    protected array $languages = [];
-
-    /**
-     * @var string[]
-     */
-    protected array $keywords = [];
-
+    protected array $citations = [];
+    protected ?ConferenceDTO $conference = null;
+    protected array $details = [];
+    protected string $document = '';
     /**
      * @var GlobalIdentifierDTO[]
      */
     protected array $globalIdentifiers;
+    protected ?JournalDTO $journal = null;
+    /**
+     * @var string[]
+     */
+    protected array $keywords = [];
+    /*
+         *  @var LanguageDTO[]
+         */
+    protected array $languages = [];
+    /**
+     * @var PersonDTO[]
+     */
+    protected array $persons = [];
+    protected ?string $releaseYear = null;
+    protected string $resource = '';
+    protected string $reviewed = '';
+    protected string $status = '';
+    protected string $subtitle = '';
+    protected string $title = '';
+    protected string $type = '';
+    protected string $visibility = '';
 
-
-    protected array $details = [];
 
     public function getExtbaseUid(): int
     {
@@ -69,6 +69,14 @@ class PublicationDTO
         $this->objectId = $objectId;
     }
 
+    public function getCitations(): array
+    {
+        return $this->citations;
+    }
+    public function setCitations(array $citations): void
+    {
+        $this->citations = $citations;
+    }
     public function getTitle(): string
     {
         return $this->title;
@@ -248,10 +256,17 @@ class PublicationDTO
             $languageData[] = LanguageDTO::fromArray($language);
         }
 
+        $citations = $details['citations'] ?? [];
+        $citationData = [];
+        foreach ($citations as $citation) {
+            $citationData[] = CitationDTO::fromArray($citation);
+        }
+
         $publicationData = new self();
         $publicationData->setExtbaseUid($model->getUid());
         $publicationData->setReleaseYear($model->getReleaseYear());
         $publicationData->setDetails($details);
+        $publicationData->setCitations($citationData);
         $publicationData->setTitle($details['title']);
         $publicationData->setSubtitle($details['subtitle'] ?? '');
         $publicationData->setAbstract($details['abstract'] ?? '');
