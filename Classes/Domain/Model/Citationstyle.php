@@ -5,7 +5,7 @@ namespace Wtl\HioTypo3Connector\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
-class CitationStyle extends AbstractEntity
+class Citationstyle extends AbstractEntity
 {
     protected string $label = '';
 

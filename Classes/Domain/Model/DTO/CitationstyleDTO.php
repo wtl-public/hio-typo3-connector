@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Model\DTO;
 
-use Wtl\HioTypo3Connector\Domain\Model\CitationStyle;
+use Wtl\HioTypo3Connector\Domain\Model\Citationstyle;
 
-class CitationStyleDTO
+class CitationstyleDTO
 {
     protected string $label = '';
 
@@ -18,7 +18,7 @@ class CitationStyleDTO
         $this->label = $label;
     }
 
-    static public function fromDomainModel(CitationStyle $model): self
+    static public function fromDomainModel(Citationstyle $model): self
     {
         $dto = new self();
         $dto->setLabel($model->getLabel());

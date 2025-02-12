@@ -22,7 +22,7 @@ class Publication extends AbstractEntity
     protected mixed $details;
 
     /**
-     * @var ObjectStorage<CitationStyle>
+     * @var ObjectStorage<Citationstyle>
      */
     protected ObjectStorage $citationStyles;
 
@@ -44,14 +44,14 @@ class Publication extends AbstractEntity
     {
         $this->citationStyles = $citationStyles;
     }
-    public function addCitationStyle(CitationStyle $citationStyle): self
+    public function addCitationStyle(Citationstyle $citationStyle): self
     {
         if (!$this->citationStyles->contains($citationStyle)) {
             $this->citationStyles->attach($citationStyle);
         }
         return $this;
     }
-    public function removeCitationStyle(CitationStyle $citationStyle): self
+    public function removeCitationStyle(Citationstyle $citationStyle): self
     {
         if ($this->citationStyles->contains($citationStyle)) {
             $this->citationStyles->detach($citationStyle);

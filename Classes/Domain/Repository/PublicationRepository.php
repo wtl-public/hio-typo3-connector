@@ -2,8 +2,8 @@
 
 namespace Wtl\HioTypo3Connector\Domain\Repository;
 
-use Wtl\HioTypo3Connector\Domain\Model\CitationStyle;
-use Wtl\HioTypo3Connector\Domain\Model\DTO\CitationStyleDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Citationstyle;
+use Wtl\HioTypo3Connector\Domain\Model\DTO\CitationstyleDTO;
 use Wtl\HioTypo3Connector\Domain\Model\DTO\PublicationDTO;
 use Wtl\HioTypo3Connector\Domain\Model\Person;
 use Wtl\HioTypo3Connector\Domain\Model\Publication;
@@ -33,12 +33,12 @@ class PublicationRepository extends BaseRepository
             }
 
             if ($publication->getCitations() !== null) {
-                $citationRepository = new CitationStyleRepository(CitationStyle::class);
+                $citationRepository = new CitationstyleRepository(Citationstyle::class);
 
-                /** @var CitationStyleDTO[] $citationStyles */
+                /** @var CitationstyleDTO[] $citationStyles */
                 $citationStyles = [];
                 foreach ($publication->getCitations() as $citation) {
-                    $citationStyle = new CitationStyleDTO();
+                    $citationStyle = new CitationstyleDTO();
                     $citationStyle->setLabel($citation->getStyle());
                     $citationStyles[] = $citationStyle;
                 }
