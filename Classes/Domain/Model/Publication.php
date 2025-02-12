@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Wtl\HioTypo3Connector\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 class Publication extends AbstractEntity
 {
