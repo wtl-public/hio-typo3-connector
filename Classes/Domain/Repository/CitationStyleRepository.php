@@ -10,11 +10,12 @@ class CitationStyleRepository extends BaseRepository
     public function saveCitationStyles(array $citations): void {
         /** @var CitationDTO $citation */
         foreach ($citations as $citation) {
-            $model = $this->findOneBy(['label' => $citation->getStyle()]);
+            $dto = CitationDTO::fromArray($citation);
+            $model = $this->findOneBy(['label' => $dto->getStyle()]);
 
             if ($model === null) {
                 $model = new CitationStyle();
-                $model->setLabel($citation->getStyle());
+                $model->setLabel($dto->getStyle());
 
                 $this->add($model);
             }
