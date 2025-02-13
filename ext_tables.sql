@@ -39,7 +39,7 @@ CREATE TABLE tx_hiotypo3connector_domain_model_doctorate
     details   MEDIUMBLOB,
 );
 
-CREATE TABLE tx_hiotypo3connector_domain_model_citationstyle
+CREATE TABLE tx_hiotypo3connector_domain_model_citation_style
 (
     label     VARCHAR(255) DEFAULT '',
 );

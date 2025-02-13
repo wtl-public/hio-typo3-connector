@@ -9,6 +9,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
+use Wtl\HioTypo3Connector\Domain\Repository\CitationStyleRepository;
 use Wtl\HioTypo3Connector\Domain\Repository\PublicationRepository;
 use Wtl\HioTypo3Connector\Services\HioPublicationService;
 
@@ -19,7 +20,9 @@ class PublicationsImportCommand extends Command
     public function __construct(
         private readonly PublicationRepository $publicationRepository,
         private readonly HioPublicationService $hioPublicationService,
-        protected readonly PersistenceManager $persistenceManager)
+        protected readonly CitationStyleRepository $citationStyleRepository,
+        protected readonly PersistenceManager $persistenceManager
+    )
     {
         parent::__construct();
     }
@@ -64,17 +67,26 @@ class PublicationsImportCommand extends Command
         $this->publicationRepository->setDefaultQuerySettings($querySettings);
 
         $currentPage = 1;
+        $firstPublication = null;
         do {
+            /** @var PublicationDTO[] $publications */
             $publications = $this->hioPublicationService->getPublications($currentPage);
             if ($this->hioPublicationService->getMeta()->getTotal() === 0) {
                 $output->writeln('No new publications found');
                 return Command::SUCCESS;
+            }
+            if ($firstPublication === null) {
+                $firstPublication = $publications[0];
             }
 
             $this->publicationRepository->savePublications($publications, $input->getArgument('storagePageId'));
 
             $currentPage++;
         } while ($currentPage <= $this->hioPublicationService->getMeta()->getLastPage());
+
+        if ($firstPublication !== null) {
+            $this->citationStyleRepository->saveCitationStyles($firstPublication->getCitations());
+        }
 
         $output->writeln($this->hioPublicationService->getMeta()->getTotal() . ' Publications imported successfully');
         return Command::SUCCESS;

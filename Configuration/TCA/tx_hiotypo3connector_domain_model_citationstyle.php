@@ -11,7 +11,7 @@ $lllPrefix = 'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.x
 
 return [
     'ctrl' => [
-        'title' => $lllPrefix . 'tx_hiotypo3connector_domain_model_citationstyle',
+        'title' => $lllPrefix . 'tx_hiotypo3connector_domain_model_citation_style',
         'label' => 'label',
         'hideAtCopy' => true,
         'hideTable' => false,
@@ -72,7 +72,7 @@ return [
             ],
         ],
         'label' => [
-            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_citationstyle.label',
+            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_citation_style.label',
             'config' => [
                 'type' => 'input',
                 'size' => 60,
