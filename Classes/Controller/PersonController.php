@@ -16,6 +16,7 @@ use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 use TYPO3\CMS\Extbase\Property\PropertyMapper;
 use TYPO3\CMS\Frontend\Controller\ErrorController;
 use Wtl\HioTypo3Connector\Domain\Model\Person;
+use Wtl\HioTypo3Connector\Domain\Repository\CitationStyleRepository;
 use Wtl\HioTypo3Connector\Domain\Repository\PersonRepository;
 use Wtl\HioTypo3Connector\Domain\Repository\PublicationRepository;
 
@@ -29,6 +30,7 @@ class PersonController extends BaseController
         protected readonly PersonRepository      $personRepository,
         protected readonly PropertyMapper        $propertyMapper,
         protected readonly PublicationRepository $publicationRepository,
+        protected readonly CitationStyleRepository $citationStyleRepository
     )
     {
     }
@@ -89,6 +91,13 @@ class PersonController extends BaseController
         /** @var Person $selectedPerson */
         $selectedPerson = $this->personRepository->findByUid($this->settings['personUid']);
 
+        $citationStyleModel = $this->citationStyleRepository->findByUid($this->settings['citationStyle']);
+        if($citationStyleModel) {
+            $selectedCitationStyle = $citationStyleModel->getLabel();
+        } else {
+            $selectedCitationStyle = $this->citationStyleRepository->findAll()->getFirst()->getLabel();
+        }
+
         if ($selectedPerson) {
             $publications = $selectedPerson->getPublications() ?? [];
             if ($orderBy !== '') {
@@ -130,6 +139,7 @@ class PersonController extends BaseController
             'publications' => $publications ?? [],
             'groupedPublications' => $groupedPublications ?? [],
             'ungroupedPublications' => $ungroupedPublications ?? [],
+            'selectedCitationStyle' => $selectedCitationStyle,
         ]);
 
         return $this->htmlResponse();
