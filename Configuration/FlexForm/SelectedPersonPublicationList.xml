@@ -28,6 +28,14 @@
                         <config>
                             <type>select</type>
                             <renderType>selectSingle</renderType>
+                            <items>
+                                <numIndex index="0">
+                                    <label>
+                                        LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.publicationlist.citationStyle.none
+                                    </label>
+                                    <value/>
+                                </numIndex>
+                            </items>
                             <foreign_table>tx_hiotypo3connector_domain_model_citationstyle</foreign_table>
                         </config>
                     </settings.citationStyle>
