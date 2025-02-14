@@ -91,11 +91,15 @@ class PersonController extends BaseController
         /** @var Person $selectedPerson */
         $selectedPerson = $this->personRepository->findByUid($this->settings['personUid']);
 
-        $citationStyleModel = $this->citationStyleRepository->findByUid($this->settings['citationStyle']);
-        if($citationStyleModel) {
-            $selectedCitationStyle = $citationStyleModel->getLabel();
-        } else {
-            $selectedCitationStyle = $this->citationStyleRepository->findAll()->getFirst()->getLabel();
+        if ($this->settings['citationStyle'] && $this->settings['citationStyle'] !== '') {
+            $citationStyleModel = $this->citationStyleRepository->findByUid($this->settings['citationStyle']);
+            if($citationStyleModel) {
+                $selectedCitationStyle = $citationStyleModel->getLabel();
+            } else {
+                $selectedCitationStyle = $this->citationStyleRepository->findAll()->getFirst()->getLabel();
+            }
+        } else  {
+            $selectedCitationStyle = false;
         }
 
         if ($selectedPerson) {
