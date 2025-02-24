@@ -4,13 +4,13 @@
         <sDEF>
             <ROOT>
                 <sheetTitle>
-                    LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.sheet.general
+                    LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.sheet.general
                 </sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.personUid>
                         <label>
-                            LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.publicationlist.personUid
+                            LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.publicationlist.personUid
                         </label>
                         <config>
                             <type>group</type>
@@ -23,7 +23,7 @@
                     </settings.personUid>
                     <settings.citationStyle>
                         <label>
-                            LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.publicationlist.citationStyle
+                            LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.publicationlist.citationStyle
                         </label>
                         <config>
                             <type>select</type>
@@ -31,7 +31,7 @@
                             <items>
                                 <numIndex index="0">
                                     <label>
-                                        LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.publicationlist.citationStyle.none
+                                        LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.publicationlist.citationStyle.none
                                     </label>
                                     <value/>
                                 </numIndex>
@@ -41,7 +41,7 @@
                     </settings.citationStyle>
                     <settings.groupBy>
                         <label>
-                            LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.publicationlist.groupBy
+                            LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.publicationlist.groupBy
                         </label>
                         <config>
                             <type>select</type>
@@ -49,19 +49,19 @@
                             <items>
                                 <numIndex index="0">
                                     <label>
-                                        LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.publicationlist.groupBy.none
+                                        LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.publicationlist.groupBy.none
                                     </label>
                                     <value>none</value>
                                 </numIndex>
                                 <numIndex index="1">
                                     <label>
-                                        LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.publicationlist.groupBy.releaseYear
+                                        LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.publicationlist.groupBy.releaseYear
                                     </label>
                                     <value>releaseYear</value>
                                 </numIndex>
                                 <numIndex index="2">
                                     <label>
-                                        LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.publicationlist.groupBy.type
+                                        LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.publicationlist.groupBy.type
                                     </label>
                                     <value>type</value>
                                 </numIndex>
@@ -70,7 +70,7 @@
                     </settings.groupBy>
                     <settings.orderBy>
                         <label>
-                            LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.publicationlist.orderBy
+                            LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.publicationlist.orderBy
                         </label>
                         <config>
                             <type>select</type>
@@ -78,43 +78,43 @@
                             <items>
                                 <numIndex index="0">
                                     <label>
-                                        LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.publicationlist.orderBy.uid
+                                        LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.publicationlist.orderBy.uid
                                     </label>
                                     <value/>
                                 </numIndex>
                                 <numIndex index="1">
                                     <label>
-                                        LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.publicationlist.orderBy.title
+                                        LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.publicationlist.orderBy.title
                                     </label>
                                     <value>title:ASC</value>
                                 </numIndex>
                                 <numIndex index="2">
                                     <label>
-                                        LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.publicationlist.orderBy.titleDesc
+                                        LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.publicationlist.orderBy.titleDesc
                                     </label>
                                     <value>title:DESC</value>
                                 </numIndex>
                                 <numIndex index="3">
                                     <label>
-                                        LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.publicationlist.orderBy.releaseYear
+                                        LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.publicationlist.orderBy.releaseYear
                                     </label>
                                     <value>releaseYear:ASC</value>
                                 </numIndex>
                                 <numIndex index="4">
                                     <label>
-                                        LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.publicationlist.orderBy.releaseYearDesc
+                                        LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.publicationlist.orderBy.releaseYearDesc
                                     </label>
                                     <value>releaseYear:DESC</value>
                                 </numIndex>
                                 <numIndex index="5">
                                     <label>
-                                        LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.publicationlist.orderBy.type
+                                        LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.publicationlist.orderBy.type
                                     </label>
                                     <value>type:ASC</value>
                                 </numIndex>
                                 <numIndex index="6">
                                     <label>
-                                        LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.publicationlist.orderBy.typeDesc
+                                        LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.publicationlist.orderBy.typeDesc
                                     </label>
                                     <value>type:DESC</value>
                                 </numIndex>
@@ -123,7 +123,7 @@
                     </settings.orderBy>
                     <settings.externalLink>
                         <label>
-                            LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.publicationlist.externalLink
+                            LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.publicationlist.externalLink
                         </label>
                         <config>
                             <type>input</type>

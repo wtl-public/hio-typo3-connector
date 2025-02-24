@@ -4,12 +4,12 @@
         <sDEF>
             <ROOT>
                 <sheetTitle>
-                    LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.sheet.general
+                    LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.sheet.general
                 </sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.personUid>
-                        <label>LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.patentlist.personUid
+                        <label>LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.patentlist.personUid
                         </label>
                         <config>
                             <type>group</type>

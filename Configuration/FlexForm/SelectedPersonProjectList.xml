@@ -4,12 +4,12 @@
         <sDEF>
             <ROOT>
                 <sheetTitle>
-                    LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.sheet.general
+                    LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.sheet.general
                 </sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.personUid>
-                        <label>LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.projectlist.personUid
+                        <label>LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.projectlist.personUid
                         </label>
                         <config>
                             <type>group</type>
@@ -22,7 +22,7 @@
                     </settings.personUid>
                     <settings.externalLink>
                         <label>
-                            LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.projectlist.externalLink
+                            LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.projectlist.externalLink
                         </label>
                         <config>
                             <type>input</type>

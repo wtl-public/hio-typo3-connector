@@ -54,72 +54,6 @@
                 <target>Liste aller in HISinOne verfügbaren Personen</target>
             </trans-unit>
 
-            <trans-unit id="titlePersonPublications" resname="titlePersonPublications">
-                <source>HISinOne publications for person</source>
-                <target>HISinOne Publikationen zur Person</target>
-            </trans-unit>
-            <trans-unit id="descriptionPersonPublications" resname="descriptionPersonPublications">
-                <source>Show all HISinOne publications for the selected person</source>
-                <target>Zeigt alle HISinOne Publikationen zur ausgewählten Person an</target>
-            </trans-unit>
-            <trans-unit id="flexform.publicationlist.personUid" resname="flexform.publicationlist.personUid">
-                <source>Select person please</source>
-                <target>Person auswählen</target>
-            </trans-unit>
-            <trans-unit id="flexform.publicationlist.externalLink" resname="flexform.publicationlist.externalLink">
-                <source>Link to publication details (optional)</source>
-                <target>Link zu Publikationsdetails (optional)</target>
-            </trans-unit>
-            <trans-unit id="flexform.publicationlist.orderBy" resname="flexform.publicationlist.orderBy">
-                <source>Order by</source>
-                <target>Sortierung</target>
-            </trans-unit>
-            <trans-unit id="flexform.publicationlist.orderBy.uid" resname="flexform.publicationlist.orderBy.uid">
-                <source>none</source>
-                <target>keine Sortierung</target>
-            </trans-unit>
-            <trans-unit id="flexform.publicationlist.orderBy.title" resname="flexform.publicationlist.orderBy.title">
-                <source>alphabetical</source>
-                <target>alphabetisch</target>
-            </trans-unit>
-            <trans-unit id="flexform.publicationlist.orderBy.titleDesc" resname="flexform.publicationlist.orderBy.titleDesc">
-                <source>alphabetical descending</source>
-                <target>alphabetisch absteigend</target>
-            </trans-unit>
-            <trans-unit id="flexform.publicationlist.orderBy.releaseYear" resname="flexform.publicationlist.orderBy.releaseYear">
-                <source>Release year ascending</source>
-                <target>Veröffentlichungsjahr</target>
-            </trans-unit>
-            <trans-unit id="flexform.publicationlist.orderBy.releaseYearDesc" resname="flexform.publicationlist.orderBy.releaseYearDesc">
-                <source>Release year descending</source>
-                <target>Veröffentlichungsjahr absteigend</target>
-            </trans-unit>
-            <trans-unit id="flexform.publicationlist.orderBy.type" resname="flexform.publicationlist.orderBy.type">
-                <source>Type ascending</source>
-                <target>Typ aufsteigend</target>
-            </trans-unit>
-            <trans-unit id="flexform.publicationlist.orderBy.typeDesc" resname="flexform.publicationlist.orderBy.typeDesc">
-                <source>Type descending</source>
-                <target>Typ absteigend</target>
-            </trans-unit>
-            <trans-unit id="flexform.publicationlist.groupBy" resname="flexform.publicationlist.groupBy">
-                <source>Group by</source>
-                <target>Gruppierung</target>
-            </trans-unit>
-            <trans-unit id="flexform.publicationlist.groupBy.none" resname="flexform.publicationlist.groupBy.none">
-                <source>none</source>
-                <target>keine Gruppierung</target>
-            </trans-unit>
-            <trans-unit id="flexform.publicationlist.groupBy.type" resname="flexform.publicationlist.groupBy.type">
-                <source>type of publication</source>
-                <target>Publikationstyp</target>
-            </trans-unit>
-            <trans-unit id="flexform.publicationlist.groupBy.releaseYear" resname="flexform.publicationlist.groupBy.releaseYear">
-                <source>Release year</source>
-                <target>Veröffentlichungsjahr</target>
-            </trans-unit>
-
-
             <trans-unit id="titlePatents" resname="titlePatents">
                 <source>HISinOne Patents</source>
                 <target>HISinOne Patente</target>
@@ -201,39 +135,6 @@
                 <source>visibility</source>
                 <target>Sichtbarkeit</target>
             </trans-unit>
-
-
-            <trans-unit id="titlePersonPatents" resname="titlePersonPatents">
-                <source>HISinOne patents for person</source>
-                <target>HISinOne Patente zur Person</target>
-            </trans-unit>
-            <trans-unit id="descriptionPersonPatents" resname="descriptionPersonPatents">
-                <source>Show all HISinOne patents for the selected person</source>
-                <target>Zeigt alle HISinOne Patente zur ausgewählten Person an</target>
-            </trans-unit>
-            <trans-unit id="flexform.patentlist.personUid" resname="flexform.patentlist.personUid">
-                <source>Select person please</source>
-                <target>Person auswählen</target>
-            </trans-unit>
-
-
-            <trans-unit id="titlePersonProjects" resname="titlePersonProjects">
-                <source>HISinOne projects for person</source>
-                <target>HISinOne Projekte zur Person</target>
-            </trans-unit>
-            <trans-unit id="descriptionPersonProjects" resname="descriptionPersonProjects">
-                <source>Show all HISinOne projects for the selected person</source>
-                <target>Zeigt alle HISinOne Projekte zur ausgewählten Person an</target>
-            </trans-unit>
-            <trans-unit id="flexform.projectlist.personUid" resname="flexform.projectlist.personUid">
-                <source>Select person please</source>
-                <target>Person auswählen</target>
-            </trans-unit>
-            <trans-unit id="flexform.projectlist.externalLink" resname="flexform.projectlist.externalLink">
-                <source>Link to project details (optional)</source>
-                <target>Link zu Projektdetails (optional)</target>
-            </trans-unit>
-
 
             <trans-unit id="ListPaginationPrevious" resname="ListPaginationPrevious">
                 <source>Previous</source>
