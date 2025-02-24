@@ -54,6 +54,15 @@
                 <target>Liste aller in HISinOne verfügbaren Personen</target>
             </trans-unit>
 
+            <trans-unit id="titleDoctorates" resname="titleDoctorates">
+                <source>HISinOne Doctorates</source>
+                <target>HISinOne Promotionen</target>
+            </trans-unit>
+            <trans-unit id="descriptionDoctorates" resname="descriptionDoctorates">
+                <source>List of doctorates available inHISinOne</source>
+                <target>Liste aller in HISinOne verfügbaren Promotionen</target>
+            </trans-unit>
+
             <trans-unit id="titlePatents" resname="titlePatents">
                 <source>HISinOne Patents</source>
                 <target>HISinOne Patente</target>

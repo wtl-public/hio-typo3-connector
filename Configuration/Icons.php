@@ -21,6 +21,10 @@ return [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/list-of-patents.svg',
     ],
+    'tx-hio_typo3_connector-list-of-doctorates' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/list-of-doctorates.svg',
+    ],
     'tx-hio_typo3_connector-publications' => [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/publication.svg',
@@ -36,5 +40,9 @@ return [
     'tx-hio_typo3_connector-patents' => [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/patent.svg',
+    ],
+    'tx-hio_typo3_connector-doctorates' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/doctorate.svg',
     ],
 ];

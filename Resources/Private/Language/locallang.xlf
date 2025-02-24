@@ -55,6 +55,13 @@
                 <source>List of persons available in HISinOne</source>
             </trans-unit>
 
+            <trans-unit id="titleDoctorates" resname="titleDoctorates">
+                <source>HISinOne Doctorates</source>
+            </trans-unit>
+            <trans-unit id="descriptionDoctorates" resname="descriptionDoctorates">
+                <source>List of doctorates available inHISinOne</source>
+            </trans-unit>
+
             <trans-unit id="ListPaginationPrevious" resname="ListPaginationPrevious">
                 <source>Previous</source>
             </trans-unit>
