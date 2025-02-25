@@ -33,6 +33,11 @@ class Person extends AbstractEntity
     protected ObjectStorage $doctorates;
 
     /**
+     * @var ObjectStorage<Habilitation>
+     */
+    protected ObjectStorage $habilitations;
+
+    /**
      * @var string
      */
     protected mixed $details;
@@ -48,6 +53,7 @@ class Person extends AbstractEntity
         $this->projects = new ObjectStorage();
         $this->patents = new ObjectStorage();
         $this->doctorates = new ObjectStorage();
+        $this->habilitations = new ObjectStorage();
     }
 
     public function getObjectId(): int
@@ -165,6 +171,30 @@ class Person extends AbstractEntity
     {
         if ($this->doctorates->contains($doctorate)) {
             $this->doctorates->detach($doctorate);
+        }
+        return $this;
+    }
+
+
+    public function getHabilitations(): ObjectStorage
+    {
+        return $this->habilitations;
+    }
+    public function setHabilitations(ObjectStorage $habilitations): void
+    {
+        $this->habilitations = $habilitations;
+    }
+    public function addHabilitation(Habilitation $habilitation): self
+    {
+        if (!$this->habilitations->contains($habilitation)) {
+            $this->habilitations->attach($habilitation);
+        }
+        return $this;
+    }
+    public function removeHabilitation(Habilitation $habilitation): self
+    {
+        if ($this->habilitations->contains($habilitation)) {
+            $this->habilitations->detach($habilitation);
         }
         return $this;
     }

@@ -27,6 +27,7 @@ class PersonRepository extends BaseRepository
                 $this->attachProjectsByObjectIds($model, $person->getProjects());
                 $this->attachPatentsByObjectIds($model, $person->getPatents());
                 $this->attachDoctoratesByObjectIds($model, $person->getDoctorates());
+                $this->attachHabilitationsByObjectIds($model, $person->getHabilitations());
                 $this->add($model);
             } else {
                 $model->setObjectId($person->getObjectId());
@@ -37,6 +38,7 @@ class PersonRepository extends BaseRepository
                 $this->attachProjectsByObjectIds($model, $person->getProjects());
                 $this->attachPatentsByObjectIds($model, $person->getPatents());
                 $this->attachDoctoratesByObjectIds($model, $person->getDoctorates());
+                $this->attachHabilitationsByObjectIds($model, $person->getHabilitations());
                 $this->update($model);
             }
         }
@@ -104,6 +106,24 @@ class PersonRepository extends BaseRepository
         }
         $ids = array_map(fn($doctorate) => $doctorate['id'], $doctorates);
         $repository = GeneralUtility::makeInstance(DoctorateRepository::class);
+        $query = $repository->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
+        $query->matching($query->in('objectId', $ids));
+
+        $relatedEntities = $query->execute();
+        foreach ($relatedEntities as $relatedEntity) {
+            $personModel->addDoctorate($relatedEntity);
+        }
+        return $personModel;
+    }
+
+    protected function attachHabilitationsByObjectIds(Person &$personModel, array $habilitations): Person
+    {
+        if (empty($habilitations)) {
+            return $personModel;
+        }
+        $ids = array_map(fn($habilitation) => $habilitation['id'], $habilitations);
+        $repository = GeneralUtility::makeInstance(HabilitationRepository::class);
         $query = $repository->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
         $query->matching($query->in('objectId', $ids));
