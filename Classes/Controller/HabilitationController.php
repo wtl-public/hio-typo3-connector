@@ -11,8 +11,7 @@ use TYPO3\CMS\Core\Pagination\ArrayPaginator;
 use TYPO3\CMS\Core\Pagination\SimplePagination;
 use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 use TYPO3\CMS\Extbase\Property\PropertyMapper;
-use Wtl\HioTypo3Connector\Domain\Model\Doctorate;
-use Wtl\HioTypo3Connector\Domain\Repository\DoctorateRepository;
+use Wtl\HioTypo3Connector\Domain\Model\Habilitation;
 use Wtl\HioTypo3Connector\Domain\Repository\HabilitationRepository;
 
 #[AsController]
@@ -43,11 +42,11 @@ class HabilitationController extends BaseController
         return $this->htmlResponse();
     }
 
-    public function showAction(Doctorate $doctorate): ResponseInterface
+    public function showAction(Habilitation $habilitation): ResponseInterface
     {
         $this->view->assignMultiple(
             [
-                'doctorate' => $doctorate,
+                'habilitation' => $habilitation,
                 'currentPageNumber' => $this->getCurrentPageNumberFromRequest(),
             ]
         );
