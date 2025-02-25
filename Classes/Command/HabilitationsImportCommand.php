@@ -14,7 +14,7 @@ use Wtl\HioTypo3Connector\Services\HioHabilitationService;
 
 class HabilitationsImportCommand extends Command
 {
-    protected static $defaultName = 'hio:doctorates:import';
+    protected static $defaultName = 'hio:habilitations:import';
 
     public function __construct(
         private readonly HabilitationRepository $habilitationRepository,

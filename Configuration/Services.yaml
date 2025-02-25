@@ -14,7 +14,7 @@ services:
       - name: console.command
         command: 'hio:doctorates:import'
         description: 'Import doctorate data from HISinOne'
-  Wtl\HioTypo3Connector\Command\HabilitationImportCommand:
+  Wtl\HioTypo3Connector\Command\HabilitationsImportCommand:
     tags:
       - name: console.command
         command: 'hio:habilitations:import'
