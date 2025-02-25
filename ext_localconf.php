@@ -75,6 +75,16 @@ ExtensionUtility::configurePlugin(
     pluginType:  ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 // non-cacheable actions
 );
+ExtensionUtility::configurePlugin(
+// extension name, matching the PHP namespaces (but without the vendor)
+    'HioTypo3Connector',
+    // arbitrary, but unique plugin name (not visible in the backend)
+    'HabilitationList',
+    // all actions
+    [HabilitationController::class => 'index, show'],
+    pluginType:  ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
+// non-cacheable actions
+);
 
 
 ExtensionUtility::configurePlugin(
@@ -114,6 +124,16 @@ ExtensionUtility::configurePlugin(
     'PersonSelectedDoctorateList',
     // all actions
     [PersonController::class => 'doctorateList'],
+    pluginType:  ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
+// non-cacheable actions
+);
+ExtensionUtility::configurePlugin(
+// extension name, matching the PHP namespaces (but without the vendor)
+    'HioTypo3Connector',
+    // arbitrary, but unique plugin name (not visible in the backend)
+    'PersonSelectedHabilitationList',
+    // all actions
+    [PersonController::class => 'habilitationList'],
     pluginType:  ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 // non-cacheable actions
 );

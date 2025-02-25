@@ -184,4 +184,16 @@ class PersonController extends BaseController
 
         return $this->htmlResponse();
     }
+
+    public function habilitationListAction(): ResponseInterface
+    {
+        /** @var Person $selectedPerson */
+        $selectedPerson = $this->personRepository->findByUid($this->settings['personUid']);
+
+        $this->view->assignMultiple([
+            'person' => $selectedPerson,
+        ]);
+
+        return $this->htmlResponse();
+    }
 }
