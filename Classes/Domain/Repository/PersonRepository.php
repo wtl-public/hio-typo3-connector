@@ -129,7 +129,7 @@ class PersonRepository extends BaseRepository
 
         $relatedEntities = $query->execute();
         foreach ($relatedEntities as $relatedEntity) {
-            $personModel->addDoctorate($relatedEntity);
+            $personModel->addHabilitation($relatedEntity);
         }
         return $personModel;
     }
