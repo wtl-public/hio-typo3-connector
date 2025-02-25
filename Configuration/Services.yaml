@@ -14,23 +14,28 @@ services:
       - name: console.command
         command: 'hio:doctorates:import'
         description: 'Import doctorate data from HISinOne'
-  Wtl\HioTypo3Connector\Command\PublicationsImportCommand:
+  Wtl\HioTypo3Connector\Command\HabilitationImportCommand:
     tags:
       - name: console.command
-        command: 'hio:publications:import'
-        description: 'Import publication data from HISinOne'
-  Wtl\HioTypo3Connector\Command\ProjectsImportCommand:
-    tags:
-      - name: console.command
-        command: 'hio:projects:import'
-        description: 'Import project data from HISinOne'
-  Wtl\HioTypo3Connector\Command\PersonsImportCommand:
-    tags:
-      - name: console.command
-        command: 'hio:persons:import'
-        description: 'Import person data from HISinOne'
+        command: 'hio:habilitations:import'
+        description: 'Import habilitation data from HISinOne'
   Wtl\HioTypo3Connector\Command\PatentsImportCommand:
     tags:
       - name: console.command
         command: 'hio:patents:import'
         description: 'Import patent data from HISinOne'
+  Wtl\HioTypo3Connector\Command\PersonsImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:persons:import'
+        description: 'Import person data from HISinOne'
+  Wtl\HioTypo3Connector\Command\ProjectsImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:projects:import'
+        description: 'Import project data from HISinOne'
+  Wtl\HioTypo3Connector\Command\PublicationsImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:publications:import'
+        description: 'Import publication data from HISinOne'

@@ -25,6 +25,10 @@ return [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/list-of-doctorates.svg',
     ],
+    'tx-hio_typo3_connector-list-of-habilitations' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/list-of-habilitations.svg',
+    ],
     'tx-hio_typo3_connector-publications' => [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/publication.svg',
@@ -44,5 +48,9 @@ return [
     'tx-hio_typo3_connector-doctorates' => [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/doctorate.svg',
+    ],
+    'tx-hio_typo3_connector-habilitations' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/habilitation.svg',
     ],
 ];

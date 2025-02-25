@@ -21,4 +21,8 @@ return [
         'path' => '/hio/typo3/connector/doctorate',
         'target' => 'Wtl\HioTypo3Connector\Controller\DoctorateController',
     ],
+    'tx_hio_typo3_connector_habilitation' => [
+        'path' => '/hio/typo3/connector/habilitation',
+        'target' => 'Wtl\HioTypo3Connector\Controller\HabilitationController',
+    ],
 ];

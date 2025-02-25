@@ -28,6 +28,12 @@ plugin.tx_hiotypo3connector {
       patents {
         personTargetPageUid = 9
       }
+      doctorates {
+        personTargetPageUid = 9
+      }
+      habilitations {
+        personTargetPageUid = 9
+      }
     }
 }
 ```
@@ -36,10 +42,12 @@ plugin.tx_hiotypo3connector {
 
 Im TYPO3 Backend:
 * unter `Admin Tools` -> `Scheduler` -> die folgenden Import Tasks anlegen:
+  * `hio:import:doctorates` - Importiert Promotionen aus HISinOne
+  * `hio:import:habilitations` - Importiert Habilitationen aus HISinOne
+  * `hio:import:patents` - Importiert Patente aus HISinOne
   * `hio:import:persons` - Importiert Personen aus HISinOne
   * `hio:import:projects` - Importiert Projekte aus HISinOne
   * `hio:import:publications` - Importiert Publikationen aus HISinOne
-  * `hio:import:patents` - Importiert Patente aus HISinOne
 * jeder der genannten Tasks hat folgende Parameter:
   * `Storage page ID` - die Speicherseite, unter der die importierten Datensätze gespeichert werden
   * `URL` - die URL des `Publisher für HISinOne` REST API Endpoints
@@ -52,10 +60,19 @@ Dadurch werden die zur jeweiligen Person gehörenden Publikationen, Projekte und
 ## Frontend plugins
 
 Im TYPO3 Backend:
-* im Module `Page` können die folgenden Frontend-Plugins eingefügt werden:
+
+Im Module `Page` können die folgenden Frontend-Plugins eingefügt werden:
+
+  * `HISinOne Habilitationen` - zeigt eine Liste von Habilitationen aus HISinOne an
+  * `HISinOne Patente` - zeigt eine Liste von Patenten aus HISinOne an
   * `HISinOne Personen` - zeigt eine Liste von Personen aus HISinOne an
   * `HISinOne Projekte` - zeigt eine Liste von Projekten aus HISinOne an
+  * `HISinOne Promotionen` - zeigt eine Liste von Promotionen aus HISinOne an
   * `HISinOne Publikationen` - zeigt eine Liste von Publikationen aus HISinOne an
-  * `HISinOne Publikationen der Person` - zeigt die Liste aller freigegebenen Publikationen einer ausgewählten Person an
-  * `HISinOne Projekte der Person` - zeigt die Liste aller freigegebenen Projekte einer ausgewählten Person an
+
+
+  * `HISinOne Habilitationen der Person` - zeigt die Liste aller freigegebenen Habilitationen einer ausgewählten Person an
   * `HISinOne Patente der Person` - zeigt die Liste aller freigegebenen Patente einer ausgewählten Person an
+  * `HISinOne Projekte der Person` - zeigt die Liste aller freigegebenen Projekte einer ausgewählten Person an
+  * `HISinOne Promotionen der Person` - zeigt die Liste aller freigegebenen Promotionen einer ausgewählten Person an
+  * `HISinOne Publikationen der Person` - zeigt die Liste aller freigegebenen Publikationen einer ausgewählten Person an
