@@ -136,6 +136,15 @@ return [
                 'foreign_table' => 'tx_hiotypo3connector_domain_model_doctorate',
                 'MM' => 'tx_hiotypo3connector_person_doctorate_mm',
             ],
+        ],
+        'habilitations' => [
+            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_person.habilitations',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'tx_hiotypo3connector_domain_model_habilitation',
+                'MM' => 'tx_hiotypo3connector_person_habilitation_mm',
+            ],
         ]
     ],
     'types' => [

@@ -4,7 +4,6 @@ namespace Wtl\HioTypo3Connector\Domain\Repository;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Wtl\HioTypo3Connector\Domain\Model\DTO\PersonDTO;
-use Wtl\HioTypo3Connector\Domain\Model\Patent;
 use Wtl\HioTypo3Connector\Domain\Model\Person;
 
 class PersonRepository extends BaseRepository
