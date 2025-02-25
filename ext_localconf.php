@@ -9,6 +9,7 @@ use Wtl\HioTypo3Connector\Controller\ProjectController;
 use Wtl\HioTypo3Connector\Controller\PublicationController;
 use Wtl\HioTypo3Connector\Controller\PatentController;
 use Wtl\HioTypo3Connector\Controller\DoctorateController;
+use Wtl\HioTypo3Connector\Controller\HabilitationController;
 
 
 ExtensionUtility::configurePlugin(
