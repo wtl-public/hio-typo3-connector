@@ -62,6 +62,13 @@
                 <source>List of doctorates available inHISinOne</source>
             </trans-unit>
 
+            <trans-unit id="titleHabilitations" resname="titleHabilitations">
+                <source>HISinOne Habilitations</source>
+            </trans-unit>
+            <trans-unit id="descriptionHabilitations" resname="descriptionHabilitations">
+                <source>List of habilitations available inHISinOne</source>
+            </trans-unit>
+
             <trans-unit id="ListPaginationPrevious" resname="ListPaginationPrevious">
                 <source>Previous</source>
             </trans-unit>

@@ -63,6 +63,15 @@
                 <target>Liste aller in HISinOne verfügbaren Promotionen</target>
             </trans-unit>
 
+            <trans-unit id="titleHabilitations" resname="titleHabilitations">
+                <source>HISinOne Habilitations</source>
+                <target>HISinOne Habilitationen</target>
+            </trans-unit>
+            <trans-unit id="descriptionHabilitations" resname="descriptionHabilitations">
+                <source>List of habilitations available inHISinOne</source>
+                <target>Liste aller in HISinOne verfügbaren Habilitationen</target>
+            </trans-unit>
+
             <trans-unit id="titlePatents" resname="titlePatents">
                 <source>HISinOne Patents</source>
                 <target>HISinOne Patente</target>

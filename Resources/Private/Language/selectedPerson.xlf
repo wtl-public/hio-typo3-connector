@@ -86,6 +86,16 @@
                 <source>Select person please</source>
             </trans-unit>
 
+            <trans-unit id="titlePersonHabilitations" resname="titlePersonHabilitations">
+                <source>HISinOne habilitations for person</source>
+            </trans-unit>
+            <trans-unit id="descriptionPersonHabilitations" resname="descriptionPersonHabilitations">
+                <source>Show all HISinOne habilitations for the selected person</source>
+            </trans-unit>
+            <trans-unit id="flexform.habilitationlist.personUid" resname="flexform.habilitationlist.personUid">
+                <source>Select person please</source>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>

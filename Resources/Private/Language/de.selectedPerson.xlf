@@ -112,6 +112,19 @@
                 <target>Person auswählen</target>
             </trans-unit>
 
+            <trans-unit id="titlePersonHabilitations" resname="titlePersonHabilitations">
+                <source>HISinOne habilitations for person</source>
+                <target>HISinOne Habilitationen zur Person</target>
+            </trans-unit>
+            <trans-unit id="descriptionPersonHabilitations" resname="descriptionPersonHabilitations">
+                <source>Show all HISinOne habilitations for the selected person</source>
+                <target>Zeigt alle HISinOne Habilitationen zur ausgewählten Person an</target>
+            </trans-unit>
+            <trans-unit id="flexform.habilitationlist.personUid" resname="flexform.habilitationlist.personUid">
+                <source>Select person please</source>
+                <target>Person auswählen</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>
