@@ -25,6 +25,7 @@ return [
         'security' => [
             'ignorePageTypeRestriction' => true,
         ],
+        'iconfile' => 'EXT:hio_typo3_connector/Resources/Public/Icons/habilitation.svg',
     ],
     'columns' => [
         'hidden' => [
