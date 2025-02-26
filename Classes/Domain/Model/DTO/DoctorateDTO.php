@@ -7,12 +7,8 @@ use Wtl\HioTypo3Connector\Domain\Model\DTO\Doctorate\OrganizationDTO;
 use Wtl\HioTypo3Connector\Domain\Model\DTO\Doctorate\PersonDTO;
 use Wtl\HioTypo3Connector\Domain\Model\Doctorate;
 
-class DoctorateDTO
+class DoctorateDTO extends BaseDTO
 {
-    protected int $extbaseUid = 0;
-    protected int $objectId = 0;
-    protected array $details = [];
-
     protected string $courseOfStudy = '';
     protected string $description = '';
     protected bool $doctoralPositionAvailable = false;
@@ -37,24 +33,6 @@ class DoctorateDTO
     protected array $subjectAreas = [];
     protected string $title = '';
 
-    public function getExtbaseUid(): int
-    {
-        return $this->extbaseUid;
-    }
-    public function setExtbaseUid(int $extbaseUid): void
-    {
-        $this->extbaseUid = $extbaseUid;
-    }
-
-    public function getObjectId(): int
-    {
-        return $this->objectId;
-    }
-    public function setObjectId($objectId): void
-    {
-        $this->objectId = $objectId;
-    }
-
     public function getTitle(): string
     {
         return $this->title;
@@ -62,15 +40,6 @@ class DoctorateDTO
     public function setTitle(string $title): void
     {
         $this->title = $title;
-    }
-
-    public function getDetails(): array
-    {
-        return $this->details;
-    }
-    public function setDetails(array $details): void
-    {
-        $this->details = $details;
     }
 
     public function getCourseOfStudy(): string
@@ -172,7 +141,7 @@ class DoctorateDTO
         $this->startDate = $startDate;
     }
 
-    static public function fromDomainModel(Doctorate $model): self
+    static public function fromDomainModel(Doctorate|\TYPO3\CMS\Extbase\DomainObject\AbstractEntity $model): static
     {
         $details = $model->getDetails();
 

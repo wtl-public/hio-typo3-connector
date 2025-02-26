@@ -8,12 +8,8 @@ use Wtl\HioTypo3Connector\Domain\Model\DTO\Project\SubjectAreaDTO;
 use Wtl\HioTypo3Connector\Domain\Model\DTO\Project\PersonDTO;
 use Wtl\HioTypo3Connector\Domain\Model\Project;
 
-class ProjectDTO
+class ProjectDTO extends BaseDTO
 {
-    protected int $extbaseUid = 0;
-    protected int $objectId = 0;
-    protected array $details = [];
-
     protected string $title = '';
     protected string $abstract = '';
     protected string $type = '';
@@ -36,24 +32,6 @@ class ProjectDTO
     protected string $status = '';
     protected string $visibility = '';
 
-    public function getExtbaseUid(): int
-    {
-        return $this->extbaseUid;
-    }
-    public function setExtbaseUid(int $extbaseUid): void
-    {
-        $this->extbaseUid = $extbaseUid;
-    }
-
-    public function getObjectId(): int
-    {
-        return $this->objectId;
-    }
-    public function setObjectId($objectId): void
-    {
-        $this->objectId = $objectId;
-    }
-
     public function getTitle(): string
     {
         return $this->title;
@@ -61,15 +39,6 @@ class ProjectDTO
     public function setTitle(string $title): void
     {
         $this->title = $title;
-    }
-
-    public function getDetails(): array
-    {
-        return $this->details;
-    }
-    public function setDetails(array $details): void
-    {
-        $this->details = $details;
     }
 
     public function getAbstract(): string
@@ -172,7 +141,7 @@ class ProjectDTO
         $this->persons = $persons;
     }
 
-    static public function fromDomainModel(Project $model): self
+    static public function fromDomainModel(Project|\TYPO3\CMS\Extbase\DomainObject\AbstractEntity $model): static
     {
         $details = $model->getDetails();
 

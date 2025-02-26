@@ -6,12 +6,8 @@ namespace Wtl\HioTypo3Connector\Domain\Model\DTO;
 use Wtl\HioTypo3Connector\Domain\Model\DTO\Patent\PersonDTO;
 use Wtl\HioTypo3Connector\Domain\Model\Patent;
 
-class PatentDTO
+class PatentDTO extends BaseDTO
 {
-    protected int $extbaseUid = 0;
-    protected int $objectId = 0;
-    protected array $details = [];
-
     protected string $countryOfRegistration = '';
     protected string $description = '';
     protected ?\DateTime $grantDate = null;
@@ -36,24 +32,6 @@ class PatentDTO
     protected string $title = '';
     protected string $visibility = '';
 
-    public function getExtbaseUid(): int
-    {
-        return $this->extbaseUid;
-    }
-    public function setExtbaseUid(int $extbaseUid): void
-    {
-        $this->extbaseUid = $extbaseUid;
-    }
-
-    public function getObjectId(): int
-    {
-        return $this->objectId;
-    }
-    public function setObjectId($objectId): void
-    {
-        $this->objectId = $objectId;
-    }
-
     public function getTitle(): string
     {
         return $this->title;
@@ -61,15 +39,6 @@ class PatentDTO
     public function setTitle(string $title): void
     {
         $this->title = $title;
-    }
-
-    public function getDetails(): array
-    {
-        return $this->details;
-    }
-    public function setDetails(array $details): void
-    {
-        $this->details = $details;
     }
 
     public function getStatus(): string
@@ -183,7 +152,7 @@ class PatentDTO
         $this->registrationDate = $registrationDate;
     }
 
-    static public function fromDomainModel(Patent $model): self
+    static public function fromDomainModel(Patent|\TYPO3\CMS\Extbase\DomainObject\AbstractEntity $model): static
     {
         $details = $model->getDetails();
 

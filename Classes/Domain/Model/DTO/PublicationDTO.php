@@ -11,10 +11,8 @@ use Wtl\HioTypo3Connector\Domain\Model\DTO\Publication\LanguageDTO;
 use Wtl\HioTypo3Connector\Domain\Model\DTO\Publication\PersonDTO;
 use Wtl\HioTypo3Connector\Domain\Model\Publication;
 
-class PublicationDTO
+class PublicationDTO extends BaseDTO
 {
-    protected int $extbaseUid;
-    protected int $objectId = 0;
     protected string $abstract = '';
     protected string $access = '';
     /*
@@ -22,7 +20,6 @@ class PublicationDTO
      */
     protected array $citations = [];
     protected ?ConferenceDTO $conference = null;
-    protected array $details = [];
     protected string $document = '';
     /**
      * @var GlobalIdentifierDTO[]
@@ -49,25 +46,6 @@ class PublicationDTO
     protected string $title = '';
     protected string $type = '';
     protected string $visibility = '';
-
-
-    public function getExtbaseUid(): int
-    {
-        return $this->extbaseUid;
-    }
-    public function setExtbaseUid(int $extbaseUid): void
-    {
-        $this->extbaseUid = $extbaseUid;
-    }
-
-    public function getObjectId(): int
-    {
-        return $this->objectId;
-    }
-    public function setObjectId($objectId): void
-    {
-        $this->objectId = $objectId;
-    }
 
     public function getCitations(): array
     {
@@ -133,15 +111,6 @@ class PublicationDTO
     public function setTitle(string $title): void
     {
         $this->title = $title;
-    }
-
-    public function getDetails(): array
-    {
-        return $this->details;
-    }
-    public function setDetails(array $details): void
-    {
-        $this->details = $details;
     }
 
     public function getPersons(): array
@@ -234,7 +203,7 @@ class PublicationDTO
         $this->releaseYear = $releaseYear;
     }
 
-    static public function fromDomainModel(Publication $model): self
+    static public function fromDomainModel(Publication|\TYPO3\CMS\Extbase\DomainObject\AbstractEntity $model): static
     {
         $details = $model->getDetails();
 
