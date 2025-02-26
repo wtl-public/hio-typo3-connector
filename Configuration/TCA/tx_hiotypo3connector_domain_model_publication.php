@@ -26,6 +26,7 @@ return [
         'security' => [
             'ignorePageTypeRestriction' => true,
         ],
+        'iconfile' => 'EXT:hio_typo3_connector/Resources/Public/Icons/publication.svg',
     ],
     'columns' => [
         'hidden' => [
