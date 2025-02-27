@@ -167,6 +167,67 @@
                 <target>Zurück</target>
             </trans-unit>
 
+            <trans-unit id="habilitation.admissionDate" resname="habilitation.admissionDate">
+                <source>admission date</source>
+                <target>Zulassungsdatum</target>
+            </trans-unit>
+            <trans-unit id="habilitation.certificateDate" resname="habilitation.certificateDate">
+                <source>certificate date</source>
+                <target>Urkundendatum</target
+            </trans-unit>
+            <trans-unit id="habilitation.endDate" resname="habilitation.endDate">
+                <source>end date</source>
+                <target>Enddatum</target
+            </trans-unit>
+            <trans-unit id="habilitation.organization" resname="habilitation.organization">
+                <source>organization</source>
+                <target>Organisation</target>
+            </trans-unit>
+            <trans-unit id="habilitation.organizations" resname="habilitation.organizations">
+                <source>organizations</source>
+                <target>Organisationen</target>
+            </trans-unit>
+            <trans-unit id="habilitation.person" resname="habilitation.person">
+                <source>person</source>
+                <target>Person</target>
+            </trans-unit>
+            <trans-unit id="habilitation.persons" resname="habilitation.persons">
+                <source>persons</source>
+                <target>Personen</target>
+            </trans-unit>
+            <trans-unit id="habilitation.language" resname="habilitation.language">
+                <source>language</source>
+                <target>Sprache</target>
+            </trans-unit>
+            <trans-unit id="habilitation.registrationDate" resname="habilitation.registrationDate">
+                <source>registration date</source>
+                <target>Anmeldedatum</target>
+            </trans-unit>
+            <trans-unit id="habilitation.researchArea" resname="habilitation.researchArea">
+                <source>research area</source>
+                <target>Forschungsbereich</target>
+            </trans-unit>
+            <trans-unit id="habilitation.researchAreas" resname="habilitation.researchAreas">
+                <source>research areas</source>
+                <target>Forschungsbereiche</target>
+            </trans-unit>
+            <trans-unit id="habilitation.startDate" resname="habilitation.startDate">
+                <source>start date</source>
+                <target>Startdatum</target>
+            </trans-unit>
+            <trans-unit id="habilitation.status" resname="habilitation.status">
+                <source>status</source>
+                <target>Status</target>
+            </trans-unit>
+            <trans-unit id="habilitation.title" resname="habilitation.title">
+                <source>title</source>
+                <target>Titel</target>
+            </trans-unit>
+            <trans-unit id="habilitation.type" resname="habilitation.type">
+                <source>type</source>
+                <target>Typ</target>
+            </trans-unit>
+
             <trans-unit id="hio.show.project.projectLead" resname="hio.show.project.projectLead">
                 <source>Project lead</source>
             </trans-unit>

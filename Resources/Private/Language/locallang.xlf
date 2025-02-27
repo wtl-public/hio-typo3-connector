@@ -139,6 +139,52 @@
                 <source>Beginn</source>
             </trans-unit>
 
+            <trans-unit id="habilitation.admissionDate" resname="habilitation.admissionDate">
+                <source>admission date</source>
+            </trans-unit>
+            <trans-unit id="habilitation.certificateDate" resname="habilitation.certificateDate">
+                <source>certificate date</source>
+            </trans-unit>
+            <trans-unit id="habilitation.endDate" resname="habilitation.endDate">
+                <source>end date</source>
+            </trans-unit>
+            <trans-unit id="habilitation.organization" resname="habilitation.organization">
+                <source>organization</source>
+            </trans-unit>
+            <trans-unit id="habilitation.organizations" resname="habilitation.organizations">
+                <source>organizations</source>
+            </trans-unit>
+            <trans-unit id="habilitation.person" resname="habilitation.person">
+                <source>person</source>
+            </trans-unit>
+            <trans-unit id="habilitation.persons" resname="habilitation.persons">
+                <source>persons</source>
+            </trans-unit>
+            <trans-unit id="habilitation.language" resname="habilitation.language">
+                <source>language</source>
+            </trans-unit>
+            <trans-unit id="habilitation.registrationDate" resname="habilitation.registrationDate">
+                <source>registration date</source>
+            </trans-unit>
+            <trans-unit id="habilitation.researchArea" resname="habilitation.researchArea">
+                <source>research area</source>
+            </trans-unit>
+            <trans-unit id="habilitation.researchAreas" resname="habilitation.researchAreas">
+                <source>research areas</source>
+            </trans-unit>
+            <trans-unit id="habilitation.startDate" resname="habilitation.startDate">
+                <source>start date</source>
+            </trans-unit>
+            <trans-unit id="habilitation.status" resname="habilitation.status">
+                <source>status</source>
+            </trans-unit>
+            <trans-unit id="habilitation.title" resname="habilitation.title">
+                <source>title</source>
+            </trans-unit>
+            <trans-unit id="habilitation.type" resname="habilitation.type">
+                <source>type</source>
+            </trans-unit>
+
 
             <trans-unit id="hio.show.project.projectLead" resname="hio.show.project.projectLead">
                 <source>Project lead</source>
