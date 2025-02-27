@@ -173,11 +173,11 @@
             </trans-unit>
             <trans-unit id="habilitation.certificateDate" resname="habilitation.certificateDate">
                 <source>certificate date</source>
-                <target>Urkundendatum</target
+                <target>Urkundendatum</target>
             </trans-unit>
             <trans-unit id="habilitation.endDate" resname="habilitation.endDate">
                 <source>end date</source>
-                <target>Enddatum</target
+                <target>Enddatum</target>
             </trans-unit>
             <trans-unit id="habilitation.organization" resname="habilitation.organization">
                 <source>organization</source>
