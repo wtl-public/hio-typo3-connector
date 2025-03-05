@@ -1,5 +1,6 @@
 plugin.tx_hiotypo3connector {
   settings {
+    defaultPersonStoragePid = {$plugin.tx_hiotypo3connector.settings.defaultPersonStoragePid}
     entriesPerPage = 10
     singleViewPageUid = {$plugin.tx_hiotypo3connector.settings.singleViewPageUid}
     publications {
