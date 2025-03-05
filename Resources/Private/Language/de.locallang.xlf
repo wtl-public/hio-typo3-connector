@@ -228,6 +228,72 @@
                 <target>Typ</target>
             </trans-unit>
 
+            <trans-unit id="doctorate.courseOfStudy" resname="doctorate.courseOfStudy">
+                <source>course of study</source>
+                <target>Studiengang</target>
+            </trans-unit>
+            <trans-unit id="doctorate.description" resname="doctorate.description">
+                <source>description</source>
+                <target>Beschreibung</target>
+            </trans-unit>
+            <trans-unit id="doctorate.doctoralPositionAvailable" resname="doctorate.doctoralPositionAvailable">
+                <source>doctoral position available</source>
+                <target>Promotionsstelle verfügbar</target>
+            </trans-unit>
+            <trans-unit id="doctorate.endDate" resname="doctorate.endDate">
+                <source>end date</source>
+                <target>Enddatum</target>
+            </trans-unit>
+            <trans-unit id="doctorate.language" resname="doctorate.language">
+                <source>language</source>
+                <target>Sprache</target>
+            </trans-unit>
+            <trans-unit id="doctorate.organization" resname="doctorate.organization">
+                <source>organization</source>
+                <target>Organisationseinheit</target>
+            </trans-unit>
+            <trans-unit id="doctorate.organizations" resname="doctorate.organizations">
+                <source>organizations</source>
+                <target>Organisationseinheiten</target>
+            </trans-unit>
+            <trans-unit id="doctorate.person" resname="doctorate.person">
+                <source>person</source>
+                <target>Person</target>
+            </trans-unit>
+            <trans-unit id="doctorate.persons" resname="doctorate.persons">
+                <source>persons</source>
+                <target>Personen</target>
+            </trans-unit>
+            <trans-unit id="doctorate.researchArea" resname="doctorate.researchArea">
+                <source>research area</source>
+                <target>Forschungsgebiet</target>
+            </trans-unit>
+            <trans-unit id="doctorate.researchAreas" resname="doctorate.researchAreas">
+                <source>research areas</source>
+                <target>Forschungsgebiete</target>
+            </trans-unit>
+            <trans-unit id="doctorate.scholarshipAvailable" resname="doctorate.scholarshipAvailable">
+                <source>scholarship available</source>
+                <target>Stipendium verfügbar</target>
+            </trans-unit>
+            <trans-unit id="doctorate.startDate" resname="doctorate.startDate">
+                <source>start date</source>
+                <target>Startdatum</target>
+            </trans-unit>
+            <trans-unit id="doctorate.subjectArea" resname="doctorate.subjectArea">
+                <source>subjectArea</source>
+                <target>Fachgebiet</target>
+            </trans-unit>
+            <trans-unit id="doctorate.subjectAreas" resname="doctorate.subjectAreas">
+                <source>subjectAreas</source>
+                <target>Fachgebiete</target>
+            </trans-unit>
+            <trans-unit id="doctorate.title" resname="doctorate.title">
+                <source>title</source>
+                <target>Titel</target>
+            </trans-unit>
+
+
             <trans-unit id="hio.show.project.projectLead" resname="hio.show.project.projectLead">
                 <source>Project lead</source>
             </trans-unit>

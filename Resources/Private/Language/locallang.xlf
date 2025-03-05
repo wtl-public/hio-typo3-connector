@@ -186,6 +186,55 @@
             </trans-unit>
 
 
+            <trans-unit id="doctorate.courseOfStudy" resname="doctorate.courseOfStudy">
+                <source>course of study</source>
+            </trans-unit>
+            <trans-unit id="doctorate.description" resname="doctorate.description">
+                <source>description</source>
+            </trans-unit>
+            <trans-unit id="doctorate.doctoralPositionAvailable" resname="doctorate.doctoralPositionAvailable">
+                <source>doctoral position available</source>
+            </trans-unit>
+            <trans-unit id="doctorate.endDate" resname="doctorate.endDate">
+                <source>end date</source>
+            </trans-unit>
+            <trans-unit id="doctorate.language" resname="doctorate.language">
+                <source>language</source>
+            </trans-unit>
+            <trans-unit id="doctorate.organization" resname="doctorate.organization">
+                <source>organization</source>
+            </trans-unit>
+            <trans-unit id="doctorate.organizations" resname="doctorate.organizations">
+                <source>organizations</source>
+            </trans-unit>
+            <trans-unit id="doctorate.person" resname="doctorate.person">
+                <source>person</source>
+            </trans-unit>
+            <trans-unit id="doctorate.persons" resname="doctorate.persons">
+                <source>persons</source>
+            </trans-unit>
+            <trans-unit id="doctorate.researchArea" resname="doctorate.researchArea">
+                <source>research area</source>
+            </trans-unit>
+            <trans-unit id="doctorate.researchAreas" resname="doctorate.researchAreas">
+                <source>research areas</source>
+            </trans-unit>
+            <trans-unit id="doctorate.scholarshipAvailable" resname="doctorate.scholarshipAvailable">
+                <source>scholarship available</source>
+            </trans-unit>
+            <trans-unit id="doctorate.startDate" resname="doctorate.startDate">
+                <source>start date</source>
+            </trans-unit>
+            <trans-unit id="doctorate.subjectArea" resname="doctorate.subjectArea">
+                <source>subjectArea</source>
+            </trans-unit>
+            <trans-unit id="doctorate.subjectAreas" resname="doctorate.subjectAreas">
+                <source>subjectAreas</source>
+            </trans-unit>
+            <trans-unit id="doctorate.title" resname="doctorate.title">
+                <source>title</source>
+            </trans-unit>
+
             <trans-unit id="hio.show.project.projectLead" resname="hio.show.project.projectLead">
                 <source>Project lead</source>
             </trans-unit>
