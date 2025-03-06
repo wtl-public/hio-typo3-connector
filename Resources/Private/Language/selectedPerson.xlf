@@ -40,6 +40,9 @@
             <trans-unit id="flexform.publicationlist.orderBy.typeDesc" resname="flexform.publicationlist.orderBy.typeDesc">
                 <source>Type descending</source>
             </trans-unit>
+            <trans-unit id="flexform.publicationlist.citationStyle" resname="flexform.publicationlist.citationStyle">
+                <source>Citytion style</source>
+            </trans-unit>
             <trans-unit id="flexform.publicationlist.groupBy" resname="flexform.publicationlist.groupBy">
                 <source>Group by</source>
             </trans-unit>

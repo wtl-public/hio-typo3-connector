@@ -52,6 +52,10 @@
                 <source>Type descending</source>
                 <target>Typ absteigend</target>
             </trans-unit>
+            <trans-unit id="flexform.publicationlist.citationStyle" resname="flexform.publicationlist.citationStyle">
+                <source>Citytion style</source>
+                <target>Zitationsstil</target>
+            </trans-unit>
             <trans-unit id="flexform.publicationlist.groupBy" resname="flexform.publicationlist.groupBy">
                 <source>Group by</source>
                 <target>Gruppierung</target>
