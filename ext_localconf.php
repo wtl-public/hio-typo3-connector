@@ -97,7 +97,7 @@ ExtensionUtility::configurePlugin(
     [PersonController::class => 'publicationList'],
     // non-cacheable actions
     [],
-    pluginType:  ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
+    ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
 );
 ExtensionUtility::configurePlugin(
 // extension name, matching the PHP namespaces (but without the vendor)
