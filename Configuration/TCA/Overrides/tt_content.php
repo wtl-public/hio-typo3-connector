@@ -1,65 +1,65 @@
 <?php
 
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-use TYPO3\CMS\Extbase\Utility\ExtensionUtility as ExtensionUtilityAlias;
+use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
 defined('TYPO3') or die();
 
 (static function (): void {
 
-    ExtensionUtilityAlias::registerPlugin(
+    ExtensionUtility::registerPlugin(
         'HioTypo3Connector',
         'PublicationList',
         'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePublications',
     );
-    ExtensionUtilityAlias::registerPlugin(
+    ExtensionUtility::registerPlugin(
         'HioTypo3Connector',
         'ProjectList',
         'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titleProjects',
     );
-    ExtensionUtilityAlias::registerPlugin(
+    ExtensionUtility::registerPlugin(
         'HioTypo3Connector',
         'PersonList',
         'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePersons',
     );
-    ExtensionUtilityAlias::registerPlugin(
+    ExtensionUtility::registerPlugin(
         'HioTypo3Connector',
         'PatentList',
         'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePatents',
     );
-    ExtensionUtilityAlias::registerPlugin(
+    ExtensionUtility::registerPlugin(
         'HioTypo3Connector',
         'DoctorateList',
         'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titleDoctorates',
     );
-    ExtensionUtilityAlias::registerPlugin(
+    ExtensionUtility::registerPlugin(
         'HioTypo3Connector',
         'HabilitationList',
         'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titleHabilitations',
     );
 
 
-    ExtensionUtilityAlias::registerPlugin(
+    ExtensionUtility::registerPlugin(
         'HioTypo3Connector',
         'SelectedPersonPublicationList',
         'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonPublications',
     );
-    ExtensionUtilityAlias::registerPlugin(
+    ExtensionUtility::registerPlugin(
         'HioTypo3Connector',
         'SelectedPersonProjectList',
         'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonProjects',
     );
-    ExtensionUtilityAlias::registerPlugin(
+    ExtensionUtility::registerPlugin(
         'HioTypo3Connector',
         'SelectedPersonPatentList',
         'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonPatents',
     );
-    ExtensionUtilityAlias::registerPlugin(
+    ExtensionUtility::registerPlugin(
         'HioTypo3Connector',
         'SelectedPersonDoctorateList',
         'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonDoctorates',
     );
-    ExtensionUtilityAlias::registerPlugin(
+    ExtensionUtility::registerPlugin(
         'HioTypo3Connector',
         'SelectedPersonHabilitationList',
         'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonHabilitations',
