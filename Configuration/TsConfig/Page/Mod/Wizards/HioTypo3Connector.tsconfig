@@ -102,5 +102,6 @@ mod.wizards.newContentElement.wizardItems {
                 }
             }
         }
+        show := addToList(hio-typo3-connector_publications-for-person, hio-typo3-connector_projects-for-person, hio-typo3-connector_patents-for-person, hio-typo3-connector_doctorates-for-person, hio-typo3-connector_habilitations-for-person)
     }
 }
