@@ -47,27 +47,27 @@ defined('TYPO3') or die();
     ExtensionUtilityAlias::registerPlugin(
         'HioTypo3Connector',
         'PersonSelectedPublicationList',
-        'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePersonPublications',
+        'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonPublications',
     );
     ExtensionUtilityAlias::registerPlugin(
         'HioTypo3Connector',
         'PersonSelectedProjectList',
-        'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePersonProjects',
+        'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonProjects',
     );
     ExtensionUtilityAlias::registerPlugin(
         'HioTypo3Connector',
         'PersonSelectedPatentList',
-        'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePersonPatents',
+        'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonPatents',
     );
     ExtensionUtilityAlias::registerPlugin(
         'HioTypo3Connector',
         'PersonSelectedDoctorateList',
-        'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePersonDoctorates',
+        'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonDoctorates',
     );
     ExtensionUtilityAlias::registerPlugin(
         'HioTypo3Connector',
         'PersonSelectedHabilitationList',
-        'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePersonHabilitations',
+        'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonHabilitations',
     );
 
 
