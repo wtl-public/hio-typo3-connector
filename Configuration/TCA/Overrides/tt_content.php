@@ -46,27 +46,27 @@ defined('TYPO3') or die();
 
     ExtensionUtilityAlias::registerPlugin(
         'HioTypo3Connector',
-        'PersonSelectedPublicationList',
+        'SelectedPersonPublicationList',
         'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonPublications',
     );
     ExtensionUtilityAlias::registerPlugin(
         'HioTypo3Connector',
-        'PersonSelectedProjectList',
+        'SelectedPersonProjectList',
         'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonProjects',
     );
     ExtensionUtilityAlias::registerPlugin(
         'HioTypo3Connector',
-        'PersonSelectedPatentList',
+        'SelectedPersonPatentList',
         'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonPatents',
     );
     ExtensionUtilityAlias::registerPlugin(
         'HioTypo3Connector',
-        'PersonSelectedDoctorateList',
+        'SelectedPersonDoctorateList',
         'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonDoctorates',
     );
     ExtensionUtilityAlias::registerPlugin(
         'HioTypo3Connector',
-        'PersonSelectedHabilitationList',
+        'SelectedPersonHabilitationList',
         'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonHabilitations',
     );
 
@@ -75,31 +75,31 @@ defined('TYPO3') or die();
     ExtensionManagementUtility::addPiFlexFormValue(
         '*',
         'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/SelectedPersonPublicationList.xml',
-        'hiotypo3connector_personselectedpublicationlist'
+        'hiotypo3connector_selectedpersonpublicationlist'
     );
     ExtensionManagementUtility::addPiFlexFormValue(
         '*',
         'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/SelectedPersonProjectList.xml',
-        'hiotypo3connector_personselectedprojectlist'
+        'hiotypo3connector_selectedpersonprojectlist'
     );
     ExtensionManagementUtility::addPiFlexFormValue(
         '*',
         'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/SelectedPersonPatentList.xml',
-        'hiotypo3connector_personselectedpatentlist'
+        'hiotypo3connector_selectedpersonpatentlist'
     );
     ExtensionManagementUtility::addPiFlexFormValue(
         '*',
         'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/SelectedPersonDoctorateList.xml',
-        'hiotypo3connector_personselecteddoctoratelist'
+        'hiotypo3connector_selectedpersondoctoratelist'
     );
     ExtensionManagementUtility::addPiFlexFormValue(
         '*',
         'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/SelectedPersonHabilitationList.xml',
-        'hiotypo3connector_personselectedhabilitationlist'
+        'hiotypo3connector_selectedpersonhabilitationlist'
     );
 
 
-    $showItem = &$GLOBALS['TCA']['tt_content']['types']['hiotypo3connector_personselectedpublicationlist']['showitem'];
+    $showItem = &$GLOBALS['TCA']['tt_content']['types']['hiotypo3connector_selectedpersonpublicationlist']['showitem'];
     $showItem = str_replace(
         '--palette--;;headers,',
         '
@@ -108,7 +108,7 @@ defined('TYPO3') or die();
         ',
         (string)$showItem
     );
-    $showItem = &$GLOBALS['TCA']['tt_content']['types']['hiotypo3connector_personselectedprojectlist']['showitem'];
+    $showItem = &$GLOBALS['TCA']['tt_content']['types']['hiotypo3connector_selectedpersonprojectlist']['showitem'];
     $showItem = str_replace(
         '--palette--;;headers,',
         '
@@ -117,7 +117,7 @@ defined('TYPO3') or die();
         ',
         (string)$showItem
     );
-    $showItem = &$GLOBALS['TCA']['tt_content']['types']['hiotypo3connector_personselectedpatentlist']['showitem'];
+    $showItem = &$GLOBALS['TCA']['tt_content']['types']['hiotypo3connector_selectedpersonpatentlist']['showitem'];
     $showItem = str_replace(
         '--palette--;;headers,',
         '
@@ -126,7 +126,7 @@ defined('TYPO3') or die();
         ',
         (string)$showItem
     );
-    $showItem = &$GLOBALS['TCA']['tt_content']['types']['hiotypo3connector_personselecteddoctoratelist']['showitem'];
+    $showItem = &$GLOBALS['TCA']['tt_content']['types']['hiotypo3connector_selectedpersondoctoratelist']['showitem'];
     $showItem = str_replace(
         '--palette--;;headers,',
         '
@@ -135,7 +135,7 @@ defined('TYPO3') or die();
         ',
         (string)$showItem
     );
-    $showItem = &$GLOBALS['TCA']['tt_content']['types']['hiotypo3connector_personselectedhabilitationlist']['showitem'];
+    $showItem = &$GLOBALS['TCA']['tt_content']['types']['hiotypo3connector_selectedpersonhabilitationlist']['showitem'];
     $showItem = str_replace(
         '--palette--;;headers,',
         '

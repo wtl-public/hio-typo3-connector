@@ -6,7 +6,7 @@ mod.wizards.newContentElement.wizardItems {
                 title = LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonPublications
                 description = LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:descriptionPersonPublications
                 tt_content_defValues {
-                    CType = hiotypo3connector_personselectedpublicationlist
+                    CType = hiotypo3connector_selectedpersonpublicationlist
                     list_type = hio-typo3-connector_publications
                 }
             }
@@ -15,7 +15,7 @@ mod.wizards.newContentElement.wizardItems {
                 title = LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonProjects
                 description = LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:descriptionPersonProjects
                 tt_content_defValues {
-                    CType = hiotypo3connector_personselectedprojectlist
+                    CType = hiotypo3connector_selectedpersonprojectlist
                     list_type = hio-typo3-connector_projects
                 }
             }
@@ -24,7 +24,7 @@ mod.wizards.newContentElement.wizardItems {
                 title = LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonPatents
                 description = LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:descriptionPersonPatents
                 tt_content_defValues {
-                    CType = hiotypo3connector_personselectedpatentlist
+                    CType = hiotypo3connector_selectedpersonpatentlist
                     list_type = hio-typo3-connector_patents
                 }
             }
@@ -33,7 +33,7 @@ mod.wizards.newContentElement.wizardItems {
                 title = LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonDoctorates
                 description = LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:descriptionPersonDoctorates
                 tt_content_defValues {
-                    CType = hiotypo3connector_personselecteddoctoratelist
+                    CType = hiotypo3connector_selectedpersondoctoratelist
                     list_type = hio-typo3-connector_doctorates
                 }
             }
@@ -42,7 +42,7 @@ mod.wizards.newContentElement.wizardItems {
                 title = LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonHabilitations
                 description = LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:descriptionPersonHabilitations
                 tt_content_defValues {
-                    CType = hiotypo3connector_personselectedhabilitationlist
+                    CType = hiotypo3connector_selectedpersonhabilitationlist
                     list_type = hio-typo3-connector_habilitations
                 }
             }

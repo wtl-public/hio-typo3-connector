@@ -92,7 +92,7 @@ ExtensionUtility::configurePlugin(
 // extension name, matching the PHP namespaces (but without the vendor)
     'HioTypo3Connector',
     // arbitrary, but unique plugin name (not visible in the backend)
-    'PersonSelectedPublicationList',
+    'SelectedPersonPublicationList',
     // all actions
     [PersonController::class => 'publicationList'],
     pluginType:  ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
@@ -102,7 +102,7 @@ ExtensionUtility::configurePlugin(
 // extension name, matching the PHP namespaces (but without the vendor)
     'HioTypo3Connector',
     // arbitrary, but unique plugin name (not visible in the backend)
-    'PersonSelectedProjectList',
+    'SelectedPersonProjectList',
     // all actions
     [PersonController::class => 'projectList'],
     pluginType:  ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
@@ -112,7 +112,7 @@ ExtensionUtility::configurePlugin(
 // extension name, matching the PHP namespaces (but without the vendor)
     'HioTypo3Connector',
     // arbitrary, but unique plugin name (not visible in the backend)
-    'PersonSelectedPatentList',
+    'SelectedPersonPatentList',
     // all actions
     [PersonController::class => 'patentList'],
     pluginType:  ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
@@ -122,7 +122,7 @@ ExtensionUtility::configurePlugin(
 // extension name, matching the PHP namespaces (but without the vendor)
     'HioTypo3Connector',
     // arbitrary, but unique plugin name (not visible in the backend)
-    'PersonSelectedDoctorateList',
+    'SelectedPersonDoctorateList',
     // all actions
     [PersonController::class => 'doctorateList'],
     pluginType:  ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
@@ -132,7 +132,7 @@ ExtensionUtility::configurePlugin(
 // extension name, matching the PHP namespaces (but without the vendor)
     'HioTypo3Connector',
     // arbitrary, but unique plugin name (not visible in the backend)
-    'PersonSelectedHabilitationList',
+    'SelectedPersonHabilitationList',
     // all actions
     [PersonController::class => 'habilitationList'],
     pluginType:  ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
