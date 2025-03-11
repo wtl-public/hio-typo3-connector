@@ -103,4 +103,6 @@ mod.wizards.newContentElement.wizardItems {
             }
         }
     }
+    plugins.show := addToList(hiotypo3connector_selectedpersonpublicationlist)
+    plugins.show := addToList(hiotypo3connector_selectedpersonprojectlist)
 }
