@@ -103,6 +103,17 @@ mod.wizards.newContentElement.wizardItems {
             }
         }
     }
+
     plugins.show := addToList(hiotypo3connector_selectedpersonpublicationlist)
     plugins.show := addToList(hiotypo3connector_selectedpersonprojectlist)
+    plugins.show := addToList(hiotypo3connector_selectedpersonpatentlist)
+    plugins.show := addToList(hiotypo3connector_selectedpersondoctoratelist)
+    plugins.show := addToList(hiotypo3connector_selectedpersonhabilitationlist)
+
+    plugins.show := addToList(hiotypo3connector_publicationlist)
+    plugins.show := addToList(hiotypo3connector_projectlist)
+    plugins.show := addToList(hiotypo3connector_personlist)
+    plugins.show := addToList(hiotypo3connector_patentlist)
+    plugins.show := addToList(hiotypo3connector_doctoratelist)
+    plugins.show := addToList(hiotypo3connector_habilitationlist)
 }
