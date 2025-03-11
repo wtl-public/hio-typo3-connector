@@ -14,11 +14,6 @@ defined('TYPO3') or die();
     );
     ExtensionUtilityAlias::registerPlugin(
         'HioTypo3Connector',
-        'PublicationDetails',
-        'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePublicationDetails',
-    );
-    ExtensionUtilityAlias::registerPlugin(
-        'HioTypo3Connector',
         'ProjectList',
         'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titleProjects',
     );
@@ -146,15 +141,6 @@ defined('TYPO3') or die();
     );
 
     $showItem = &$GLOBALS['TCA']['tt_content']['types']['hiotypo3connector_publicationlist']['showitem'];
-    $showItem = str_replace(
-        '--palette--;;headers,',
-        '
-            --palette--;;headers,
-            pages,
-        ',
-        (string)$showItem
-    );
-    $showItem = &$GLOBALS['TCA']['tt_content']['types']['hiotypo3connector_publicationdetails']['showitem'];
     $showItem = str_replace(
         '--palette--;;headers,',
         '
