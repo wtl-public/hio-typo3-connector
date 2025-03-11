@@ -43,9 +43,6 @@ defined('TYPO3') or die();
         'HioTypo3Connector',
         'SelectedPersonPublicationList',
         'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonPublications',
-        'EXT:hio_typo3_connector/Resources/Public/Icons/user_plugin_selectedpersonpublicationlist.svg',
-        'plugins',
-        'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:descriptionPersonPublications',
     );
     ExtensionUtility::registerPlugin(
         'HioTypo3Connector',
