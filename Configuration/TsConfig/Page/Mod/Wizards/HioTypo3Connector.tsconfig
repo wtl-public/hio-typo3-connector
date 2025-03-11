@@ -102,6 +102,5 @@ mod.wizards.newContentElement.wizardItems {
                 }
             }
         }
-        show := addToList(hiotypo3connector_selectedpersonpublicationlist, hiotypo3connector_selectedpersonprojectlist, hiotypo3connector_selectedpersonpatentlist, hiotypo3connector_selectedpersondoctoratelist, hiotypo3connector_selectedpersonhabilitationlist, hiotypo3connector_publicationlist, hiotypo3connector_projectlist, hiotypo3connector_personlist, hiotypo3connector_patentlist, hiotypo3connector_doctoratelist, hiotypo3connector_habilitationlist)
     }
 }
