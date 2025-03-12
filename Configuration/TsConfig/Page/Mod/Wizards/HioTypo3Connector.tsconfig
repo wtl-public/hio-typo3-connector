@@ -118,4 +118,4 @@ mod.wizards.newContentElement.wizardItems {
     plugins.show := addToList(hiotypo3connector_habilitationlist)
 }
 
-TCEFORM.tt_content.pi_flexform.hiotypo3connector_selectedpersonpublicationlist.sDEF.settings\.personUid.config.elementBrowserEntryPoints.pages = 9
+TCEFORM.tt_content.pi_flexform.hiotypo3connector_selectedpersonpublicationlist.sDEF.settings\.personUid.config.elementBrowserEntryPoints._default = 9
