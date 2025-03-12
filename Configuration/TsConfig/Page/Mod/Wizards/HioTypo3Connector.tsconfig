@@ -117,3 +117,6 @@ mod.wizards.newContentElement.wizardItems {
     plugins.show := addToList(hiotypo3connector_doctoratelist)
     plugins.show := addToList(hiotypo3connector_habilitationlist)
 }
+
+TCEFORM.tx_hiotypo3connector_domain_model_person.settings.personUid.config.elementBrowserEntryPoints._default = 9
+//TCEFORM.tx_hiotypo3connector_domain_model_person.PAGE_TSCONFIG_PERSONPID = 9
