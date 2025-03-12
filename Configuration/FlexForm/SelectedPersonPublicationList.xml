@@ -16,7 +16,7 @@
                             <type>group</type>
                             <allowed>tx_hiotypo3connector_domain_model_person</allowed>
                             <elementBrowserEntryPoints>
-                                <_default>###PAGE_TSCONFIG_ID###</_default>
+                                <default>###PAGE_TSCONFIG_ID###</default>
                             </elementBrowserEntryPoints>
                             <size>1</size>
                             <maxitems>1</maxitems>
