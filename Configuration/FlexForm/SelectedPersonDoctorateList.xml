@@ -9,15 +9,18 @@
                 <type>array</type>
                 <el>
                     <settings.personUid>
-                        <label>LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.doctoratelist.personUid
+                        <label>LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.patentlist.personUid
                         </label>
                         <config>
-                            <type>group</type>
-                            <internal_type>db</internal_type>
-                            <allowed>tx_hiotypo3connector_domain_model_person</allowed>
-                            <size>1</size>
-                            <maxitems>1</maxitems>
+                            <type>select</type>
+                            <renderType>selectMultipleSideBySide</renderType>
+                            <foreign_table>tx_hiotypo3connector_domain_model_person</foreign_table>
+                            <foreign_table_where>AND tx_hiotypo3connector_domain_model_person.deleted = 0 AND
+                                tx_hiotypo3connector_domain_model_person.hidden = 0 
+                            </foreign_table_where>
                             <minitems>0</minitems>
+                            <maxitems>1</maxitems>
+                            <enableMultiSelectFilterTextfield>TRUE</enableMultiSelectFilterTextfield>
                         </config>
                     </settings.personUid>
                 </el>

@@ -28,11 +28,13 @@ class PatentController extends BaseController
 
     public function indexAction(int $currentPage = 1): ResponseInterface
     {
+
         $paginator = new QueryResultPaginator(
             $this->patentRepository->findAll(),
             $this->getCurrentPageNumberFromRequest(),
             10,
         );
+
         $pagination = new SimplePagination($paginator);
         $this->view->assignMultiple([
             'paginator' => $paginator,

@@ -430,6 +430,19 @@
                 <target>Weitere Veröffentlichungen</target>
             </trans-unit>
 
+
+            <trans-unit id="apa-old-doi-prefix" resname="apa-old-doi-prefix">
+                <source>APA</source>
+                <target>APA</target>
+            </trans-unit>
+            <trans-unit id="harvard-anglia-ruskin-university" resname="harvard-anglia-ruskin-university">
+                <source>Harvard ARU</source>
+                <target>Harvard ARU</target>
+            </trans-unit>
+            <trans-unit id="harvard-gesellschaft-fur-bildung-und-forschung-in-europa" resname="harvard-gesellschaft-fur-bildung-und-forschung-in-europa">
+                <source>Harvard nach GBFE</source>
+                <target>Harvard nach GBFE</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
