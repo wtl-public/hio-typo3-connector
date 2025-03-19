@@ -1,211 +1,107 @@
 <?php
 
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-use TYPO3\CMS\Extbase\Utility\ExtensionUtility as ExtensionUtilityAlias;
+use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
 defined('TYPO3') or die();
 
-(static function (): void {
+ExtensionUtility::registerPlugin(
+    'HioTypo3Connector',
+    'Publicationlist',
+    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePublications',
+    'tx-hio_typo3_connector-list-of-publications',
+);
+ExtensionUtility::registerPlugin(
+    'HioTypo3Connector',
+    'Publicationdetails',
+    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePublicationDetails',
+    'tx-hio_typo3_connector-projects',
+);
+ExtensionUtility::registerPlugin(
+    'HioTypo3Connector',
+    'Projectlist',
+    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titleProjects',
+    'tx-hio_typo3_connector-list-of-projects',
+);
+ExtensionUtility::registerPlugin(
+    'HioTypo3Connector',
+    'Personlist',
+    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePersons',
+    'tx-hio_typo3_connector-list-of-persons',
+);
+ExtensionUtility::registerPlugin(
+    'HioTypo3Connector',
+    'Patentlist',
+    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePatents',
+);
+ExtensionUtility::registerPlugin(
+    'HioTypo3Connector',
+    'Doctoratelist',
+    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titleDoctorates',
+    'tx-hio_typo3_connector-list-of-doctorates',
+);
+ExtensionUtility::registerPlugin(
+    'HioTypo3Connector',
+    'Habilitationlist',
+    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titleHabilitations',
+    'tx-hio_typo3_connector-list-of-habilitations',
+);
+ExtensionUtility::registerPlugin(
+    'HioTypo3Connector',
+    'Personselectedhabilitationlist',
+    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonPublications',
+    'tx-hio_typo3_connector-publications',
+);
+ExtensionUtility::registerPlugin(
+    'HioTypo3Connector',
+    'Personselectedpatentlist',
+    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonPatents',
+    'tx-hio_typo3_connector-patents',
+);
 
-    ExtensionUtilityAlias::registerPlugin(
-        'HioTypo3Connector',
-        'PublicationList',
-        'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePublications',
-    );
-    ExtensionUtilityAlias::registerPlugin(
-        'HioTypo3Connector',
-        'PublicationDetails',
-        'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePublicationDetails',
-    );
-    ExtensionUtilityAlias::registerPlugin(
-        'HioTypo3Connector',
-        'ProjectList',
-        'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titleProjects',
-    );
-    ExtensionUtilityAlias::registerPlugin(
-        'HioTypo3Connector',
-        'PersonList',
-        'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePersons',
-    );
-    ExtensionUtilityAlias::registerPlugin(
-        'HioTypo3Connector',
-        'PatentList',
-        'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePatents',
-    );
-    ExtensionUtilityAlias::registerPlugin(
-        'HioTypo3Connector',
-        'DoctorateList',
-        'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titleDoctorates',
-    );
-    ExtensionUtilityAlias::registerPlugin(
-        'HioTypo3Connector',
-        'HabilitationList',
-        'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titleHabilitations',
-    );
+ExtensionUtility::registerPlugin(
+    'HioTypo3Connector',
+    'Personselecteddoctoratelist',
+    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonProjects',
+    'tx-hio_typo3_connector-projects',
+);
+ExtensionUtility::registerPlugin(
+    'HioTypo3Connector',
+    'Personselectedprojectlist',
+    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonProjects',
+    'tx-hio_typo3_connector-projects',
+);
+ExtensionUtility::registerPlugin(
+    'HioTypo3Connector',
+    'Personselectedpublicationlist',
+    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonPublications',
+    'tx-hio_typo3_connector-publications',
+);
 
+// Configuration/TCA/Overrides/tt_content.php
+ExtensionManagementUtility::addPiFlexFormValue(
+    '*',
+    'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/SelectedPersonPublicationList.xml',
+    'hiotypo3connector_personselectedpublicationlist'
+);
+ExtensionManagementUtility::addPiFlexFormValue(
+    '*',
+    'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/SelectedPersonProjectList.xml',
+    'hiotypo3connector_personselectedprojectlist'
+);
+ExtensionManagementUtility::addPiFlexFormValue(
+    '*',
+    'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/SelectedPersonPatentList.xml',
+    'hiotypo3connector_personselectedpatentlist'
+);
+ExtensionManagementUtility::addPiFlexFormValue(
+    '*',
+    'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/SelectedPersonDoctorateList.xml',
+    'hiotypo3connector_personselecteddoctoratelist'
+);
+ExtensionManagementUtility::addPiFlexFormValue(
+    '*',
+    'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/SelectedPersonHabilitationList.xml',
+    'hiotypo3connector_personselectedhabilitationlist'
+);
 
-    ExtensionUtilityAlias::registerPlugin(
-        'HioTypo3Connector',
-        'PersonSelectedPublicationList',
-        'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePersonPublications',
-    );
-    ExtensionUtilityAlias::registerPlugin(
-        'HioTypo3Connector',
-        'PersonSelectedProjectList',
-        'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePersonProjects',
-    );
-    ExtensionUtilityAlias::registerPlugin(
-        'HioTypo3Connector',
-        'PersonSelectedPatentList',
-        'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePersonPatents',
-    );
-    ExtensionUtilityAlias::registerPlugin(
-        'HioTypo3Connector',
-        'PersonSelectedDoctorateList',
-        'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePersonDoctorates',
-    );
-    ExtensionUtilityAlias::registerPlugin(
-        'HioTypo3Connector',
-        'PersonSelectedHabilitationList',
-        'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePersonHabilitations',
-    );
-
-
-    // Configuration/TCA/Overrides/tt_content.php
-    ExtensionManagementUtility::addPiFlexFormValue(
-        '*',
-        'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/SelectedPersonPublicationList.xml',
-        'hiotypo3connector_personselectedpublicationlist'
-    );
-    ExtensionManagementUtility::addPiFlexFormValue(
-        '*',
-        'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/SelectedPersonProjectList.xml',
-        'hiotypo3connector_personselectedprojectlist'
-    );
-    ExtensionManagementUtility::addPiFlexFormValue(
-        '*',
-        'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/SelectedPersonPatentList.xml',
-        'hiotypo3connector_personselectedpatentlist'
-    );
-    ExtensionManagementUtility::addPiFlexFormValue(
-        '*',
-        'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/SelectedPersonDoctorateList.xml',
-        'hiotypo3connector_personselecteddoctoratelist'
-    );
-    ExtensionManagementUtility::addPiFlexFormValue(
-        '*',
-        'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/SelectedPersonHabilitationList.xml',
-        'hiotypo3connector_personselectedhabilitationlist'
-    );
-
-
-    $showItem = &$GLOBALS['TCA']['tt_content']['types']['hiotypo3connector_personselectedpublicationlist']['showitem'];
-    $showItem = str_replace(
-        '--palette--;;headers,',
-        '
-            --palette--;;headers,
-            pi_flexform,
-        ',
-        (string)$showItem
-    );
-    $showItem = &$GLOBALS['TCA']['tt_content']['types']['hiotypo3connector_personselectedprojectlist']['showitem'];
-    $showItem = str_replace(
-        '--palette--;;headers,',
-        '
-            --palette--;;headers,
-            pi_flexform,
-        ',
-        (string)$showItem
-    );
-    $showItem = &$GLOBALS['TCA']['tt_content']['types']['hiotypo3connector_personselectedpatentlist']['showitem'];
-    $showItem = str_replace(
-        '--palette--;;headers,',
-        '
-            --palette--;;headers,
-            pi_flexform,
-        ',
-        (string)$showItem
-    );
-    $showItem = &$GLOBALS['TCA']['tt_content']['types']['hiotypo3connector_personselecteddoctoratelist']['showitem'];
-    $showItem = str_replace(
-        '--palette--;;headers,',
-        '
-            --palette--;;headers,
-            pi_flexform,
-        ',
-        (string)$showItem
-    );
-    $showItem = &$GLOBALS['TCA']['tt_content']['types']['hiotypo3connector_personselectedhabilitationlist']['showitem'];
-    $showItem = str_replace(
-        '--palette--;;headers,',
-        '
-            --palette--;;headers,
-            pi_flexform,
-        ',
-        (string)$showItem
-    );
-
-    $showItem = &$GLOBALS['TCA']['tt_content']['types']['hiotypo3connector_publicationlist']['showitem'];
-    $showItem = str_replace(
-        '--palette--;;headers,',
-        '
-            --palette--;;headers,
-            pages,
-        ',
-        (string)$showItem
-    );
-    $showItem = &$GLOBALS['TCA']['tt_content']['types']['hiotypo3connector_publicationdetails']['showitem'];
-    $showItem = str_replace(
-        '--palette--;;headers,',
-        '
-            --palette--;;headers,
-            pages,
-        ',
-        (string)$showItem
-    );
-    $showItem = &$GLOBALS['TCA']['tt_content']['types']['hiotypo3connector_projectlist']['showitem'];
-    $showItem = str_replace(
-        '--palette--;;headers,',
-        '
-            --palette--;;headers,
-            pages,
-        ',
-        (string)$showItem
-    );
-    $showItem = &$GLOBALS['TCA']['tt_content']['types']['hiotypo3connector_patentlist']['showitem'];
-    $showItem = str_replace(
-        '--palette--;;headers,',
-        '
-            --palette--;;headers,
-            pages,
-        ',
-        (string)$showItem
-    );
-    $showItem = &$GLOBALS['TCA']['tt_content']['types']['hiotypo3connector_doctoratelist']['showitem'];
-    $showItem = str_replace(
-        '--palette--;;headers,',
-        '
-            --palette--;;headers,
-            pages,
-        ',
-        (string)$showItem
-    );
-    $showItem = &$GLOBALS['TCA']['tt_content']['types']['hiotypo3connector_habilitationlist']['showitem'];
-    $showItem = str_replace(
-        '--palette--;;headers,',
-        '
-            --palette--;;headers,
-            pages,
-        ',
-        (string)$showItem
-    );
-    $showItem = &$GLOBALS['TCA']['tt_content']['types']['hiotypo3connector_personlist']['showitem'];
-    $showItem = str_replace(
-        '--palette--;;headers,',
-        '
-            --palette--;;headers,
-            pages,
-        ',
-        (string)$showItem
-    );
-})();
