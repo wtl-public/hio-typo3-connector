@@ -53,6 +53,25 @@ class PersonController extends BaseController
         return $this->htmlResponse();
     }
 
+    public function searchAction(int $currentPage = 1, String $searchWord = ''): ResponseInterface
+    {
+        $persons = $this->personRepository->findBySearchWord($searchWord);
+
+        $paginator = new QueryResultPaginator(
+            $persons,
+            $this->getCurrentPageNumberFromRequest(),
+            10,
+        );
+        $pagination = new SimplePagination($paginator);
+        $this->view->assignMultiple([
+            'paginator' => $paginator,
+            'pagination' => $pagination,
+            'searchWord' => $searchWord,
+        ]);
+
+        return $this->htmlResponse();
+    }
+
     public function initializeShowAction(): void
     {
         // ensure the show action works with the person object_id as argument

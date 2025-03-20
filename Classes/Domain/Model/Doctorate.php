@@ -16,6 +16,11 @@ class Doctorate extends AbstractEntity
      */
     protected mixed $details;
 
+    /**
+     * @var string
+     */
+    protected mixed $searchIndex;
+
     public function getObjectId(): int
     {
         return $this->objectId;
@@ -41,5 +46,16 @@ class Doctorate extends AbstractEntity
     public function setDetails($details): void
     {
         $this->details = json_encode($details);
+    }
+
+    
+    public function getSearchIndex()
+    {
+        return $this->searchIndex;
+    }
+
+    public function setSearchIndex(string $searchIndex)
+    {
+        $this->searchIndex = $searchIndex;
     }
 }

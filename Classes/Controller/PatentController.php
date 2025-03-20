@@ -44,6 +44,25 @@ class PatentController extends BaseController
         return $this->htmlResponse();
     }
 
+    public function searchAction(int $currentPage = 1, String $searchWord = ''): ResponseInterface
+    {
+        $patents = $this->patentRepository->findBySearchWord($searchWord);
+
+        $paginator = new QueryResultPaginator(
+            $patents,
+            $this->getCurrentPageNumberFromRequest(),
+            10,
+        );
+        $pagination = new SimplePagination($paginator);
+        $this->view->assignMultiple([
+            'paginator' => $paginator,
+            'pagination' => $pagination,
+            'searchWord' => $searchWord,
+        ]);
+
+        return $this->htmlResponse();
+    }
+
     public function showAction(Patent $patent): ResponseInterface
     {
         $this->view->assignMultiple(

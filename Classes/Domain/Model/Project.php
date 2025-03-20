@@ -16,6 +16,11 @@ class Project extends AbstractEntity
      */
     protected mixed $details;
 
+     /**
+     * @var string
+     */
+    protected mixed $searchIndex;
+
     public function getObjectId(): int
     {
         return $this->objectId;
@@ -41,5 +46,29 @@ class Project extends AbstractEntity
     public function setDetails($details): void
     {
         $this->details = json_encode($details);
+    }
+
+    /**
+     * Get the value of searchIndex
+     *
+     * @return  string
+     */ 
+    public function getSearchIndex()
+    {
+        return $this->searchIndex;
+    }
+
+    /**
+     * Set the value of searchIndex
+     *
+     * @param  string  $searchIndex
+     *
+     * @return  self
+     */ 
+    public function setSearchIndex(string $searchIndex)
+    {
+        $this->searchIndex = $searchIndex;
+
+        return $this;
     }
 }

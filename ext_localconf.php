@@ -13,23 +13,24 @@ use Wtl\HioTypo3Connector\Controller\HabilitationController;
 
 
 ExtensionUtility::configurePlugin(
-// extension name, matching the PHP namespaces (but without the vendor)
+    // extension name, matching the PHP namespaces (but without the vendor)
     'HioTypo3Connector',
     // arbitrary, but unique plugin name (not visible in the backend)
     'PublicationList',
     // all actions
-    [PublicationController::class => 'index, show'],
-// non-cacheable actions
+    [PublicationController::class => 'index, show, search'],
+    // non-cacheable actions
+    [PublicationController::class => 'search'],
 );
 
 ExtensionUtility::configurePlugin(
-// extension name, matching the PHP namespaces (but without the vendor)
+    // extension name, matching the PHP namespaces (but without the vendor)
     'HioTypo3Connector',
     // arbitrary, but unique plugin name (not visible in the backend)
     'PublicationDetails',
     // all actions
     [PublicationController::class => 'show'],
-// non-cacheable actions
+    // non-cacheable actions
 );
 
 ExtensionUtility::configurePlugin(
@@ -38,8 +39,9 @@ ExtensionUtility::configurePlugin(
     // arbitrary, but unique plugin name (not visible in the backend)
     'ProjectList',
     // all actions
-    [ProjectController::class => 'index, show'],
+    [ProjectController::class => 'index, show, search'],
     // non-cacheable actions
+    [ProjectController::class => 'search'],
 );
 
 ExtensionUtility::configurePlugin(
@@ -48,83 +50,87 @@ ExtensionUtility::configurePlugin(
     // arbitrary, but unique plugin name (not visible in the backend)
     'PersonList',
     // all actions
-    [PersonController::class => 'index, show'],
+    [PersonController::class => 'index, show, search'],
     // non-cacheable actions
+    [PersonController::class => 'search'],
 );
 
 ExtensionUtility::configurePlugin(
-// extension name, matching the PHP namespaces (but without the vendor)
+    // extension name, matching the PHP namespaces (but without the vendor)
     'HioTypo3Connector',
     // arbitrary, but unique plugin name (not visible in the backend)
     'PatentList',
     // all actions
-    [PatentController::class => 'index, show'],
-// non-cacheable actions
+    [PatentController::class => 'index, show, search'],
+    // non-cacheable actions
+    [PatentController::class => 'search'],
 );
 ExtensionUtility::configurePlugin(
-// extension name, matching the PHP namespaces (but without the vendor)
+    // extension name, matching the PHP namespaces (but without the vendor)
     'HioTypo3Connector',
     // arbitrary, but unique plugin name (not visible in the backend)
     'DoctorateList',
     // all actions
-    [DoctorateController::class => 'index, show'],
-// non-cacheable actions
+    [DoctorateController::class => 'index, show, search'],
+    // non-cacheable actions
+    [DoctorateController::class => 'search'],
 );
 ExtensionUtility::configurePlugin(
-// extension name, matching the PHP namespaces (but without the vendor)
+    // extension name, matching the PHP namespaces (but without the vendor)
     'HioTypo3Connector',
     // arbitrary, but unique plugin name (not visible in the backend)
     'HabilitationList',
     // all actions
-    [HabilitationController::class => 'index, show'],
-// non-cacheable actions
+    [HabilitationController::class => 'index, show, search'],
+    // non-cacheable actions
+    [HabilitationController::class => 'search'],
 );
 
 
 ExtensionUtility::configurePlugin(
-// extension name, matching the PHP namespaces (but without the vendor)
+    // extension name, matching the PHP namespaces (but without the vendor)
     'HioTypo3Connector',
     // arbitrary, but unique plugin name (not visible in the backend)
     'PersonSelectedPublicationList',
     // all actions
     [PersonController::class => 'publicationList'],
-// non-cacheable actions
+    // non-cacheable actions
 );
 ExtensionUtility::configurePlugin(
-// extension name, matching the PHP namespaces (but without the vendor)
+    // extension name, matching the PHP namespaces (but without the vendor)
     'HioTypo3Connector',
     // arbitrary, but unique plugin name (not visible in the backend)
     'PersonSelectedProjectList',
     // all actions
     [PersonController::class => 'projectList'],
-// non-cacheable actions
+    // non-cacheable actions
 );
 ExtensionUtility::configurePlugin(
-// extension name, matching the PHP namespaces (but without the vendor)
+    // extension name, matching the PHP namespaces (but without the vendor)
     'HioTypo3Connector',
     // arbitrary, but unique plugin name (not visible in the backend)
     'PersonSelectedPatentList',
     // all actions
     [PersonController::class => 'patentList'],
-// non-cacheable actions
+    // non-cacheable actions
 );
 ExtensionUtility::configurePlugin(
-// extension name, matching the PHP namespaces (but without the vendor)
+    // extension name, matching the PHP namespaces (but without the vendor)
     'HioTypo3Connector',
     // arbitrary, but unique plugin name (not visible in the backend)
     'PersonSelectedDoctorateList',
     // all actions
     [PersonController::class => 'doctorateList'],
-// non-cacheable actions
+    // non-cacheable actions
 );
 ExtensionUtility::configurePlugin(
-// extension name, matching the PHP namespaces (but without the vendor)
+    // extension name, matching the PHP namespaces (but without the vendor)
     'HioTypo3Connector',
     // arbitrary, but unique plugin name (not visible in the backend)
     'PersonSelectedHabilitationList',
     // all actions
     [PersonController::class => 'habilitationList'],
-// non-cacheable actions
+    // non-cacheable actions
 );
 
 

@@ -43,6 +43,25 @@ class ProjectController extends BaseController
         return $this->htmlResponse();
     }
 
+    public function searchAction(int $currentPage = 1, String $searchWord = ''): ResponseInterface
+    {
+        $projects = $this->projectRepository->findBySearchWord($searchWord);
+
+        $paginator = new QueryResultPaginator(
+            $projects,
+            $this->getCurrentPageNumberFromRequest(),
+            10,
+        );
+        $pagination = new SimplePagination($paginator);
+        $this->view->assignMultiple([
+            'paginator' => $paginator,
+            'pagination' => $pagination,
+            'searchWord' => $searchWord,
+        ]);
+
+        return $this->htmlResponse();
+    }
+
     public function showAction(Project $project): ResponseInterface
     {
         $this->view->assignMultiple(
