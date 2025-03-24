@@ -20,7 +20,7 @@ class HioPatentService extends HioApiService
             $dto->setObjectId($patent['id']);
             $dto->setTitle($patent['title'] ?? '');
             $dto->setDetails($patent);
-            $dto->setSearchIndex(strtolower($patent));
+            $dto->setSearchIndex(strtolower(json_encode($patent)));
             $projects[] = $dto;
         }
         return $projects ?? [];
