@@ -42,6 +42,11 @@ class Person extends AbstractEntity
      */
     protected mixed $details;
 
+     /**
+     * @var string
+     */
+    protected mixed $searchIndex;
+
     public function __construct()
     {
         $this->initializeObject();
@@ -196,6 +201,30 @@ class Person extends AbstractEntity
         if ($this->habilitations->contains($habilitation)) {
             $this->habilitations->detach($habilitation);
         }
+        return $this;
+    }
+
+    /**
+     * Get the value of searchIndex
+     *
+     * @return  string
+     */ 
+    public function getSearchIndex()
+    {
+        return $this->searchIndex;
+    }
+
+    /**
+     * Set the value of searchIndex
+     *
+     * @param  string  $searchIndex
+     *
+     * @return  self
+     */ 
+    public function setSearchIndex(string $searchIndex)
+    {
+        $this->searchIndex = $searchIndex;
+
         return $this;
     }
 }

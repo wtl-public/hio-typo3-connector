@@ -21,6 +21,11 @@ class Publication extends AbstractEntity
      */
     protected mixed $details;
 
+     /**
+     * @var string
+     */
+    protected mixed $searchIndex;
+
     /**
      * @var ObjectStorage<CitationStyle>
      */
@@ -104,5 +109,29 @@ class Publication extends AbstractEntity
     public function setReleaseYear(?string $releaseYear): void
     {
         $this->releaseYear = $releaseYear;
+    }
+
+    /**
+     * Get the value of searchIndex
+     *
+     * @return  string
+     */ 
+    public function getSearchIndex()
+    {
+        return $this->searchIndex;
+    }
+
+    /**
+     * Set the value of searchIndex
+     *
+     * @param  string  $searchIndex
+     *
+     * @return  self
+     */ 
+    public function setSearchIndex(string $searchIndex)
+    {
+        $this->searchIndex = $searchIndex;
+
+        return $this;
     }
 }

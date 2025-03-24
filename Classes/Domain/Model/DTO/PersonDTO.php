@@ -10,6 +10,7 @@ class PersonDTO
     protected int $objectId = 0;
     protected string $name = '';
     protected array $details = [];
+    protected array $searchIndex = [];
     protected array $publications = [];
     protected array $projects = [];
     protected array $patents = [];
@@ -87,5 +88,17 @@ class PersonDTO
     public function setHabilitations(array $habilitations): void
     {
         $this->habilitations = $habilitations;
+    }
+
+    public function getSearchIndex()
+    {
+        return $this->searchIndex;
+    }
+
+    public function setSearchIndex($searchIndex)
+    {
+        $this->searchIndex = $searchIndex;
+
+        return $this;
     }
 }

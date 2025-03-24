@@ -44,6 +44,25 @@ class PublicationController extends BaseController
         return $this->htmlResponse();
     }
 
+    public function searchAction(int $currentPage = 1, String $searchWord = ''): ResponseInterface
+    {
+        $publications = $this->publicationRepository->findBySearchWord($searchWord);
+
+        $paginator = new QueryResultPaginator(
+            $publications,
+            $this->getCurrentPageNumberFromRequest(),
+            10,
+        );
+        $pagination = new SimplePagination($paginator);
+        $this->view->assignMultiple([
+            'paginator' => $paginator,
+            'pagination' => $pagination,
+            'searchWord' => $searchWord,
+        ]);
+
+        return $this->htmlResponse();
+    }
+
     public function showAction(Publication $publication): ResponseInterface
     {
         $this->view->assignMultiple(

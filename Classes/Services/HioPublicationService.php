@@ -23,6 +23,7 @@ class HioPublicationService extends HioApiService
             $publicationData->setReleaseYear($releaseYear);
             $publicationData->setCitations($publication['citations'] ?? []);
             $publicationData->setDetails($publication);
+            $publicationData->setSearchIndex(strtolower($publication));
             $publications[] = $publicationData;
         }
         return $publications??[];

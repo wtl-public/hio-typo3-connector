@@ -42,6 +42,25 @@ class DoctorateController extends BaseController
         return $this->htmlResponse();
     }
 
+    public function searchAction(int $currentPage = 1, String $searchWord = ''): ResponseInterface
+    {
+        $doctorates = $this->doctorateRepository->findBySearchWord($searchWord);
+
+        $paginator = new QueryResultPaginator(
+            $doctorates,
+            $this->getCurrentPageNumberFromRequest(),
+            10,
+        );
+        $pagination = new SimplePagination($paginator);
+        $this->view->assignMultiple([
+            'paginator' => $paginator,
+            'pagination' => $pagination,
+            'searchWord' => $searchWord,
+        ]);
+
+        return $this->htmlResponse();
+    }
+
     public function showAction(Doctorate $doctorate): ResponseInterface
     {
         $this->view->assignMultiple(

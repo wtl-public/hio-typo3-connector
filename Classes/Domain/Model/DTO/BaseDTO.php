@@ -10,6 +10,7 @@ abstract class BaseDTO
     protected int $extbaseUid = 0;
     protected int $objectId = 0;
     protected array $details = [];
+    protected array $searchIndex = [];
 
     public function getExtbaseUid(): int
     {
@@ -39,4 +40,16 @@ abstract class BaseDTO
     }
 
     abstract static public function fromDomainModel(AbstractEntity $model): static;
+
+    public function getSearchIndex()
+    {
+        return $this->searchIndex;
+    }
+
+    public function setSearchIndex($searchIndex)
+    {
+        $this->searchIndex = $searchIndex;
+
+        return $this;
+    }
 }
