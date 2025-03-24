@@ -43,7 +43,7 @@ abstract class BaseDTO
 
     public function getSearchIndex()
     {
-        return $this->searchIndex;
+        return strtolower(json_encode($this->searchIndex));
     }
 
     public function setSearchIndex($searchIndex)

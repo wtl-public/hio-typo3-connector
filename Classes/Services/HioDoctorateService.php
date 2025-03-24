@@ -20,7 +20,7 @@ class HioDoctorateService extends HioApiService
             $dto->setObjectId($doctorate['id']);
             $dto->setTitle($doctorate['title'] ?? '');
             $dto->setDetails($doctorate);
-            $dto->setSearchIndex(strtolower($doctorate));
+            $dto->setSearchIndex($doctorate);
             $doctorates[] = $dto;
         }
         return $doctorates ?? [];

@@ -20,7 +20,7 @@ class HioHabilitationService extends HioApiService
             $dto->setObjectId($habilitation['id']);
             $dto->setTitle($habilitation['title'] ?? '');
             $dto->setDetails($habilitation);
-            $dto->setSearchIndex(strtolower($habilitation));
+            $dto->setSearchIndex($habilitation);
             $habilitations[] = $dto;
         }
         return $habilitations ?? [];

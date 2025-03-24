@@ -20,7 +20,7 @@ class HioPersonService extends HioApiService
             $personData->setObjectId($person['id']);
             $personData->setName($person['name'] ?? '');
             $personData->setDetails($person);
-            $personData->setSearchIndex(strtolower($person));
+            $personData->setSearchIndex($person);
             $personData->setPublications($person['publications'] ?? []);
             $personData->setProjects($person['projects'] ?? []);
             $personData->setPatents($person['patents'] ?? []);

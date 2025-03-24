@@ -17,6 +17,7 @@ class ProjectRepository extends BaseRepository
                 $projectModel->setObjectId($project->getObjectId());
                 $projectModel->setTitle($project->getTitle());
                 $projectModel->setDetails($project->getDetails());
+                $projectModel->setSearchIndex($project->getSearchIndex());
                 $projectModel->setPid($storagePageId);
 
                 $this->add($projectModel);
@@ -24,6 +25,7 @@ class ProjectRepository extends BaseRepository
                 $projectModel->setObjectId($project->getObjectId());
                 $projectModel->setTitle($project->getTitle());
                 $projectModel->setDetails($project->getDetails());
+                $projectModel->setSearchIndex($project->getSearchIndex());
                 $this->update($projectModel);
             }
         }
