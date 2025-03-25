@@ -102,6 +102,13 @@ return [
                 'notnull' => false,
             ],
         ],
+        'search_index' => [
+            'label' => 'Search Index',
+            'config' => [
+                'type' => Types::BLOB,
+                'notnull' => false,
+            ],
+        ],
         'publications' => [
             'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_person.publications',
             'config' => [

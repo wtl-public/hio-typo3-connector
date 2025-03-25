@@ -20,7 +20,7 @@ class HioProjectService extends HioApiService
             $projectData->setObjectId($project['id']);
             $projectData->setTitle($project['title'] ?? '');
             $projectData->setDetails($project);
-            $projectData->setSearchIndex(strtolower(json_encode($project)));
+            $projectData->setSearchIndex($project);
             $projects[] = $projectData;
         }
         return $projects ?? [];

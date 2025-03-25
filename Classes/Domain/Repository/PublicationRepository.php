@@ -18,15 +18,19 @@ class PublicationRepository extends BaseRepository
                 $publicationModel->setTitle($publication->getTitle());
                 $publicationModel->setType($publication->getType());
                 $publicationModel->setDetails($publication->getDetails());
+                $publicationModel->setSearchIndex($publication->getSearchIndex());
                 $publicationModel->setPid($storagePageId);
                 $publicationModel->setReleaseYear($publication->getReleaseYear());
+
                 $this->add($publicationModel);
             } else {
                 $publicationModel->setObjectId($publication->getObjectId());
                 $publicationModel->setTitle($publication->getTitle());
                 $publicationModel->setType($publication->getType());
                 $publicationModel->setDetails($publication->getDetails());
+                $publicationModel->setSearchIndex($publication->getSearchIndex());
                 $publicationModel->setReleaseYear($publication->getReleaseYear());
+
                 $this->update($publicationModel);
             }
         }

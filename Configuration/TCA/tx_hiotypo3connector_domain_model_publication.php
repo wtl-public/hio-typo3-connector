@@ -124,6 +124,13 @@ return [
                 'notnull' => false,
             ],
         ],
+        'search_index' => [
+            'label' => 'Search Index',
+            'config' => [
+                'type' => Types::BLOB,
+                'notnull' => false,
+            ],
+        ],
     ],
     'types' => [
         0 => [

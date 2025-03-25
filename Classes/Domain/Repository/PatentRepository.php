@@ -20,6 +20,7 @@ class PatentRepository extends BaseRepository
                 $patentModel->setObjectId($patent->getObjectId());
                 $patentModel->setTitle($patent->getTitle());
                 $patentModel->setDetails($patent->getDetails());
+                $patentModel->setSearchIndex($patent->getSearchIndex());
                 $patentModel->setPid($storagePageId);
 
                 $this->add($patentModel);
@@ -27,6 +28,7 @@ class PatentRepository extends BaseRepository
                 $patentModel->setObjectId($patent->getObjectId());
                 $patentModel->setTitle($patent->getTitle());
                 $patentModel->setDetails($patent->getDetails());
+                $patentModel->setSearchIndex($patent->getSearchIndex());
                 $this->update($patentModel);
             }
         }

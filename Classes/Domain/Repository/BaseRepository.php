@@ -21,7 +21,7 @@ class BaseRepository extends Repository
         $query = $this->createQuery();
         $query->matching(
             $query->logicalOr(
-                $query->like('searchIndex', '%' . $searchWord . '%'),
+                $query->like('searchIndex', '%' . strtolower($searchWord) . '%'),
             )
         );
 

@@ -19,6 +19,7 @@ class PersonRepository extends BaseRepository
                 $model = new Person();
                 $model->setObjectId($person->getObjectId());
                 $model->setDetails(json_encode($person->getDetails()));
+                $model->setSearchIndex($person->getSearchIndex());
                 $model->setName($person->getName());
                 $model->setPid($storagePageId);
 
@@ -31,6 +32,7 @@ class PersonRepository extends BaseRepository
             } else {
                 $model->setObjectId($person->getObjectId());
                 $model->setDetails(json_encode($person->getDetails()));
+                $model->setSearchIndex($person->getSearchIndex());
                 $model->setName($person->getName());
 
                 $this->attachPublicationsByObjectIds($model, $person->getPublications());

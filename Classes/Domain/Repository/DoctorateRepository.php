@@ -17,6 +17,7 @@ class DoctorateRepository extends BaseRepository
                 $model->setObjectId($dto->getObjectId());
                 $model->setTitle($dto->getTitle());
                 $model->setDetails($dto->getDetails());
+                $model->setSearchIndex($dto->getSearchIndex());
                 $model->setPid($storagePageId);
 
                 $this->add($model);
@@ -24,6 +25,7 @@ class DoctorateRepository extends BaseRepository
                 $model->setObjectId($dto->getObjectId());
                 $model->setTitle($dto->getTitle());
                 $model->setDetails($dto->getDetails());
+                $model->setSearchIndex($dto->getSearchIndex());
                 $this->update($model);
             }
         }
