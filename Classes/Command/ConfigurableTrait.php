@@ -1,5 +1,7 @@
 <?php
 
+namespace Wtl\HioTypo3Connector\Services;
+
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
