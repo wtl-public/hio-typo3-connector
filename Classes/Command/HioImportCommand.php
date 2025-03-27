@@ -14,6 +14,10 @@ class HioImportCommand extends Command
                 InputArgument::REQUIRED,
                 'required argument endpoint (the url to call)'
             )->addArgument(
+                'storagePageId',
+                InputArgument::REQUIRED,
+                'required argument storage page id'
+            )->addArgument(
                 'username',
                 InputArgument::OPTIONAL,
                 'required argument basic auth username'
@@ -21,10 +25,6 @@ class HioImportCommand extends Command
                 'password',
                 InputArgument::OPTIONAL,
                 'required argument basic auth password'
-            )->addArgument(
-                'storagePageId',
-                InputArgument::REQUIRED,
-                'required argument storage page id'
             )->addOption(
                 'verify-ssl',
                 InputArgument::OPTIONAL,
