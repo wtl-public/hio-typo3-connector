@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Command;
 
-use ConfigurableTrait;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
