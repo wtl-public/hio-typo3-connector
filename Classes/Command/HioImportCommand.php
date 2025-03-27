@@ -3,6 +3,7 @@
 namespace Wtl\HioTypo3Connector\Command;
 
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
 
 class HioImportCommand extends Command
 {
