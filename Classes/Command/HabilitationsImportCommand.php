@@ -39,7 +39,8 @@ class HabilitationsImportCommand extends Command
             $input->getArgument('endpoint'),
             $input->getArgument('username'),
             $input->getArgument('password'),
-            $input->getArgument('storagePageId')
+            $input->getArgument('storagePageId'),
+            (bool)$input->getOption('verify-ssl')
         );
 
         $querySettings = $this->habilitationRepository->createQuery()->getQuerySettings()->setStoragePageIds([$input->getArgument('storagePageId')]);

@@ -39,7 +39,8 @@ class DoctoratesImportCommand extends Command
             $input->getArgument('endpoint'),
             $input->getArgument('username'),
             $input->getArgument('password'),
-            $input->getArgument('storagePageId')
+            $input->getArgument('storagePageId'),
+            (bool)$input->getOption('verify-ssl')
         );
 
         $querySettings = $this->doctorateRepository->createQuery()->getQuerySettings()->setStoragePageIds([$input->getArgument('storagePageId')]);
