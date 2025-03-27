@@ -8,29 +8,34 @@ use Symfony\Component\Console\Input\InputOption;
 
 class HioImportCommand extends Command
 {
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
     protected function configure(): void {
         $this->setDescription('Import data from HIO')
             ->addArgument(
                 'endpoint',
                 InputArgument::REQUIRED,
-                'required argument endpoint (the url to call)'
+                'required argument: endpoint (the url to call)'
             )->addArgument(
                 'storagePageId',
                 InputArgument::REQUIRED,
-                'required argument storage page id'
+                'required argument: storage page id'
             )->addArgument(
                 'username',
                 InputArgument::OPTIONAL,
-                'required argument basic auth username'
+                'optional argument: basic auth username'
             )->addArgument(
                 'password',
                 InputArgument::OPTIONAL,
-                'required argument basic auth password'
+                'optional argument: basic auth password'
             )->addOption(
                 'verify-ssl',
                 'v',
                 InputOption::VALUE_NONE,
-                'verify ssl certificate'
+                'optional argument: verify API ssl certificate'
             );
     }
 }

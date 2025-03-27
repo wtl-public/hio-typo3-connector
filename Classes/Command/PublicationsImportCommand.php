@@ -44,7 +44,7 @@ class PublicationsImportCommand extends HioImportCommand
             $input->getArgument('username'),
             $input->getArgument('password'),
             $input->getArgument('storagePageId'),
-            $input->getOption('verify-ssl')
+            (bool)$input->getOption('verify-ssl')
         );
 
         $querySettings = $this->publicationRepository->createQuery()->getQuerySettings()->setStoragePageIds([$input->getArgument('storagePageId')]);
