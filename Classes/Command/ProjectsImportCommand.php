@@ -11,9 +11,12 @@ use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use Wtl\HioTypo3Connector\Domain\Repository\ProjectRepository;
 use Wtl\HioTypo3Connector\Services\HioProjectService;
+use Wtl\HioTypo3Connector\Command\ConfigurableTrait;
 
 class ProjectsImportCommand extends Command
 {
+    use ConfigurableTrait;
+
     protected static $defaultName = 'hio:projects:import';
 
     public function __construct(
@@ -22,28 +25,6 @@ class ProjectsImportCommand extends Command
         protected readonly PersistenceManager $persistenceManager)
     {
         parent::__construct();
-    }
-
-    protected function configure(): void
-    {
-        $this->setDescription('Import projects from HIO')
-            ->addArgument(
-                'endpoint',
-                InputArgument::REQUIRED,
-                'required argument endpoint (the url to call)'
-            )->addArgument(
-                'username',
-                InputArgument::REQUIRED,
-                'required argument basic auth username'
-            )->addArgument(
-                'password',
-                InputArgument::REQUIRED,
-                'required argument basic auth password'
-            )->addArgument(
-                'storagePageId',
-                InputArgument::REQUIRED,
-                'required argument storage page id'
-            );
     }
 
     /**

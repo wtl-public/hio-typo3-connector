@@ -9,11 +9,15 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
+
+use Wtl\HioTypo3Connector\Command\ConfigurableTrait;
 use Wtl\HioTypo3Connector\Domain\Repository\HabilitationRepository;
 use Wtl\HioTypo3Connector\Services\HioHabilitationService;
 
 class HabilitationsImportCommand extends Command
 {
+    use ConfigurableTrait;
+
     protected static $defaultName = 'hio:habilitations:import';
 
     public function __construct(
@@ -22,28 +26,6 @@ class HabilitationsImportCommand extends Command
         protected readonly PersistenceManager   $persistenceManager)
     {
         parent::__construct();
-    }
-
-    protected function configure(): void
-    {
-        $this->setDescription('Import habilitations from HIO')
-            ->addArgument(
-                'endpoint',
-                InputArgument::REQUIRED,
-                'required argument endpoint (the url to call)'
-            )->addArgument(
-                'username',
-                InputArgument::REQUIRED,
-                'required argument basic auth username'
-            )->addArgument(
-                'password',
-                InputArgument::REQUIRED,
-                'required argument basic auth password'
-            )->addArgument(
-                'storagePageId',
-                InputArgument::REQUIRED,
-                'required argument storage page id'
-            );
     }
 
     /**
