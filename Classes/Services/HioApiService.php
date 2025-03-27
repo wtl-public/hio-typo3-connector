@@ -29,6 +29,8 @@ class HioApiService
      */
     protected $auth = [];
 
+    protected $verifySsl = false;
+
     public function __construct(RequestFactory $requestFactory)
     {
         $this->headers = ['Content-Type' => 'application/json'];
@@ -38,11 +40,14 @@ class HioApiService
         $this->storagePageId = 0; // configure this in the scheduler task
     }
 
-    public function configure(string $url, string $username, string $password, string $storagePageId): void
+    public function configure(string $url, string $username, string $password, string $storagePageId, bool $verifySsl): void
     {
         $this->url = $url;
-        $this->auth = [$username, $password];
+        if ($username && $password) {
+            $this->auth = [$username, $password];
+        }
         $this->storagePageId = (int)$storagePageId;
+        $this->verifySsl = $verifySsl;
     }
 
     public function fetch($page=1): ApiResponse {
@@ -51,7 +56,7 @@ class HioApiService
             $response = $this->requestFactory->request($requestUrl, 'GET', [
                 'headers' => $this->headers,
                 'auth' => $this->auth,
-                'verify' => false
+                'verify' => $this->verifySsl
             ]);
             $rawJsonResponse = json_decode($response->getBody()->getContents(), true)??[];
             $this->responseBody = new ApiResponse(

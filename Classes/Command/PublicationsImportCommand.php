@@ -13,7 +13,7 @@ use Wtl\HioTypo3Connector\Domain\Repository\CitationStyleRepository;
 use Wtl\HioTypo3Connector\Domain\Repository\PublicationRepository;
 use Wtl\HioTypo3Connector\Services\HioPublicationService;
 
-class PublicationsImportCommand extends Command
+class PublicationsImportCommand extends HioImportCommand
 {
     protected static $defaultName = 'hio:publications:import';
 
@@ -29,24 +29,7 @@ class PublicationsImportCommand extends Command
 
     protected function configure(): void
     {
-        $this->setDescription('Import publications from HIO')
-            ->addArgument(
-            'endpoint',
-            InputArgument::REQUIRED,
-            'required argument endpoint (the url to call)'
-        )->addArgument(
-            'username',
-            InputArgument::REQUIRED,
-            'required argument basic auth username'
-        )->addArgument(
-            'password',
-            InputArgument::REQUIRED,
-            'required argument basic auth password'
-        )->addArgument(
-            'storagePageId',
-            InputArgument::REQUIRED,
-            'required argument storage page id'
-        );
+        parent::configure();
     }
 
     /**
@@ -60,7 +43,8 @@ class PublicationsImportCommand extends Command
             $input->getArgument('endpoint'),
             $input->getArgument('username'),
             $input->getArgument('password'),
-            $input->getArgument('storagePageId')
+            $input->getArgument('storagePageId'),
+            $input->getOption('verify-ssl')
         );
 
         $querySettings = $this->publicationRepository->createQuery()->getQuerySettings()->setStoragePageIds([$input->getArgument('storagePageId')]);
