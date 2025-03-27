@@ -27,6 +27,7 @@ class HioImportCommand extends Command
                 'required argument basic auth password'
             )->addOption(
                 'verify-ssl',
+                '-v',
                 InputArgument::OPTIONAL,
                 'verify ssl certificate',
                 true
