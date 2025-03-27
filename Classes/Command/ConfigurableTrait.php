@@ -1,18 +1,10 @@
 <?php
 
-namespace Wtl\HioTypo3Connector\Command;
-
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-class HioImportCommand extends Command
+trait ConfigurableTrait
 {
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
     protected function configure(): void {
         $this->setDescription('Import data from HIO')
             ->addArgument(

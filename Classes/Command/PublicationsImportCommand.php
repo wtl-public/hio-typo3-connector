@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Command;
 
+use ConfigurableTrait;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -13,8 +14,10 @@ use Wtl\HioTypo3Connector\Domain\Repository\CitationStyleRepository;
 use Wtl\HioTypo3Connector\Domain\Repository\PublicationRepository;
 use Wtl\HioTypo3Connector\Services\HioPublicationService;
 
-class PublicationsImportCommand extends HioImportCommand
+class PublicationsImportCommand extends Command
 {
+    use ConfigurableTrait;
+
     protected static $defaultName = 'hio:publications:import';
 
     public function __construct(
@@ -25,11 +28,6 @@ class PublicationsImportCommand extends HioImportCommand
     )
     {
         parent::__construct();
-    }
-
-    protected function configure(): void
-    {
-        parent::configure();
     }
 
     /**
