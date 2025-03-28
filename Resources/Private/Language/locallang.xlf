@@ -370,6 +370,10 @@
             <trans-unit id="harvard-gesellschaft-fur-bildung-und-forschung-in-europa" resname="harvard-gesellschaft-fur-bildung-und-forschung-in-europa">
                 <source>Harvard nach GBFE</source>
             </trans-unit>
+
+            <trans-unit id="dynamicObjects.title" resname="dynamicObjects.title">
+                <source>Additional information</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

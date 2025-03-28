@@ -1,0 +1,40 @@
+{
+  "admissionDate": "2002-02-03",
+  "certificateDate": null,
+  "dynamicObjects": null,
+  "endDate": null,
+  "id": 3,
+  "language": "englisch",
+  "organizations": [],
+  "persons": [
+    {
+      "id": 2605,
+      "name": "Dr. Gudrun Krüger",
+      "organization": {
+        "id": 22,
+        "name": "Institut für Banken und Finanzierung"
+      },
+      "role": "doctoral"
+    },
+    {
+      "id": 2609,
+      "name": "Professor Dr. Stefanie Schröder",
+      "organization": {
+        "id": 22,
+        "name": "Institut für Banken und Finanzierung"
+      },
+      "role": "Betreuer/-in"
+    }
+  ],
+  "registrationDate": "2005-03-12",
+  "researchAreas": [
+    "Finanz- und Kapitalmärkte"
+  ],
+  "startDate": "2008-07-09",
+  "status": "Habilitationsphase",
+  "subjectAreas": [
+    "Bankwesen"
+  ],
+  "title": "Impacts of cryptoconcurrencies on the banking sector",
+  "type": "unbekannt"
+}

@@ -351,7 +351,7 @@
             </trans-unit>
             <trans-unit id="hio.show.project.selectTab" resname="hio.show.project.selectTab">
                 <source>Select a tab</source>
-                <targer>Bitte Tab auswählen</targer>
+                <target>Bitte Tab auswählen</target>
             </trans-unit>
             <trans-unit id="hio.show.project.noCooperation" resname="hio.show.project.noCooperation">
                 <source>No cooperation information available.</source>
@@ -470,6 +470,11 @@
             <trans-unit id="harvard-gesellschaft-fur-bildung-und-forschung-in-europa" resname="harvard-gesellschaft-fur-bildung-und-forschung-in-europa">
                 <source>Harvard nach GBFE</source>
                 <target>Harvard nach GBFE</target>
+            </trans-unit>
+
+            <trans-unit id="dynamicObjects.title" resname="dynamicObjects.title">
+                <source>Additional information</source>
+                <target>Weitere Angaben</target>
             </trans-unit>
         </body>
     </file>
