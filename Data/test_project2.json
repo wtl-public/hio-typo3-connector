@@ -1,0 +1,109 @@
+{
+  "abstract": "Die private Verschuldung ist in der ersten Dekade des neuen Jahrtausends enorm gestiegen. Angelockt durch die sehr attraktiven Konditionen der Banken und des gesamten privaten Wirtschaftssektors (Masseneinzelhandel, Automobil- und Bauwirtschaft usw.) verschuldeten die Haushalte ebenso wie die Nichtfinanzunternehmen massiv. Darüber hinaus hatte die Umstellung auf den Euro zu einem erheblichen Anstieg der Lebenshaltungskosten in einem Land geführt, in dem der Kauf von Grundnahrungsmitteln etwa die Hälfte des Haushalts einer Familie ausmacht.\r\n\r\nDiese private Verschuldung war der Motor vieler Länder, die der EU beigetreten sind. Dank eines starken Euros konnten Banken kleinerer Länder ihre internationalen Aktivitäten ausweiten und ihre nationalen Aktivitäten kostengünstig finanzieren. Der Beitritt zur Eurozone hat für viele der neu beigetretenen Länder den Zufluss von Finanzkapital in Form von Darlehen oder Portfolioinvestitionen gefördert, während die langfristigen Investitionen stagnierten. Die Europäische Kommission und insbesondere die französische und deutsche Regierung haben die westeuropäischen Privatbanken unermüdlich unterstützt. Aber indem sie die Sozialisierung der Verluste der Banken zulassen, haben die europäischen Regierungen ihre eigenen öffentlichen Finanzen in eine kritische Position gebracht.\r\n\r\nInwiefern sich diese Sachverhalte auf die Eurokrise ausgewirkt haben und welche Auswirkungen durch das Verhalten der Banken entstanden, sind die Hauptfragestellungen dieses Projektes.",
+  "dynamicObjects": {
+    "fs.res.project.Accounting.accountStatementUpdates": "3",
+    "fs.res.project.Accounting.accountingRecordSource": "4,1",
+    "fs.res.project.Accounting.archiveNumber": "08-7453",
+    "fs.res.project.Accounting.bookingDeadline": "2022-12-01",
+    "fs.res.project.Accounting.bookingWeekDay": "3",
+    "fs.res.project.Accounting.isVATincluded": "1",
+    "fs.res.project.Accounting.maxHours": "22",
+    "fs.res.project.Accounting.numberOfProjectMembers": "5",
+    "fs.res.project.BasicData.finishDate": null,
+    "fs.res.project.Planning.bookingState": null,
+    "fs.res.project.Planning.numberOfMembers": null
+  },
+  "endDate": "2004-01-21",
+  "fundingPrograms": [],
+  "id": 2,
+  "keywords": [
+    "Finanzkrise",
+    "Eurokrise",
+    "Banken",
+    "Verschuldung",
+    "staatliche Regulierung"
+  ],
+  "language": "deutsch",
+  "objective": "Forschung",
+  "persons": [
+    {
+      "endDate": "2004-01-21",
+      "id": 429,
+      "name": "Heidi Fuchs",
+      "organization": {
+        "id": 22,
+        "name": "Institut für Banken und Finanzierung"
+      },
+      "role": "Projektleiter/-in",
+      "startDate": "2006-08-18"
+    },
+    {
+      "endDate": "2004-01-21",
+      "id": 2607,
+      "name": "Matthias Hahn",
+      "organization": {
+        "id": 57,
+        "name": "Institut für Wirtschaftsforschung"
+      },
+      "role": "Projektleiter/-in",
+      "startDate": "2006-08-18"
+    },
+    {
+      "endDate": "2004-01-21",
+      "id": 2653,
+      "name": "Gabriela Huber",
+      "organization": {
+        "id": 22,
+        "name": "Institut für Banken und Finanzierung"
+      },
+      "role": "Wiss. Mitarbeiter/-in",
+      "startDate": "2006-08-18"
+    },
+    {
+      "endDate": "2004-01-21",
+      "id": 2660,
+      "name": "Anja Köhler",
+      "organization": {
+        "id": 22,
+        "name": "Institut für Banken und Finanzierung"
+      },
+      "role": "Wiss. Mitarbeiter/-in",
+      "startDate": "2006-08-18"
+    },
+    {
+      "endDate": "2004-01-21",
+      "id": 481,
+      "name": "Gerd Werner",
+      "organization": {
+        "id": 22,
+        "name": "Institut für Banken und Finanzierung"
+      },
+      "role": "Wiss. Mitarbeiter/-in",
+      "startDate": "2006-08-18"
+    },
+    {
+      "endDate": "2004-01-21",
+      "id": 2663,
+      "name": "Ulrich Wolff",
+      "organization": {
+        "id": 22,
+        "name": "Institut für Banken und Finanzierung"
+      },
+      "role": "Wiss. Mitarbeiter/-in",
+      "startDate": "2006-08-18"
+    }
+  ],
+  "researchAreas": [
+    "Finanz- und Kapitalmärkte",
+    "Intra- und interorganisatorische Beziehungen"
+  ],
+  "startDate": "2006-08-18",
+  "status": "laufend",
+  "subjectAreas": [
+    "Bankwesen",
+    "Finanzwissenschaft"
+  ],
+  "title": "Die Rolle der Banken in der Eurokrise",
+  "type": "Forschung",
+  "visibility": "public"
+}
