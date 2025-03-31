@@ -11,4 +11,25 @@ plugin.tx_hiotypo3connector {
       0 = EXT:hio_typo3_connector/Resources/Private/Layouts/
     }
   }
+  settings {
+    publications {
+      personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.publications.personTargetPageUid}
+    }
+    persons {
+      publicationTargetPageUid = {$plugin.tx_hiotypo3connector.settings.persons.publicationTargetPageUid}
+      projectTargetPageUid = {$plugin.tx_hiotypo3connector.settings.persons.publicationTargetPageUid}
+    }
+    projects {
+      personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.projects.personTargetPageUid}
+    }
+    patents {
+      personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.patents.personTargetPageUid}
+    }
+    doctorates {
+      personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.doctorates.personTargetPageUid}
+    }
+    habilitations {
+      personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.habilitations.personTargetPageUid}
+    }
+  }
 }
