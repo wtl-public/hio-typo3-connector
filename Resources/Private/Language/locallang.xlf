@@ -374,6 +374,12 @@
             <trans-unit id="dynamicObjects.title" resname="dynamicObjects.title">
                 <source>Additional information</source>
             </trans-unit>
+            <trans-unit id="search.placeholder" resname="search.placeholder">
+                <source>Search...</source>
+            </trans-unit>
+            <trans-unit id="search.button" resname="search.button">
+                <source>Search</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

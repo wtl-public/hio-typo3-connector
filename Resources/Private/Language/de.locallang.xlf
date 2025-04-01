@@ -476,6 +476,15 @@
                 <source>Additional information</source>
                 <target>Weitere Angaben</target>
             </trans-unit>
+
+            <trans-unit id="search.placeholder" resname="search.placeholder">
+                <source>Search...</source>
+                <target>Suchbegriff...</target>
+            </trans-unit>
+            <trans-unit id="search.button" resname="search.button">
+                <source>Search</source>
+                <target>Suchen</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
