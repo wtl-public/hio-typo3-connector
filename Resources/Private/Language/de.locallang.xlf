@@ -485,6 +485,16 @@
                 <source>Search</source>
                 <target>Suchen</target>
             </trans-unit>
+
+            <trans-unit id="person.publications.count" resname="person.publications.count">
+                <source>Number of publications</source>
+                <target>Anzahl Publikationen</target>
+            </trans-unit>
+            <trans-unit id="person.projects.count" resname="person.projects.count">
+                <source>Number of projects</source>
+                <target>Anzahl Projekte</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>

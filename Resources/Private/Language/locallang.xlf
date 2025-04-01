@@ -380,6 +380,14 @@
             <trans-unit id="search.button" resname="search.button">
                 <source>Search</source>
             </trans-unit>
+
+            <trans-unit id="person.publications.count" resname="person.publications.count">
+                <source>Number of publications</source>
+            </trans-unit>
+            <trans-unit id="person.projects.count" resname="person.projects.count">
+                <source>Number of projects</source>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>
