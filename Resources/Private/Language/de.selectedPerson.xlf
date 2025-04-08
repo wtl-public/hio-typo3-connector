@@ -128,19 +128,19 @@
                 <source>Select person please</source>
                 <target>Person auswählen</target>
             </trans-unit>
-            <trans-unit id="flexform.publicationlist.groupBy" resname="flexform.habilitationlist.displayType">
+            <trans-unit id="flexform.habilitationlist.displayType" resname="flexform.habilitationlist.displayType">
                 <source>display by type</source>
                 <target>Anzeige nach Typ</target>
             </trans-unit>
-            <trans-unit id="flexform.publicationlist.groupBy.none" resname="flexform.habilitationlist.displayType.all">
+            <trans-unit id="flexform.habilitationlist.displayType.all" resname="flexform.habilitationlist.displayType.all">
                 <source>all</source>
                 <target>alle Habilitationen</target>
             </trans-unit>
-            <trans-unit id="flexform.publicationlist.groupBy.type" resname="flexform.habilitationlist.displayType.doctoral">
+            <trans-unit id="flexform.habilitationlist.displayType.doctoral" resname="flexform.habilitationlist.displayType.doctoral">
                 <source>own habilitation</source>
                 <target>eigene Habilitation(en)</target>
             </trans-unit>
-            <trans-unit id="flexform.publicationlist.groupBy.releaseYear" resname="flexform.habilitationlist.displayType.supervisor">
+            <trans-unit id="flexform.habilitationlist.displayType.other" resname="flexform.habilitationlist.displayType.other">
                 <source>supervised habilitations</source>
                 <target>betreute Habilitationen</target>
             </trans-unit>

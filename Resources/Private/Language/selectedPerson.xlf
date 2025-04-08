@@ -98,19 +98,18 @@
             <trans-unit id="flexform.habilitationlist.personUid" resname="flexform.habilitationlist.personUid">
                 <source>Select person please</source>
             </trans-unit>
-            <trans-unit id="flexform.publicationlist.groupBy" resname="flexform.habilitationlist.displayType">
+            <trans-unit id="fflexform.habilitationlist.displayType" resname="flexform.habilitationlist.displayType">
                 <source>display by type</source>
             </trans-unit>
-            <trans-unit id="flexform.publicationlist.groupBy.none" resname="flexform.habilitationlist.displayType.all">
+            <trans-unit id="flexform.habilitationlist.displayType.all" resname="flexform.habilitationlist.displayType.all">
                 <source>all</source>
             </trans-unit>
-            <trans-unit id="flexform.publicationlist.groupBy.type" resname="flexform.habilitationlist.displayType.doctoral">
+            <trans-unit id="flexform.habilitationlist.displayType.doctoral" resname="flexform.habilitationlist.displayType.doctoral">
                 <source>own habilitation</source>
             </trans-unit>
-            <trans-unit id="flexform.publicationlist.groupBy.releaseYear" resname="flexform.habilitationlist.displayType.supervisor">
+            <trans-unit id="flexform.habilitationlist.displayType.supervisor" resname="flexform.habilitationlist.displayType.supervisor">
                 <source>supervised habilitations</source>
             </trans-unit>
-
 
         </body>
     </file>
