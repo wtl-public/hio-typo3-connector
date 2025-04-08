@@ -129,8 +129,8 @@
                 <target>Person auswählen</target>
             </trans-unit>
             <trans-unit id="flexform.habilitationlist.displayType" resname="flexform.habilitationlist.displayType">
-                <source>display by type</source>
-                <target>Anzeige nach Typ</target>
+                <source>Select role please</source>
+                <target>Anzeige nach Rolle</target>
             </trans-unit>
             <trans-unit id="flexform.habilitationlist.displayType.all" resname="flexform.habilitationlist.displayType.all">
                 <source>all</source>

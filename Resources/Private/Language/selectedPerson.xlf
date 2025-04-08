@@ -99,7 +99,7 @@
                 <source>Select person please</source>
             </trans-unit>
             <trans-unit id="flexform.habilitationlist.displayType" resname="flexform.habilitationlist.displayType">
-                <source>display by type</source>
+                <source>Select role please</source>
             </trans-unit>
             <trans-unit id="flexform.habilitationlist.displayType.all" resname="flexform.habilitationlist.displayType.all">
                 <source>all</source>
