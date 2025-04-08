@@ -362,13 +362,13 @@
             </trans-unit>
 
             <trans-unit id="apa-old-doi-prefix" resname="apa-old-doi-prefix">
-                <source>APA</source>
+                <source>APA (American Psychological Association)</source>
             </trans-unit>
             <trans-unit id="harvard-anglia-ruskin-university" resname="harvard-anglia-ruskin-university">
-                <source>Harvard ARU</source>
+                <source>Harvard</source>
             </trans-unit>
             <trans-unit id="harvard-gesellschaft-fur-bildung-und-forschung-in-europa" resname="harvard-gesellschaft-fur-bildung-und-forschung-in-europa">
-                <source>Harvard nach GBFE</source>
+                <source>Harvard (Gesellschaft für Bildung und Forschung in Europa)</source>
             </trans-unit>
 
             <trans-unit id="dynamicObjects.title" resname="dynamicObjects.title">
