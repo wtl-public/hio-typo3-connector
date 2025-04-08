@@ -211,7 +211,7 @@ class PersonController extends BaseController
 
         $habilitations = $selectedPerson->getHabilitations() ?? [];
         // if display only the own publications
-        if ($this->settings['displayType'] && $this->settings['displayType'] == '1') {
+        if ($this->settings['displayType'] && $this->settings['displayType'] == 'doctoral') {
             $ownHabilitations = [];
             foreach ($habilitations as $habilitation) {
                 foreach ($habilitation->getDetails()['persons'] as $person) {
@@ -223,7 +223,7 @@ class PersonController extends BaseController
             $habilitations = $ownHabilitations;
         }
 
-        if ($this->settings['displayType'] && $this->settings['displayType'] == '2') {
+        if ($this->settings['displayType'] && $this->settings['displayType'] == 'supervisor') {
             $supervisedHabilitations = [];
             foreach ($habilitations as $habilitation) {
                 foreach ($habilitation->getDetails()['persons'] as $person) {

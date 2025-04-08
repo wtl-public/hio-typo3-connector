@@ -35,19 +35,19 @@
                                     <label>
                                         LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.habilitationlist.displayType.all
                                     </label>
-                                    <value>none</value>
+                                    <value>all</value>
                                 </numIndex>
                                 <numIndex index="1">
                                     <label>
                                         LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.habilitationlist.displayType.doctoral
                                     </label>
-                                    <value>releaseYear</value>
+                                    <value>doctoral</value>
                                 </numIndex>
                                 <numIndex index="2">
                                     <label>
                                         LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.habilitationlist.displayType.supervisor
                                     </label>
-                                    <value>type</value>
+                                    <value>supervisor</value>
                                 </numIndex>
                             </items>
                         </config>
