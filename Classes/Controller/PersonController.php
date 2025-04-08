@@ -209,8 +209,35 @@ class PersonController extends BaseController
         /** @var Person $selectedPerson */
         $selectedPerson = $this->personRepository->findByUid($this->settings['personUid']);
 
+        $habilitations = $selectedPerson->getHabilitations() ?? [];
+        // if display only the own publications
+        if ($this->settings['displayType'] && $this->settings['displayType'] == '1') {
+            $ownHabilitations = [];
+            foreach ($habilitations as $habilitation) {
+                foreach ($habilitation->getDetails()['persons'] as $person) {
+                    if ($person['id'] === $selectedPerson->getObjectId() && $person['role'] === 'doctoral') {
+                        $ownHabilitations[] = $habilitation;
+                    }
+                }
+            }
+            $habilitations = $ownHabilitations;
+        }
+
+        if ($this->settings['displayType'] && $this->settings['displayType'] == '2') {
+            $supervisedHabilitations = [];
+            foreach ($habilitations as $habilitation) {
+                foreach ($habilitation->getDetails()['persons'] as $person) {
+                    if ($person['id'] === $selectedPerson->getObjectId() && $person['role'] !== 'doctoral') {
+                        $supervisedHabilitations[] = $habilitation;
+                    }
+                }
+            }
+            $habilitations = $supervisedHabilitations;
+        }
+
         $this->view->assignMultiple([
             'person' => $selectedPerson,
+            'habilitations' => $habilitations,
         ]);
 
         return $this->htmlResponse();
