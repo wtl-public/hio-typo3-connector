@@ -98,7 +98,7 @@
             <trans-unit id="flexform.habilitationlist.personUid" resname="flexform.habilitationlist.personUid">
                 <source>Select person please</source>
             </trans-unit>
-            <trans-unit id="fflexform.habilitationlist.displayType" resname="flexform.habilitationlist.displayType">
+            <trans-unit id="flexform.habilitationlist.displayType" resname="flexform.habilitationlist.displayType">
                 <source>display by type</source>
             </trans-unit>
             <trans-unit id="flexform.habilitationlist.displayType.all" resname="flexform.habilitationlist.displayType.all">
