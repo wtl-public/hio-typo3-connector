@@ -26,17 +26,15 @@ class HabilitationController extends BaseController
     )
     {}
 
-    public function indexAction(int $currentPage = 1): ResponseInterface
+    public function indexAction(int $currentPage = 1, string $searchWord = ''): ResponseInterface
     {
-        $paginator = new QueryResultPaginator(
+        $paginator = $this->getPaginator(
             $this->habilitationRepository->findAll(),
-            $this->getCurrentPageNumberFromRequest(),
-            10,
         );
-        $pagination = new SimplePagination($paginator);
         $this->view->assignMultiple([
             'paginator' => $paginator,
-            'pagination' => $pagination,
+            'pagination' => new SimplePagination($paginator),
+            'searchWord' => $this->getSearchWordFromRequest(),
         ]);
 
         return $this->htmlResponse();
@@ -44,18 +42,13 @@ class HabilitationController extends BaseController
 
     public function searchAction(int $currentPage = 1, String $searchWord = ''): ResponseInterface
     {
-        $habilitations = $this->habilitationRepository->findBySearchWord($searchWord);
-
-        $paginator = new QueryResultPaginator(
-            $habilitations,
-            $this->getCurrentPageNumberFromRequest(),
-            10,
+        $paginator = $this->getPaginator(
+            $this->habilitationRepository->findBySearchWord($searchWord),
         );
-        $pagination = new SimplePagination($paginator);
         $this->view->assignMultiple([
             'paginator' => $paginator,
-            'pagination' => $pagination,
-            'searchWord' => $searchWord,
+            'pagination' => new SimplePagination($paginator),
+            'searchWord' => $this->getSearchWordFromRequest(),
         ]);
 
         return $this->htmlResponse();
@@ -67,6 +60,7 @@ class HabilitationController extends BaseController
             [
                 'habilitation' => $habilitation,
                 'currentPageNumber' => $this->getCurrentPageNumberFromRequest(),
+                'searchWord' => $this->getSearchWordFromRequest(),
             ]
         );
         return $this->htmlResponse();
