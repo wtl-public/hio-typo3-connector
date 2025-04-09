@@ -31,13 +31,9 @@ class PublicationController extends BaseController
             $this->publicationRepository->findAll(),
         );
 
-        $pagination = new SimplePagination($paginator);
-        $pagination->getNextPageNumber();
-        $pagination->getPreviousPageNumber();
-
         $this->view->assignMultiple([
             'paginator' => $paginator,
-            'pagination' => $pagination,
+            'pagination' => new SimplePagination($paginator),
             'searchWord' => $this->getSearchWordFromRequest(),
         ]);
 
