@@ -28,34 +28,27 @@ class DoctorateController extends BaseController
 
     public function indexAction(int $currentPage = 1): ResponseInterface
     {
-        $paginator = new QueryResultPaginator(
+        $paginator = $this->getPaginator(
             $this->doctorateRepository->findAll(),
-            $this->getCurrentPageNumberFromRequest(),
-            10,
         );
-        $pagination = new SimplePagination($paginator);
         $this->view->assignMultiple([
             'paginator' => $paginator,
-            'pagination' => $pagination,
+            'pagination' => new SimplePagination($paginator),
+            'searchWord' => $this->getSearchWordFromRequest(),
         ]);
 
         return $this->htmlResponse();
     }
 
-    public function searchAction(int $currentPage = 1, String $searchWord = ''): ResponseInterface
+    public function searchAction(int $currentPage = 1, string $searchWord = ''): ResponseInterface
     {
-        $doctorates = $this->doctorateRepository->findBySearchWord($searchWord);
-
-        $paginator = new QueryResultPaginator(
-            $doctorates,
-            $this->getCurrentPageNumberFromRequest(),
-            10,
+        $paginator = $this->getPaginator(
+            $this->doctorateRepository->findBySearchWord($searchWord),
         );
-        $pagination = new SimplePagination($paginator);
         $this->view->assignMultiple([
             'paginator' => $paginator,
-            'pagination' => $pagination,
-            'searchWord' => $searchWord,
+            'pagination' => new SimplePagination($paginator),
+            'searchWord' =>  $this->getSearchWordFromRequest(),
         ]);
 
         return $this->htmlResponse();
@@ -67,6 +60,7 @@ class DoctorateController extends BaseController
             [
                 'doctorate' => $doctorate,
                 'currentPageNumber' => $this->getCurrentPageNumberFromRequest(),
+                'searchWord' => $this->getSearchWordFromRequest(),
             ]
         );
         return $this->htmlResponse();

@@ -40,7 +40,7 @@ class HabilitationController extends BaseController
         return $this->htmlResponse();
     }
 
-    public function searchAction(int $currentPage = 1, String $searchWord = ''): ResponseInterface
+    public function searchAction(int $currentPage = 1, string $searchWord = ''): ResponseInterface
     {
         $paginator = $this->getPaginator(
             $this->habilitationRepository->findBySearchWord($searchWord),

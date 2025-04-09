@@ -27,17 +27,15 @@ class ProjectController extends BaseController
     )
     {}
 
-    public function indexAction(int $currentPage = 1): ResponseInterface
+    public function indexAction(int $currentPage = 1, string $searchWord = ''): ResponseInterface
     {
-        $paginator = new QueryResultPaginator(
+        $paginator = $this->getPaginator(
             $this->projectRepository->findAll(),
-            $this->getCurrentPageNumberFromRequest(),
-            10,
         );
-        $pagination = new SimplePagination($paginator);
         $this->view->assignMultiple([
             'paginator' => $paginator,
-            'pagination' => $pagination,
+            'pagination' => new SimplePagination($paginator),
+            'searchWord' => $this->getSearchWordFromRequest(),
         ]);
 
         return $this->htmlResponse();
@@ -45,18 +43,14 @@ class ProjectController extends BaseController
 
     public function searchAction(int $currentPage = 1, String $searchWord = ''): ResponseInterface
     {
-        $projects = $this->projectRepository->findBySearchWord($searchWord);
-
-        $paginator = new QueryResultPaginator(
-            $projects,
-            $this->getCurrentPageNumberFromRequest(),
-            10,
+        $paginator = $this->getPaginator(
+            $this->projectRepository->findBySearchWord($searchWord),
         );
         $pagination = new SimplePagination($paginator);
         $this->view->assignMultiple([
             'paginator' => $paginator,
             'pagination' => $pagination,
-            'searchWord' => $searchWord,
+            'searchWord' => $this->getSearchWordFromRequest(),
         ]);
 
         return $this->htmlResponse();
@@ -68,6 +62,7 @@ class ProjectController extends BaseController
             [
                 'project' => $project,
                 'currentPageNumber' => $this->getCurrentPageNumberFromRequest(),
+                'searchWord' => $this->getSearchWordFromRequest(),
             ]
         );
         return $this->htmlResponse();

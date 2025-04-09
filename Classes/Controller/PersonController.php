@@ -35,38 +35,29 @@ class PersonController extends BaseController
     {
     }
 
-    public function indexAction(int $currentPage = 1): ResponseInterface
+    public function indexAction(int $currentPage = 1, string $searchWord = ''): ResponseInterface
     {
-        $allAvailablePersons = $this->personRepository->findAll();
-
-        $paginator = new QueryResultPaginator(
-            $allAvailablePersons,
-            $this->getCurrentPageNumberFromRequest(),
-            10,
+        $paginator = $this->getPaginator(
+            $this->personRepository->findAll(),
         );
-        $pagination = new SimplePagination($paginator);
         $this->view->assignMultiple([
             'paginator' => $paginator,
-            'pagination' => $pagination,
+            'pagination' => new SimplePagination($paginator),
+            'searchWord' => $this->getSearchWordFromRequest(),
         ]);
 
         return $this->htmlResponse();
     }
 
-    public function searchAction(int $currentPage = 1, String $searchWord = ''): ResponseInterface
+    public function searchAction(int $currentPage = 1, string $searchWord = ''): ResponseInterface
     {
-        $persons = $this->personRepository->findBySearchWord($searchWord);
-
-        $paginator = new QueryResultPaginator(
-            $persons,
-            $this->getCurrentPageNumberFromRequest(),
-            10,
+        $paginator = $this->getPaginator(
+            $this->personRepository->findBySearchWord($searchWord),
         );
-        $pagination = new SimplePagination($paginator);
         $this->view->assignMultiple([
             'paginator' => $paginator,
-            'pagination' => $pagination,
-            'searchWord' => $searchWord,
+            'pagination' => new SimplePagination($paginator),
+            'searchWord' => $this->getSearchWordFromRequest(),
         ]);
 
         return $this->htmlResponse();
