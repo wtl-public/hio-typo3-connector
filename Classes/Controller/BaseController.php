@@ -2,7 +2,8 @@
 
 namespace Wtl\HioTypo3Connector\Controller;
 
-use Couchbase\QueryResult;
+use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use Wtl\HioTypo3Connector\Controller\AbstractController;
 
 class BaseController extends AbstractController
@@ -21,10 +22,10 @@ class BaseController extends AbstractController
             : '';
     }
 
-    protected function getPaginator(QueryResult $result, int $resultsPerPage = 10): QueryResultPaginator
+    protected function getPaginator(QueryResultInterface $queryResult, int $resultsPerPage = 10): QueryResultPaginator
     {
         return new QueryResultPaginator(
-            $result,
+            $queryResult,
             $this->getCurrentPageNumberFromRequest(),
             $resultsPerPage,
         );
