@@ -26,7 +26,7 @@ class DoctorateController extends BaseController
     )
     {}
 
-    public function indexAction(int $currentPage = 1): ResponseInterface
+    public function indexAction(int $currentPage = 1, string $searchWord = ''): ResponseInterface
     {
         $paginator = $this->getPaginator(
             $this->doctorateRepository->findAll(),
