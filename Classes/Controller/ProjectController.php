@@ -56,13 +56,14 @@ class ProjectController extends BaseController
         return $this->htmlResponse();
     }
 
-    public function showAction(Project $project): ResponseInterface
+    public function showAction(Project $project, string $listAction = 'index'): ResponseInterface
     {
         $this->view->assignMultiple(
             [
                 'project' => $project,
                 'currentPageNumber' => $this->getCurrentPageNumberFromRequest(),
                 'searchWord' => $this->getSearchWordFromRequest(),
+                'listAction' => $listAction,
             ]
         );
         return $this->htmlResponse();

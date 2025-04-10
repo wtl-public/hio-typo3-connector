@@ -54,13 +54,14 @@ class PublicationController extends BaseController
         return $this->htmlResponse();
     }
 
-    public function showAction(Publication $publication): ResponseInterface
+    public function showAction(Publication $publication, string $listAction = 'index'): ResponseInterface
     {
         $this->view->assignMultiple(
             [
                 'publication' => $publication,
                 'currentPageNumber' => $this->getCurrentPageNumberFromRequest(),
                 'searchWord' => $this->getSearchWordFromRequest(),
+                'listAction' => $listAction,
             ]
         );
         return $this->htmlResponse();
