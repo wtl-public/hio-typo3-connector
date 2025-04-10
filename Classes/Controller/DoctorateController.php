@@ -26,7 +26,7 @@ class DoctorateController extends BaseController
     )
     {}
 
-    public function indexAction(int $currentPage = 1, string $searchWord = ''): ResponseInterface
+    public function indexAction(): ResponseInterface
     {
         $paginator = $this->getPaginator(
             $this->doctorateRepository->findAll(),
@@ -54,13 +54,14 @@ class DoctorateController extends BaseController
         return $this->htmlResponse();
     }
 
-    public function showAction(Doctorate $doctorate): ResponseInterface
+    public function showAction(Doctorate $doctorate, string $listAction = 'index'): ResponseInterface
     {
         $this->view->assignMultiple(
             [
                 'doctorate' => $doctorate,
                 'currentPageNumber' => $this->getCurrentPageNumberFromRequest(),
                 'searchWord' => $this->getSearchWordFromRequest(),
+                'listAction' => $listAction,
             ]
         );
         return $this->htmlResponse();
