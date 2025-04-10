@@ -27,16 +27,6 @@ ExtensionUtility::configurePlugin(
     // extension name, matching the PHP namespaces (but without the vendor)
     'HioTypo3Connector',
     // arbitrary, but unique plugin name (not visible in the backend)
-    'PublicationDetails',
-    // all actions
-    [PublicationController::class => 'show'],
-    // non-cacheable actions
-);
-
-ExtensionUtility::configurePlugin(
-    // extension name, matching the PHP namespaces (but without the vendor)
-    'HioTypo3Connector',
-    // arbitrary, but unique plugin name (not visible in the backend)
     'ProjectList',
     // all actions
     [ProjectController::class => 'index, show, search'],
