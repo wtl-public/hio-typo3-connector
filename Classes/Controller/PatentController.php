@@ -26,7 +26,7 @@ class PatentController extends BaseController
     )
     {}
 
-    public function indexAction(int $currentPage = 1): ResponseInterface
+    public function indexAction(): ResponseInterface
     {
 
         $paginator = $this->getPaginator(
@@ -35,6 +35,7 @@ class PatentController extends BaseController
         $this->view->assignMultiple([
             'paginator' => $paginator,
             'pagination' => new SimplePagination($paginator),
+            'searchWord' => $this->getSearchWordFromRequest(),
         ]);
 
         return $this->htmlResponse();
@@ -48,18 +49,20 @@ class PatentController extends BaseController
         $this->view->assignMultiple([
             'paginator' => $paginator,
             'pagination' => new SimplePagination($paginator),
-            'searchWord' => $searchWord,
+            'searchWord' => $this->getSearchWordFromRequest(),
         ]);
 
         return $this->htmlResponse();
     }
 
-    public function showAction(Patent $patent): ResponseInterface
+    public function showAction(Patent $patent, string $listAction = 'index'): ResponseInterface
     {
         $this->view->assignMultiple(
             [
                 'patent' => $patent,
                 'currentPageNumber' => $this->getCurrentPageNumberFromRequest(),
+                'searchWord' => $this->getSearchWordFromRequest(),
+                'listAction' => $listAction,
             ]
         );
         return $this->htmlResponse();
