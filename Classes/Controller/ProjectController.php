@@ -27,7 +27,7 @@ class ProjectController extends BaseController
     )
     {}
 
-    public function indexAction(int $currentPage = 1, string $searchWord = ''): ResponseInterface
+    public function indexAction(): ResponseInterface
     {
         $paginator = $this->getPaginator(
             $this->projectRepository->findAll(),
@@ -41,7 +41,7 @@ class ProjectController extends BaseController
         return $this->htmlResponse();
     }
 
-    public function searchAction(int $currentPage = 1, String $searchWord = ''): ResponseInterface
+    public function searchAction(int $currentPage = 1, string $searchWord = ''): ResponseInterface
     {
         $paginator = $this->getPaginator(
             $this->projectRepository->findBySearchWord($searchWord),
