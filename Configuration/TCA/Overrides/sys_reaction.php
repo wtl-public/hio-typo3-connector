@@ -9,9 +9,54 @@ if (ExtensionManagementUtility::isLoaded('reactions')) {
         'sys_reaction',
         'table_name',
         [
-            'label' => 'LLL:EXT:myext/Resources/Private/Language/locallang.xlf:tx_myextension_domain_model_mytable',
+            'label' => 'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:tx_hiotypo3connector_domain_model_publication',
             'value' => 'tx_hiotypo3connector_domain_model_publication',
             'icon' => 'tx-hio_typo3_connector-list-of-publications',
+        ]
+    );
+    ExtensionManagementUtility::addTcaSelectItem(
+        'sys_reaction',
+        'table_name',
+        [
+            'label' => 'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:tx_hiotypo3connector_domain_model_project',
+            'value' => 'tx_hiotypo3connector_domain_model_project',
+            'icon' => 'tx-hio_typo3_connector-list-of-projects',
+        ]
+    );
+    ExtensionManagementUtility::addTcaSelectItem(
+        'sys_reaction',
+        'table_name',
+        [
+            'label' => 'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:tx_hiotypo3connector_domain_model_person',
+            'value' => 'tx_hiotypo3connector_domain_model_person',
+            'icon' => 'tx-hio_typo3_connector-list-of-persons',
+        ]
+    );
+    ExtensionManagementUtility::addTcaSelectItem(
+        'sys_reaction',
+        'table_name',
+        [
+            'label' => 'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:tx_hiotypo3connector_domain_model_patent',
+            'value' => 'tx_hiotypo3connector_domain_model_patent',
+            'icon' => 'tx-hio_typo3_connector-list-of-patents',
+        ]
+    );
+    ExtensionManagementUtility::addTcaSelectItem(
+        'sys_reaction',
+        'table_name',
+        [
+            'label' => 'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:tx_hiotypo3connector_domain_model_doctorate',
+            'value' => 'tx_hiotypo3connector_domain_model_doctorate',
+            'icon' => 'tx-hio_typo3_connector-list-of-doctorates',
+        ]
+    );
+    ExtensionManagementUtility::addTcaSelectItem(
+        'sys_reaction',
+        'table_name',
+        [
+            'label' => 'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:tx_hiotypo3connector_domain_model_habilitation',
+            'value' => 'tx_hiotypo3connector_domain_model_habilitation',
+            'icon' => 'tx-hio_typo3_connector-list-of-habilitations',
         ]
     );
 }
