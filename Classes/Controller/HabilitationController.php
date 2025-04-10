@@ -26,7 +26,7 @@ class HabilitationController extends BaseController
     )
     {}
 
-    public function indexAction(int $currentPage = 1, string $searchWord = ''): ResponseInterface
+    public function indexAction(): ResponseInterface
     {
         $paginator = $this->getPaginator(
             $this->habilitationRepository->findAll(),
@@ -54,13 +54,14 @@ class HabilitationController extends BaseController
         return $this->htmlResponse();
     }
 
-    public function showAction(Habilitation $habilitation): ResponseInterface
+    public function showAction(Habilitation $habilitation, string $listAction = 'index'): ResponseInterface
     {
         $this->view->assignMultiple(
             [
                 'habilitation' => $habilitation,
                 'currentPageNumber' => $this->getCurrentPageNumberFromRequest(),
                 'searchWord' => $this->getSearchWordFromRequest(),
+                'listAction' => $listAction,
             ]
         );
         return $this->htmlResponse();
