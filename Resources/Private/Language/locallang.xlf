@@ -23,25 +23,25 @@
             </trans-unit>
 
             <trans-unit id="tx_hiotypo3connector_domain_model_citationstyle" resname="tx_hiotypo3connector_domain_model_citationstyle">
-                <source>Citationstyle</source>
+                <source>Citationstyles</source>
             </trans-unit>
             <trans-unit id="tx_hiotypo3connector_domain_model_doctorate" resname="tx_hiotypo3connector_domain_model_doctorate">
-                <source>Doctorate</source>
+                <source>Doctorates</source>
             </trans-unit>
             <trans-unit id="tx_hiotypo3connector_domain_model_habilitation" resname="tx_hiotypo3connector_domain_model_habilitation">
-                <source>Habilitation</source>
+                <source>Habilitations</source>
             </trans-unit>
             <trans-unit id="tx_hiotypo3connector_domain_model_patent" resname="tx_hiotypo3connector_domain_model_patent">
-                <source>Patent</source>
+                <source>Patents</source>
             </trans-unit>
             <trans-unit id="tx_hiotypo3connector_domain_model_person" resname="tx_hiotypo3connector_domain_model_person">
-                <source>Person</source>
+                <source>Persons</source>
             </trans-unit>
             <trans-unit id="tx_hiotypo3connector_domain_model_project" resname="tx_hiotypo3connector_domain_model_project">
-                <source>Project</source>
+                <source>Projects</source>
             </trans-unit>
             <trans-unit id="tx_hiotypo3connector_domain_model_publication" resname="tx_hiotypo3connector_domain_model_publication">
-                <source>Publication</source>
+                <source>Publications</source>
             </trans-unit>
 
             <trans-unit id="titleProjects" resname="titleProjects">
