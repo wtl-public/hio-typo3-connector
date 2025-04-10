@@ -35,7 +35,7 @@ class PersonController extends BaseController
     {
     }
 
-    public function indexAction(int $currentPage = 1, string $searchWord = ''): ResponseInterface
+    public function indexAction(): ResponseInterface
     {
         $paginator = $this->getPaginator(
             $this->personRepository->findAll(),
@@ -79,7 +79,7 @@ class PersonController extends BaseController
      * @throws ImmediateResponseException
      * @throws PageNotFoundException
      */
-    public function showAction(?Person $person = null): ResponseInterface
+    public function showAction(?Person $person = null, string $listAction = 'index'): ResponseInterface
     {
         if ($person === null) {
             $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction($this->request, 'Person not found');
@@ -89,6 +89,8 @@ class PersonController extends BaseController
             [
                 'person' => $person,
                 'currentPageNumber' => $this->getCurrentPageNumberFromRequest(),
+                'searchWord' => $this->getSearchWordFromRequest(),
+                'listAction' => $listAction,
             ]
         );
         return $this->htmlResponse();
