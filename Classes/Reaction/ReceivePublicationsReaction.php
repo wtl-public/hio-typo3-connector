@@ -2,6 +2,11 @@
 
 namespace Wtl\HioTypo3Connector\Reaction;
 
+use Psr\Http\Message\ResponseFactoryInterface;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
+use Psr\Http\Message\StreamFactoryInterface;
+use TYPO3\CMS\Reactions\Model\ReactionInstruction;
 use TYPO3\CMS\Reactions\Reaction\ReactionInterface;
 use Wtl\HioTypo3Connector\Domain\Repository\PublicationRepository;
 
