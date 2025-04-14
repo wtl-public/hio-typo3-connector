@@ -8,7 +8,6 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 class Publication extends AbstractEntity
 {
-    protected int $uid;
     protected int $objectId = 0;
 
     protected string $title = '';
@@ -65,15 +64,6 @@ class Publication extends AbstractEntity
         return $this;
     }
 
-    public function getUid(): int
-    {
-        return $this->uid;
-    }
-    public function setUid($uid): void
-    {
-        $this->uid = $uid;
-    }
-
     public function getObjectId(): int
     {
         return $this->objectId;
@@ -125,7 +115,7 @@ class Publication extends AbstractEntity
      * Get the value of searchIndex
      *
      * @return  string
-     */
+     */ 
     public function getSearchIndex()
     {
         return $this->searchIndex;
@@ -137,7 +127,7 @@ class Publication extends AbstractEntity
      * @param  string  $searchIndex
      *
      * @return  self
-     */
+     */ 
     public function setSearchIndex(string $searchIndex)
     {
         $this->searchIndex = $searchIndex;
