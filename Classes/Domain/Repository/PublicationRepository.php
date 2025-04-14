@@ -11,15 +11,16 @@ class PublicationRepository extends BaseRepository
     public function savePublications($publications, $storagePageId): void {
         /** @var PublicationDTO $publication */
         foreach ($publications as $publication) {
-            $publicationModel = $this->findOneBy(['objectId' => $publication->getObjectId()]);
+            $publicationModel = $this->findByUid($publication->getObjectId());
             if ($publicationModel === null) {
                 $publicationModel = new Publication();
+                $publicationModel->setUid($publication->getObjectId());
+                $publicationModel->setPid($storagePageId);
                 $publicationModel->setObjectId($publication->getObjectId());
                 $publicationModel->setTitle($publication->getTitle());
                 $publicationModel->setType($publication->getType());
                 $publicationModel->setDetails($publication->getDetails());
                 $publicationModel->setSearchIndex($publication->getSearchIndex());
-                $publicationModel->setPid($storagePageId);
                 $publicationModel->setReleaseYear($publication->getReleaseYear());
 
                 $this->add($publicationModel);
