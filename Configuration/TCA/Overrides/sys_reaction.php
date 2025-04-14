@@ -5,6 +5,17 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 defined('TYPO3') or die();
 
 if (ExtensionManagementUtility::isLoaded('reactions')) {
+    // Add the custom type to the type select
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTcaSelectItem(
+        'sys_reaction',
+        'reaction_type',
+        [
+            \Wtl\HioTypo3Connector\Reaction\ReceivePublicationsReaction::getDescription(),
+            \Wtl\HioTypo3Connector\Reaction\ReceivePublicationsReaction::getType(),
+            \Wtl\HioTypo3Connector\Reaction\ReceivePublicationsReaction::getIconIdentifier(),
+        ]
+    );
+
     ExtensionManagementUtility::addTcaSelectItem(
         'sys_reaction',
         'table_name',
