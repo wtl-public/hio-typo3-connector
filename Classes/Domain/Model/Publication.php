@@ -8,7 +8,6 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 class Publication extends AbstractEntity
 {
-    protected int $uid;
     protected int $objectId = 0;
 
     protected string $title = '';
