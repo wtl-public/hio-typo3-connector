@@ -47,4 +47,12 @@ class ReceivePublicationsReaction implements ReactionInterface
         }
         return $this->createJsonResponse(['status' => 'Publications imported']);
     }
+
+    private function createJsonResponse(array $data, int $statusCode = 201): ResponseInterface
+    {
+        return $this->responseFactory
+            ->createResponse($statusCode)
+            ->withHeader('Content-Type', 'application/json')
+            ->withBody($this->streamFactory->createStream(json_encode($data, JSON_THROW_ON_ERROR)));
+    }
 }
