@@ -8,6 +8,7 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use TYPO3\CMS\Reactions\Model\ReactionInstruction;
 use TYPO3\CMS\Reactions\Reaction\ReactionInterface;
+use Wtl\HioTypo3Connector\Domain\Model\DTO\PublicationDTO;
 use Wtl\HioTypo3Connector\Domain\Repository\PublicationRepository;
 
 class ReceivePublicationsReaction implements ReactionInterface
@@ -42,8 +43,12 @@ class ReceivePublicationsReaction implements ReactionInterface
     ): ResponseInterface {
 
         if (is_array($payload['data'] ?? false)) {
+            $dtos = [];
+            foreach ($payload['data'] as $key => $value) {
+                $dtos[] = PublicationDTO::fromArray($value);
+            }
             $storagePid = (int)($reaction->toArray()['storage_pid'] ?? 0);
-            $this->publicationRepository->savePublications($payload['data'], $storagePid);
+            $this->publicationRepository->savePublications($dtos, $storagePid);
         }
         return $this->createJsonResponse(['status' => 'Publications imported']);
     }

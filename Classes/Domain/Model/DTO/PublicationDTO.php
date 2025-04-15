@@ -259,4 +259,18 @@ class PublicationDTO extends BaseDTO
         $publicationData->setKeywords($details['keywords'] ?? []);
         return $publicationData;
     }
+
+    static public function fromArray(array $data): PublicationDTO
+    {
+        $releaseYear = $publication['journal']['releaseYear'] ?? null;
+        $dto = new self();
+        $dto->setObjectId($data['id']);
+        $dto->setTitle($data['title']);
+        $dto->setType($data['type']);
+        $dto->setReleaseYear($releaseYear);
+        $dto->setCitations($data['citations'] ?? []);
+        $dto->setDetails($data);
+        $dto->setSearchIndex($data);
+        return $dto;
+    }
 }
