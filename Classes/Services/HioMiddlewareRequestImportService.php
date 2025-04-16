@@ -61,9 +61,9 @@ class HioMiddlewareRequestImportService
         $this->batchSize = $batchSize;
     }
 
-    public function requestImport(string $entityType): ApiResponse{
+    public function requestImport(string $entityType) {
         try {
-            $response = $this->requestFactory->request($this->url, 'POST', [
+            return $this->requestFactory->request($this->url, 'POST', [
                 'headers' => $this->headers,
                 'auth' => $this->auth,
                 'verify' => $this->verifySsl,
@@ -71,18 +71,14 @@ class HioMiddlewareRequestImportService
                     'type' => $entityType,
                     'webhookUrl' => $this->webhookUrl,
                     'xApiKey' => $this->xApiKey,
-                    'batchSize' => $this->batchSize,
+                    'perPage' => $this->batchSize,
                 ]
             ]);
-            return $response;
-
         } catch (\Exception $e) {
             $this->logger->error(sprintf(
                 'Error requesting data import from HIO Middleware API: %s',
                 $e->getMessage()
             ));
-
-            throw($e);
         }
     }
 }
