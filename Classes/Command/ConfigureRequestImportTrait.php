@@ -25,7 +25,7 @@ trait ConfigureRequestImportTrait
                 'required argument: x-api-key'
             )->addArgument(
                 't3-batch-size',
-                InputArgument::REQUIRED,
+                InputArgument::OPTIONAL,
                 'optional argument: batch size (default: 100)',
                 100
             )->addArgument(
