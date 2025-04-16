@@ -5,7 +5,6 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 defined('TYPO3') or die();
 
 if (ExtensionManagementUtility::isLoaded('reactions')) {
-    var_dump('Hallo');
 
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns(
         'sys_reaction',
@@ -38,4 +37,14 @@ if (ExtensionManagementUtility::isLoaded('reactions')) {
         'label' => 'LLL:EXT:reactions/Resources/Private/Language/locallang_db.xlf:palette.additional',
         'showitem' => 'storage_pid',
     ];
+
+    $GLOBALS['TCA']['sys_reaction']['types'][\Wtl\HioTypo3Connector\Reaction\ReceivePublicationsReaction::getType()] = [
+        'showitem' => '
+        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
+        --palette--;;config,
+        --palette--;;createRecord,
+        --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
+        --palette--;;access',
+    ];
+
 }
