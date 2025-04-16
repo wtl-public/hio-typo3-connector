@@ -5,6 +5,7 @@ use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 defined('TYPO3') or die();
 
 if (ExtensionManagementUtility::isLoaded('reactions')) {
+    var_dump('Hallo');
 
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns(
         'sys_reaction',
