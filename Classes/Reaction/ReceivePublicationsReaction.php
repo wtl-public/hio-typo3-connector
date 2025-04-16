@@ -23,7 +23,7 @@ class ReceivePublicationsReaction implements ReactionInterface
 
     public static function getType(): string
     {
-        return 'receive-publications_reaction';
+        return 'receive-publications';
     }
 
     public static function getDescription(): string

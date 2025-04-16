@@ -33,7 +33,7 @@ if (ExtensionManagementUtility::isLoaded('reactions')) {
         ]
     );
 
-    $GLOBALS['TCA']['sys_reaction']['palettes']['createRecord'] = [
+    $GLOBALS['TCA']['sys_reaction']['palettes']['receivePublications'] = [
         'label' => 'LLL:EXT:reactions/Resources/Private/Language/locallang_db.xlf:palette.additional',
         'showitem' => 'table_name, --linebreak--, storage_pid',
     ];
