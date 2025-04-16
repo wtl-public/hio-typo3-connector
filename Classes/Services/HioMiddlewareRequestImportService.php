@@ -25,7 +25,9 @@ class HioMiddlewareRequestImportService
     /**
      * @var int
      */
-    protected $batchSize = 100;
+    protected int $batchSize;
+    protected string $webhookUrl;
+    protected string $xApiKey;
 
     public function __construct(RequestFactory $requestFactory)
     {
