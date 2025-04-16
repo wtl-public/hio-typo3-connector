@@ -33,7 +33,7 @@ if (ExtensionManagementUtility::isLoaded('reactions')) {
         ]
     );
 
-    $GLOBALS['TCA']['sys_reaction']['palettes'][\Wtl\HioTypo3Connector\Reaction\ReceivePublicationsReaction::getType()] = [
+    $GLOBALS['TCA']['sys_reaction']['palettes']['createRecord'] = [
         'label' => 'LLL:EXT:reactions/Resources/Private/Language/locallang_db.xlf:palette.additional',
         'showitem' => 'storage_pid',
     ];
