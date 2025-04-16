@@ -25,6 +25,7 @@ trait ConfigureRequestImportTrait
                 'optional argument: basic auth password'
             )->addOption(
                 'api-verify-ssl',
+                null,
                 InputOption::VALUE_NONE,
                 'optional argument: verify API ssl certificate (default: false)'
             )->addArgument(
