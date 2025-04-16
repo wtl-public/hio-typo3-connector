@@ -40,7 +40,7 @@ class RequestPublicationImportCommand extends Command
             $input->getOption('api-verify-ssl'),
             $input->getArgument('t3-webhook-url'),
             $input->getArgument('t3-x-api-key'),
-            $input->getArgument('t3-batch-size'),
+            (int)$input->getArgument('t3-batch-size'),
         );
 
         $response = $this->hioMiddlewareRequestImportService->requestImport(self::REQUESTED_ENTITY_TYPE);
