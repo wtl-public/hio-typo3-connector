@@ -3,7 +3,6 @@
 namespace Wtl\HioTypo3Connector\Services;
 
 use Wtl\HioTypo3Connector\Domain\Model\DTO\PersonDTO;
-use Wtl\HioTypo3Connector\Event\ReceiveHioPersonEvent;
 
 class HioPersonService extends HioApiService
 {
