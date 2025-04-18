@@ -2,7 +2,7 @@
 
 namespace Wtl\HioTypo3Connector\Domain\Repository;
 
-use Wtl\HioTypo3Connector\Domain\Model\DTO\PublicationDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\PublicationDTO;
 use Wtl\HioTypo3Connector\Domain\Model\Person;
 use Wtl\HioTypo3Connector\Domain\Model\Publication;
 

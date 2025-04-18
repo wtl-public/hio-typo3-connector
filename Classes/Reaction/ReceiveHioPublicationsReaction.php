@@ -9,7 +9,7 @@ use Psr\Http\Message\StreamFactoryInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Reactions\Model\ReactionInstruction;
 use TYPO3\CMS\Reactions\Reaction\ReactionInterface;
-use Wtl\HioTypo3Connector\Domain\Model\DTO\PublicationDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\PublicationDTO;
 use Wtl\HioTypo3Connector\Event\ReceiveHioPublicationEvent;
 
 class ReceiveHioPublicationsReaction implements ReactionInterface

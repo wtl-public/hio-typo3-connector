@@ -2,7 +2,7 @@
 
 namespace Wtl\HioTypo3Connector\Services;
 
-use Wtl\HioTypo3Connector\Domain\Model\DTO\DoctorateDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\DoctorateDTO;
 
 class HioDoctorateService extends HioApiService
 {

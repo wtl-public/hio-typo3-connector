@@ -4,7 +4,7 @@ namespace Wtl\HioTypo3Connector\Domain\Repository;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Wtl\HioTypo3Connector\Domain\Model\Patent;
-use Wtl\HioTypo3Connector\Domain\Model\DTO\PatentDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\PatentDTO;
 use Wtl\HioTypo3Connector\Domain\Repository\BaseRepository;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 

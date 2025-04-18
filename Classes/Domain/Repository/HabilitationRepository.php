@@ -2,7 +2,7 @@
 
 namespace Wtl\HioTypo3Connector\Domain\Repository;
 
-use Wtl\HioTypo3Connector\Domain\Model\DTO\HabilitationDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\HabilitationDTO;
 use Wtl\HioTypo3Connector\Domain\Model\Habilitation;
 
 class HabilitationRepository extends BaseRepository

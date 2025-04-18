@@ -2,7 +2,7 @@
 
 namespace Wtl\HioTypo3Connector\Services;
 
-use Wtl\HioTypo3Connector\Domain\Model\DTO\HabilitationDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\HabilitationDTO;
 
 class HioHabilitationService extends HioApiService
 {

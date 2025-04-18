@@ -3,7 +3,7 @@
 namespace Wtl\HioTypo3Connector\Domain\Repository;
 
 use Wtl\HioTypo3Connector\Domain\Model\CitationStyle;
-use Wtl\HioTypo3Connector\Domain\Model\DTO\Publication\CitationDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\Publication\CitationDTO;
 
 class CitationStyleRepository extends BaseRepository
 {

@@ -2,7 +2,7 @@
 
 namespace Wtl\HioTypo3Connector\Services;
 
-use Wtl\HioTypo3Connector\Domain\Model\DTO\PatentDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\PatentDTO;
 
 class HioPatentService extends HioApiService
 {
