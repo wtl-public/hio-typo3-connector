@@ -7,27 +7,25 @@ use Wtl\HioTypo3Connector\Domain\Model\Doctorate;
 
 class DoctorateRepository extends BaseRepository
 {
-    public function saveDoctorates($doctorates, $storagePageId): void {
-        /** @var DoctorateDto $dto */
-        foreach ($doctorates as $dto) {
-            $model = $this->findOneBy(['objectId' => $dto->getObjectId()]);
+    public function save(DoctorateDto $doctorateDto, $storagePageId): void
+    {
+        $doctorateModel = $this->findOneBy(['objectId' => $doctorateDto->getObjectId()]);
 
-            if ($model === null) {
-                $model = new Doctorate();
-                $model->setObjectId($dto->getObjectId());
-                $model->setTitle($dto->getTitle());
-                $model->setDetails($dto->getDetails());
-                $model->setSearchIndex($dto->getSearchIndex());
-                $model->setPid($storagePageId);
+        if ($doctorateModel === null) {
+            $doctorateModel = new Doctorate();
+            $doctorateModel->setObjectId($doctorateDto->getObjectId());
+            $doctorateModel->setTitle($doctorateDto->getTitle());
+            $doctorateModel->setDetails($doctorateDto->getDetails());
+            $doctorateModel->setSearchIndex($doctorateDto->getSearchIndex());
+            $doctorateModel->setPid($storagePageId);
 
-                $this->add($model);
-            } else {
-                $model->setObjectId($dto->getObjectId());
-                $model->setTitle($dto->getTitle());
-                $model->setDetails($dto->getDetails());
-                $model->setSearchIndex($dto->getSearchIndex());
-                $this->update($model);
-            }
+            $this->add($doctorateModel);
+        } else {
+            $doctorateModel->setObjectId($doctorateDto->getObjectId());
+            $doctorateModel->setTitle($doctorateDto->getTitle());
+            $doctorateModel->setDetails($doctorateDto->getDetails());
+            $doctorateModel->setSearchIndex($doctorateDto->getSearchIndex());
+            $this->update($doctorateModel);
         }
         $this->persistenceManager->persistAll();
     }

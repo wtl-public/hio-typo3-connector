@@ -8,35 +8,35 @@ use Wtl\HioTypo3Connector\Domain\Model\Person;
 
 class PersonRepository extends BaseRepository
 {
-    public function save(PersonDto $hioPerson, int $storagePageId = 0): void
+    public function save(PersonDto $personDto, int $storagePageId = 0): void
     {
-        $model = $this->findOneBy(['objectId' => $hioPerson->getObjectId()]);
-        if ($model === null) {
-            $model = new Person();
-            $model->setObjectId($hioPerson->getObjectId());
-            $model->setDetails(json_encode($hioPerson->getDetails()));
-            $model->setSearchIndex($hioPerson->getSearchIndex());
-            $model->setName($hioPerson->getName());
-            $model->setPid($storagePageId);
+        $personModel = $this->findOneBy(['objectId' => $personDto->getObjectId()]);
+        if ($personModel === null) {
+            $personModel = new Person();
+            $personModel->setObjectId($personDto->getObjectId());
+            $personModel->setDetails(json_encode($personDto->getDetails()));
+            $personModel->setSearchIndex($personDto->getSearchIndex());
+            $personModel->setName($personDto->getName());
+            $personModel->setPid($storagePageId);
 
-            $this->attachPublicationsByObjectIds($model, $hioPerson->getPublications());
-            $this->attachProjectsByObjectIds($model, $hioPerson->getProjects());
-            $this->attachPatentsByObjectIds($model, $hioPerson->getPatents());
-            $this->attachDoctoratesByObjectIds($model, $hioPerson->getDoctorates());
-            $this->attachHabilitationsByObjectIds($model, $hioPerson->getHabilitations());
-            $this->add($model);
+            $this->attachPublicationsByObjectIds($personModel, $personDto->getPublications());
+            $this->attachProjectsByObjectIds($personModel, $personDto->getProjects());
+            $this->attachPatentsByObjectIds($personModel, $personDto->getPatents());
+            $this->attachDoctoratesByObjectIds($personModel, $personDto->getDoctorates());
+            $this->attachHabilitationsByObjectIds($personModel, $personDto->getHabilitations());
+            $this->add($personModel);
         } else {
-            $model->setObjectId($hioPerson->getObjectId());
-            $model->setDetails(json_encode($hioPerson->getDetails()));
-            $model->setSearchIndex($hioPerson->getSearchIndex());
-            $model->setName($hioPerson->getName());
+            $personModel->setObjectId($personDto->getObjectId());
+            $personModel->setDetails(json_encode($personDto->getDetails()));
+            $personModel->setSearchIndex($personDto->getSearchIndex());
+            $personModel->setName($personDto->getName());
 
-            $this->attachPublicationsByObjectIds($model, $hioPerson->getPublications());
-            $this->attachProjectsByObjectIds($model, $hioPerson->getProjects());
-            $this->attachPatentsByObjectIds($model, $hioPerson->getPatents());
-            $this->attachDoctoratesByObjectIds($model, $hioPerson->getDoctorates());
-            $this->attachHabilitationsByObjectIds($model, $hioPerson->getHabilitations());
-            $this->update($model);
+            $this->attachPublicationsByObjectIds($personModel, $personDto->getPublications());
+            $this->attachProjectsByObjectIds($personModel, $personDto->getProjects());
+            $this->attachPatentsByObjectIds($personModel, $personDto->getPatents());
+            $this->attachDoctoratesByObjectIds($personModel, $personDto->getDoctorates());
+            $this->attachHabilitationsByObjectIds($personModel, $personDto->getHabilitations());
+            $this->update($personModel);
         }
         $this->persistenceManager->persistAll();
     }

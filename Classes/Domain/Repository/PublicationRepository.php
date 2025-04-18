@@ -8,27 +8,27 @@ use Wtl\HioTypo3Connector\Domain\Model\Publication;
 
 class PublicationRepository extends BaseRepository
 {
-    public function save(PublicationDto $publication, int $storagePid = 0): void
+    public function save(PublicationDto $publicationDto, int $storagePid = 0): void
     {
-        $publicationModel = $this->findOneBy(['objectId' => $publication->getObjectId()]);
+        $publicationModel = $this->findOneBy(['objectId' => $publicationDto->getObjectId()]);
         if ($publicationModel === null) {
             $publicationModel = new Publication();
-            $publicationModel->setObjectId($publication->getObjectId());
-            $publicationModel->setTitle($publication->getTitle());
-            $publicationModel->setType($publication->getType());
-            $publicationModel->setDetails($publication->getDetails());
-            $publicationModel->setSearchIndex($publication->getSearchIndex());
+            $publicationModel->setObjectId($publicationDto->getObjectId());
+            $publicationModel->setTitle($publicationDto->getTitle());
+            $publicationModel->setType($publicationDto->getType());
+            $publicationModel->setDetails($publicationDto->getDetails());
+            $publicationModel->setSearchIndex($publicationDto->getSearchIndex());
             $publicationModel->setPid($storagePid);
-            $publicationModel->setReleaseYear($publication->getReleaseYear());
+            $publicationModel->setReleaseYear($publicationDto->getReleaseYear());
 
             $this->add($publicationModel);
         } else {
-            $publicationModel->setObjectId($publication->getObjectId());
-            $publicationModel->setTitle($publication->getTitle());
-            $publicationModel->setType($publication->getType());
-            $publicationModel->setDetails($publication->getDetails());
-            $publicationModel->setSearchIndex($publication->getSearchIndex());
-            $publicationModel->setReleaseYear($publication->getReleaseYear());
+            $publicationModel->setObjectId($publicationDto->getObjectId());
+            $publicationModel->setTitle($publicationDto->getTitle());
+            $publicationModel->setType($publicationDto->getType());
+            $publicationModel->setDetails($publicationDto->getDetails());
+            $publicationModel->setSearchIndex($publicationDto->getSearchIndex());
+            $publicationModel->setReleaseYear($publicationDto->getReleaseYear());
 
             $this->update($publicationModel);
         }

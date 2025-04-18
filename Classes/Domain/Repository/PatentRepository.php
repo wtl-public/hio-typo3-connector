@@ -2,34 +2,30 @@
 
 namespace Wtl\HioTypo3Connector\Domain\Repository;
 
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 use Wtl\HioTypo3Connector\Domain\Dto\PatentDto;
 use Wtl\HioTypo3Connector\Domain\Model\Patent;
 
 class PatentRepository extends BaseRepository
 {
-    public function savePatents($patents, $storagePageId): void {
-        /** @var PatentDto $patent */
-        foreach ($patents as $patent) {
-            $patentModel = $this->findOneBy(['objectId' => $patent->getObjectId()]);
+    public function save(PatentDto $patentDto, $storagePageId): void
+    {
+        $patentModel = $this->findOneBy(['objectId' => $patentDto->getObjectId()]);
 
-            if ($patentModel === null) {
-                $patentModel = new Patent();
-                $patentModel->setObjectId($patent->getObjectId());
-                $patentModel->setTitle($patent->getTitle());
-                $patentModel->setDetails($patent->getDetails());
-                $patentModel->setSearchIndex($patent->getSearchIndex());
-                $patentModel->setPid($storagePageId);
+        if ($patentModel === null) {
+            $patentModel = new Patent();
+            $patentModel->setObjectId($patentDto->getObjectId());
+            $patentModel->setTitle($patentDto->getTitle());
+            $patentModel->setDetails($patentDto->getDetails());
+            $patentModel->setSearchIndex($patentDto->getSearchIndex());
+            $patentModel->setPid($storagePageId);
 
-                $this->add($patentModel);
-            } else {
-                $patentModel->setObjectId($patent->getObjectId());
-                $patentModel->setTitle($patent->getTitle());
-                $patentModel->setDetails($patent->getDetails());
-                $patentModel->setSearchIndex($patent->getSearchIndex());
-                $this->update($patentModel);
-            }
+            $this->add($patentModel);
+        } else {
+            $patentModel->setObjectId($patentDto->getObjectId());
+            $patentModel->setTitle($patentDto->getTitle());
+            $patentModel->setDetails($patentDto->getDetails());
+            $patentModel->setSearchIndex($patentDto->getSearchIndex());
+            $this->update($patentModel);
         }
         $this->persistenceManager->persistAll();
     }
