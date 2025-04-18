@@ -2,13 +2,13 @@
 
 namespace Wtl\HioTypo3Connector\Domain\Repository;
 
-use Wtl\HioTypo3Connector\Domain\Model\Dto\DoctorateDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\DoctorateDto;
 use Wtl\HioTypo3Connector\Domain\Model\Doctorate;
 
 class DoctorateRepository extends BaseRepository
 {
     public function saveDoctorates($doctorates, $storagePageId): void {
-        /** @var DoctorateDTO $dto */
+        /** @var DoctorateDto $dto */
         foreach ($doctorates as $dto) {
             $model = $this->findOneBy(['objectId' => $dto->getObjectId()]);
 

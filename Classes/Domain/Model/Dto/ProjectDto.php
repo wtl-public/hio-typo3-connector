@@ -3,11 +3,11 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Model\Dto;
 
-use Wtl\HioTypo3Connector\Domain\Model\Dto\Project\ResearchAreaDTO;
-use Wtl\HioTypo3Connector\Domain\Model\Dto\Project\SubjectAreaDTO;
-use Wtl\HioTypo3Connector\Domain\Model\Dto\Project\PersonDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\Project\ResearchAreaDto;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\Project\SubjectAreaDto;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\Project\PersonDto;
 
-class ProjectDTO
+class ProjectDto
 {
     use WithObjectId;
     use WithDetails;
@@ -20,15 +20,15 @@ class ProjectDTO
     protected ?\DateTime $startDate = null;
     protected ?\DateTime $endDate = null;
     /**
-     * @var SubjectAreaDTO[]
+     * @var SubjectAreaDto[]
      */
     protected array $subjectAreas = [];
     /**
-     * @var ResearchAreaDTO[]
+     * @var ResearchAreaDto[]
      */
     protected array $researchAreas = [];
     /**
-     * @var PersonDTO[]
+     * @var PersonDto[]
      */
     protected array $persons = [];
     protected string $language = '';

@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Wtl\HioTypo3Connector\Domain\Model\Dto\Habilitation;
+namespace Wtl\HioTypo3Connector\Domain\Model\Dto\Patent;
 
-class OrganizationDTO
+class OrganizationDto
 {
     protected int $id;
     protected string $name = '';

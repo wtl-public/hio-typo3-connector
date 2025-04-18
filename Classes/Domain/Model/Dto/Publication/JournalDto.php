@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Model\Dto\Publication;
 
-class JournalDTO
+class JournalDto
 {
     protected string $title = '';
     protected int $releaseYear = 0;

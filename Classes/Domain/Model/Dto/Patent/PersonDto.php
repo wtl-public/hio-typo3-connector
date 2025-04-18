@@ -1,14 +1,13 @@
 <?php
 declare(strict_types=1);
 
-namespace Wtl\HioTypo3Connector\Domain\Model\Dto\Habilitation;
+namespace Wtl\HioTypo3Connector\Domain\Model\Dto\Patent;
 
-class PersonDTO
+class PersonDto
 {
     protected ?int $id = null;
     protected string $name = '';
-    protected ?OrganizationDTO $organization = null;
-    protected string $role = '';
+    protected ?OrganizationDto $organization = null;
 
     public function getId(): int|null
     {
@@ -28,22 +27,13 @@ class PersonDTO
         $this->name = $name;
     }
 
-    public function getOrganization(): OrganizationDTO|null
+    public function getOrganization(): OrganizationDto|null
     {
         return $this->organization;
     }
-    public function setOrganization(?OrganizationDTO $organization): void
+    public function setOrganization(?OrganizationDto $organization): void
     {
         $this->organization = $organization;
-    }
-
-    public function getRole(): string
-    {
-        return $this->role;
-    }
-    public function setRole(string $role): void
-    {
-        $this->role = $role;
     }
 
     static public function fromArray(array $data): self
@@ -52,9 +42,8 @@ class PersonDTO
         $personData->setId($data['id']);
         $personData->setName($data['name'] ?? '');
         if (is_array($data['organization'])) {
-            $personData->setOrganization(OrganizationDTO::fromArray($data['organization']));
+            $personData->setOrganization(OrganizationDto::fromArray($data['organization']));
         }
-        $personData->setRole($data['role'] ?? '');
         return $personData;
     }
 }

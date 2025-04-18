@@ -5,7 +5,7 @@ namespace Wtl\HioTypo3Connector\Domain\Model\Dto;
 
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
-class PersonDTO
+class PersonDto
 {
     use WithObjectId;
     use WithDetails;
@@ -73,7 +73,7 @@ class PersonDTO
         $this->habilitations = $habilitations;
     }
 
-    static public function fromArray(array $data): PersonDTO
+    static public function fromArray(array $data): PersonDto
     {
         $releaseYear = $publication['journal']['releaseYear'] ?? null;
         $dto = new self();

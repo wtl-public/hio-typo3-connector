@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace Wtl\HioTypo3Connector\Domain\Model\Dto\Publication;
+namespace Wtl\HioTypo3Connector\Domain\Model\Dto\Project;
 
-class ResearchPartnerDTO
+class SubjectAreaDto
 {
     protected int $id;
-    protected string $name = '';
+    protected string $name;
 
     public function getId(): int
     {
@@ -26,15 +26,11 @@ class ResearchPartnerDTO
         $this->name = $name;
     }
 
-    static public function fromArray(array $data): self
+    public static function fromArray(array $data): self
     {
-        if (count($data) === 0) {
-            return new self();
-        }
-        $dto = new self();
-        $dto->setId($data['id']);
-        $dto->setName($data['name'] ?? '');
-
-        return $dto;
+        $subjectArea = new self();
+        $subjectArea->setId($data['id']);
+        $subjectArea->setName($data['name']);
+        return $subjectArea;
     }
 }

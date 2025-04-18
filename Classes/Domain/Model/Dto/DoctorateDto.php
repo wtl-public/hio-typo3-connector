@@ -3,10 +3,10 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Model\Dto;
 
-use Wtl\HioTypo3Connector\Domain\Model\Dto\Doctorate\OrganizationDTO;
-use Wtl\HioTypo3Connector\Domain\Model\Dto\Doctorate\PersonDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\Doctorate\OrganizationDto;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\Doctorate\PersonDto;
 
-class DoctorateDTO
+class DoctorateDto
 {
     use WithObjectId;
     use WithDetails;
@@ -19,11 +19,11 @@ class DoctorateDTO
     protected string $language = '';
 
     /**
-     * @var OrganizationDTO[]
+     * @var OrganizationDto[]
      */
     protected array $organizations = [];
     /**
-     * @var PersonDTO[]
+     * @var PersonDto[]
      */
     protected array $persons = [];
     /**

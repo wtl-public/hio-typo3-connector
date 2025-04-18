@@ -3,15 +3,15 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Model\Dto;
 
-use Wtl\HioTypo3Connector\Domain\Model\Dto\Publication\ConferenceDTO;
-use Wtl\HioTypo3Connector\Domain\Model\Dto\Publication\CitationDTO;
-use Wtl\HioTypo3Connector\Domain\Model\Dto\Publication\GlobalIdentifierDTO;
-use Wtl\HioTypo3Connector\Domain\Model\Dto\Publication\JournalDTO;
-use Wtl\HioTypo3Connector\Domain\Model\Dto\Publication\LanguageDTO;
-use Wtl\HioTypo3Connector\Domain\Model\Dto\Publication\PersonDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\Publication\ConferenceDto;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\Publication\CitationDto;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\Publication\GlobalIdentifierDto;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\Publication\JournalDto;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\Publication\LanguageDto;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\Publication\PersonDto;
 use Wtl\HioTypo3Connector\Domain\Model\Publication;
 
-class PublicationDTO
+class PublicationDto
 {
     use WithObjectId;
     use WithDetails;
@@ -20,26 +20,26 @@ class PublicationDTO
     protected string $abstract = '';
     protected string $access = '';
     /*
-     * @var CitationDTO[]
+     * @var CitationDto[]
      */
     protected array $citations = [];
-    protected ?ConferenceDTO $conference = null;
+    protected ?ConferenceDto $conference = null;
     protected string $document = '';
     /**
-     * @var GlobalIdentifierDTO[]
+     * @var GlobalIdentifierDto[]
      */
     protected array $globalIdentifiers;
-    protected ?JournalDTO $journal = null;
+    protected ?JournalDto $journal = null;
     /**
      * @var string[]
      */
     protected array $keywords = [];
     /*
-         *  @var LanguageDTO[]
+         *  @var LanguageDto[]
          */
     protected array $languages = [];
     /**
-     * @var PersonDTO[]
+     * @var PersonDto[]
      */
     protected array $persons = [];
     protected ?string $releaseYear = null;
@@ -126,20 +126,20 @@ class PublicationDTO
         $this->persons = $persons;
     }
 
-    public function getJournal(): ?JournalDTO
+    public function getJournal(): ?JournalDto
     {
         return $this->journal;
     }
-    public function setJournal(?JournalDTO $journal): void
+    public function setJournal(?JournalDto $journal): void
     {
         $this->journal = $journal;
     }
 
-    public function getConference(): ?ConferenceDTO
+    public function getConference(): ?ConferenceDto
     {
         return $this->conference;
     }
-    public function setConference(?ConferenceDTO $conference): void
+    public function setConference(?ConferenceDto $conference): void
     {
         $this->conference = $conference;
     }
@@ -207,7 +207,7 @@ class PublicationDTO
         $this->releaseYear = $releaseYear;
     }
 
-    static public function fromArray(array $data): PublicationDTO
+    static public function fromArray(array $data): PublicationDto
     {
         $releaseYear = $publication['journal']['releaseYear'] ?? null;
         $dto = new self();

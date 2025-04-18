@@ -2,7 +2,7 @@
 
 namespace Wtl\HioTypo3Connector\Services;
 
-use Wtl\HioTypo3Connector\Domain\Model\Dto\PersonDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\PersonDto;
 
 class HioPersonService extends HioApiService
 {
@@ -16,7 +16,7 @@ class HioPersonService extends HioApiService
 
         $result = $apiResponse->getData();
         foreach ($result as $person) {
-            $personDto  = new PersonDTO();
+            $personDto  = new PersonDto();
             $personDto->setObjectId($person['id']);
             $personDto->setName($person['name'] ?? '');
             $personDto->setDetails($person);

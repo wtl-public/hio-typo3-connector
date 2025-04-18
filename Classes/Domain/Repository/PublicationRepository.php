@@ -2,13 +2,13 @@
 
 namespace Wtl\HioTypo3Connector\Domain\Repository;
 
-use Wtl\HioTypo3Connector\Domain\Model\Dto\PublicationDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\PublicationDto;
 use Wtl\HioTypo3Connector\Domain\Model\Person;
 use Wtl\HioTypo3Connector\Domain\Model\Publication;
 
 class PublicationRepository extends BaseRepository
 {
-    public function save(PublicationDTO $publication, int $storagePid = 0): void
+    public function save(PublicationDto $publication, int $storagePid = 0): void
     {
         $publicationModel = $this->findOneBy(['objectId' => $publication->getObjectId()]);
         if ($publicationModel === null) {

@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Model\Dto\Project;
 
-class ResearchAreaDTO
+class ResearchAreaDto
 {
     protected int $id;
     protected string $name;

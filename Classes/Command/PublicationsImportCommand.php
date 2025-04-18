@@ -12,7 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 
 use Wtl\HioTypo3Connector\Command\ConfigurableTrait;
-use Wtl\HioTypo3Connector\Domain\Model\Dto\PublicationDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\PublicationDto;
 use Wtl\HioTypo3Connector\Domain\Repository\CitationStyleRepository;
 use Wtl\HioTypo3Connector\Event\ReceiveHioPublicationEvent;
 use Wtl\HioTypo3Connector\Services\HioPublicationService;
@@ -50,7 +50,7 @@ class PublicationsImportCommand extends Command
         $currentPage = 1;
         $firstPublication = null;
         do {
-            /** @var PublicationDTO[] $publications */
+            /** @var PublicationDto[] $publications */
             $publications = $this->hioPublicationService->getPublications($currentPage);
             if ($this->hioPublicationService->getMeta()->getTotal() === 0) {
                 $output->writeln('No new publications found');

@@ -2,7 +2,7 @@
 
 namespace Wtl\HioTypo3Connector\Services;
 
-use Wtl\HioTypo3Connector\Domain\Model\Dto\PatentDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\PatentDto;
 
 class HioPatentService extends HioApiService
 {
@@ -16,7 +16,7 @@ class HioPatentService extends HioApiService
 
         $result = $apiResponse->getData();
         foreach ($result as $patent) {
-            $dto  = new PatentDTO();
+            $dto  = new PatentDto();
             $dto->setObjectId($patent['id']);
             $dto->setTitle($patent['title'] ?? '');
             $dto->setDetails($patent);

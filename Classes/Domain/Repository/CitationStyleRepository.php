@@ -3,14 +3,14 @@
 namespace Wtl\HioTypo3Connector\Domain\Repository;
 
 use Wtl\HioTypo3Connector\Domain\Model\CitationStyle;
-use Wtl\HioTypo3Connector\Domain\Model\Dto\Publication\CitationDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\Publication\CitationDto;
 
 class CitationStyleRepository extends BaseRepository
 {
     public function saveCitationStyles(array $citations): void {
-        /** @var CitationDTO $citation */
+        /** @var CitationDto $citation */
         foreach ($citations as $citation) {
-            $dto = CitationDTO::fromArray($citation);
+            $dto = CitationDto::fromArray($citation);
             $model = $this->findOneBy(['label' => $dto->getStyle()]);
 
             if ($model === null) {

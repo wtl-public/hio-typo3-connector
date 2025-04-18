@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Event;
 
-use Wtl\HioTypo3Connector\Domain\Model\Dto\PersonDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\PersonDto;
 
 class ReceiveHioPersonEvent
 {
-    public function __construct(private readonly PersonDTO $hioPerson, private readonly int $storagePid)
+    public function __construct(private readonly PersonDto $hioPerson, private readonly int $storagePid)
     {}
 
-    public function getHioPerson(): PersonDTO
+    public function getHioPerson(): PersonDto
     {
         return $this->hioPerson;
     }

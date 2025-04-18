@@ -4,14 +4,14 @@ namespace Wtl\HioTypo3Connector\Domain\Repository;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Wtl\HioTypo3Connector\Domain\Model\Patent;
-use Wtl\HioTypo3Connector\Domain\Model\Dto\PatentDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\PatentDto;
 use Wtl\HioTypo3Connector\Domain\Repository\BaseRepository;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 
 class PatentRepository extends BaseRepository
 {
     public function savePatents($patents, $storagePageId): void {
-        /** @var PatentDTO $patent */
+        /** @var PatentDto $patent */
         foreach ($patents as $patent) {
             $patentModel = $this->findOneBy(['objectId' => $patent->getObjectId()]);
 

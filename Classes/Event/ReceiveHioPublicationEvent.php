@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Event;
 
-use Wtl\HioTypo3Connector\Domain\Model\Dto\PublicationDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\PublicationDto;
 
 class ReceiveHioPublicationEvent
 {
-    public function __construct(private readonly PublicationDTO $hioPublication, private readonly int $storagePid)
+    public function __construct(private readonly PublicationDto $hioPublication, private readonly int $storagePid)
     {}
 
-    public function getHioPublication(): PublicationDTO
+    public function getHioPublication(): PublicationDto
     {
         return $this->hioPublication;
     }

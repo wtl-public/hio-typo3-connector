@@ -12,7 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 
 use Wtl\HioTypo3Connector\Command\ConfigurableTrait;
-use Wtl\HioTypo3Connector\Domain\Model\Dto\PersonDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\PersonDto;
 use Wtl\HioTypo3Connector\Event\ReceiveHioPersonEvent;
 use Wtl\HioTypo3Connector\Services\HioPersonService;
 
@@ -47,7 +47,7 @@ class PersonsImportCommand extends Command
 
         $currentPage = 1;
         do {
-            /** @var PersonDTO[] $persons */
+            /** @var PersonDto[] $persons */
             $persons = $this->hioPersonService->getPersons($currentPage);
             if ($this->hioPersonService->getMeta()->getTotal() === 0) {
                 $output->writeln('No new persons found');

@@ -9,7 +9,7 @@ use Psr\Http\Message\StreamFactoryInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Reactions\Model\ReactionInstruction;
 use TYPO3\CMS\Reactions\Reaction\ReactionInterface;
-use Wtl\HioTypo3Connector\Domain\Model\Dto\PersonDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\PersonDto;
 
 class ReceiveHioPersonsReaction implements ReactionInterface
 {
@@ -48,7 +48,7 @@ class ReceiveHioPersonsReaction implements ReactionInterface
             foreach ($payload['data'] as $value) {
                 $this->eventDispatcher->dispatch(
                     new ReceiveHioPersonEvent(
-                        PersonDTO::fromArray($value),
+                        PersonDto::fromArray($value),
                         $storagePid
                     )
                 );

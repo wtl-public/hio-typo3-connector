@@ -2,13 +2,13 @@
 
 namespace Wtl\HioTypo3Connector\Domain\Repository;
 
-use Wtl\HioTypo3Connector\Domain\Model\Dto\HabilitationDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\HabilitationDto;
 use Wtl\HioTypo3Connector\Domain\Model\Habilitation;
 
 class HabilitationRepository extends BaseRepository
 {
     public function saveHabilitations($habilitations, $storagePageId): void {
-        /** @var HabilitationDTO $dto */
+        /** @var HabilitationDto $dto */
         foreach ($habilitations as $dto) {
             $model = $this->findOneBy(['objectId' => $dto->getObjectId()]);
 

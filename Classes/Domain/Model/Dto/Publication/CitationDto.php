@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Model\Dto\Publication;
 
-class CitationDTO
+class CitationDto
 {
     protected string $citation = '';
     protected string $style = '';

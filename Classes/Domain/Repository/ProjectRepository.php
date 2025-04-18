@@ -2,13 +2,13 @@
 
 namespace Wtl\HioTypo3Connector\Domain\Repository;
 
-use Wtl\HioTypo3Connector\Domain\Model\Dto\ProjectDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\ProjectDto;
 use Wtl\HioTypo3Connector\Domain\Model\Project;
 
 class ProjectRepository extends BaseRepository
 {
     public function saveProjects($projects, $storagePageId): void {
-        /** @var ProjectDTO $project */
+        /** @var ProjectDto $project */
         foreach ($projects as $project) {
             $projectModel = $this->findOneBy(['objectId' => $project->getObjectId()]);
 

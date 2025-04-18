@@ -2,7 +2,7 @@
 
 namespace Wtl\HioTypo3Connector\Services;
 
-use Wtl\HioTypo3Connector\Domain\Model\Dto\ProjectDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\ProjectDto;
 
 class HioProjectService extends HioApiService
 {
@@ -16,7 +16,7 @@ class HioProjectService extends HioApiService
 
         $result = $apiResponse->getData();
         foreach ($result as $project) {
-            $projectData  = new ProjectDTO();
+            $projectData  = new ProjectDto();
             $projectData->setObjectId($project['id']);
             $projectData->setTitle($project['title'] ?? '');
             $projectData->setDetails($project);

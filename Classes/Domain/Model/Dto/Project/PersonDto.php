@@ -3,14 +3,14 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Model\Dto\Project;
 
-use Wtl\HioTypo3Connector\Domain\Model\Dto\Publication\OrganizationDTO;
-use Wtl\HioTypo3Connector\Domain\Model\Dto\Publication\ResearchPartnerDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\Publication\OrganizationDto;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\Publication\ResearchPartnerDto;
 
-class PersonDTO
+class PersonDto
 {
     protected ?int $id = null;
     protected string $person = '';
-    protected ?OrganizationDTO $organization = null;
+    protected ?OrganizationDto $organization = null;
     protected string $role = '';
     protected \DateTime $startDate;
     protected \DateTime $endDate;
@@ -33,11 +33,11 @@ class PersonDTO
         $this->person = $person;
     }
 
-    public function getOrganization(): OrganizationDTO|null
+    public function getOrganization(): OrganizationDto|null
     {
         return $this->organization;
     }
-    public function setOrganization(?OrganizationDTO $organization): void
+    public function setOrganization(?OrganizationDto $organization): void
     {
         $this->organization = $organization;
     }
@@ -84,7 +84,7 @@ class PersonDTO
         $dto->setId($data['id']);
         $dto->setPerson($data['person'] ?? '');
         if (isset($data['organization'])) {
-            $dto->setOrganization(OrganizationDTO::fromArray($data['organization']));
+            $dto->setOrganization(OrganizationDto::fromArray($data['organization']));
         }
         $dto->setRole($data['role'] ?? '');
         $dto->setStartDate($startDate);

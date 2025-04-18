@@ -3,12 +3,12 @@
 namespace Wtl\HioTypo3Connector\Domain\Repository;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use Wtl\HioTypo3Connector\Domain\Model\Dto\PersonDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\PersonDto;
 use Wtl\HioTypo3Connector\Domain\Model\Person;
 
 class PersonRepository extends BaseRepository
 {
-    public function save(PersonDTO $hioPerson, int $storagePageId = 0): void
+    public function save(PersonDto $hioPerson, int $storagePageId = 0): void
     {
         $model = $this->findOneBy(['objectId' => $hioPerson->getObjectId()]);
         if ($model === null) {

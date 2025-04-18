@@ -3,12 +3,12 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Model\Dto\Publication;
 
-class PersonDTO
+class PersonDto
 {
     protected ?int $id = null;
     protected string $name = '';
-    protected ?OrganizationDTO $organization = null;
-    protected ?ResearchPartnerDTO $researchPartner = null;
+    protected ?OrganizationDto $organization = null;
+    protected ?ResearchPartnerDto $researchPartner = null;
 
     public function getId(): int|null
     {
@@ -28,20 +28,20 @@ class PersonDTO
         $this->name = $name;
     }
 
-    public function getOrganization(): OrganizationDTO|null
+    public function getOrganization(): OrganizationDto|null
     {
         return $this->organization;
     }
-    public function setOrganization(?OrganizationDTO $organization): void
+    public function setOrganization(?OrganizationDto $organization): void
     {
         $this->organization = $organization;
     }
 
-    public function getResearchPartner(): ResearchPartnerDTO|null
+    public function getResearchPartner(): ResearchPartnerDto|null
     {
         return $this->researchPartner;
     }
-    public function setResearchPartner(?ResearchPartnerDTO $researchPartner): void
+    public function setResearchPartner(?ResearchPartnerDto $researchPartner): void
     {
         $this->researchPartner = $researchPartner;
     }
@@ -52,10 +52,10 @@ class PersonDTO
         $creatorData->setId($data['id']);
         $creatorData->setName($data['name'] ?? '');
         if (is_array($data['organization'])) {
-            $creatorData->setOrganization(OrganizationDTO::fromArray($data['organization']));
+            $creatorData->setOrganization(OrganizationDto::fromArray($data['organization']));
         }
         if (is_array($data['researchPartner'])) {
-            $creatorData->setResearchPartner(ResearchPartnerDTO::fromArray($data['researchPartner']));
+            $creatorData->setResearchPartner(ResearchPartnerDto::fromArray($data['researchPartner']));
         }
         return $creatorData;
     }

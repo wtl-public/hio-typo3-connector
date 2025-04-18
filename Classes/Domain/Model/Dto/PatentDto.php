@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Model\Dto;
 
-use Wtl\HioTypo3Connector\Domain\Model\Dto\Patent\PersonDTO;
+use Wtl\HioTypo3Connector\Domain\Model\Dto\Patent\PersonDto;
 
-class PatentDTO
+class PatentDto
 {
     use WithObjectId;
     use WithDetails;
@@ -15,7 +15,7 @@ class PatentDTO
     protected string $description = '';
     protected ?\DateTime $grantDate = null;
     /**
-     * @var PersonDTO[]
+     * @var PersonDto[]
      */
     protected array $persons = [];
     protected string $patentNumber = '';

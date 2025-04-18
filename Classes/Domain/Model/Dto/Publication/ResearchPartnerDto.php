@@ -3,18 +3,18 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Model\Dto\Publication;
 
-class LanguageDTO
+class ResearchPartnerDto
 {
-    protected string $isoCode = '';
+    protected int $id;
     protected string $name = '';
 
-    public function getIsoCode(): string
+    public function getId(): int
     {
-        return $this->isoCode;
+        return $this->id;
     }
-    public function setIsoCode(string $isoCode): void
+    public function setId(int $id): void
     {
-        $this->isoCode = $isoCode;
+        $this->id = $id;
     }
 
     public function getName(): string
@@ -28,10 +28,13 @@ class LanguageDTO
 
     static public function fromArray(array $data): self
     {
-        $languageData = new self();
-        $languageData->setIsoCode($data['iso_639_1']);
-        $languageData->setName($data['name']);
+        if (count($data) === 0) {
+            return new self();
+        }
+        $dto = new self();
+        $dto->setId($data['id']);
+        $dto->setName($data['name'] ?? '');
 
-        return $languageData;
+        return $dto;
     }
 }
