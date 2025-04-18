@@ -5,10 +5,13 @@ namespace Wtl\HioTypo3Connector\Domain\Model\DTO;
 
 use Wtl\HioTypo3Connector\Domain\Model\DTO\Doctorate\OrganizationDTO;
 use Wtl\HioTypo3Connector\Domain\Model\DTO\Doctorate\PersonDTO;
-use Wtl\HioTypo3Connector\Domain\Model\Doctorate;
 
-class DoctorateDTO extends BaseDTO
+class DoctorateDTO
 {
+    use WithObjectId;
+    use WithDetails;
+    use WithSearchIndex;
+
     protected string $courseOfStudy = '';
     protected string $description = '';
     protected bool $doctoralPositionAvailable = false;
@@ -139,52 +142,5 @@ class DoctorateDTO extends BaseDTO
     public function setStartDate(?\DateTime $startDate): void
     {
         $this->startDate = $startDate;
-    }
-
-    static public function fromDomainModel(Doctorate|\TYPO3\CMS\Extbase\DomainObject\AbstractEntity $model): static
-    {
-        $details = $model->getDetails();
-
-        $startDate = null;
-        if (isset($details['startDate'])) {
-            $startDate = \DateTime::createFromFormat(format: 'Y-m-d', datetime: $details['startDate']);
-        }
-        $endDate = null;
-        if (isset($details['endDate'])) {
-            $endDate = \DateTime::createFromFormat(format: 'Y-m-d', datetime: $details['endDate']);
-        }
-
-        $persons = [];
-        if (isset($details['persons'])) {
-            foreach ($details['persons'] as $person) {
-                $persons[] = PersonDTO::fromArray($person);
-            }
-        }
-        $organizations = [];
-        if (isset($details['organizations'])) {
-            foreach ($details['organizations'] as $organization) {
-                $organizations[] = OrganizationDTO::fromArray($organization);
-            }
-        }
-
-        $dto = new self();
-        $dto->setExtbaseUid($model->getUid());
-        $dto->setObjectId($details['id']);
-        $dto->setDetails($details);
-
-        $dto->setCourseOfStudy($details['courseOfStudy'] ?? '');
-        $dto->setDescription($details['description'] ?? '');
-        $dto->setDoctoralPositionAvailable($details['doctoralPositionAvailable'] ?? false);
-        $dto->setEndDate($endDate);
-        $dto->setLanguage($details['language'] ?? '');
-        $dto->setOrganizations($organizations);
-        $dto->setPersons($persons);
-        $dto->setResearchAreas($details['researchAreas'] ?? []);
-        $dto->setScholarshipAvailable($details['scholarshipAvailable'] ?? false);
-        $dto->setStartDate($startDate);
-        $dto->setSubjectAreas($details['subjectAreas'] ?? []);
-        $dto->setTitle($details['title']);
-
-        return $dto;
     }
 }

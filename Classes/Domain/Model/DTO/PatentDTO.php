@@ -4,10 +4,13 @@ declare(strict_types=1);
 namespace Wtl\HioTypo3Connector\Domain\Model\DTO;
 
 use Wtl\HioTypo3Connector\Domain\Model\DTO\Patent\PersonDTO;
-use Wtl\HioTypo3Connector\Domain\Model\Patent;
 
-class PatentDTO extends BaseDTO
+class PatentDTO
 {
+    use WithObjectId;
+    use WithDetails;
+    use WithSearchIndex;
+
     protected string $countryOfRegistration = '';
     protected string $description = '';
     protected ?\DateTime $grantDate = null;
@@ -150,47 +153,5 @@ class PatentDTO extends BaseDTO
     public function setRegistrationDate(?\DateTime $registrationDate): void
     {
         $this->registrationDate = $registrationDate;
-    }
-
-    static public function fromDomainModel(Patent|\TYPO3\CMS\Extbase\DomainObject\AbstractEntity $model): static
-    {
-        $details = $model->getDetails();
-
-        $grantDate = null;
-        if (isset($details['grantDate'])) {
-            $grantDate = \DateTime::createFromFormat(format: 'Y-m-d', datetime: $details['grantDate']);
-        }
-        $registrationDate = null;
-        if (isset($details['registrationDate'])) {
-            $registrationDate = \DateTime::createFromFormat('Y-m-d', $details['registrationDate']);
-        }
-
-        $persons = [];
-        if (isset($details['persons'])) {
-            foreach ($details['persons'] as $person) {
-                $persons[] = PersonDTO::fromArray($person);
-            }
-        }
-
-        $patentData = new self();
-        $patentData->setExtbaseUid($model->getUid());
-        $patentData->setObjectId($details['id']);
-        $patentData->setDetails($details);
-
-        $patentData->setCountryOfRegistration($details['countryOfRegistration'] ?? '');
-        $patentData->setDescription($details['description'] ?? '');
-        $patentData->setGrantDate($grantDate);
-        $patentData->setPersons($persons);
-        $patentData->setPatentNumber($details['patentNumber'] ?? '');
-        $patentData->setPriorityPatent($details['priorityPatent'] ?? null);
-        $patentData->setPublicationNumber($details['publicationNumber'] ?? null);
-        $patentData->setRegistrationDate($registrationDate);
-        $patentData->setResearchAreas($details['researchAreas'] ?? []);
-        $patentData->setStatus($details['status'] ?? '');
-        $patentData->setSubjectAreas($details['subjectAreas'] ?? []);
-        $patentData->setTitle($details['title']);
-        $patentData->setVisibility($details['visibility'] ?? '');
-
-        return $patentData;
     }
 }

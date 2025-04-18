@@ -5,10 +5,13 @@ namespace Wtl\HioTypo3Connector\Domain\Model\DTO;
 
 use Wtl\HioTypo3Connector\Domain\Model\DTO\Habilitation\OrganizationDTO;
 use Wtl\HioTypo3Connector\Domain\Model\DTO\Habilitation\PersonDTO;
-use Wtl\HioTypo3Connector\Domain\Model\Habilitation;
 
-class HabilitationDTO extends BaseDTO
+class HabilitationDTO
 {
+    use WithObjectId;
+    use WithDetails;
+    use WithSearchIndex;
+
     protected ?\DateTime $admissionDate = null;
     protected ?\DateTime $certificateDate = null;
     protected ?\DateTime $endDate = null;
@@ -148,64 +151,5 @@ class HabilitationDTO extends BaseDTO
     public function setType(string $type): void
     {
         $this->type = $type;
-    }
-
-    static public function fromDomainModel(Habilitation|\TYPO3\CMS\Extbase\DomainObject\AbstractEntity $model): static
-    {
-        $details = $model->getDetails();
-
-        $admissionDate = null;
-        if (isset($details['admissionDate'])) {
-            $admissionDate = \DateTime::createFromFormat(format: 'Y-m-d', datetime: $details['admissionDate']);
-        }
-        $certificateDate = null;
-        if (isset($details['certificateDate'])) {
-            $certificateDate = \DateTime::createFromFormat(format: 'Y-m-d', datetime: $details['certificateDate']);
-        }
-        $endDate = null;
-        if (isset($details['endDate'])) {
-            $endDate = \DateTime::createFromFormat(format: 'Y-m-d', datetime: $details['endDate']);
-        }
-        $registrationDate = null;
-        if (isset($details['registrationDate'])) {
-            $registrationDate = \DateTime::createFromFormat(format: 'Y-m-d', datetime: $details['registrationDate']);
-        }
-        $startDate = null;
-        if (isset($details['startDate'])) {
-            $startDate = \DateTime::createFromFormat(format: 'Y-m-d', datetime: $details['startDate']);
-        }
-
-        $persons = [];
-        if (isset($details['persons'])) {
-            foreach ($details['persons'] as $person) {
-                $persons[] = PersonDTO::fromArray($person);
-            }
-        }
-        $organizations = [];
-        if (isset($details['organizations'])) {
-            foreach ($details['organizations'] as $organization) {
-                $organizations[] = OrganizationDTO::fromArray($organization);
-            }
-        }
-
-        $dto = new self();
-        $dto->setExtbaseUid($model->getUid());
-        $dto->setObjectId($details['id']);
-        $dto->setDetails($details);
-        $dto->setAdmissionDate($admissionDate);
-        $dto->setCertificateDate($certificateDate);
-        $dto->setEndDate($endDate);
-        $dto->setLanguage($details['language'] ?? '');
-        $dto->setOrganizations($organizations);
-        $dto->setPersons($persons);
-        $dto->setRegistrationDate($registrationDate);
-        $dto->setResearchAreas($details['researchAreas'] ?? []);
-        $dto->setStartDate($startDate);
-        $dto->setStatus($details['status'] ?? '');
-        $dto->setSubjectAreas($details['subjectAreas'] ?? []);
-        $dto->setTitle($details['title']);
-        $dto->setType($details['type'] ?? '');
-
-        return $dto;
     }
 }

@@ -6,10 +6,13 @@ namespace Wtl\HioTypo3Connector\Domain\Model\DTO;
 use Wtl\HioTypo3Connector\Domain\Model\DTO\Project\ResearchAreaDTO;
 use Wtl\HioTypo3Connector\Domain\Model\DTO\Project\SubjectAreaDTO;
 use Wtl\HioTypo3Connector\Domain\Model\DTO\Project\PersonDTO;
-use Wtl\HioTypo3Connector\Domain\Model\Project;
 
-class ProjectDTO extends BaseDTO
+class ProjectDTO
 {
+    use WithObjectId;
+    use WithDetails;
+    use WithSearchIndex;
+
     protected string $title = '';
     protected string $abstract = '';
     protected string $type = '';
@@ -139,59 +142,5 @@ class ProjectDTO extends BaseDTO
     public function setPersons(array $persons): void
     {
         $this->persons = $persons;
-    }
-
-    static public function fromDomainModel(Project|\TYPO3\CMS\Extbase\DomainObject\AbstractEntity $model): static
-    {
-        $details = $model->getDetails();
-
-        $startDate = null;
-        if (isset($details['startDate'])) {
-            $startDate = \DateTime::createFromFormat(format: 'Y-m-d', datetime: $details['startDate']);
-        }
-        $endDate = null;
-        if (isset($details['endDate'])) {
-            $endDate = \DateTime::createFromFormat('Y-m-d', $details['endDate']);
-        }
-
-        $subjectAreas = [];
-        if (isset($details['subjectAreas'])) {
-            foreach ($details['subjectAreas'] as $areaId => $areaName) {
-                $subjectAreas[] = SubjectAreaDTO::fromArray(['id' => $areaId, 'name' => $areaName]);
-            }
-        }
-
-        $researchAreas = [];
-        if (isset($details['researchAreas'])) {
-            foreach ($details['researchAreas'] as $areaId => $areaName) {
-                $researchAreas[] = ResearchAreaDTO::fromArray(['id' => $areaId, 'name' => $areaName]);
-            }
-        }
-
-        $persons = [];
-        if (isset($details['persons'])) {
-            foreach ($details['persons'] as $person) {
-                $persons[] = PersonDTO::fromArray($person);
-            }
-        }
-
-        $projectData = new self();
-        $projectData->setExtbaseUid($model->getUid());
-        $projectData->setDetails($details);
-        $projectData->setTitle($details['title']);
-        $projectData->setObjectId($details['id']);
-        $projectData->setStartDate($startDate);
-        $projectData->setEndDate($endDate);
-        $projectData->setSubjectAreas($subjectAreas);
-        $projectData->setResearchAreas($researchAreas);
-        $projectData->setPersons($persons);
-        $projectData->setAbstract($details['abstract'] ?? '');
-        $projectData->setType($details['type'] ?? '');
-        $projectData->setObjective($details['objective'] ?? '');
-        $projectData->setLanguage($details['language'] ?? '');
-        $projectData->setStatus($details['status'] ?? '');
-        $projectData->setVisibility($details['visibility'] ?? '');
-
-        return $projectData;
     }
 }
