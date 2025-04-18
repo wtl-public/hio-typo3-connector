@@ -10,9 +10,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
-
-use Wtl\HioTypo3Connector\Command\ConfigurableTrait;
-use Wtl\HioTypo3Connector\Domain\Model\Dto\PublicationDto;
+use Wtl\HioTypo3Connector\Domain\Dto\PublicationDto;
 use Wtl\HioTypo3Connector\Domain\Repository\CitationStyleRepository;
 use Wtl\HioTypo3Connector\Event\ReceiveHioPublicationEvent;
 use Wtl\HioTypo3Connector\Services\HioPublicationService;

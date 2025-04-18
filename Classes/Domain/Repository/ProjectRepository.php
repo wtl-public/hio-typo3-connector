@@ -2,7 +2,7 @@
 
 namespace Wtl\HioTypo3Connector\Domain\Repository;
 
-use Wtl\HioTypo3Connector\Domain\Model\Dto\ProjectDto;
+use Wtl\HioTypo3Connector\Domain\Dto\ProjectDto;
 use Wtl\HioTypo3Connector\Domain\Model\Project;
 
 class ProjectRepository extends BaseRepository

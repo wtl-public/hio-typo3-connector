@@ -2,14 +2,14 @@
 
 namespace Wtl\HioTypo3Connector\Reaction;
 
+use Psr\EventDispatcher\EventDispatcherInterface;
 use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
-use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Reactions\Model\ReactionInstruction;
 use TYPO3\CMS\Reactions\Reaction\ReactionInterface;
-use Wtl\HioTypo3Connector\Domain\Model\Dto\PersonDto;
+use Wtl\HioTypo3Connector\Domain\Dto\PersonDto;
 
 class ReceiveHioPersonsReaction implements ReactionInterface
 {

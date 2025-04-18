@@ -2,8 +2,8 @@
 
 namespace Wtl\HioTypo3Connector\Domain\Repository;
 
+use Wtl\HioTypo3Connector\Domain\Dto\Publication\CitationDto;
 use Wtl\HioTypo3Connector\Domain\Model\CitationStyle;
-use Wtl\HioTypo3Connector\Domain\Model\Dto\Publication\CitationDto;
 
 class CitationStyleRepository extends BaseRepository
 {

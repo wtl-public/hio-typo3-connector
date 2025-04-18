@@ -3,7 +3,7 @@
 namespace Wtl\HioTypo3Connector\Domain\Repository;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use Wtl\HioTypo3Connector\Domain\Model\Dto\PersonDto;
+use Wtl\HioTypo3Connector\Domain\Dto\PersonDto;
 use Wtl\HioTypo3Connector\Domain\Model\Person;
 
 class PersonRepository extends BaseRepository

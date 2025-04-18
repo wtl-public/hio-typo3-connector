@@ -2,7 +2,7 @@
 
 namespace Wtl\HioTypo3Connector\Domain\Repository;
 
-use Wtl\HioTypo3Connector\Domain\Model\Dto\DoctorateDto;
+use Wtl\HioTypo3Connector\Domain\Dto\DoctorateDto;
 use Wtl\HioTypo3Connector\Domain\Model\Doctorate;
 
 class DoctorateRepository extends BaseRepository

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Event;
 
-use Wtl\HioTypo3Connector\Domain\Model\Dto\PersonDto;
+use Wtl\HioTypo3Connector\Domain\Dto\PersonDto;
 
 class ReceiveHioPersonEvent
 {
