@@ -17,12 +17,12 @@ class HioPublicationService extends HioApiService
 
         $result = $apiResponse->getData();
         foreach ($result as $publication) {
-            $releaseYear = (string)$publication['journal']['releaseYear'] ?? null;
+            $releaseYear = $publication['journal']['releaseYear'] ?? null;
             $publicationData = new PublicationDTO();
             $publicationData->setObjectId($publication['id']);
             $publicationData->setTitle($publication['title']);
             $publicationData->setType($publication['type']);
-            $publicationData->setReleaseYear($releaseYear);
+            $publicationData->setReleaseYear((string)$releaseYear);
             $publicationData->setCitations($publication['citations'] ?? []);
             $publicationData->setDetails($publication);
             $publicationData->setSearchIndex($publication);
