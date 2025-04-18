@@ -51,10 +51,26 @@ services:
         command: 'hio:request:person:import'
         description: 'Request Import of person data'
 
+  Wtl\HioTypo3Connector\EventListener\ReceiveHioDoctorateListener:
+    tags:
+      - name: event.listener
+        identifier: 'receiveHioDoctorateListener'
+  Wtl\HioTypo3Connector\EventListener\ReceiveHioHabilitationListener:
+    tags:
+      - name: event.listener
+        identifier: 'receiveHioHabilitationListener'
+  Wtl\HioTypo3Connector\EventListener\ReceiveHioPatentListener:
+    tags:
+      - name: event.listener
+        identifier: 'receiveHioPatentListener'
   Wtl\HioTypo3Connector\EventListener\ReceiveHioPersonListener:
     tags:
       - name: event.listener
         identifier: 'receiveHioPersonListener'
+  Wtl\HioTypo3Connector\EventListener\ReceiveHioProjectListener:
+    tags:
+      - name: event.listener
+        identifier: 'receiveHioProjectListener'
   Wtl\HioTypo3Connector\EventListener\ReceiveHioPublicationListener:
     tags:
       - name: event.listener
