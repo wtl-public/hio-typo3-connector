@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto;
 
-use Wtl\HioTypo3Connector\Domain\Dto\Patent\PersonDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Collection\PersonDto;
 use Wtl\HioTypo3Connector\Trait\WithDetails;
 use Wtl\HioTypo3Connector\Trait\WithObjectId;
 use Wtl\HioTypo3Connector\Trait\WithSearchIndex;
@@ -156,5 +156,29 @@ class PatentDto
     public function setRegistrationDate(?\DateTime $registrationDate): void
     {
         $this->registrationDate = $registrationDate;
+    }
+
+    static public function fromArray(array $data): PatentDto
+    {
+        $patentDto = new self();
+        $patentDto->setObjectId($data['id']);
+        $patentDto->setDetails($data);
+        $patentDto->setSearchIndex($data);
+
+        $patentDto->setCountryOfRegistration($data['countryOfRegistration'] ?? '');
+        $patentDto->setDescription($data['description'] ?? '');
+        $patentDto->setGrantDate(isset($data['grantDate']) ? new \DateTime($data['grantDate']) : null);
+        $patentDto->setPatentNumber($data['patentNumber'] ?? '');
+        $patentDto->setPersons(array_map(fn($item) => PersonDto::fromArray($item), $data['persons'] ?? []));
+        $patentDto->setPriorityPatent($data['priorityPatent'] ?? null);
+        $patentDto->setPublicationNumber($data['publicationNumber'] ?? null);
+        $patentDto->setRegistrationDate(isset($data['registrationDate']) ? new \DateTime($data['registrationDate']) : null);
+        $patentDto->setResearchAreas($data['researchAreas'] ?? []);
+        $patentDto->setStatus($data['status'] ?? '');
+        $patentDto->setSubjectAreas($data['subjectAreas'] ?? []);
+        $patentDto->setTitle($data['title'] ?? '');
+        $patentDto->setVisibility($data['visibility'] ?? '');
+
+        return $patentDto;
     }
 }

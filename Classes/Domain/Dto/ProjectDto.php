@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto;
 
+use Wtl\HioTypo3Connector\Domain\Dto\Project\FundingProgramDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Project\PersonDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Project\ResearchAreaDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Project\SubjectAreaDto;
@@ -16,26 +17,34 @@ class ProjectDto
     use WithDetails;
     use WithSearchIndex;
 
-    protected string $title = '';
     protected string $abstract = '';
-    protected string $type = '';
-    protected string $objective = '';
-    protected ?\DateTime $startDate = null;
     protected ?\DateTime $endDate = null;
     /**
-     * @var SubjectAreaDto[]
+     * @var FundingProgramDto[]
      */
-    protected array $subjectAreas = [];
+    protected array $fundingPrograms = [];
     /**
-     * @var ResearchAreaDto[]
+     * @var string[]
      */
-    protected array $researchAreas = [];
+    protected array $keywords = [];
+    protected string $language = '';
+    protected string $objective = '';
     /**
      * @var PersonDto[]
      */
     protected array $persons = [];
-    protected string $language = '';
+    /**
+     * @var ResearchAreaDto[]
+     */
+    protected array $researchAreas = [];
+    protected ?\DateTime $startDate = null;
+    /**
+     * @var SubjectAreaDto[]
+     */
     protected string $status = '';
+    protected array $subjectAreas = [];
+    protected string $title = '';
+    protected string $type = '';
     protected string $visibility = '';
 
     public function getTitle(): string
@@ -55,6 +64,24 @@ class ProjectDto
     public function setAbstract(string $abstract): void
     {
         $this->abstract = $abstract;
+    }
+
+    public function getFundingPrograms(): array
+    {
+        return $this->fundingPrograms;
+    }
+    public function setFundingPrograms(array $fundingPrograms): void
+    {
+        $this->fundingPrograms = $fundingPrograms;
+    }
+
+    public function getKeywords(): array
+    {
+        return $this->keywords;
+    }
+    public function setKeywords(array $keywords): void
+    {
+        $this->keywords = $keywords;
     }
 
     public function getType(): string
@@ -145,5 +172,29 @@ class ProjectDto
     public function setPersons(array $persons): void
     {
         $this->persons = $persons;
+    }
+
+    static public function fromArray(array $data): ProjectDto
+    {
+        $project = new self();
+        $project->setObjectId($data['id']);
+        $project->setDetails($data);
+        $project->setSearchIndex($data);
+
+        $project->setAbstract($data['abstract'] ?? '');
+        if (isset($data['endDate'])) {
+            $project->setEndDate(new \DateTime($data['endDate']));
+        }
+        $project->setLanguage($data['language'] ?? '');
+        $project->setObjective($data['objective'] ?? '');
+        if (isset($data['startDate'])) {
+            $project->setStartDate(new \DateTime($data['startDate']));
+        }
+        $project->setStatus($data['status'] ?? '');
+        $project->setTitle($data['title'] ?? '');
+        $project->setType($data['type'] ?? '');
+        $project->setVisibility($data['visibility'] ?? '');
+
+        return $project;
     }
 }

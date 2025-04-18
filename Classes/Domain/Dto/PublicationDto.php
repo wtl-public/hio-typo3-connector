@@ -210,14 +210,15 @@ class PublicationDto
     static public function fromArray(array $data): PublicationDto
     {
         $releaseYear = $publication['journal']['releaseYear'] ?? null;
-        $dto = new self();
-        $dto->setObjectId($data['id']);
-        $dto->setTitle($data['title']);
-        $dto->setType($data['type']);
-        $dto->setReleaseYear($releaseYear);
-        $dto->setCitations($data['citations'] ?? []);
-        $dto->setDetails($data);
-        $dto->setSearchIndex($data);
-        return $dto;
+        $publicationDto = new self();
+        $publicationDto->setObjectId($data['id']);
+        $publicationDto->setDetails($data);
+        $publicationDto->setSearchIndex($data);
+
+        $publicationDto->setTitle($data['title']);
+        $publicationDto->setType($data['type']);
+        $publicationDto->setReleaseYear($releaseYear);
+        $publicationDto->setCitations($data['citations'] ?? []);
+        return $publicationDto;
     }
 }

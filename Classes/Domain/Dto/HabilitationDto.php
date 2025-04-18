@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto;
 
-use Wtl\HioTypo3Connector\Domain\Dto\Habilitation\OrganizationDto;
-use Wtl\HioTypo3Connector\Domain\Dto\Habilitation\PersonDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Collection\OrganizationDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Collection\PersonDto;
 use Wtl\HioTypo3Connector\Trait\WithDetails;
 use Wtl\HioTypo3Connector\Trait\WithObjectId;
 use Wtl\HioTypo3Connector\Trait\WithSearchIndex;
@@ -154,5 +154,34 @@ class HabilitationDto
     public function setType(string $type): void
     {
         $this->type = $type;
+    }
+
+    static public function fromArray(array $data): HabilitationDto
+    {
+        $habilitationDto = new self();
+        $habilitationDto->setObjectId($data['id']);
+        $habilitationDto->setDetails($data);
+        $habilitationDto->setSearchIndex($data);
+
+        if (isset($data['admissionDate'])) {
+            $habilitationDto->setAdmissionDate(new \DateTime($data['admissionDate']));
+        }
+        if (isset($data['certificateDate'])) {
+            $habilitationDto->setCertificateDate(new \DateTime($data['certificateDate']));
+        }
+        if (isset($data['endDate'])) {
+            $habilitationDto->setEndDate(new \DateTime($data['endDate']));
+        }
+        $habilitationDto->setPersons(array_map(fn($item) => PersonDto::fromArray($item), $data['persons'] ?? []));
+        if (isset($data['registrationDate'])) {
+            $habilitationDto->setRegistrationDate(new \DateTime($data['registrationDate']));
+        }
+        if (isset($data['startDate'])) {
+            $habilitationDto->setStartDate(new \DateTime($data['startDate']));
+        }
+        $habilitationDto->setTitle($data['title']);
+        $habilitationDto->setType($data['type']);
+
+        return $habilitationDto;
     }
 }

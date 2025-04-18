@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Wtl\HioTypo3Connector\Domain\Dto\Patent;
+namespace Wtl\HioTypo3Connector\Domain\Dto\Collection;
 
 class PersonDto
 {
@@ -38,12 +38,12 @@ class PersonDto
 
     static public function fromArray(array $data): self
     {
-        $personData = new self();
-        $personData->setId($data['id']);
-        $personData->setName($data['name'] ?? '');
+        $personDto = new self();
+        $personDto->setId($data['id']);
+        $personDto->setName($data['name'] ?? '');
         if (is_array($data['organization'])) {
-            $personData->setOrganization(OrganizationDto::fromArray($data['organization']));
+            $personDto->setOrganization(OrganizationDto::fromArray($data['organization']));
         }
-        return $personData;
+        return $personDto;
     }
 }

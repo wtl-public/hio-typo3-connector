@@ -48,15 +48,15 @@ class PersonDto
 
     static public function fromArray(array $data): self
     {
-        $creatorData = new self();
-        $creatorData->setId($data['id']);
-        $creatorData->setName($data['name'] ?? '');
+        $personDto = new self();
+        $personDto->setId($data['id']);
+        $personDto->setName($data['name'] ?? '');
         if (is_array($data['organization'])) {
-            $creatorData->setOrganization(OrganizationDto::fromArray($data['organization']));
+            $personDto->setOrganization(OrganizationDto::fromArray($data['organization']));
         }
         if (is_array($data['researchPartner'])) {
-            $creatorData->setResearchPartner(ResearchPartnerDto::fromArray($data['researchPartner']));
+            $personDto->setResearchPartner(ResearchPartnerDto::fromArray($data['researchPartner']));
         }
-        return $creatorData;
+        return $personDto;
     }
 }

@@ -1,73 +1,109 @@
 {
-  "id": 5,
-  "type": "Forschung",
-  "title": "Auswirkungen einer Regulierung des Bankensektors",
-  "status": "laufend",
-  "endDate": "2005-05-20",
-  "persons": [
-    {
-      "id": 429,
-      "role": "Projektleiter\/-in",
-      "person": "Heidi Fuchs",
-      "endDate": "2005-05-20",
-      "startDate": "2006-08-18",
-      "organization": {
-        "id": 22,
-        "name": "Institut f\u00fcr Banken und Finanzierung"
-      }
-    },
-    {
-      "id": 2653,
-      "role": "Wiss. Mitarbeiter\/-in",
-      "person": "Gabriela Huber",
-      "endDate": "2005-05-20",
-      "startDate": "2006-08-18",
-      "organization": {
-        "id": 22,
-        "name": "Institut f\u00fcr Banken und Finanzierung"
-      }
-    },
-    {
-      "id": 2660,
-      "role": "Wiss. Mitarbeiter\/-in",
-      "person": "Anja K\u00f6hler",
-      "endDate": "2005-05-20",
-      "startDate": "2006-08-18",
-      "organization": {
-        "id": 22,
-        "name": "Institut f\u00fcr Banken und Finanzierung"
-      }
-    },
-    {
-      "id": 2663,
-      "role": "Projektleiter\/-in",
-      "person": "Ulrich Wolff",
-      "endDate": "2005-05-20",
-      "startDate": "2006-08-18",
-      "organization": {
-        "id": 22,
-        "name": "Institut f\u00fcr Banken und Finanzierung"
-      }
-    }
-  ],
-  "abstract": "Die Bankenregulierung ist eine Form der staatlichen Regulierung, die Banken bestimmten Anforderungen, Beschr\u00e4nkungen und Richtlinien unterwirft, um Markttransparenz zu schaffen und Situationen zu vermeiden, in denen es erforderlich ist, dass Banken staatliche Unterst\u00fctzung erhalten. Zweiteres liegt in der Sorge begr\u00fcndet, dass die Kontrolle der Finanzinstitute \u00fcber die Wirtschaft zu gro\u00df ist als dass das Scheitern einer Bank keine enormen globalen Auswirkungen haben k\u00f6nnte. Aus diesem Grund erhalten Banken oder andere Finanzinstitute, die kurz vor dem Zusammenbruch zu stehen scheinen, staatliche Unterst\u00fctzung, um ein systemisches Versagen der gesamten Wirtschaft zu verhindern. Angesichts der Vernetzung des Bankensektors und des Vertrauens, das die Wirtschaft den Banken entgegenbringt, ist es f\u00fcr die Regulierungsbeh\u00f6rden wichtig, die Kontrolle \u00fcber die standardisierten Praktiken dieser Institute zu behalten.\r\n\r\nWelche Auswirkungen die Regulierung des Bankensektors genau hat und, wie dies mit der Rolle der Banken in der Eurokrise zusammenspielt, sind die Fragestellungen, die in diesem Projekt genauer untersucht werden sollen.",
+  "abstract": "Die private Verschuldung ist in der ersten Dekade des neuen Jahrtausends enorm gestiegen. Angelockt durch die sehr attraktiven Konditionen der Banken und des gesamten privaten Wirtschaftssektors (Masseneinzelhandel, Automobil- und Bauwirtschaft usw.) verschuldeten die Haushalte ebenso wie die Nichtfinanzunternehmen massiv. Dar\u00fcber hinaus hatte die Umstellung auf den Euro zu einem erheblichen Anstieg der Lebenshaltungskosten in einem Land gef\u00fchrt, in dem der Kauf von Grundnahrungsmitteln etwa die H\u00e4lfte des Haushalts einer Familie ausmacht.\r\n\r\nDiese private Verschuldung war der Motor vieler L\u00e4nder, die der EU beigetreten sind. Dank eines starken Euros konnten Banken kleinerer L\u00e4nder ihre internationalen Aktivit\u00e4ten ausweiten und ihre nationalen Aktivit\u00e4ten kosteng\u00fcnstig finanzieren. Der Beitritt zur Eurozone hat f\u00fcr viele der neu beigetretenen L\u00e4nder den Zufluss von Finanzkapital in Form von Darlehen oder Portfolioinvestitionen gef\u00f6rdert, w\u00e4hrend die langfristigen Investitionen stagnierten. Die Europ\u00e4ische Kommission und insbesondere die franz\u00f6sische und deutsche Regierung haben die westeurop\u00e4ischen Privatbanken unerm\u00fcdlich unterst\u00fctzt. Aber indem sie die Sozialisierung der Verluste der Banken zulassen, haben die europ\u00e4ischen Regierungen ihre eigenen \u00f6ffentlichen Finanzen in eine kritische Position gebracht.\r\n\r\nInwiefern sich diese Sachverhalte auf die Eurokrise ausgewirkt haben und welche Auswirkungen durch das Verhalten der Banken entstanden, sind die Hauptfragestellungen dieses Projektes.",
+  "dynamicObjects": {
+    "fs.res.project.Accounting.accountStatementUpdates": "3",
+    "fs.res.project.Accounting.accountingRecordSource": "4,1",
+    "fs.res.project.Accounting.archiveNumber": "08-7453",
+    "fs.res.project.Accounting.bookingDeadline": "2022-12-01",
+    "fs.res.project.Accounting.bookingWeekDay": "3",
+    "fs.res.project.Accounting.isVATincluded": "1",
+    "fs.res.project.Accounting.maxHours": "22",
+    "fs.res.project.Accounting.numberOfProjectMembers": "5",
+    "fs.res.project.BasicData.finishDate": null,
+    "fs.res.project.Planning.bookingState": null,
+    "fs.res.project.Planning.numberOfMembers": null
+  },
+  "endDate": "2004-01-21",
+  "fundingPrograms": [],
+  "id": 2,
   "keywords": [
-    "Bankensektor",
-    "Regulierung",
+    "Finanzkrise",
     "Eurokrise",
     "Banken",
-    "Bankregulierung"
+    "Verschuldung",
+    "staatliche Regulierung"
   ],
   "language": "deutsch",
   "objective": "Forschung",
-  "startDate": "2006-08-18",
-  "visibility": "\u00f6ffentlich",
-  "subjectAreas": [
-    "Bankwesen"
+  "persons": [
+    {
+      "endDate": "2004-01-21",
+      "id": 429,
+      "name": "Heidi Fuchs",
+      "organization": {
+        "id": 22,
+        "name": "Institut f\u00fcr Banken und Finanzierung"
+      },
+      "role": "Projektleiter\/-in",
+      "startDate": "2006-08-18"
+    },
+    {
+      "endDate": "2004-01-21",
+      "id": 2607,
+      "name": "Matthias Hahn",
+      "organization": {
+        "id": 57,
+        "name": "Institut f\u00fcr Wirtschaftsforschung"
+      },
+      "role": "Projektleiter\/-in",
+      "startDate": "2006-08-18"
+    },
+    {
+      "endDate": "2004-01-21",
+      "id": 2653,
+      "name": "Gabriela Huber",
+      "organization": {
+        "id": 22,
+        "name": "Institut f\u00fcr Banken und Finanzierung"
+      },
+      "role": "Wiss. Mitarbeiter\/-in",
+      "startDate": "2006-08-18"
+    },
+    {
+      "endDate": "2004-01-21",
+      "id": 2660,
+      "name": "Anja K\u00f6hler",
+      "organization": {
+        "id": 22,
+        "name": "Institut f\u00fcr Banken und Finanzierung"
+      },
+      "role": "Wiss. Mitarbeiter\/-in",
+      "startDate": "2006-08-18"
+    },
+    {
+      "endDate": "2004-01-21",
+      "id": 481,
+      "name": "Gerd Werner",
+      "organization": {
+        "id": 22,
+        "name": "Institut f\u00fcr Banken und Finanzierung"
+      },
+      "role": "Wiss. Mitarbeiter\/-in",
+      "startDate": "2006-08-18"
+    },
+    {
+      "endDate": "2004-01-21",
+      "id": 2663,
+      "name": "Ulrich Wolff",
+      "organization": {
+        "id": 22,
+        "name": "Institut f\u00fcr Banken und Finanzierung"
+      },
+      "role": "Wiss. Mitarbeiter\/-in",
+      "startDate": "2006-08-18"
+    }
   ],
   "researchAreas": [
     "Finanz- und Kapitalm\u00e4rkte",
     "Intra- und interorganisatorische Beziehungen"
   ],
-  "fundingPrograms": []
+  "startDate": "2006-08-18",
+  "status": "laufend",
+  "subjectAreas": [
+    "Bankwesen",
+    "Finanzwissenschaft"
+  ],
+  "title": "Die Rolle der Banken in der Eurokrise",
+  "type": "Forschung",
+  "visibility": "public"
 }

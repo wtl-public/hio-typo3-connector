@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto;
 
-use Wtl\HioTypo3Connector\Domain\Dto\Doctorate\OrganizationDto;
-use Wtl\HioTypo3Connector\Domain\Dto\Doctorate\PersonDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Collection\OrganizationDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Collection\PersonDto;
 use Wtl\HioTypo3Connector\Trait\WithDetails;
 use Wtl\HioTypo3Connector\Trait\WithObjectId;
 use Wtl\HioTypo3Connector\Trait\WithSearchIndex;
@@ -145,5 +145,26 @@ class DoctorateDto
     public function setStartDate(?\DateTime $startDate): void
     {
         $this->startDate = $startDate;
+    }
+
+    static public function fromArray(array $data): DoctorateDto
+    {
+        $dto = new self();
+        $dto->setObjectId($data['objectId']);
+        $dto->setDetails($data);
+        $dto->setSearchIndex($data);
+
+        $dto->setCourseOfStudy($data['courseOfStudy'] ?? '');
+        $dto->setDescription($data['description'] ?? '');
+        $dto->setDoctoralPositionAvailable($data['doctoralPositionAvailable'] ?? false);
+        $dto->setEndDate(isset($data['endDate']) ? new \DateTime($data['endDate']) : null);
+        $dto->setLanguage($data['language'] ?? '');
+        $dto->setSubjectAreas($data['subjectAreas'] ?? []);
+        $dto->setResearchAreas($data['researchAreas'] ?? []);
+        $dto->setPersons(array_map(fn($item) => PersonDto::fromArray($item), $data['persons'] ?? []));
+        $dto->setOrganizations(array_map(fn($item) => OrganizationDto::fromArray($item), $data['organizations'] ?? []));
+        $dto->setScholarshipAvailable($data['scholarshipAvailable'] ?? false);
+        $dto->setStartDate(isset($data['startDate']) ? new \DateTime($data['startDate']) : null);
+        return $dto;
     }
 }

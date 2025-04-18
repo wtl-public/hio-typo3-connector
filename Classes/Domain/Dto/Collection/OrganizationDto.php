@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Wtl\HioTypo3Connector\Domain\Dto\Habilitation;
+namespace Wtl\HioTypo3Connector\Domain\Dto\Collection;
 
 class OrganizationDto
 {
@@ -31,10 +31,10 @@ class OrganizationDto
         if (count($data) === 0) {
             return new self();
         }
-        $organizationData = new self();
-        $organizationData->setId($data['id']);
-        $organizationData->setName($data['name'] ?? '');
+        $organizationDto = new self();
+        $organizationDto->setId($data['id']);
+        $organizationDto->setName($data['name'] ?? '');
 
-        return $organizationData;
+        return $organizationDto;
     }
 }

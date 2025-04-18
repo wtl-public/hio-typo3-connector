@@ -15,6 +15,7 @@ class PersonDto
     use WithSearchIndex;
 
     protected string $name = '';
+
     protected array $publications = [];
     protected array $projects = [];
     protected array $patents = [];
