@@ -39,11 +39,18 @@ services:
       - name: console.command
         command: 'hio:publications:import'
         description: 'Import publication data from HISinOne'
-  Wtl\HioTypo3Connector\Command\RequestPublicationImportCommand:
+
+  Wtl\HioTypo3Connector\Command\RequestHioPublicationImportCommand:
     tags:
       - name: console.command
         command: 'hio:request:publication:import'
         description: 'Request Import of publication data'
+  Wtl\HioTypo3Connector\Command\RequestHioPersonImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:request:person:import'
+        description: 'Request Import of person data'
+
   Wtl\HioTypo3Connector\EventListener\ReceiveHioPersonListener:
     tags:
       - name: event.listener
