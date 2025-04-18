@@ -12,19 +12,15 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Wtl\HioTypo3Connector\Command\ConfigureRequestImportTrait;
 use Wtl\HioTypo3Connector\Services\HioMiddlewareRequestImportService;
 
-class RequestPublicationImportCommand extends Command
+class RequestHioImportCommand extends Command
 {
     use ConfigureRequestImportTrait;
-    protected const REQUESTED_ENTITY_TYPE = 'publication';
+    protected const REQUESTED_ENTITY_TYPE = '';
 
-    protected static $defaultName = 'hio:request:publication:import';
+    protected static $defaultName = '';
 
-    public function __construct(
-        private readonly HioMiddlewareRequestImportService $hioMiddlewareRequestImportService,
-    )
-    {
-        parent::__construct();
-    }
+    public function __construct(protected readonly HioMiddlewareRequestImportService $hioMiddlewareRequestImportService)
+    {}
 
     /**
      * @param InputInterface $input
@@ -40,7 +36,7 @@ class RequestPublicationImportCommand extends Command
             $input->getOption('api-verify-ssl'),
             $input->getArgument('t3-webhook-url'),
             $input->getArgument('t3-x-api-key'),
-            (int)$input->getArgument('t3-batch-size'),
+            $input->getArgument('t3-batch-size'),
         );
 
         $response = $this->hioMiddlewareRequestImportService->requestImport(self::REQUESTED_ENTITY_TYPE);

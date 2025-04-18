@@ -14,34 +14,39 @@ class PersonRepository extends BaseRepository
      */
     public function savePersons(array $persons, $storagePageId): void {
         foreach ($persons as $person) {
-            $model = $this->findOneBy(['objectId' => $person->getObjectId()]);
-            if ($model === null) {
-                $model = new Person();
-                $model->setObjectId($person->getObjectId());
-                $model->setDetails(json_encode($person->getDetails()));
-                $model->setSearchIndex($person->getSearchIndex());
-                $model->setName($person->getName());
-                $model->setPid($storagePageId);
+            $this->savePerson($person, $storagePageId);
+        }
+    }
 
-                $this->attachPublicationsByObjectIds($model, $person->getPublications());
-                $this->attachProjectsByObjectIds($model, $person->getProjects());
-                $this->attachPatentsByObjectIds($model, $person->getPatents());
-                $this->attachDoctoratesByObjectIds($model, $person->getDoctorates());
-                $this->attachHabilitationsByObjectIds($model, $person->getHabilitations());
-                $this->add($model);
-            } else {
-                $model->setObjectId($person->getObjectId());
-                $model->setDetails(json_encode($person->getDetails()));
-                $model->setSearchIndex($person->getSearchIndex());
-                $model->setName($person->getName());
+    public function savePerson(PersonDTO $hioPerson, int $storagePageId = 0): void
+    {
+        $model = $this->findOneBy(['objectId' => $hioPerson->getObjectId()]);
+        if ($model === null) {
+            $model = new Person();
+            $model->setObjectId($hioPerson->getObjectId());
+            $model->setDetails(json_encode($hioPerson->getDetails()));
+            $model->setSearchIndex($hioPerson->getSearchIndex());
+            $model->setName($hioPerson->getName());
+            $model->setPid($storagePageId);
 
-                $this->attachPublicationsByObjectIds($model, $person->getPublications());
-                $this->attachProjectsByObjectIds($model, $person->getProjects());
-                $this->attachPatentsByObjectIds($model, $person->getPatents());
-                $this->attachDoctoratesByObjectIds($model, $person->getDoctorates());
-                $this->attachHabilitationsByObjectIds($model, $person->getHabilitations());
-                $this->update($model);
-            }
+            $this->attachPublicationsByObjectIds($model, $hioPerson->getPublications());
+            $this->attachProjectsByObjectIds($model, $hioPerson->getProjects());
+            $this->attachPatentsByObjectIds($model, $hioPerson->getPatents());
+            $this->attachDoctoratesByObjectIds($model, $hioPerson->getDoctorates());
+            $this->attachHabilitationsByObjectIds($model, $hioPerson->getHabilitations());
+            $this->add($model);
+        } else {
+            $model->setObjectId($hioPerson->getObjectId());
+            $model->setDetails(json_encode($hioPerson->getDetails()));
+            $model->setSearchIndex($hioPerson->getSearchIndex());
+            $model->setName($hioPerson->getName());
+
+            $this->attachPublicationsByObjectIds($model, $hioPerson->getPublications());
+            $this->attachProjectsByObjectIds($model, $hioPerson->getProjects());
+            $this->attachPatentsByObjectIds($model, $hioPerson->getPatents());
+            $this->attachDoctoratesByObjectIds($model, $hioPerson->getDoctorates());
+            $this->attachHabilitationsByObjectIds($model, $hioPerson->getHabilitations());
+            $this->update($model);
         }
         $this->persistenceManager->persistAll();
     }

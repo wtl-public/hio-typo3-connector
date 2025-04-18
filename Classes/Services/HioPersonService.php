@@ -3,6 +3,7 @@
 namespace Wtl\HioTypo3Connector\Services;
 
 use Wtl\HioTypo3Connector\Domain\Model\DTO\PersonDTO;
+use Wtl\HioTypo3Connector\Event\ReceiveHioPersonEvent;
 
 class HioPersonService extends HioApiService
 {
@@ -16,17 +17,21 @@ class HioPersonService extends HioApiService
 
         $result = $apiResponse->getData();
         foreach ($result as $person) {
-            $personData  = new PersonDTO();
-            $personData->setObjectId($person['id']);
-            $personData->setName($person['name'] ?? '');
-            $personData->setDetails($person);
-            $personData->setSearchIndex($person);
-            $personData->setPublications($person['publications'] ?? []);
-            $personData->setProjects($person['projects'] ?? []);
-            $personData->setPatents($person['patents'] ?? []);
-            $personData->setDoctorates($person['doctorates'] ?? []);
-            $personData->setHabilitations($person['habilitations'] ?? []);
-            $persons[] = $personData;
+            $personDto  = new PersonDTO();
+            $personDto->setObjectId($person['id']);
+            $personDto->setName($person['name'] ?? '');
+            $personDto->setDetails($person);
+            $personDto->setSearchIndex($person);
+            $personDto->setPublications($person['publications'] ?? []);
+            $personDto->setProjects($person['projects'] ?? []);
+            $personDto->setPatents($person['patents'] ?? []);
+            $personDto->setDoctorates($person['doctorates'] ?? []);
+            $personDto->setHabilitations($person['habilitations'] ?? []);
+
+            $this->eventDispatcher->dispatch(
+                new ReceiveHioPersonEvent($personDto),
+            );
+
         }
         return $persons ?? [];
     }

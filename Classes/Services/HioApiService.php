@@ -1,9 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Wtl\HioTypo3Connector\Services;
 
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Log\Logger;
+use Psr\EventDispatcher\EventDispatcherInterface;
 use Wtl\HioTypo3Connector\Publisher\ApiMeta;
 use Wtl\HioTypo3Connector\Publisher\ApiResponse;
 
@@ -31,7 +34,10 @@ class HioApiService
 
     protected $verifySsl = false;
 
-    public function __construct(RequestFactory $requestFactory)
+    public function __construct(
+        RequestFactory $requestFactory,
+        protected readonly EventDispatcherInterface $eventDispatcher
+    )
     {
         $this->headers = ['Content-Type' => 'application/json'];
         $this->requestFactory = $requestFactory;

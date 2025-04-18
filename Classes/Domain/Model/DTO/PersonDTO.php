@@ -101,4 +101,15 @@ class PersonDTO
 
         return $this;
     }
+
+    static public function fromArray(array $data): PersonDTO
+    {
+        $releaseYear = $publication['journal']['releaseYear'] ?? null;
+        $dto = new self();
+        $dto->setObjectId($data['id']);
+        $dto->setName($data['name']);
+        $dto->setDetails($data);
+        $dto->setSearchIndex($data);
+        return $dto;
+    }
 }

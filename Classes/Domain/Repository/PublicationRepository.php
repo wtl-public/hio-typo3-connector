@@ -11,28 +11,33 @@ class PublicationRepository extends BaseRepository
     public function savePublications($publications, $storagePageId): void {
         /** @var PublicationDTO $publication */
         foreach ($publications as $publication) {
-            $publicationModel = $this->findOneBy(['objectId' => $publication->getObjectId()]);
-            if ($publicationModel === null) {
-                $publicationModel = new Publication();
-                $publicationModel->setObjectId($publication->getObjectId());
-                $publicationModel->setTitle($publication->getTitle());
-                $publicationModel->setType($publication->getType());
-                $publicationModel->setDetails($publication->getDetails());
-                $publicationModel->setSearchIndex($publication->getSearchIndex());
-                $publicationModel->setPid($storagePageId);
-                $publicationModel->setReleaseYear($publication->getReleaseYear());
+            $this->savePublication($publication, $storagePageId);
+        }
+    }
 
-                $this->add($publicationModel);
-            } else {
-                $publicationModel->setObjectId($publication->getObjectId());
-                $publicationModel->setTitle($publication->getTitle());
-                $publicationModel->setType($publication->getType());
-                $publicationModel->setDetails($publication->getDetails());
-                $publicationModel->setSearchIndex($publication->getSearchIndex());
-                $publicationModel->setReleaseYear($publication->getReleaseYear());
+    public function savePublication(PublicationDTO $publication, int $storagePid = 0): void
+    {
+        $publicationModel = $this->findOneBy(['objectId' => $publication->getObjectId()]);
+        if ($publicationModel === null) {
+            $publicationModel = new Publication();
+            $publicationModel->setObjectId($publication->getObjectId());
+            $publicationModel->setTitle($publication->getTitle());
+            $publicationModel->setType($publication->getType());
+            $publicationModel->setDetails($publication->getDetails());
+            $publicationModel->setSearchIndex($publication->getSearchIndex());
+            $publicationModel->setPid($storagePid);
+            $publicationModel->setReleaseYear($publication->getReleaseYear());
 
-                $this->update($publicationModel);
-            }
+            $this->add($publicationModel);
+        } else {
+            $publicationModel->setObjectId($publication->getObjectId());
+            $publicationModel->setTitle($publication->getTitle());
+            $publicationModel->setType($publication->getType());
+            $publicationModel->setDetails($publication->getDetails());
+            $publicationModel->setSearchIndex($publication->getSearchIndex());
+            $publicationModel->setReleaseYear($publication->getReleaseYear());
+
+            $this->update($publicationModel);
         }
         $this->persistenceManager->persistAll();
     }

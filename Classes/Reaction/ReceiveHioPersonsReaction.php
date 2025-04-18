@@ -6,17 +6,17 @@ use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
+use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Reactions\Model\ReactionInstruction;
 use TYPO3\CMS\Reactions\Reaction\ReactionInterface;
 use Wtl\HioTypo3Connector\Domain\Model\DTO\PersonDTO;
-use Wtl\HioTypo3Connector\Domain\Repository\PersonRepository;
 
 class ReceiveHioPersonsReaction implements ReactionInterface
 {
     public function __construct(
-        private readonly ResponseFactoryInterface $responseFactory,
-        private readonly StreamFactoryInterface $streamFactory,
-        private readonly PersonRepository $repository,
+        private readonly ResponseFactoryInterface   $responseFactory,
+        private readonly StreamFactoryInterface     $streamFactory,
+        protected readonly EventDispatcherInterface $eventDispatcher
     )
     {
     }
@@ -38,17 +38,21 @@ class ReceiveHioPersonsReaction implements ReactionInterface
 
     public function react(
         ServerRequestInterface $request,
-        array $payload,
-        ReactionInstruction $reaction
-    ): ResponseInterface {
+        array                  $payload,
+        ReactionInstruction    $reaction
+    ): ResponseInterface
+    {
 
         if (is_array($payload['data'] ?? false)) {
-            $dtos = [];
-            foreach ($payload['data'] as $key => $value) {
-                $dtos[] = PersonDTO::fromArray($value);
-            }
             $storagePid = (int)($reaction->toArray()['storage_pid'] ?? 0);
-            $this->repository->sa($dtos, $storagePid);
+            foreach ($payload['data'] as $value) {
+                $this->eventDispatcher->dispatch(
+                    new ReceiveHioPersonEvent(
+                        PersonDTO::fromArray($value),
+                        $storagePid
+                    )
+                );
+            }
         }
         return $this->createJsonResponse(['status' => 'Publications imported']);
     }
