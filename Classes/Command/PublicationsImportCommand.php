@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Command;
 
+use Psr\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -11,8 +12,11 @@ use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 
 use Wtl\HioTypo3Connector\Command\ConfigurableTrait;
+use Wtl\HioTypo3Connector\Domain\Model\DTO\PublicationDTO;
 use Wtl\HioTypo3Connector\Domain\Repository\CitationStyleRepository;
 use Wtl\HioTypo3Connector\Domain\Repository\PublicationRepository;
+use Wtl\HioTypo3Connector\Event\ReceiveHioPersonEvent;
+use Wtl\HioTypo3Connector\Event\ReceiveHioPublicationEvent;
 use Wtl\HioTypo3Connector\Services\HioPublicationService;
 
 class PublicationsImportCommand extends Command
@@ -22,10 +26,9 @@ class PublicationsImportCommand extends Command
     protected static $defaultName = 'hio:publications:import';
 
     public function __construct(
-        private readonly PublicationRepository $publicationRepository,
         private readonly HioPublicationService $hioPublicationService,
         protected readonly CitationStyleRepository $citationStyleRepository,
-        protected readonly PersistenceManager $persistenceManager
+        protected readonly EventDispatcherInterface $eventDispatcher
     )
     {
         parent::__construct();
@@ -46,9 +49,6 @@ class PublicationsImportCommand extends Command
             (bool)$input->getOption('verify-ssl')
         );
 
-        $querySettings = $this->publicationRepository->createQuery()->getQuerySettings()->setStoragePageIds([$input->getArgument('storagePageId')]);
-        $this->publicationRepository->setDefaultQuerySettings($querySettings);
-
         $currentPage = 1;
         $firstPublication = null;
         do {
@@ -62,7 +62,11 @@ class PublicationsImportCommand extends Command
                 $firstPublication = $publications[0];
             }
 
-            $this->publicationRepository->savePublications($publications, $input->getArgument('storagePageId'));
+            foreach ($publications as $publication) {
+                $this->eventDispatcher->dispatch(
+                    new ReceiveHioPublicationEvent($publication, (int)$input->getArgument('storagePageId')),
+                );
+            }
 
             $currentPage++;
         } while ($currentPage <= $this->hioPublicationService->getMeta()->getLastPage());
