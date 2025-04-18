@@ -6,7 +6,7 @@ namespace Wtl\HioTypo3Connector\Trait;
 
 trait WithSearchIndex
 {
-    protected $searchIndex = [];
+    protected array $searchIndex = [];
 
     public function getSearchIndex(): string
     {
