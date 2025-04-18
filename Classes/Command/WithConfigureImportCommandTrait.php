@@ -7,7 +7,7 @@ namespace Wtl\HioTypo3Connector\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;
 
-trait ConfigurableTrait
+trait WithConfigureImportCommandTrait
 {
     protected function configure(): void {
         $this->setDescription('Import data from HIO')

@@ -16,7 +16,7 @@ use Wtl\HioTypo3Connector\Services\HioPersonService;
 
 class PersonsImportCommand extends Command
 {
-    use ConfigurableTrait;
+    use WithConfigureImportCommandTrait;
 
     protected static $defaultName = 'hio:persons:import';
 

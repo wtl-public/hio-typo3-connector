@@ -9,12 +9,12 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-use Wtl\HioTypo3Connector\Command\ConfigureRequestImportTrait;
+use Wtl\HioTypo3Connector\Command\WithConfigureRequestImportCommandTrait;
 use Wtl\HioTypo3Connector\Services\HioMiddlewareRequestImportService;
 
 class RequestHioImportCommand extends Command
 {
-    use ConfigureRequestImportTrait;
+    use WithConfigureRequestImportCommandTrait;
     protected const REQUESTED_ENTITY_TYPE = '';
 
     protected static $defaultName = '';

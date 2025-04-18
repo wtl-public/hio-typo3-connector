@@ -10,13 +10,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 
-use Wtl\HioTypo3Connector\Command\ConfigurableTrait;
+use Wtl\HioTypo3Connector\Command\WithConfigureImportCommandTrait;
 use Wtl\HioTypo3Connector\Domain\Repository\HabilitationRepository;
 use Wtl\HioTypo3Connector\Services\HioHabilitationService;
 
 class HabilitationsImportCommand extends Command
 {
-    use ConfigurableTrait;
+    use WithConfigureImportCommandTrait;
 
     protected static $defaultName = 'hio:habilitations:import';
 

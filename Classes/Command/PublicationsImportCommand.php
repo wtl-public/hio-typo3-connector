@@ -17,7 +17,7 @@ use Wtl\HioTypo3Connector\Services\HioPublicationService;
 
 class PublicationsImportCommand extends Command
 {
-    use ConfigurableTrait;
+    use WithConfigureImportCommandTrait;
 
     protected static $defaultName = 'hio:publications:import';
 
