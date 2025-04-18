@@ -54,7 +54,7 @@ class PatentsImportCommand extends Command
 
             foreach ($patents as $patent) {
                 $this->eventDispatcher->dispatch(
-                    new ReceiveHioPatentEvent($patent, $input->getArgument('storagePageId'))
+                    new ReceiveHioPatentEvent($patent, (int)$input->getArgument('storagePageId'))
                 );
             }
 

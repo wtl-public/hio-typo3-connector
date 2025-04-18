@@ -53,7 +53,7 @@ class ProjectsImportCommand extends Command
 
             foreach ($projects as $project) {
                 $this->eventDispatcher->dispatch(
-                    new ReceiveHioProjectEvent($project, $input->getArgument('storagePageId'))
+                    new ReceiveHioProjectEvent($project, (int)$input->getArgument('storagePageId'))
                 );
             }
 
