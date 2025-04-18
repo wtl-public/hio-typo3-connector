@@ -388,6 +388,25 @@
                 <source>Number of projects</source>
             </trans-unit>
 
+            <trans-unit id="receive-hio-doctorates_reaction" resname="receive-hio-doctorates_reaction">
+                <source>Receive doctorate data from HIO Middleware</source>
+            </trans-unit>
+            <trans-unit id="receive-hio-habilitations_reaction" resname="receive-hio-habilitations_reaction">
+                <source>Receive habilitation data from HIO Middleware</source>
+            </trans-unit>
+            <trans-unit id="receive-hio-patents_reaction" resname="receive-hio-patents_reaction">
+                <source>Receive patent data from HIO Middleware</source>
+            </trans-unit>
+            <trans-unit id="receive-hio-persons_reaction" resname="receive-hio-persons_reaction">
+                <source>Receive person data from HIO Middleware</source>
+            </trans-unit>
+            <trans-unit id="receive-hio-projects_reaction" resname="receive-hio-projects_reaction">
+                <source>Receive project data from HIO Middleware</source>
+            </trans-unit>
+            <trans-unit id="receive-hio-publications_reaction" resname="receive-hio-publications_reaction">
+                <source>Receive publication data from HIO Middleware</source>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>
