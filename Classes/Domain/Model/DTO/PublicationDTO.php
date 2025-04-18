@@ -11,8 +11,12 @@ use Wtl\HioTypo3Connector\Domain\Model\DTO\Publication\LanguageDTO;
 use Wtl\HioTypo3Connector\Domain\Model\DTO\Publication\PersonDTO;
 use Wtl\HioTypo3Connector\Domain\Model\Publication;
 
-class PublicationDTO extends BaseDTO
+class PublicationDTO
 {
+    use WithObjectId;
+    use WithDetails;
+    use WithSearchIndex;
+
     protected string $abstract = '';
     protected string $access = '';
     /*
@@ -201,63 +205,6 @@ class PublicationDTO extends BaseDTO
     public function setReleaseYear(?string $releaseYear): void
     {
         $this->releaseYear = $releaseYear;
-    }
-
-    static public function fromDomainModel(Publication|\TYPO3\CMS\Extbase\DomainObject\AbstractEntity $model): static
-    {
-        $details = $model->getDetails();
-
-        $persons = $details['persons'] ?? [];
-        $personData = [];
-        foreach ($persons as $person) {
-            $personData[] = PersonDTO::fromArray($person);
-        }
-
-        $globalIdentifiers = $details['globalIdentifiers'] ?? [];
-        $globalIdentifierData = [];
-        foreach ($globalIdentifiers as $globalIdentifier) {
-            $globalIdentifierData[] = GlobalIdentifierDTO::fromArray($globalIdentifier);
-        }
-
-        $languages = $details['languages'] ?? [];
-        $languageData = [];
-        foreach ($languages as $language) {
-            $languageData[] = LanguageDTO::fromArray($language);
-        }
-
-        $citations = $details['citations'] ?? [];
-        $citationData = [];
-        foreach ($citations as $citation) {
-            $citationData[] = CitationDTO::fromArray($citation);
-        }
-
-        $publicationData = new self();
-        $publicationData->setExtbaseUid($model->getUid());
-        $publicationData->setReleaseYear($model->getReleaseYear());
-        $publicationData->setDetails($details);
-        $publicationData->setCitations($citationData);
-        $publicationData->setTitle($details['title']);
-        $publicationData->setSubtitle($details['subtitle'] ?? '');
-        $publicationData->setAbstract($details['abstract'] ?? '');
-        $publicationData->setType($details['type']);
-        $publicationData->setDocument($details['document'] ?? '');
-        $publicationData->setResource($details['resource'] ?? '');
-        $publicationData->setReviewed($details['reviewed'] ?? '');
-        $publicationData->setVisibility($details['visibility'] ?? '');
-        $publicationData->setStatus($details['status'] ?? '');
-        $publicationData->setAccess($details['access'] ?? '');
-        $publicationData->setObjectId($details['id']);
-        $publicationData->setPersons($personData);
-        if (isset($details['journal'])) {
-            $publicationData->setJournal(JournalDTO::fromArray($details['journal']));
-        }
-        if (isset($details['conference'])) {
-            $publicationData->setConference(ConferenceDTO::fromArray($details['conference']));
-        }
-        $publicationData->setLanguages($languageData);
-        $publicationData->setGlobalIdentifiers($globalIdentifierData);
-        $publicationData->setKeywords($details['keywords'] ?? []);
-        return $publicationData;
     }
 
     static public function fromArray(array $data): PublicationDTO

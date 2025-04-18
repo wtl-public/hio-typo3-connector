@@ -7,33 +7,16 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 class PersonDTO
 {
-    protected int $objectId = 0;
+    use WithObjectId;
+    use WithDetails;
+    use WithSearchIndex;
+
     protected string $name = '';
-    protected array $details = [];
-    protected array $searchIndex = [];
     protected array $publications = [];
     protected array $projects = [];
     protected array $patents = [];
     protected array $doctorates = [];
     protected array $habilitations = [];
-
-    public function getObjectId(): int
-    {
-        return $this->objectId;
-    }
-    public function setObjectId($objectId): void
-    {
-        $this->objectId = $objectId;
-    }
-
-    public function getDetails(): array
-    {
-        return $this->details;
-    }
-    public function setDetails(array $details): void
-    {
-        $this->details = $details;
-    }
 
     public function getName(): string
     {
@@ -88,18 +71,6 @@ class PersonDTO
     public function setHabilitations(array $habilitations): void
     {
         $this->habilitations = $habilitations;
-    }
-
-    public function getSearchIndex()
-    {
-        return strtolower(json_encode($this->searchIndex));
-    }
-
-    public function setSearchIndex($searchIndex)
-    {
-        $this->searchIndex = $searchIndex;
-
-        return $this;
     }
 
     static public function fromArray(array $data): PersonDTO
