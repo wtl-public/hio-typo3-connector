@@ -6,6 +6,9 @@ namespace Wtl\HioTypo3Connector\Domain\Dto;
 use Wtl\HioTypo3Connector\Domain\Dto\Project\PersonDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Project\ResearchAreaDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Project\SubjectAreaDto;
+use Wtl\HioTypo3Connector\Trait\WithDetails;
+use Wtl\HioTypo3Connector\Trait\WithObjectId;
+use Wtl\HioTypo3Connector\Trait\WithSearchIndex;
 
 class ProjectDto
 {

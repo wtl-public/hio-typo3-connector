@@ -5,6 +5,9 @@ namespace Wtl\HioTypo3Connector\Domain\Dto;
 
 use Wtl\HioTypo3Connector\Domain\Dto\Habilitation\OrganizationDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Habilitation\PersonDto;
+use Wtl\HioTypo3Connector\Trait\WithDetails;
+use Wtl\HioTypo3Connector\Trait\WithObjectId;
+use Wtl\HioTypo3Connector\Trait\WithSearchIndex;
 
 class HabilitationDto
 {

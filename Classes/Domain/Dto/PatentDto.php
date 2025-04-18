@@ -4,6 +4,9 @@ declare(strict_types=1);
 namespace Wtl\HioTypo3Connector\Domain\Dto;
 
 use Wtl\HioTypo3Connector\Domain\Dto\Patent\PersonDto;
+use Wtl\HioTypo3Connector\Trait\WithDetails;
+use Wtl\HioTypo3Connector\Trait\WithObjectId;
+use Wtl\HioTypo3Connector\Trait\WithSearchIndex;
 
 class PatentDto
 {
