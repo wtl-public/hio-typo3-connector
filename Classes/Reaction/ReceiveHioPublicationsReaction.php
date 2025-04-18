@@ -6,17 +6,18 @@ use Psr\Http\Message\ResponseFactoryInterface;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
+use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Reactions\Model\ReactionInstruction;
 use TYPO3\CMS\Reactions\Reaction\ReactionInterface;
 use Wtl\HioTypo3Connector\Domain\Model\DTO\PublicationDTO;
-use Wtl\HioTypo3Connector\Domain\Repository\PublicationRepository;
+use Wtl\HioTypo3Connector\Event\ReceiveHioPublicationEvent;
 
 class ReceiveHioPublicationsReaction implements ReactionInterface
 {
     public function __construct(
         private readonly ResponseFactoryInterface $responseFactory,
         private readonly StreamFactoryInterface $streamFactory,
-        private readonly PublicationRepository $publicationRepository,
+        protected readonly EventDispatcherInterface $eventDispatcher
     )
     {
     }
@@ -43,12 +44,15 @@ class ReceiveHioPublicationsReaction implements ReactionInterface
     ): ResponseInterface {
 
         if (is_array($payload['data'] ?? false)) {
-            $dtos = [];
-            foreach ($payload['data'] as $key => $value) {
-                $dtos[] = PublicationDTO::fromArray($value);
-            }
             $storagePid = (int)($reaction->toArray()['storage_pid'] ?? 0);
-            $this->publicationRepository->savePublications($dtos, $storagePid);
+            foreach ($payload['data'] as $value) {
+                $this->eventDispatcher->dispatch(
+                    new ReceiveHioPublicationEvent(
+                        PublicationDTO::fromArray($value),
+                        $storagePid
+                    )
+                );
+            }
         }
         return $this->createJsonResponse(['status' => 'Publications imported']);
     }
