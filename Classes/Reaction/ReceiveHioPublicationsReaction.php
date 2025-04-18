@@ -11,7 +11,7 @@ use TYPO3\CMS\Reactions\Reaction\ReactionInterface;
 use Wtl\HioTypo3Connector\Domain\Model\DTO\PublicationDTO;
 use Wtl\HioTypo3Connector\Domain\Repository\PublicationRepository;
 
-class ReceivePublicationsReaction implements ReactionInterface
+class ReceiveHioPublicationsReaction implements ReactionInterface
 {
     public function __construct(
         private readonly ResponseFactoryInterface $responseFactory,
@@ -23,12 +23,12 @@ class ReceivePublicationsReaction implements ReactionInterface
 
     public static function getType(): string
     {
-        return 'receive-publications';
+        return 'receive-hio-publications';
     }
 
     public static function getDescription(): string
     {
-        return 'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:receive-publications_reaction';
+        return 'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:receive-hio-publications_reaction';
     }
 
     public static function getIconIdentifier(): string
