@@ -6,7 +6,6 @@ namespace Wtl\HioTypo3Connector\EventListener;
 
 use Wtl\HioTypo3Connector\Domain\Repository\PersonRepository;
 use Wtl\HioTypo3Connector\Event\ReceiveHioPersonEvent;
-use Wtl\HioTypo3Connector\Services\HioPersonService;
 
 class ReceiveHioPersonListener
 {
@@ -18,6 +17,6 @@ class ReceiveHioPersonListener
     }
     public function __invoke(ReceiveHioPersonEvent $event): void
     {
-        $this->personRepository->savePerson($event->getHioPerson(), $event->getStoragePid());
+        $this->personRepository->save($event->getHioPerson(), $event->getStoragePid());
     }
 }

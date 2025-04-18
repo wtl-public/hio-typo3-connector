@@ -14,8 +14,6 @@ use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use Wtl\HioTypo3Connector\Command\ConfigurableTrait;
 use Wtl\HioTypo3Connector\Domain\Model\DTO\PublicationDTO;
 use Wtl\HioTypo3Connector\Domain\Repository\CitationStyleRepository;
-use Wtl\HioTypo3Connector\Domain\Repository\PublicationRepository;
-use Wtl\HioTypo3Connector\Event\ReceiveHioPersonEvent;
 use Wtl\HioTypo3Connector\Event\ReceiveHioPublicationEvent;
 use Wtl\HioTypo3Connector\Services\HioPublicationService;
 

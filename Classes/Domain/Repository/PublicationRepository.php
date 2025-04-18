@@ -8,14 +8,7 @@ use Wtl\HioTypo3Connector\Domain\Model\Publication;
 
 class PublicationRepository extends BaseRepository
 {
-    public function savePublications($publications, $storagePageId): void {
-        /** @var PublicationDTO $publication */
-        foreach ($publications as $publication) {
-            $this->savePublication($publication, $storagePageId);
-        }
-    }
-
-    public function savePublication(PublicationDTO $publication, int $storagePid = 0): void
+    public function save(PublicationDTO $publication, int $storagePid = 0): void
     {
         $publicationModel = $this->findOneBy(['objectId' => $publication->getObjectId()]);
         if ($publicationModel === null) {

@@ -8,17 +8,7 @@ use Wtl\HioTypo3Connector\Domain\Model\Person;
 
 class PersonRepository extends BaseRepository
 {
-    /**
-     * @param PersonDTO[] $persons
-     * @param int $storagePageId
-     */
-    public function savePersons(array $persons, $storagePageId): void {
-        foreach ($persons as $person) {
-            $this->savePerson($person, $storagePageId);
-        }
-    }
-
-    public function savePerson(PersonDTO $hioPerson, int $storagePageId = 0): void
+    public function save(PersonDTO $hioPerson, int $storagePageId = 0): void
     {
         $model = $this->findOneBy(['objectId' => $hioPerson->getObjectId()]);
         if ($model === null) {
