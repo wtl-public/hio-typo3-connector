@@ -20,7 +20,9 @@ class RequestHioImportCommand extends Command
     protected static $defaultName = '';
 
     public function __construct(protected readonly HioMiddlewareRequestImportService $hioMiddlewareRequestImportService)
-    {}
+    {
+        parent::__construct();
+    }
 
     /**
      * @param InputInterface $input
