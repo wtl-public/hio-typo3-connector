@@ -28,9 +28,7 @@ class HioPersonService extends HioApiService
             $personDto->setDoctorates($person['doctorates'] ?? []);
             $personDto->setHabilitations($person['habilitations'] ?? []);
 
-            $this->eventDispatcher->dispatch(
-                new ReceiveHioPersonEvent($personDto),
-            );
+            $persons[] = $personDto;
 
         }
         return $persons ?? [];
