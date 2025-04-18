@@ -44,3 +44,11 @@ services:
       - name: console.command
         command: 'hio:request:publication:import'
         description: 'Request Import of publication data'
+  Wtl\HioTypo3Connector\EventListener\ReceiveHioPersonListener:
+    tags:
+      - name: event.listener
+        identifier: 'receiveHioPersonListener'
+  Wtl\HioTypo3Connector\EventListener\ReceiveHioPublicationListener:
+    tags:
+      - name: event.listener
+        identifier: 'receiveHioPublicationListener'
