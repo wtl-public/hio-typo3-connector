@@ -9,10 +9,9 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
-
-use Wtl\HioTypo3Connector\Command\WithConfigureImportCommandTrait;
 use Wtl\HioTypo3Connector\Domain\Repository\PatentRepository;
 use Wtl\HioTypo3Connector\Services\HioPatentService;
+use Wtl\HioTypo3Connector\Trait\WithConfigureImportCommandTrait;
 
 class PatentsImportCommand extends Command
 {

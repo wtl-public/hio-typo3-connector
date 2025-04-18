@@ -11,7 +11,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use Wtl\HioTypo3Connector\Domain\Repository\ProjectRepository;
 use Wtl\HioTypo3Connector\Services\HioProjectService;
-use Wtl\HioTypo3Connector\Command\WithConfigureImportCommandTrait;
+use Wtl\HioTypo3Connector\Trait\WithConfigureImportCommandTrait;
 
 class ProjectsImportCommand extends Command
 {

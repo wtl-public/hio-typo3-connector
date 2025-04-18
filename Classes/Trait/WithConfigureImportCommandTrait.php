@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Wtl\HioTypo3Connector\Command;
+namespace Wtl\HioTypo3Connector\Trait;
 
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputOption;

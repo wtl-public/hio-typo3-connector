@@ -13,6 +13,7 @@ use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use Wtl\HioTypo3Connector\Domain\Dto\PersonDto;
 use Wtl\HioTypo3Connector\Event\ReceiveHioPersonEvent;
 use Wtl\HioTypo3Connector\Services\HioPersonService;
+use Wtl\HioTypo3Connector\Trait\WithConfigureImportCommandTrait;
 
 class PersonsImportCommand extends Command
 {

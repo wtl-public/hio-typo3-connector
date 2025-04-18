@@ -14,6 +14,7 @@ use Wtl\HioTypo3Connector\Domain\Dto\PublicationDto;
 use Wtl\HioTypo3Connector\Domain\Repository\CitationStyleRepository;
 use Wtl\HioTypo3Connector\Event\ReceiveHioPublicationEvent;
 use Wtl\HioTypo3Connector\Services\HioPublicationService;
+use Wtl\HioTypo3Connector\Trait\WithConfigureImportCommandTrait;
 
 class PublicationsImportCommand extends Command
 {
