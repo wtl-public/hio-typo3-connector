@@ -21,10 +21,13 @@ class ReceiveHioPublicationListener
     {
         $this->publicationRepository->save($event->getHioPublication(), $event->getStoragePid());
         $hioPublicationObjectId = $event->getHioPublication()->getObjectId();
-        $hioPersonObjectIds = array_map(
-            static fn($hioPerson) => $hioPerson->getId(),
-            $event->getHioPublication()->getPersons()
-        );
+        $hioPersonObjectIds = [];
+        foreach ($event->getHioPublication()->getPersons() as $hioPerson) {
+            if ($hioPerson->getId() === null) {
+                continue;
+            }
+            $hioPersonObjectIds[] = $hioPerson->getId();
+        }
         $this->eventDispatcher->dispatch(new AttachHioPublicationToHioPersonsEvent(
             $hioPublicationObjectId,
             $hioPersonObjectIds
