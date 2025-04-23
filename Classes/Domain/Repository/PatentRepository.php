@@ -9,7 +9,7 @@ class PatentRepository extends BaseRepository
 {
     public function save(PatentDto $patentDto, $storagePageId): void
     {
-        $patentModel = $this->findOneBy(['objectId' => $patentDto->getObjectId()]);
+        $patentModel = $this->findByObjectId($patentDto->getObjectId());
 
         if ($patentModel === null) {
             $patentModel = new Patent();
@@ -28,5 +28,10 @@ class PatentRepository extends BaseRepository
             $this->update($patentModel);
         }
         $this->persistenceManager->persistAll();
+    }
+
+    public function findByObjectId(string $objectId): ?Patent
+    {
+        return $this->findOneBy(['objectId' => $objectId]);
     }
 }

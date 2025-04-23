@@ -76,6 +76,10 @@ services:
       - name: event.listener
         identifier: 'receiveHioPublicationListener'
 
+  Wtl\HioTypo3Connector\EventListener\AttachHioDoctorateToHioPersonsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioDoctorateToHioPersonsListener'
   Wtl\HioTypo3Connector\EventListener\AttachHioHabilitationToHioPersonsListener:
     tags:
       - name: event.listener

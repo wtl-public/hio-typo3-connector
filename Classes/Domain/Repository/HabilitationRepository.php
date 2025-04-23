@@ -9,7 +9,7 @@ class HabilitationRepository extends BaseRepository
 {
     public function save(HabilitationDto $habilitationDto, $storagePageId): void
     {
-        $habilitationModel = $this->findOneBy(['objectId' => $habilitationDto->getObjectId()]);
+        $habilitationModel = $this->findByObjectId($habilitationDto->getObjectId());
 
         if ($habilitationModel === null) {
             $habilitationModel = new Habilitation();
@@ -28,5 +28,10 @@ class HabilitationRepository extends BaseRepository
             $this->update($habilitationModel);
         }
         $this->persistenceManager->persistAll();
+    }
+
+    public function findByObjectId(string $objectId): ?Habilitation
+    {
+        return $this->findOneBy(['objectId' => $objectId]);
     }
 }

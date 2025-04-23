@@ -9,7 +9,7 @@ class DoctorateRepository extends BaseRepository
 {
     public function save(DoctorateDto $doctorateDto, $storagePageId): void
     {
-        $doctorateModel = $this->findOneBy(['objectId' => $doctorateDto->getObjectId()]);
+        $doctorateModel = $this->findByObjectId($doctorateDto->getObjectId());
 
         if ($doctorateModel === null) {
             $doctorateModel = new Doctorate();
@@ -28,5 +28,10 @@ class DoctorateRepository extends BaseRepository
             $this->update($doctorateModel);
         }
         $this->persistenceManager->persistAll();
+    }
+
+    public function findByObjectId(string $objectId): ?Doctorate
+    {
+        return $this->findOneBy(['objectId' => $objectId]);
     }
 }
