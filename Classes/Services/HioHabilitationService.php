@@ -16,12 +16,7 @@ class HioHabilitationService extends HioApiService
 
         $result = $apiResponse->getData();
         foreach ($result as $habilitation) {
-            $dto  = new HabilitationDto();
-            $dto->setObjectId($habilitation['id']);
-            $dto->setTitle($habilitation['title'] ?? '');
-            $dto->setDetails($habilitation);
-            $dto->setSearchIndex($habilitation);
-            $habilitations[] = $dto;
+            $habilitations[] = HabilitationDto::fromArray($habilitation);
         }
         return $habilitations ?? [];
     }

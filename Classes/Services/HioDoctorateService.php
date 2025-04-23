@@ -16,12 +16,7 @@ class HioDoctorateService extends HioApiService
 
         $result = $apiResponse->getData();
         foreach ($result as $doctorate) {
-            $dto  = new DoctorateDto();
-            $dto->setObjectId($doctorate['id']);
-            $dto->setTitle($doctorate['title'] ?? '');
-            $dto->setDetails($doctorate);
-            $dto->setSearchIndex($doctorate);
-            $doctorates[] = $dto;
+            $doctorates[] = DoctorateDto::fromArray($doctorate);
         }
         return $doctorates ?? [];
     }

@@ -16,12 +16,7 @@ class HioProjectService extends HioApiService
 
         $result = $apiResponse->getData();
         foreach ($result as $project) {
-            $projectData  = new ProjectDto();
-            $projectData->setObjectId($project['id']);
-            $projectData->setTitle($project['title'] ?? '');
-            $projectData->setDetails($project);
-            $projectData->setSearchIndex($project);
-            $projects[] = $projectData;
+            $projects[] = ProjectDto::fromArray($project);
         }
         return $projects ?? [];
     }

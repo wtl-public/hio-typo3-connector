@@ -16,12 +16,7 @@ class HioPatentService extends HioApiService
 
         $result = $apiResponse->getData();
         foreach ($result as $patent) {
-            $dto  = new PatentDto();
-            $dto->setObjectId($patent['id']);
-            $dto->setTitle($patent['title'] ?? '');
-            $dto->setDetails($patent);
-            $dto->setSearchIndex($patent);
-            $projects[] = $dto;
+            $projects[] = PatentDto::fromArray($patent);
         }
         return $projects ?? [];
     }
