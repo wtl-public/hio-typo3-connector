@@ -31,6 +31,7 @@ class AttachHioPublicationToHioPersonsListener
                 continue;
             }
             $person->addPublication($publication);
+            $this->personRepository->update($person);
             $this->persistenceManager->persistAll();
         }
     }
