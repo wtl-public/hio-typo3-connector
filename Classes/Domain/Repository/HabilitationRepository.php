@@ -30,7 +30,7 @@ class HabilitationRepository extends BaseRepository
         $this->persistenceManager->persistAll();
     }
 
-    public function findByObjectId(string $objectId): ?Habilitation
+    public function findByObjectId(int $objectId): ?Habilitation
     {
         return $this->findOneBy(['objectId' => $objectId]);
     }
