@@ -221,7 +221,7 @@ class PublicationDto
         $publicationDto->setCitations($data['citations'] ?? []);
 
         $authors = [];
-        foreach ($data['persons'] as $person) {
+        foreach ($data['persons'] ?? [] as $person) {
             if (is_array($person)) {
                 $authors[] = PersonDto::fromArray($person);
             }
