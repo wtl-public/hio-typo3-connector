@@ -51,7 +51,7 @@ class PersonRepository extends BaseRepository
         if (empty($projects)) {
             return $personModel;
         }
-        $projectIds = array_map(fn($project) => $project['id'], $projects);
+        $projectIds = array_map(fn($project) => $project->getObjectId(), $projects);
         $projectRepository = GeneralUtility::makeInstance(ProjectRepository::class);
         $query = $projectRepository->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
@@ -87,7 +87,7 @@ class PersonRepository extends BaseRepository
         if (empty($patents)) {
             return $personModel;
         }
-        $patentIds = array_map(fn($patent) => $patent['id'], $patents);
+        $patentIds = array_map(fn($patent) => $patent->getObjectId(), $patents);
         $patentRepository = GeneralUtility::makeInstance(PatentRepository::class);
         $query = $patentRepository->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
@@ -105,7 +105,7 @@ class PersonRepository extends BaseRepository
         if (empty($doctorates)) {
             return $personModel;
         }
-        $ids = array_map(fn($doctorate) => $doctorate['id'], $doctorates);
+        $ids = array_map(fn($doctorate) => $doctorate->getObjectId(), $doctorates);
         $repository = GeneralUtility::makeInstance(DoctorateRepository::class);
         $query = $repository->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
@@ -123,7 +123,7 @@ class PersonRepository extends BaseRepository
         if (empty($habilitations)) {
             return $personModel;
         }
-        $ids = array_map(fn($habilitation) => $habilitation['id'], $habilitations);
+        $ids = array_map(fn($habilitation) => $habilitation->getObjectId(), $habilitations);
         $repository = GeneralUtility::makeInstance(HabilitationRepository::class);
         $query = $repository->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
