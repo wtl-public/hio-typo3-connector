@@ -23,7 +23,7 @@ class ReceiveHioProjectListener
         $this->projectRepository->save($event->getHioProject(), $event->getStoragePid());
         $hioProjectObjectId = $event->getHioProject()->getObjectId();
         $hioPersonObjectIds = array_map(
-            static fn($hioPerson) => $hioPerson->getId(),
+            static fn($hioPerson) => $hioPerson->getObjectId(),
             $event->getHioProject()->getPersons() ?? []
         );
         $this->eventDispatcher->dispatch(
