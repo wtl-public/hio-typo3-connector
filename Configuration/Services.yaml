@@ -6,9 +6,9 @@ services:
   Wtl\HioTypo3Connector\:
     resource: '../Classes/*'
   Wtl\HioTypo3Connector\Controller\PublicationController:
-    tags: ['backend.controller']
+    tags: [ 'backend.controller' ]
   Wtl\HioTypo3Connector\Controller\ProjectController:
-    tags: ['backend.controller']
+    tags: [ 'backend.controller' ]
   Wtl\HioTypo3Connector\Command\DoctoratesImportCommand:
     tags:
       - name: console.command
@@ -76,6 +76,10 @@ services:
       - name: event.listener
         identifier: 'receiveHioPublicationListener'
 
+  Wtl\HioTypo3Connector\EventListener\AttachHioHabilitationToHioPersonsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioHabilitationToHioPersonsListener'
   Wtl\HioTypo3Connector\EventListener\AttachHioPublicationToHioPersonsListener:
     tags:
       - name: event.listener
