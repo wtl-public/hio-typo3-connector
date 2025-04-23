@@ -16,19 +16,7 @@ class HioPersonService extends HioApiService
 
         $result = $apiResponse->getData();
         foreach ($result as $person) {
-            $personDto  = new PersonDto();
-            $personDto->setObjectId($person['id']);
-            $personDto->setName($person['name'] ?? '');
-            $personDto->setDetails($person);
-            $personDto->setSearchIndex($person);
-            $personDto->setPublications($person['publications'] ?? []);
-            $personDto->setProjects($person['projects'] ?? []);
-            $personDto->setPatents($person['patents'] ?? []);
-            $personDto->setDoctorates($person['doctorates'] ?? []);
-            $personDto->setHabilitations($person['habilitations'] ?? []);
-
-            $persons[] = $personDto;
-
+            $persons[] = PersonDto::fromArray($person);
         }
         return $persons ?? [];
     }
