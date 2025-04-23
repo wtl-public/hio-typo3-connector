@@ -219,6 +219,7 @@ class PublicationDto
         $publicationDto->setType($data['type']);
         $publicationDto->setReleaseYear($releaseYear);
         $publicationDto->setCitations($data['citations'] ?? []);
+        $publicationDto->setPersons($data['persons'] ?? []);
         return $publicationDto;
     }
 }
