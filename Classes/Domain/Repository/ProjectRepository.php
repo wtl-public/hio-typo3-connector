@@ -9,7 +9,7 @@ class ProjectRepository extends BaseRepository
 {
     public function save(ProjectDto $projectDto, $storagePageId): void
     {
-        $projectModel = $this->findOneBy(['objectId' => $projectDto->getObjectId()]);
+        $projectModel = $this->findByObjectId($projectDto->getObjectId());
 
         if ($projectModel === null) {
             $projectModel = new Project();
@@ -28,5 +28,10 @@ class ProjectRepository extends BaseRepository
             $this->update($projectModel);
         }
         $this->persistenceManager->persistAll();
+    }
+
+    public function findByObjectId(int $objectId): ?Project
+    {
+        return $this->findOneBy(['objectId' => $objectId]);
     }
 }

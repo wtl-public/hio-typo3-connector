@@ -80,3 +80,12 @@ services:
     tags:
       - name: event.listener
         identifier: 'attachHioPublicationToHioPersonsListener'
+  Wtl\HioTypo3Connector\EventListener\AttachHioProjectToHioPersonsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioProjectToHioPersonsListener'
+
+  Wtl\HioTypo3Connector\EventListener\AttachHioPersonToHioPublicationsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioPersonToHioPublicationsListener'

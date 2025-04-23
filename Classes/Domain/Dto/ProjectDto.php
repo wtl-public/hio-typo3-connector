@@ -195,6 +195,13 @@ class ProjectDto
         $project->setType($data['type'] ?? '');
         $project->setVisibility($data['visibility'] ?? '');
 
+        $members = [];
+        foreach ($data['persons'] as $person) {
+            if (is_array($person)) {
+                $members[] = PersonDto::fromArray($person);
+            }
+        }
+        $project->setPersons($members ?? []);
         return $project;
     }
 }
