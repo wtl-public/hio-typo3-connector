@@ -150,7 +150,7 @@ class DoctorateDto
     static public function fromArray(array $data): DoctorateDto
     {
         $dto = new self();
-        $dto->setObjectId($data['objectId']);
+        $dto->setObjectId($data['id']);
         $dto->setDetails($data);
         $dto->setSearchIndex($data);
 
