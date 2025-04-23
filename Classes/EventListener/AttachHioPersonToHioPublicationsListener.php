@@ -18,6 +18,7 @@ class AttachHioPersonToHioPublicationsListener
     )
     {
     }
+
     public function __invoke(AttachHioPersonToHioPublicationsEvent $event): void
     {
         $person = $this->personRepository->findByObjectId($event->getHioPersonObjectId());

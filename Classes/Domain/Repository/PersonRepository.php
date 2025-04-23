@@ -19,7 +19,7 @@ class PersonRepository extends BaseRepository
             $personModel->setName($personDto->getName());
             $personModel->setPid($storagePageId);
 
-            $this->attachPublicationsByObjectIds($personModel, $personDto->getPublications());
+            // $this->attachPublicationsByObjectIds($personModel, $personDto->getPublications());
             $this->attachProjectsByObjectIds($personModel, $personDto->getProjects());
             $this->attachPatentsByObjectIds($personModel, $personDto->getPatents());
             $this->attachDoctoratesByObjectIds($personModel, $personDto->getDoctorates());
@@ -31,7 +31,7 @@ class PersonRepository extends BaseRepository
             $personModel->setSearchIndex($personDto->getSearchIndex());
             $personModel->setName($personDto->getName());
 
-            $this->attachPublicationsByObjectIds($personModel, $personDto->getPublications());
+            // $this->attachPublicationsByObjectIds($personModel, $personDto->getPublications());
             $this->attachProjectsByObjectIds($personModel, $personDto->getProjects());
             $this->attachPatentsByObjectIds($personModel, $personDto->getPatents());
             $this->attachDoctoratesByObjectIds($personModel, $personDto->getDoctorates());
