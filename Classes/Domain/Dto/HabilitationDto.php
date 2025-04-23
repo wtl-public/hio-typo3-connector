@@ -180,7 +180,7 @@ class HabilitationDto
             $habilitationDto->setStartDate(new \DateTime($data['startDate']));
         }
         $habilitationDto->setTitle($data['title']);
-        $habilitationDto->setType($data['type']);
+        $habilitationDto->setType($data['type'] ?? '');
 
         return $habilitationDto;
     }
