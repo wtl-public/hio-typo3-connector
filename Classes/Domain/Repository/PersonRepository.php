@@ -10,7 +10,7 @@ class PersonRepository extends BaseRepository
 {
     public function save(PersonDto $personDto, int $storagePageId = 0): void
     {
-        $personModel = $this->findOneBy(['objectId' => $personDto->getObjectId()]);
+        $personModel = $this->findByObjectId($personDto->getObjectId());
         if ($personModel === null) {
             $personModel = new Person();
             $personModel->setObjectId($personDto->getObjectId());
@@ -39,6 +39,11 @@ class PersonRepository extends BaseRepository
             $this->update($personModel);
         }
         $this->persistenceManager->persistAll();
+    }
+
+    public function findByObjectId(int $objectId): ?Person
+    {
+        return $this->findOneBy(['objectId' => $objectId]);
     }
 
     protected function attachProjectsByObjectIds(Person &$personModel, array $projects): Person

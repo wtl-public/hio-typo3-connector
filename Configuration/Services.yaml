@@ -75,3 +75,8 @@ services:
     tags:
       - name: event.listener
         identifier: 'receiveHioPublicationListener'
+
+  Wtl\HioTypo3Connector\EventListener\AttachHioPublicationToHioPersonsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioPublicationToHioPersonsListener'

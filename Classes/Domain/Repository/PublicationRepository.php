@@ -10,7 +10,7 @@ class PublicationRepository extends BaseRepository
 {
     public function save(PublicationDto $publicationDto, int $storagePid = 0): void
     {
-        $publicationModel = $this->findOneBy(['objectId' => $publicationDto->getObjectId()]);
+        $publicationModel = $this->findByObjectId($publicationDto->getObjectId());
         if ($publicationModel === null) {
             $publicationModel = new Publication();
             $publicationModel->setObjectId($publicationDto->getObjectId());
@@ -33,6 +33,11 @@ class PublicationRepository extends BaseRepository
             $this->update($publicationModel);
         }
         $this->persistenceManager->persistAll();
+    }
+
+    public function findByObjectId(int $objectId): ?Publication
+    {
+        return $this->findOneBy(['objectId' => $objectId]);
     }
 
     public function getPublicationsByPerson(Person $person, ?array $ordering = [])
