@@ -7,9 +7,7 @@ namespace Wtl\HioTypo3Connector\EventListener;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use Wtl\HioTypo3Connector\Domain\Repository\PatentRepository;
 use Wtl\HioTypo3Connector\Domain\Repository\PersonRepository;
-use Wtl\HioTypo3Connector\Domain\Repository\ProjectRepository;
 use Wtl\HioTypo3Connector\Event\AttachHioPatentToHioPersonsEvent;
-use Wtl\HioTypo3Connector\Event\AttachHioProjectToHioPersonsEvent;
 
 class AttachHioPatentToHioPersonsListener
 {
@@ -32,7 +30,7 @@ class AttachHioPatentToHioPersonsListener
             if ($person === null) {
                 continue;
             }
-            $person->addPublication($patent);
+            $person->addPatent($patent);
             $this->personRepository->update($person);
             $this->persistenceManager->persistAll();
         }
