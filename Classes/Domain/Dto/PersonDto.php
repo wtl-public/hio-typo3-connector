@@ -16,11 +16,11 @@ class PersonDto
 
     protected string $name = '';
 
-    protected array $publications = [];
-    protected array $projects = [];
-    protected array $patents = [];
     protected array $doctorates = [];
     protected array $habilitations = [];
+    protected array $patents = [];
+    protected array $projects = [];
+    protected array $publications = [];
 
     public function getName(): string
     {
@@ -85,6 +85,37 @@ class PersonDto
         $dto->setName($data['name']);
         $dto->setDetails($data);
         $dto->setSearchIndex($data);
+
+        $publications = [];
+        foreach ($data['publications'] ?? [] as $publication) {
+            $publications[] = PublicationDto::fromArray($publication);
+        }
+        $dto->setPublications($publications);
+
+        $projects = [];
+        foreach ($data['projects'] ?? [] as $project) {
+            $projects[] = ProjectDto::fromArray($project);
+        }
+        $dto->setProjects($projects);
+
+        $patents = [];
+        foreach ($data['patents'] ?? [] as $patent) {
+            $patents[] = PatentDto::fromArray($patent);
+        }
+        $dto->setPatents($patents);
+
+        $doctorates = [];
+        foreach ($data['doctorates'] ?? [] as $doctorate) {
+            $doctorates[] = DoctorateDto::fromArray($doctorate);
+        }
+        $dto->setDoctorates($doctorates);
+
+        $habilitations = [];
+        foreach ($data['habilitations'] ?? [] as $habilitation) {
+            $habilitations[] = HabilitationDto::fromArray($habilitation);
+        }
+        $dto->setHabilitations($habilitations);
+
         return $dto;
     }
 }
