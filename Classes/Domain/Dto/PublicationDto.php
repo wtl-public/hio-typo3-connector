@@ -219,7 +219,14 @@ class PublicationDto
         $publicationDto->setType($data['type']);
         $publicationDto->setReleaseYear($releaseYear);
         $publicationDto->setCitations($data['citations'] ?? []);
-        $publicationDto->setPersons($data['persons'] ?? []);
+
+        $authors = [];
+        foreach ($data['persons'] as $person) {
+            if (is_array($person)) {
+                $authors[] = PersonDto::fromArray($person);
+            }
+        }
+        $publicationDto->setPersons($authors ?? []);
         return $publicationDto;
     }
 }
