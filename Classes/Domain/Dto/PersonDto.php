@@ -7,6 +7,7 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use Wtl\HioTypo3Connector\Trait\WithDetails;
 use Wtl\HioTypo3Connector\Trait\WithObjectId;
 use Wtl\HioTypo3Connector\Trait\WithSearchIndex;
+use Wtl\HioTypo3Connector\Domain\Dto\Person\PublicationDto;
 
 class PersonDto
 {
