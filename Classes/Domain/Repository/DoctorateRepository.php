@@ -30,7 +30,7 @@ class DoctorateRepository extends BaseRepository
         $this->persistenceManager->persistAll();
     }
 
-    public function findByObjectId(string $objectId): ?Doctorate
+    public function findByObjectId(int $objectId): ?Doctorate
     {
         return $this->findOneBy(['objectId' => $objectId]);
     }

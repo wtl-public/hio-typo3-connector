@@ -30,7 +30,7 @@ class PatentRepository extends BaseRepository
         $this->persistenceManager->persistAll();
     }
 
-    public function findByObjectId(string $objectId): ?Patent
+    public function findByObjectId(int $objectId): ?Patent
     {
         return $this->findOneBy(['objectId' => $objectId]);
     }
