@@ -198,11 +198,11 @@ class PublicationDto
         $this->access = $access;
     }
 
-    public function getReleaseYear(): ?string
+    public function getReleaseYear(): ?int
     {
         return $this->releaseYear;
     }
-    public function setReleaseYear(?string $releaseYear): void
+    public function setReleaseYear(?int $releaseYear): void
     {
         $this->releaseYear = $releaseYear;
     }
