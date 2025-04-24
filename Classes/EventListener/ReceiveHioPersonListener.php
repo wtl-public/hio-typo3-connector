@@ -23,7 +23,7 @@ class ReceiveHioPersonListener
         $this->personRepository->save($event->getHioPerson(), $event->getStoragePid());
         $hioPersonObjectId  = $event->getHioPerson()->getObjectId();
         $hioPublicationObjectIds = array_map(
-            static fn($hioPublication) => $hioPublication->getObjectId(),
+            static fn($hioPublication) => $hioPublication->getId(),
             $event->getHioPerson()->getPublications() ?? []
         );
         $this->eventDispatcher->dispatch(
