@@ -22,7 +22,7 @@ class ReceiveHioHabilitationListener
         $this->habilitationRepository->save($event->getHioHabilitation(), $event->getStoragePid());
         $hioHabilitationObjectId = $event->getHioHabilitation()->getObjectId();
         $hioPersonObjectIds = array_map(
-            static fn($hioPerson) => $hioPerson->getObjectId(),
+            static fn($hioPerson) => $hioPerson->getId(),
             $event->getHioHabilitation()->getPersons() ?? []
         );
         $this->eventDispatcher->dispatch(

@@ -22,7 +22,7 @@ class ReceiveHioDoctorateListener
         $this->doctorateRepository->save($event->getHioDoctorate(), $event->getStoragePid());
         $hioDoctorateObjectId = $event->getHioDoctorate()->getObjectId();
         $hioPersonObjectIds = array_map(
-            static fn($hioPerson) => $hioPerson->getObjectId(),
+            static fn($hioPerson) => $hioPerson->getId(),
             $event->getHioDoctorate()->getPersons() ?? []
         );
         $this->eventDispatcher->dispatch(

@@ -23,7 +23,7 @@ class ReceiveHioPatentListener
         $this->patentRepository->save($event->getHioPatent(), $event->getStoragePid());
         $hioPatentObjectId = $event->getHioPatent()->getObjectId();
         $hioPersonObjectIds = array_map(
-            static fn($hioPerson) => $hioPerson->getObjectId(),
+            static fn($hioPerson) => $hioPerson->getId(),
             $event->getHioPatent()->getPersons() ?? []
         );
         $this->eventDispatcher->dispatch(
