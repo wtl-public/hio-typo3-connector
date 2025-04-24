@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto\Publication;
 
+use Wtl\HioTypo3Connector\Domain\Dto\Collection\ResearchPartnerDto;
+
 class PersonDto
 {
     protected ?int $id = null;

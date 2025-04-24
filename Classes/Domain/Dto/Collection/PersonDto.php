@@ -8,6 +8,7 @@ class PersonDto
     protected ?int $id = null;
     protected string $name = '';
     protected ?OrganizationDto $organization = null;
+    protected ?ResearchPartnerDto $researchPartner = null;
 
     public function getId(): int|null
     {
@@ -36,6 +37,16 @@ class PersonDto
         $this->organization = $organization;
     }
 
+    public function getResearchPartner(): ?ResearchPartnerDto
+    {
+        return $this->researchPartner;
+    }
+
+    public function setResearchPartner(?ResearchPartnerDto $researchPartner): void
+    {
+        $this->researchPartner = $researchPartner;
+    }
+
     static public function fromArray(array $data): self
     {
         $personDto = new self();
@@ -43,6 +54,9 @@ class PersonDto
         $personDto->setName($data['name'] ?? '');
         if (is_array($data['organization'])) {
             $personDto->setOrganization(OrganizationDto::fromArray($data['organization']));
+        }
+        if (is_array($data['researchPartner'])) {
+            $personDto->setResearchPartner(ResearchPartnerDto::fromArray($data['researchPartner']));
         }
         return $personDto;
     }

@@ -6,7 +6,7 @@ namespace Wtl\HioTypo3Connector\Domain\Dto;
 use Wtl\HioTypo3Connector\Domain\Dto\Publication\ConferenceDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Publication\GlobalIdentifierDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Publication\JournalDto;
-use Wtl\HioTypo3Connector\Domain\Dto\Publication\PersonDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Collection\PersonDto;
 use Wtl\HioTypo3Connector\Trait\WithDetails;
 use Wtl\HioTypo3Connector\Trait\WithObjectId;
 use Wtl\HioTypo3Connector\Trait\WithSearchIndex;

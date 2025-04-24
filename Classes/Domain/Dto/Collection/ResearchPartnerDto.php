@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Wtl\HioTypo3Connector\Domain\Dto\Publication;
+namespace Wtl\HioTypo3Connector\Domain\Dto\Collection;
 
 class ResearchPartnerDto
 {
