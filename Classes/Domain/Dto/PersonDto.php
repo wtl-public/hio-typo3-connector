@@ -8,6 +8,10 @@ use Wtl\HioTypo3Connector\Trait\WithDetails;
 use Wtl\HioTypo3Connector\Trait\WithObjectId;
 use Wtl\HioTypo3Connector\Trait\WithSearchIndex;
 use Wtl\HioTypo3Connector\Domain\Dto\Person\PublicationDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Collection\DoctorateDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Collection\HabilitationDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Collection\PatentDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Collection\ProjectDto;
 
 class PersonDto
 {
