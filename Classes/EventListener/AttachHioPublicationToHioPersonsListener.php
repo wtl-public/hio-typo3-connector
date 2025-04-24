@@ -26,6 +26,9 @@ class AttachHioPublicationToHioPersonsListener
         }
 
         foreach ($event->getHioPersonObjectIds() as $hioPersonObjectId) {
+            if ($hioPersonObjectId === null) {
+                continue;
+            }
             $person = $this->personRepository->findByObjectId($hioPersonObjectId);
             if ($person === null) {
                 continue;
