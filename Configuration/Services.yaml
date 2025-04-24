@@ -97,6 +97,22 @@ services:
       - name: event.listener
         identifier: 'attachHioPatentToHioPersonsListener'
 
+  Wtl\HioTypo3Connector\EventListener\AttachHioPersonToHioDoctoratesListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioPersonToHioDoctoratesListener'
+  Wtl\HioTypo3Connector\EventListener\AttachHioPersonToHioHabilitationsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioPersonToHioHabilitationsListener'
+  Wtl\HioTypo3Connector\EventListener\AttachHioPersonToHioPatentsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioPersonToHioPatentsListener'
+  Wtl\HioTypo3Connector\EventListener\AttachHioPersonToHioProjectsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioPersonToHioProjectsListener'
   Wtl\HioTypo3Connector\EventListener\AttachHioPersonToHioPublicationsListener:
     tags:
       - name: event.listener
