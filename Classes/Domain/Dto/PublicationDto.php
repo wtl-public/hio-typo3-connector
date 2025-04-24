@@ -42,7 +42,7 @@ class PublicationDto
      * @var PersonDto[]
      */
     protected array $persons = [];
-    protected ?string $releaseYear = null;
+    protected ?int $releaseYear = null;
     protected string $resource = '';
     protected string $reviewed = '';
     protected string $status = '';

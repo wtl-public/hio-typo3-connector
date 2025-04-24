@@ -18,9 +18,6 @@ class HioPublicationService extends HioApiService
         $result = $apiResponse->getData();
         foreach ($result as $publication) {
             $releaseYear = $publication['journal']['releaseYear'] ?? null;
-            if ($releaseYear !== null) {
-                $releaseYear = (int)$releaseYear;
-            }
             $dto = PublicationDto::fromArray($publication);
             $dto->setReleaseYear($releaseYear);
             $publications[] = $dto;
