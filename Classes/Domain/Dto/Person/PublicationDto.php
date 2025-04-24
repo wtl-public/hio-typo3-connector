@@ -14,7 +14,7 @@ class PublicationDto
     protected ?int $id = null;
     protected ?JournalDto $journal = null;
     protected string $resource = '';
-    protected string $reviewed = '';
+    protected ?bool $reviewed = null;
     protected string $status = '';
     protected string $subtitle = '';
     protected string $title = '';
@@ -71,12 +71,12 @@ class PublicationDto
         $this->resource = $resource;
     }
 
-    public function getReviewed(): string
+    public function getReviewed(): ?bool
     {
         return $this->reviewed;
     }
 
-    public function setReviewed(string $reviewed): void
+    public function setReviewed(?bool $reviewed): void
     {
         $this->reviewed = $reviewed;
     }
@@ -134,12 +134,16 @@ class PublicationDto
     public static function fromArray(array $data): self
     {
         $dto = new self();
-        $dto->setConference(ConferenceDto::fromArray($data['conference'] ?? []));
+        if (is_array($data['conference'])) {
+            $dto->setConference(ConferenceDto::fromArray($data['conference']));
+        }
         $dto->setDocument($data['document'] ?? '');
         $dto->setId($data['id'] ?? null);
-        $dto->setJournal(JournalDto::fromArray($data['journal'] ?? []));
+        if (is_array($data['journal'])) {
+            $dto->setJournal(JournalDto::fromArray($data['journal']));
+        }
         $dto->setResource($data['resource'] ?? '');
-        $dto->setReviewed($data['reviewed'] ?? '');
+        $dto->setReviewed($data['reviewed'] ?? null);
         $dto->setStatus($data['status'] ?? '');
         $dto->setSubtitle($data['subtitle'] ?? '');
         $dto->setTitle($data['title'] ?? '');
