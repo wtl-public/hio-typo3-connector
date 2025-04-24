@@ -52,10 +52,10 @@ class PersonDto
         $personDto = new self();
         $personDto->setId($data['id']);
         $personDto->setName($data['name'] ?? '');
-        if (is_array($data['organization'])) {
+        if ($data['organization'] && is_array($data['organization'])) {
             $personDto->setOrganization(OrganizationDto::fromArray($data['organization']));
         }
-        if (is_array($data['researchPartner'])) {
+        if ($data['researchPartner'] && is_array($data['researchPartner'])) {
             $personDto->setResearchPartner(ResearchPartnerDto::fromArray($data['researchPartner']));
         }
         return $personDto;
