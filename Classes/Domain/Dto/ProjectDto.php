@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Wtl\HioTypo3Connector\Domain\Dto;
 
 use Wtl\HioTypo3Connector\Domain\Dto\Project\FundingProgramDto;
-use Wtl\HioTypo3Connector\Domain\Dto\Project\PersonDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Collection\PersonDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Project\ResearchAreaDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Project\SubjectAreaDto;
 use Wtl\HioTypo3Connector\Trait\WithDetails;

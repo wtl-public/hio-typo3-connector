@@ -9,6 +9,7 @@ class PersonDto
     protected string $name = '';
     protected ?OrganizationDto $organization = null;
     protected ?ResearchPartnerDto $researchPartner = null;
+    protected ?string $role = null;
 
     public function getId(): int|null
     {
@@ -47,11 +48,24 @@ class PersonDto
         $this->researchPartner = $researchPartner;
     }
 
+    public function getRole(): ?string
+    {
+        return $this->role;
+    }
+
+    public function setRole(?string $role): void
+    {
+        $this->role = $role;
+    }
+
     static public function fromArray(array $data): self
     {
         $personDto = new self();
         $personDto->setId($data['id']);
         $personDto->setName($data['name'] ?? '');
+        if (isset($data['role'])) {
+            $personDto->setRole($data['role']);
+        }
         if (isset($data['organization']) && is_array($data['organization'])) {
             $personDto->setOrganization(OrganizationDto::fromArray($data['organization']));
         }
