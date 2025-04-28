@@ -12,7 +12,7 @@ use Wtl\HioTypo3Connector\Services\HioMiddlewareRequestImportService;
 
 class RequestHioPublicationImportCommand extends RequestHioImportCommand
 {
-    protected const REQUESTED_ENTITY_TYPE = 'publication';
+    protected const REQUESTED_ENTITY_TYPE = 'Pub';
 
     protected static $defaultName = 'hio:request:publication:import';
 

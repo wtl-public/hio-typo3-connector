@@ -68,10 +68,14 @@ class HioMiddlewareRequestImportService
                 'auth' => $this->auth,
                 'verify' => $this->verifySsl,
                 'json' => [
-                    'type' => $entityType,
-                    'webhookUrl' => $this->webhookUrl,
-                    'xApiKey' => $this->xApiKey,
-                    'perPage' => $this->batchSize,
+                    'entity' => $entityType,
+                    'reaction' => [
+                        'url' => $this->webhookUrl,
+                        'token' => $this->xApiKey,
+                    ],
+                    'paginator' => [
+                        'perPage' => $this->batchSize,
+                    ],
                 ]
             ]);
         } catch (\Exception $e) {
