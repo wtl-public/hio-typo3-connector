@@ -40,7 +40,7 @@ class RequestHioImportCommand extends Command
             (int)$input->getArgument('t3-batch-size'),
         );
 
-        $response = $this->hioMiddlewareRequestImportService->requestImport(self::REQUESTED_ENTITY_TYPE);
+        $response = $this->hioMiddlewareRequestImportService->requestImport(static::REQUESTED_ENTITY_TYPE);
         if ($response->getStatusCode() !== 200) {
             $output->writeln('Error requesting data import from HIO Middleware API: ' . $response->getBody());
             return Command::FAILURE;
