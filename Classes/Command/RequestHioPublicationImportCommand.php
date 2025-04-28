@@ -15,9 +15,4 @@ class RequestHioPublicationImportCommand extends RequestHioImportCommand
     protected const REQUESTED_ENTITY_TYPE = 'Pub';
 
     protected static $defaultName = 'hio:request:publication:import';
-
-    public function __construct(HioMiddlewareRequestImportService $hioMiddlewareRequestImportService)
-    {
-        parent::__construct($hioMiddlewareRequestImportService);
-    }
 }
