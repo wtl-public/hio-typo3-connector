@@ -40,16 +40,36 @@ services:
         command: 'hio:publications:import'
         description: 'Import publication data from HISinOne'
 
-  Wtl\HioTypo3Connector\Command\RequestHioPublicationImportCommand:
+  Wtl\HioTypo3Connector\Command\RequestHioDoctorateImportCommand:
     tags:
       - name: console.command
-        command: 'hio:request:publication:import'
-        description: 'Request Import of publication data'
+        command: 'hio:request:doctorate:import'
+        description: 'Request Import of doctorate data'
+  Wtl\HioTypo3Connector\Command\RequestHioHabilitationImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:request:habilitation:import'
+        description: 'Request Import of habilitation data'
+  Wtl\HioTypo3Connector\Command\RequestHioPatentImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:request:patent:import'
+        description: 'Request Import of patent data'
   Wtl\HioTypo3Connector\Command\RequestHioPersonImportCommand:
     tags:
       - name: console.command
         command: 'hio:request:person:import'
         description: 'Request Import of person data'
+  Wtl\HioTypo3Connector\Command\RequestHioProjectImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:request:project:import'
+        description: 'Request Import of project data'
+  Wtl\HioTypo3Connector\Command\RequestHioPublicationImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:request:publication:import'
+        description: 'Request Import of publication data'
 
   Wtl\HioTypo3Connector\EventListener\ReceiveHioDoctorateListener:
     tags:

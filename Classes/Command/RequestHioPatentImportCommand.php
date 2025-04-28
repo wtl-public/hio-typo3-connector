@@ -9,9 +9,9 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class RequestHioPersonImportCommand extends RequestHioImportCommand
+class RequestHioPatentImportCommand extends RequestHioImportCommand
 {
-    protected const REQUESTED_ENTITY_TYPE = 'Per';
+    protected const REQUESTED_ENTITY_TYPE = 'Pat';
 
-    protected static $defaultName = 'hio:request:person:import';
+    protected static $defaultName = 'hio:request:patent:import';
 }
