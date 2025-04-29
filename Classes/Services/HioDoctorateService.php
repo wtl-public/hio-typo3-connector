@@ -2,7 +2,7 @@
 
 namespace Wtl\HioTypo3Connector\Services;
 
-use Wtl\HioTypo3Connector\Domain\Model\DTO\DoctorateDTO;
+use Wtl\HioTypo3Connector\Domain\Dto\DoctorateDto;
 
 class HioDoctorateService extends HioApiService
 {
@@ -16,12 +16,7 @@ class HioDoctorateService extends HioApiService
 
         $result = $apiResponse->getData();
         foreach ($result as $doctorate) {
-            $dto  = new DoctorateDTO();
-            $dto->setObjectId($doctorate['id']);
-            $dto->setTitle($doctorate['title'] ?? '');
-            $dto->setDetails($doctorate);
-            $dto->setSearchIndex($doctorate);
-            $doctorates[] = $dto;
+            $doctorates[] = DoctorateDto::fromArray($doctorate);
         }
         return $doctorates ?? [];
     }

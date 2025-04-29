@@ -2,39 +2,42 @@
 
 namespace Wtl\HioTypo3Connector\Domain\Repository;
 
-use Wtl\HioTypo3Connector\Domain\Model\DTO\PublicationDTO;
+use Wtl\HioTypo3Connector\Domain\Dto\PublicationDto;
 use Wtl\HioTypo3Connector\Domain\Model\Person;
 use Wtl\HioTypo3Connector\Domain\Model\Publication;
 
 class PublicationRepository extends BaseRepository
 {
-    public function savePublications($publications, $storagePageId): void {
-        /** @var PublicationDTO $publication */
-        foreach ($publications as $publication) {
-            $publicationModel = $this->findOneBy(['objectId' => $publication->getObjectId()]);
-            if ($publicationModel === null) {
-                $publicationModel = new Publication();
-                $publicationModel->setObjectId($publication->getObjectId());
-                $publicationModel->setTitle($publication->getTitle());
-                $publicationModel->setType($publication->getType());
-                $publicationModel->setDetails($publication->getDetails());
-                $publicationModel->setSearchIndex($publication->getSearchIndex());
-                $publicationModel->setPid($storagePageId);
-                $publicationModel->setReleaseYear($publication->getReleaseYear());
+    public function save(PublicationDto $publicationDto, int $storagePid = 0): void
+    {
+        $publicationModel = $this->findByObjectId($publicationDto->getObjectId());
+        if ($publicationModel === null) {
+            $publicationModel = new Publication();
+            $publicationModel->setObjectId($publicationDto->getObjectId());
+            $publicationModel->setTitle($publicationDto->getTitle());
+            $publicationModel->setType($publicationDto->getType());
+            $publicationModel->setDetails($publicationDto->getDetails());
+            $publicationModel->setSearchIndex($publicationDto->getSearchIndex());
+            $publicationModel->setPid($storagePid);
+            $publicationModel->setReleaseYear($publicationDto->getReleaseYear());
 
-                $this->add($publicationModel);
-            } else {
-                $publicationModel->setObjectId($publication->getObjectId());
-                $publicationModel->setTitle($publication->getTitle());
-                $publicationModel->setType($publication->getType());
-                $publicationModel->setDetails($publication->getDetails());
-                $publicationModel->setSearchIndex($publication->getSearchIndex());
-                $publicationModel->setReleaseYear($publication->getReleaseYear());
+            $this->add($publicationModel);
+        } else {
+            $publicationModel->setObjectId($publicationDto->getObjectId());
+            $publicationModel->setTitle($publicationDto->getTitle());
+            $publicationModel->setType($publicationDto->getType());
+            $publicationModel->setDetails($publicationDto->getDetails());
+            $publicationModel->setSearchIndex($publicationDto->getSearchIndex());
+            $publicationModel->setReleaseYear($publicationDto->getReleaseYear());
 
-                $this->update($publicationModel);
-            }
+            $this->update($publicationModel);
         }
         $this->persistenceManager->persistAll();
+    }
+
+    public function findByObjectId(int $objectId): ?Publication
+    {
+        return $this->findOneBy(['objectId' => $objectId]);
     }
 
     public function getPublicationsByPerson(Person $person, ?array $ordering = [])

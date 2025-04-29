@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Wtl\HioTypo3Connector\Services;
 
-use Wtl\HioTypo3Connector\Domain\Model\DTO\PublicationDTO;
+use Wtl\HioTypo3Connector\Domain\Dto\PublicationDto;
 
 class HioPublicationService extends HioApiService
 {
@@ -16,15 +18,9 @@ class HioPublicationService extends HioApiService
         $result = $apiResponse->getData();
         foreach ($result as $publication) {
             $releaseYear = $publication['journal']['releaseYear'] ?? null;
-            $publicationData = new PublicationDTO();
-            $publicationData->setObjectId($publication['id']);
-            $publicationData->setTitle($publication['title']);
-            $publicationData->setType($publication['type']);
-            $publicationData->setReleaseYear($releaseYear);
-            $publicationData->setCitations($publication['citations'] ?? []);
-            $publicationData->setDetails($publication);
-            $publicationData->setSearchIndex($publication);
-            $publications[] = $publicationData;
+            $dto = PublicationDto::fromArray($publication);
+            $dto->setReleaseYear($releaseYear);
+            $publications[] = $dto;
         }
         return $publications??[];
     }

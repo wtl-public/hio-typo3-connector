@@ -4,26 +4,26 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Command;
 
+use Psr\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
-
-use Wtl\HioTypo3Connector\Command\ConfigurableTrait;
-use Wtl\HioTypo3Connector\Domain\Repository\HabilitationRepository;
+use Wtl\HioTypo3Connector\Event\ReceiveHioHabilitationEvent;
 use Wtl\HioTypo3Connector\Services\HioHabilitationService;
+use Wtl\HioTypo3Connector\Trait\WithConfigureImportCommandTrait;
 
 class HabilitationsImportCommand extends Command
 {
-    use ConfigurableTrait;
+    use WithConfigureImportCommandTrait;
 
     protected static $defaultName = 'hio:habilitations:import';
 
     public function __construct(
-        private readonly HabilitationRepository $habilitationRepository,
-        private readonly HioHabilitationService $hioHabilitationService,
-        protected readonly PersistenceManager   $persistenceManager)
+        protected readonly HioHabilitationService   $hioHabilitationService,
+        protected readonly EventDispatcherInterface $eventDispatcher
+    )
     {
         parent::__construct();
     }
@@ -43,18 +43,20 @@ class HabilitationsImportCommand extends Command
             (bool)$input->getOption('verify-ssl')
         );
 
-        $querySettings = $this->habilitationRepository->createQuery()->getQuerySettings()->setStoragePageIds([$input->getArgument('storagePageId')]);
-        $this->habilitationRepository->setDefaultQuerySettings($querySettings);
-
         $currentPage = 1;
         do {
+            /** @var HabilitationDto[] $habilitations */
             $habilitations = $this->hioHabilitationService->getHabilitations($currentPage);
             if ($this->hioHabilitationService->getMeta()->getTotal() === 0) {
                 $output->writeln('No new habilitations found');
                 return Command::SUCCESS;
             }
 
-            $this->habilitationRepository->saveHabilitations($habilitations, $input->getArgument('storagePageId'));
+            foreach ($habilitations as $habilitation) {
+                $this->eventDispatcher->dispatch(
+                    new ReceiveHioHabilitationEvent($habilitation, (int)$input->getArgument('storagePageId'))
+                );
+            }
 
             $currentPage++;
         } while ($currentPage <= $this->hioHabilitationService->getMeta()->getLastPage());

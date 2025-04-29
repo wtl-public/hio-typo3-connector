@@ -2,33 +2,36 @@
 
 namespace Wtl\HioTypo3Connector\Domain\Repository;
 
-use Wtl\HioTypo3Connector\Domain\Model\DTO\ProjectDTO;
+use Wtl\HioTypo3Connector\Domain\Dto\ProjectDto;
 use Wtl\HioTypo3Connector\Domain\Model\Project;
 
 class ProjectRepository extends BaseRepository
 {
-    public function saveProjects($projects, $storagePageId): void {
-        /** @var ProjectDTO $project */
-        foreach ($projects as $project) {
-            $projectModel = $this->findOneBy(['objectId' => $project->getObjectId()]);
+    public function save(ProjectDto $projectDto, $storagePageId): void
+    {
+        $projectModel = $this->findByObjectId($projectDto->getObjectId());
 
-            if ($projectModel === null) {
-                $projectModel = new Project();
-                $projectModel->setObjectId($project->getObjectId());
-                $projectModel->setTitle($project->getTitle());
-                $projectModel->setDetails($project->getDetails());
-                $projectModel->setSearchIndex($project->getSearchIndex());
-                $projectModel->setPid($storagePageId);
+        if ($projectModel === null) {
+            $projectModel = new Project();
+            $projectModel->setObjectId($projectDto->getObjectId());
+            $projectModel->setTitle($projectDto->getTitle());
+            $projectModel->setDetails($projectDto->getDetails());
+            $projectModel->setSearchIndex($projectDto->getSearchIndex());
+            $projectModel->setPid($storagePageId);
 
-                $this->add($projectModel);
-            } else {
-                $projectModel->setObjectId($project->getObjectId());
-                $projectModel->setTitle($project->getTitle());
-                $projectModel->setDetails($project->getDetails());
-                $projectModel->setSearchIndex($project->getSearchIndex());
-                $this->update($projectModel);
-            }
+            $this->add($projectModel);
+        } else {
+            $projectModel->setObjectId($projectDto->getObjectId());
+            $projectModel->setTitle($projectDto->getTitle());
+            $projectModel->setDetails($projectDto->getDetails());
+            $projectModel->setSearchIndex($projectDto->getSearchIndex());
+            $this->update($projectModel);
         }
         $this->persistenceManager->persistAll();
+    }
+
+    public function findByObjectId(int $objectId): ?Project
+    {
+        return $this->findOneBy(['objectId' => $objectId]);
     }
 }

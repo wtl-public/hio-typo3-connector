@@ -431,31 +431,31 @@
             </trans-unit>
 
             <trans-unit id="tx_hiotypo3connector_domain_model_citationstyle" resname="tx_hiotypo3connector_domain_model_citationstyle">
-                <source>Citationstyle</source>
+                <source>Citationstyles</source>
                 <target>Zitationsstile</target>
             </trans-unit>
             <trans-unit id="tx_hiotypo3connector_domain_model_doctorate" resname="tx_hiotypo3connector_domain_model_doctorate">
-                <source>Doctorate</source>
+                <source>Doctorates</source>
                 <target>Promotionen</target>
             </trans-unit>
             <trans-unit id="tx_hiotypo3connector_domain_model_habilitation" resname="tx_hiotypo3connector_domain_model_habilitation">
-                <source>Habilitation</source>
+                <source>Habilitations</source>
                 <target>Habilitationen</target>
             </trans-unit>
             <trans-unit id="tx_hiotypo3connector_domain_model_patent" resname="tx_hiotypo3connector_domain_model_patent">
-                <source>Patent</source>
+                <source>Patents</source>
                 <target>Patente</target>
             </trans-unit>
             <trans-unit id="tx_hiotypo3connector_domain_model_person" resname="tx_hiotypo3connector_domain_model_person">
-                <source>Person</source>
+                <source>Persons</source>
                 <target>Personen</target>
             </trans-unit>
             <trans-unit id="tx_hiotypo3connector_domain_model_project" resname="tx_hiotypo3connector_domain_model_project">
-                <source>Project</source>
+                <source>Projects</source>
                 <target>Projekte</target>
             </trans-unit>
             <trans-unit id="tx_hiotypo3connector_domain_model_publication" resname="tx_hiotypo3connector_domain_model_publication">
-                <source>Publication</source>
+                <source>Publications</source>
                 <target>Publikationen</target>
             </trans-unit>
 
@@ -493,6 +493,31 @@
             <trans-unit id="person.projects.count" resname="person.projects.count">
                 <source>Number of projects</source>
                 <target>Anzahl Projekte</target>
+            </trans-unit>
+
+            <trans-unit id="receive-hio-doctorates_reaction" resname="receive-hio-doctorates_reaction">
+                <source>Receive doctorate data from HIO Middleware</source>
+                <target>Empfang von Promotionen von der HIO Middleware</target>
+            </trans-unit>
+            <trans-unit id="receive-hio-habilitations_reaction" resname="receive-hio-habilitations_reaction">
+                <source>Receive habilitation data from HIO Middleware</source>
+                <target>Empfang von Habilitationen von der HIO Middleware</target>
+            </trans-unit>
+            <trans-unit id="receive-hio-patents_reaction" resname="receive-hio-patents_reaction">
+                <source>Receive patent data from HIO Middleware</source>
+                <target>Empfang von Patenten von der HIO Middleware</target>
+            </trans-unit>
+            <trans-unit id="receive-hio-persons_reaction" resname="receive-hio-persons_reaction">
+                <source>Receive person data from HIO Middleware</source>
+                <target>Empfang von Personendaten von der HIO Middleware</target>
+            </trans-unit>
+            <trans-unit id="receive-hio-projects_reaction" resname="receive-hio-projects_reaction">
+                <source>Receive project data from HIO Middleware</source>
+                <target>Empfang von Forschungsprojekten von der HIO Middleware</target>
+            </trans-unit>
+            <trans-unit id="receive-hio-publications_reaction" resname="receive-hio-publications_reaction">
+                <source>Receive publication data from HIO Middleware</source>
+                <target>Empfang von Publikationen von der HIO Middleware</target>
             </trans-unit>
 
         </body>

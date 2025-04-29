@@ -2,22 +2,22 @@
 
 namespace Wtl\HioTypo3Connector\Domain\Repository;
 
+use Wtl\HioTypo3Connector\Domain\Dto\Publication\CitationDto;
 use Wtl\HioTypo3Connector\Domain\Model\CitationStyle;
-use Wtl\HioTypo3Connector\Domain\Model\DTO\Publication\CitationDTO;
 
 class CitationStyleRepository extends BaseRepository
 {
     public function saveCitationStyles(array $citations): void {
-        /** @var CitationDTO $citation */
+        /** @var CitationDto $citation */
         foreach ($citations as $citation) {
-            $dto = CitationDTO::fromArray($citation);
-            $model = $this->findOneBy(['label' => $dto->getStyle()]);
+            $citationDto = CitationDto::fromArray($citation);
+            $citationModel = $this->findOneBy(['label' => $citationDto->getStyle()]);
 
-            if ($model === null) {
-                $model = new CitationStyle();
-                $model->setLabel($dto->getStyle());
+            if ($citationModel === null) {
+                $citationModel = new CitationStyle();
+                $citationModel->setLabel($citationDto->getStyle());
 
-                $this->add($model);
+                $this->add($citationModel);
             }
         }
         $this->persistenceManager->persistAll();

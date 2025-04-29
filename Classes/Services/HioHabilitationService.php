@@ -2,7 +2,7 @@
 
 namespace Wtl\HioTypo3Connector\Services;
 
-use Wtl\HioTypo3Connector\Domain\Model\DTO\HabilitationDTO;
+use Wtl\HioTypo3Connector\Domain\Dto\HabilitationDto;
 
 class HioHabilitationService extends HioApiService
 {
@@ -16,12 +16,7 @@ class HioHabilitationService extends HioApiService
 
         $result = $apiResponse->getData();
         foreach ($result as $habilitation) {
-            $dto  = new HabilitationDTO();
-            $dto->setObjectId($habilitation['id']);
-            $dto->setTitle($habilitation['title'] ?? '');
-            $dto->setDetails($habilitation);
-            $dto->setSearchIndex($habilitation);
-            $habilitations[] = $dto;
+            $habilitations[] = HabilitationDto::fromArray($habilitation);
         }
         return $habilitations ?? [];
     }

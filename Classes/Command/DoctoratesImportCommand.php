@@ -4,26 +4,25 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Command;
 
+use Psr\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
-
-use Wtl\HioTypo3Connector\Command\ConfigurableTrait;
-use Wtl\HioTypo3Connector\Domain\Repository\DoctorateRepository;
+use Wtl\HioTypo3Connector\Event\ReceiveHioDoctorateEvent;
 use Wtl\HioTypo3Connector\Services\HioDoctorateService;
+use Wtl\HioTypo3Connector\Trait\WithConfigureImportCommandTrait;
 
 class DoctoratesImportCommand extends Command
 {
-    use ConfigurableTrait;
+    use WithConfigureImportCommandTrait;
 
     protected static $defaultName = 'hio:doctorates:import';
 
     public function __construct(
-        private readonly DoctorateRepository $doctorateRepository,
-        private readonly HioDoctorateService $hioDoctorateService,
-        protected readonly PersistenceManager $persistenceManager)
+        protected readonly HioDoctorateService $hioDoctorateService,
+        protected readonly EventDispatcherInterface $eventDispatcher)
     {
         parent::__construct();
     }
@@ -43,9 +42,6 @@ class DoctoratesImportCommand extends Command
             (bool)$input->getOption('verify-ssl')
         );
 
-        $querySettings = $this->doctorateRepository->createQuery()->getQuerySettings()->setStoragePageIds([$input->getArgument('storagePageId')]);
-        $this->doctorateRepository->setDefaultQuerySettings($querySettings);
-
         $currentPage = 1;
         do {
             $doctorates = $this->hioDoctorateService->getDoctorates($currentPage);
@@ -54,7 +50,11 @@ class DoctoratesImportCommand extends Command
                 return Command::SUCCESS;
             }
 
-            $this->doctorateRepository->saveDoctorates($doctorates, $input->getArgument('storagePageId'));
+            foreach ($doctorates as $doctorate) {
+                $this->eventDispatcher->dispatch(
+                    new ReceiveHioDoctorateEvent($doctorate, (int)$input->getArgument('storagePageId'))
+                );
+            }
 
             $currentPage++;
         } while ($currentPage <= $this->hioDoctorateService->getMeta()->getLastPage());

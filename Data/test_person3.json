@@ -1,0 +1,147 @@
+{
+  "doctorates": null,
+  "habilitations": null,
+  "id": 2661,
+  "name": "Arne Martin",
+  "patents": [
+    {
+      "description": null,
+      "grantDate": null,
+      "id": 18,
+      "patentNumber": "EP55664822",
+      "registrationDate": "2007-11-08",
+      "status": "veröffentlicht",
+      "title": "ARTICULATED ROBOT FOR HANDLING LARGE LOADS",
+      "visibility": "public"
+    }
+  ],
+  "projects": [
+    {
+      "endDate": "2008-05-01",
+      "id": 16,
+      "language": "deutsch",
+      "objective": "Forschung",
+      "startDate": "2001-08-26",
+      "status": "beendet",
+      "title": "Langfristige Auswirkungen einer Staatsfinanzierung durch Schulden",
+      "type": "Forschung",
+      "visibility": "public"
+    },
+    {
+      "endDate": "2001-05-27",
+      "id": 22,
+      "language": "deutsch",
+      "objective": "Forschung",
+      "startDate": "2001-09-25",
+      "status": "laufend",
+      "title": "Zukünftige Rolle digitaler Medien bei dem Wissenstransfer in der Lehre und Forschung",
+      "type": "Forschung",
+      "visibility": "public"
+    }
+  ],
+  "publications": [
+    {
+      "conference": null,
+      "document": "Wissenschaftlicher Artikel",
+      "id": 84,
+      "journal": {
+        "issue": "12",
+        "pageRange": "23-45",
+        "publisher": "Wirtschaft und Gesellschaft Verlag (Hannover)",
+        "releaseYear": 2022,
+        "title": "Fachzeitschrift für Produktions- und Verfahrenstechnik",
+        "volume": null
+      },
+      "resource": "Text",
+      "reviewed": true,
+      "status": "validiert",
+      "subtitle": null,
+      "title": "Aufwand und Nutzen beim Einsatz von künstlicher Intelligenz in der Fertigung",
+      "type": "Journalartikel",
+      "visibility": "public"
+    },
+    {
+      "conference": {
+        "city": "Los Angeles",
+        "country": "Ver. Staaten von Amerika",
+        "endDate": "2002-06-28",
+        "language": "englisch",
+        "name": "4th International Conference on Technology and Sustainable Development (TSD)",
+        "startDate": "2004-04-11",
+        "text": "4th International Conference on Technology and Sustainable Development (TSD)",
+        "type": "vor Ort"
+      },
+      "document": "Wissenschaftlicher Artikel",
+      "id": 62,
+      "journal": {
+        "issue": "4",
+        "pageRange": "39-54",
+        "publisher": "MDPI (Basel)",
+        "releaseYear": 2021,
+        "title": "International Journal of Financial Studies",
+        "volume": "10"
+      },
+      "resource": "Text",
+      "reviewed": true,
+      "status": "validiert",
+      "subtitle": null,
+      "title": "Blockchain: A financial technology for future sustainable development?",
+      "type": "Journalartikel",
+      "visibility": "public"
+    },
+    {
+      "conference": null,
+      "document": "Wissenschaftlicher Artikel",
+      "id": 82,
+      "journal": {
+        "issue": "22",
+        "pageRange": "18-34",
+        "publisher": "Wirtschaft und Gesellschaft Verlag (Hannover)",
+        "releaseYear": 2022,
+        "title": "Fachzeitschrift für Produktions- und Verfahrenstechnik",
+        "volume": null
+      },
+      "resource": "Text",
+      "reviewed": true,
+      "status": "validiert",
+      "subtitle": "Der entscheidende Faktor für intelligente Fabriken und Industrie 4.0",
+      "title": "Einsatz von künstlicher Intelligenz in der Fertigung in Kombination mit Big Data",
+      "type": "Journalartikel",
+      "visibility": "public"
+    },
+    {
+      "conference": null,
+      "document": null,
+      "id": 70,
+      "journal": null,
+      "resource": "Text",
+      "reviewed": true,
+      "status": "validiert",
+      "subtitle": "Faktor Mensch und Grundlagen der Entscheidungsunterstützung",
+      "title": "Künstliche Intelligenz für autonome Transportmittel",
+      "type": "Beitrag in wissenschaftlichen Blogs",
+      "visibility": "public"
+    },
+    {
+      "conference": null,
+      "document": "Wissenschaftlicher Artikel",
+      "id": 81,
+      "journal": {
+        "issue": null,
+        "pageRange": "12-45",
+        "publisher": "Wirtschaft und Gesellschaft Verlag (Hannover)",
+        "releaseYear": 2022,
+        "title": "Fachzeitschrift für Produktions- und Verfahrenstechnik",
+        "volume": null
+      },
+      "resource": "Text",
+      "reviewed": true,
+      "status": "validiert",
+      "subtitle": null,
+      "title": "Künstliche Intelligenz in der Produktion",
+      "type": "Journalartikel",
+      "visibility": "public"
+    }
+  ],
+  "researchInfrastructures": null
+}

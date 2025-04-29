@@ -11,7 +11,6 @@ use TYPO3\CMS\Core\Pagination\ArrayPaginator;
 use TYPO3\CMS\Core\Pagination\SimplePagination;
 use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 use TYPO3\CMS\Extbase\Property\PropertyMapper;
-use Wtl\HioTypo3Connector\Domain\Model\DTO\ProjectDTO;
 use Wtl\HioTypo3Connector\Domain\Model\Project;
 use Wtl\HioTypo3Connector\Domain\Repository\ProjectRepository;
 

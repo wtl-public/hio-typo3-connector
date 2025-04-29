@@ -4,26 +4,27 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Command;
 
+use Psr\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
-
-use Wtl\HioTypo3Connector\Command\ConfigurableTrait;
-use Wtl\HioTypo3Connector\Domain\Repository\PersonRepository;
+use Wtl\HioTypo3Connector\Domain\Dto\PersonDto;
+use Wtl\HioTypo3Connector\Event\ReceiveHioPersonEvent;
 use Wtl\HioTypo3Connector\Services\HioPersonService;
+use Wtl\HioTypo3Connector\Trait\WithConfigureImportCommandTrait;
 
 class PersonsImportCommand extends Command
 {
-    use ConfigurableTrait;
+    use WithConfigureImportCommandTrait;
 
     protected static $defaultName = 'hio:persons:import';
 
     public function __construct(
-        private readonly PersonRepository $personRepository,
-        private readonly HioPersonService $hioPersonService,
-        protected readonly PersistenceManager $persistenceManager)
+        protected readonly HioPersonService $hioPersonService,
+        protected readonly EventDispatcherInterface $eventDispatcher
+    )
     {
         parent::__construct();
     }
@@ -43,18 +44,20 @@ class PersonsImportCommand extends Command
             (bool)$input->getOption('verify-ssl')
         );
 
-        $querySettings = $this->personRepository->createQuery()->getQuerySettings()->setStoragePageIds([$input->getArgument('storagePageId')]);
-        $this->personRepository->setDefaultQuerySettings($querySettings);
-
         $currentPage = 1;
         do {
+            /** @var PersonDto[] $persons */
             $persons = $this->hioPersonService->getPersons($currentPage);
             if ($this->hioPersonService->getMeta()->getTotal() === 0) {
                 $output->writeln('No new persons found');
                 return Command::SUCCESS;
             }
 
-            $this->personRepository->savePersons($persons, $input->getArgument('storagePageId'));
+            foreach ($persons as $person) {
+                $this->eventDispatcher->dispatch(
+                    new ReceiveHioPersonEvent($person, (int)$input->getArgument('storagePageId')),
+                );
+            }
 
             $currentPage++;
         } while ($currentPage <= $this->hioPersonService->getMeta()->getLastPage());
