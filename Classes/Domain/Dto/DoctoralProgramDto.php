@@ -165,6 +165,7 @@ class DoctoralProgramDto
         $dto->setOrganizations(array_map(fn($item) => OrganizationDto::fromArray($item), $data['organizations'] ?? []));
         $dto->setScholarshipAvailable($data['scholarshipAvailable'] ?? false);
         $dto->setStartDate(isset($data['startDate']) ? new \DateTime($data['startDate']) : null);
+        $dto->setTitle($data['title'] ?? '');
         return $dto;
     }
 }
