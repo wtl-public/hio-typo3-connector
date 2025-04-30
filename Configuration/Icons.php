@@ -23,7 +23,7 @@ return [
     ],
     'tx-hio_typo3_connector-list-of-doctoral-programs' => [
         'provider' => SvgIconProvider::class,
-        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/list-of-doctoral-programs.svg',
+        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/list-of-doctoralPrograms.svg',
     ],
     'tx-hio_typo3_connector-list-of-habilitations' => [
         'provider' => SvgIconProvider::class,
@@ -47,7 +47,7 @@ return [
     ],
     'tx-hio_typo3_connector-doctoral-programs' => [
         'provider' => SvgIconProvider::class,
-        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/doctoral-program.svg',
+        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/doctoralProgram.svg',
     ],
     'tx-hio_typo3_connector-habilitations' => [
         'provider' => SvgIconProvider::class,

@@ -25,7 +25,7 @@ return [
         'security' => [
             'ignorePageTypeRestriction' => true,
         ],
-        'iconfile' => 'EXT:hio_typo3_connector/Resources/Public/Icons/doctoral-program.svg',
+        'iconfile' => 'EXT:hio_typo3_connector/Resources/Public/Icons/doctoralProgram.svg',
     ],
     'columns' => [
         'hidden' => [
