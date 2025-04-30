@@ -45,7 +45,7 @@ return [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/patent.svg',
     ],
-    'tx-hio_typo3_connector-doctoral-program' => [
+    'tx-hio_typo3_connector-doctoral-programs' => [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/doctoralProgram.svg',
     ],
