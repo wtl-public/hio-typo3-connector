@@ -79,13 +79,13 @@
                 <source>Select person please</source>
             </trans-unit>
 
-            <trans-unit id="titlePersonDoctorates" resname="titlePersonDoctorates">
-                <source>HISinOne doctorates for person</source>
+            <trans-unit id="titlePersonDoctoralPrograms" resname="titlePersonDoctoralPrograms">
+                <source>HISinOne doctoral programs for person</source>
             </trans-unit>
-            <trans-unit id="descriptionPersonDoctorates" resname="descriptionPersonDoctorates">
-                <source>Show all HISinOne doctorates for the selected person</source>
+            <trans-unit id="descriptionPersonDoctoralPrograms" resname="descriptionPersonDoctoralPrograms">
+                <source>Show all HISinOne doctoral programs for the selected person</source>
             </trans-unit>
-            <trans-unit id="flexform.doctoratelist.personUid" resname="flexform.doctoratelist.personUid">
+            <trans-unit id="flexform.doctoralprogramlist.personUid" resname="flexform.doctoralprogramlist.personUid">
                 <source>Select person please</source>
             </trans-unit>
 

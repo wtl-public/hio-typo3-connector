@@ -28,7 +28,7 @@ plugin.tx_hiotypo3connector {
       patents {
         personTargetPageUid = 9
       }
-      doctorates {
+      doctoralPrograms {
         personTargetPageUid = 9
       }
       habilitations {
@@ -42,7 +42,7 @@ plugin.tx_hiotypo3connector {
 
 Im TYPO3 Backend:
 * unter `Admin Tools` -> `Scheduler` -> die folgenden Import Tasks anlegen:
-  * `hio:import:doctorates` - Importiert Promotionen aus HISinOne
+  * `hio:import:doctoralPrograms` - Importiert Promotionen aus HISinOne
   * `hio:import:habilitations` - Importiert Habilitationen aus HISinOne
   * `hio:import:patents` - Importiert Patente aus HISinOne
   * `hio:import:persons` - Importiert Personen aus HISinOne

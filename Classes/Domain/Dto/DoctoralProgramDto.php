@@ -9,7 +9,7 @@ use Wtl\HioTypo3Connector\Trait\WithDetails;
 use Wtl\HioTypo3Connector\Trait\WithObjectId;
 use Wtl\HioTypo3Connector\Trait\WithSearchIndex;
 
-class DoctorateDto
+class DoctoralProgramDto
 {
     use WithObjectId;
     use WithDetails;
@@ -147,7 +147,7 @@ class DoctorateDto
         $this->startDate = $startDate;
     }
 
-    static public function fromArray(array $data): DoctorateDto
+    static public function fromArray(array $data): DoctoralProgramDto
     {
         $dto = new self();
         $dto->setObjectId($data['id']);
@@ -165,6 +165,7 @@ class DoctorateDto
         $dto->setOrganizations(array_map(fn($item) => OrganizationDto::fromArray($item), $data['organizations'] ?? []));
         $dto->setScholarshipAvailable($data['scholarshipAvailable'] ?? false);
         $dto->setStartDate(isset($data['startDate']) ? new \DateTime($data['startDate']) : null);
+        $dto->setTitle($data['title'] ?? '');
         return $dto;
     }
 }

@@ -5,7 +5,7 @@ namespace Wtl\HioTypo3Connector\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
-class Doctorate extends AbstractEntity
+class DoctoralProgram extends AbstractEntity
 {
     protected int $objectId = 0;
 
@@ -48,7 +48,7 @@ class Doctorate extends AbstractEntity
         $this->details = json_encode($details);
     }
 
-    
+
     public function getSearchIndex()
     {
         return $this->searchIndex;

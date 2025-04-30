@@ -54,12 +54,12 @@
                 <target>Liste aller in HISinOne verfügbaren Personen</target>
             </trans-unit>
 
-            <trans-unit id="titleDoctorates" resname="titleDoctorates">
-                <source>HISinOne Doctorates</source>
+            <trans-unit id="titleDoctoralPrograms" resname="titleDoctoralPrograms">
+                <source>HISinOne Doctoral programs</source>
                 <target>HISinOne Promotionen</target>
             </trans-unit>
-            <trans-unit id="descriptionDoctorates" resname="descriptionDoctorates">
-                <source>List of doctorates available inHISinOne</source>
+            <trans-unit id="descriptionDoctoralPrograms" resname="descriptionDoctoralPrograms">
+                <source>List of doctoral programs available inHISinOne</source>
                 <target>Liste aller in HISinOne verfügbaren Promotionen</target>
             </trans-unit>
 
@@ -228,67 +228,67 @@
                 <target>Typ</target>
             </trans-unit>
 
-            <trans-unit id="doctorate.courseOfStudy" resname="doctorate.courseOfStudy">
+            <trans-unit id="doctoralProgram.courseOfStudy" resname="doctoralProgram.courseOfStudy">
                 <source>course of study</source>
                 <target>Studiengang</target>
             </trans-unit>
-            <trans-unit id="doctorate.description" resname="doctorate.description">
+            <trans-unit id="doctoralProgram.description" resname="doctoralProgram.description">
                 <source>description</source>
                 <target>Beschreibung</target>
             </trans-unit>
-            <trans-unit id="doctorate.doctoralPositionAvailable" resname="doctorate.doctoralPositionAvailable">
+            <trans-unit id="doctoralProgram.doctoralPositionAvailable" resname="doctoralProgram.doctoralPositionAvailable">
                 <source>doctoral position available</source>
                 <target>Promotionsstelle verfügbar</target>
             </trans-unit>
-            <trans-unit id="doctorate.endDate" resname="doctorate.endDate">
+            <trans-unit id="doctoralProgram.endDate" resname="doctoralProgram.endDate">
                 <source>end date</source>
                 <target>Enddatum</target>
             </trans-unit>
-            <trans-unit id="doctorate.language" resname="doctorate.language">
+            <trans-unit id="doctoralProgram.language" resname="doctoralProgram.language">
                 <source>language</source>
                 <target>Sprache</target>
             </trans-unit>
-            <trans-unit id="doctorate.organization" resname="doctorate.organization">
+            <trans-unit id="doctoralProgram.organization" resname="doctoralProgram.organization">
                 <source>organization</source>
                 <target>Organisationseinheit</target>
             </trans-unit>
-            <trans-unit id="doctorate.organizations" resname="doctorate.organizations">
+            <trans-unit id="doctoralProgram.organizations" resname="doctoralProgram.organizations">
                 <source>organizations</source>
                 <target>Organisationseinheiten</target>
             </trans-unit>
-            <trans-unit id="doctorate.person" resname="doctorate.person">
+            <trans-unit id="doctoralProgram.person" resname="doctoralProgram.person">
                 <source>person</source>
                 <target>Person</target>
             </trans-unit>
-            <trans-unit id="doctorate.persons" resname="doctorate.persons">
+            <trans-unit id="doctoralProgram.persons" resname="doctoralProgram.persons">
                 <source>persons</source>
                 <target>Personen</target>
             </trans-unit>
-            <trans-unit id="doctorate.researchArea" resname="doctorate.researchArea">
+            <trans-unit id="doctoralProgram.researchArea" resname="doctoralProgram.researchArea">
                 <source>research area</source>
                 <target>Forschungsgebiet</target>
             </trans-unit>
-            <trans-unit id="doctorate.researchAreas" resname="doctorate.researchAreas">
+            <trans-unit id="doctoralProgram.researchAreas" resname="doctoralProgram.researchAreas">
                 <source>research areas</source>
                 <target>Forschungsgebiete</target>
             </trans-unit>
-            <trans-unit id="doctorate.scholarshipAvailable" resname="doctorate.scholarshipAvailable">
+            <trans-unit id="doctoralProgram.scholarshipAvailable" resname="doctoralProgram.scholarshipAvailable">
                 <source>scholarship available</source>
                 <target>Stipendium verfügbar</target>
             </trans-unit>
-            <trans-unit id="doctorate.startDate" resname="doctorate.startDate">
+            <trans-unit id="doctoralProgram.startDate" resname="doctoralProgram.startDate">
                 <source>start date</source>
                 <target>Startdatum</target>
             </trans-unit>
-            <trans-unit id="doctorate.subjectArea" resname="doctorate.subjectArea">
+            <trans-unit id="doctoralProgram.subjectArea" resname="doctoralProgram.subjectArea">
                 <source>subjectArea</source>
                 <target>Fachgebiet</target>
             </trans-unit>
-            <trans-unit id="doctorate.subjectAreas" resname="doctorate.subjectAreas">
+            <trans-unit id="doctoralProgram.subjectAreas" resname="doctoralProgram.subjectAreas">
                 <source>subjectAreas</source>
                 <target>Fachgebiete</target>
             </trans-unit>
-            <trans-unit id="doctorate.title" resname="doctorate.title">
+            <trans-unit id="doctoralProgram.title" resname="doctoralProgram.title">
                 <source>title</source>
                 <target>Titel</target>
             </trans-unit>
@@ -434,8 +434,8 @@
                 <source>Citationstyles</source>
                 <target>Zitationsstile</target>
             </trans-unit>
-            <trans-unit id="tx_hiotypo3connector_domain_model_doctorate" resname="tx_hiotypo3connector_domain_model_doctorate">
-                <source>Doctorates</source>
+            <trans-unit id="tx_hiotypo3connector_domain_model_doctoral_program" resname="tx_hiotypo3connector_domain_model_doctoral_program">
+                <source>Doctoral programs</source>
                 <target>Promotionen</target>
             </trans-unit>
             <trans-unit id="tx_hiotypo3connector_domain_model_habilitation" resname="tx_hiotypo3connector_domain_model_habilitation">
@@ -495,8 +495,8 @@
                 <target>Anzahl Projekte</target>
             </trans-unit>
 
-            <trans-unit id="receive-hio-doctorates_reaction" resname="receive-hio-doctorates_reaction">
-                <source>Receive doctorate data from HIO Middleware</source>
+            <trans-unit id="receive-hio-doctoral-programs_reaction" resname="receive-hio-doctoral-programs_reaction">
+                <source>Receive doctoral program data from HIO Middleware</source>
                 <target>Empfang von Promotionen von der HIO Middleware</target>
             </trans-unit>
             <trans-unit id="receive-hio-habilitations_reaction" resname="receive-hio-habilitations_reaction">

@@ -25,7 +25,7 @@ CREATE TABLE tx_hiotypo3connector_domain_model_person
     publications INT(11) DEFAULT '0' NOT NULL,
     projects     INT(11) DEFAULT '0' NOT NULL,
     patents      INT(11) DEFAULT '0' NOT NULL,
-    doctorates      INT(11) DEFAULT '0' NOT NULL,
+    doctoral_programs      INT(11) DEFAULT '0' NOT NULL,
     habilitations      INT(11) DEFAULT '0' NOT NULL,
 );
 
@@ -37,7 +37,7 @@ CREATE TABLE tx_hiotypo3connector_domain_model_patent
     search_index MEDIUMBLOB,
 );
 
-CREATE TABLE tx_hiotypo3connector_domain_model_doctorate
+CREATE TABLE tx_hiotypo3connector_domain_model_doctoralprogram
 (
     object_id INT(11)  DEFAULT '0' NOT NULL,
     title     LONGTEXT DEFAULT '',

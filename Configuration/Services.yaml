@@ -9,11 +9,11 @@ services:
     tags: [ 'backend.controller' ]
   Wtl\HioTypo3Connector\Controller\ProjectController:
     tags: [ 'backend.controller' ]
-  Wtl\HioTypo3Connector\Command\DoctoratesImportCommand:
+  Wtl\HioTypo3Connector\Command\DoctoralProgramsImportCommand:
     tags:
       - name: console.command
-        command: 'hio:doctorates:import'
-        description: 'Import doctorate data from HISinOne'
+        command: 'hio:doctoralPrograms:import'
+        description: 'Import doctoral program data from HISinOne'
   Wtl\HioTypo3Connector\Command\HabilitationsImportCommand:
     tags:
       - name: console.command
@@ -40,11 +40,11 @@ services:
         command: 'hio:publications:import'
         description: 'Import publication data from HISinOne'
 
-  Wtl\HioTypo3Connector\Command\RequestHioDoctorateImportCommand:
+  Wtl\HioTypo3Connector\Command\RequestHioDoctoralProgramImportCommand:
     tags:
       - name: console.command
-        command: 'hio:request:doctorate:import'
-        description: 'Request Import of doctorate data'
+        command: 'hio:request:doctoralProgram:import'
+        description: 'Request Import of doctoral program data'
   Wtl\HioTypo3Connector\Command\RequestHioHabilitationImportCommand:
     tags:
       - name: console.command
@@ -71,10 +71,10 @@ services:
         command: 'hio:request:publication:import'
         description: 'Request Import of publication data'
 
-  Wtl\HioTypo3Connector\EventListener\ReceiveHioDoctorateListener:
+  Wtl\HioTypo3Connector\EventListener\ReceiveHioDoctoralProgramListener:
     tags:
       - name: event.listener
-        identifier: 'receiveHioDoctorateListener'
+        identifier: 'receiveHioDoctoralProgramListener'
   Wtl\HioTypo3Connector\EventListener\ReceiveHioHabilitationListener:
     tags:
       - name: event.listener
@@ -96,10 +96,10 @@ services:
       - name: event.listener
         identifier: 'receiveHioPublicationListener'
 
-  Wtl\HioTypo3Connector\EventListener\AttachHioDoctorateToHioPersonsListener:
+  Wtl\HioTypo3Connector\EventListener\AttachHioDoctoralProgramToHioPersonsListener:
     tags:
       - name: event.listener
-        identifier: 'attachHioDoctorateToHioPersonsListener'
+        identifier: 'attachHioDoctoralProgramToHioPersonsListener'
   Wtl\HioTypo3Connector\EventListener\AttachHioHabilitationToHioPersonsListener:
     tags:
       - name: event.listener
@@ -117,10 +117,10 @@ services:
       - name: event.listener
         identifier: 'attachHioPatentToHioPersonsListener'
 
-  Wtl\HioTypo3Connector\EventListener\AttachHioPersonToHioDoctoratesListener:
+  Wtl\HioTypo3Connector\EventListener\AttachHioPersonToHioDoctoralProgramsListener:
     tags:
       - name: event.listener
-        identifier: 'attachHioPersonToHioDoctoratesListener'
+        identifier: 'attachHioPersonToHioDoctoralProgramsListener'
   Wtl\HioTypo3Connector\EventListener\AttachHioPersonToHioHabilitationsListener:
     tags:
       - name: event.listener

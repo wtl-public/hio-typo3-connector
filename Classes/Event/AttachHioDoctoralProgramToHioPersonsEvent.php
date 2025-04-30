@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Event;
 
-class AttachHioDoctorateToHioPersonsEvent
+class AttachHioDoctoralProgramToHioPersonsEvent
 {
     public function __construct(
-        protected readonly int $hioDoctorateObjectId,
+        protected readonly int   $hioDoctoralProgramObjectId,
         protected readonly array $hioPersonObjectIds
     )
     {
     }
 
-    public function getHioDoctorateObjectId(): int
+    public function getHioDoctoralProgramObjectId(): int
     {
-        return $this->hioDoctorateObjectId;
+        return $this->hioDoctoralProgramObjectId;
     }
 
     public function getHioPersonObjectIds(): array

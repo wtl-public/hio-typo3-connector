@@ -185,7 +185,7 @@ class PersonController extends BaseController
         return $this->htmlResponse();
     }
 
-    public function doctorateListAction(): ResponseInterface
+    public function doctoralProgramListAction(): ResponseInterface
     {
         /** @var Person $selectedPerson */
         $selectedPerson = $this->personRepository->findByUid($this->settings['personUid']);

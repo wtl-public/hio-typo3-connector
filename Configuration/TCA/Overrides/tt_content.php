@@ -31,9 +31,9 @@ ExtensionUtility::registerPlugin(
 );
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
-    'Doctoratelist',
-    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titleDoctorates',
-    'tx-hio_typo3_connector-list-of-doctorates',
+    'Doctoralprogramlist',
+    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titleDoctoralPrograms',
+    'tx-hio_typo3_connector-list-of-doctoral-programs',
 );
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
@@ -56,9 +56,9 @@ ExtensionUtility::registerPlugin(
 
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
-    'Selectedpersondoctoratelist',
-    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonProjects',
-    'tx-hio_typo3_connector-projects',
+    'Selectedpersondoctoralprogramlist',
+    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonDoctoralPrograms',
+    'tx-hio_typo3_connector-doctoral-programs',
 );
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
@@ -76,7 +76,7 @@ ExtensionUtility::registerPlugin(
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['hiotypo3connector_selectedpersonpatentlist'] = 'pi_flexform';
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['hiotypo3connector_selectedpersonpublicationlist'] = 'pi_flexform';
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['hiotypo3connector_selectedpersonprojectlist'] = 'pi_flexform';
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['hiotypo3connector_selectedpersondoctoratelist'] = 'pi_flexform';
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['hiotypo3connector_selectedpersondoctoralprogramlist'] = 'pi_flexform';
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['hiotypo3connector_selectedpersonhabilitationlist'] = 'pi_flexform';
 
 // Configuration/TCA/Overrides/tt_content.php
@@ -93,8 +93,8 @@ ExtensionManagementUtility::addPiFlexFormValue(
     'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/SelectedPersonPatentList.xml',
 );
 ExtensionManagementUtility::addPiFlexFormValue(
-    'hiotypo3connector_selectedpersondoctoratelist',
-    'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/SelectedPersonDoctorateList.xml',
+    'hiotypo3connector_selectedpersondoctoralprogramlist',
+    'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/SelectedPersonDoctoralProgramList.xml',
 );
 ExtensionManagementUtility::addPiFlexFormValue(
     'hiotypo3connector_selectedpersonhabilitationlist',

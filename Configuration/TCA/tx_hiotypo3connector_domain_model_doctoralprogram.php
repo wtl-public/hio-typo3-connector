@@ -11,7 +11,7 @@ $lllPrefix = 'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.x
 
 return [
     'ctrl' => [
-        'title' => $lllPrefix . 'tx_hiotypo3connector_domain_model_doctorate',
+        'title' => $lllPrefix . 'tx_hiotypo3connector_domain_model_doctoralprogram',
         'label' => 'title',
         'hideAtCopy' => true,
         'hideTable' => false,
@@ -25,7 +25,7 @@ return [
         'security' => [
             'ignorePageTypeRestriction' => true,
         ],
-        'iconfile' => 'EXT:hio_typo3_connector/Resources/Public/Icons/doctorate.svg',
+        'iconfile' => 'EXT:hio_typo3_connector/Resources/Public/Icons/doctoralProgram.svg',
     ],
     'columns' => [
         'hidden' => [
@@ -74,7 +74,7 @@ return [
         ],
         'object_id' => [
             'exclude' => true,
-            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_doctorate.object_id',
+            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_doctoralprogram.object_id',
             'config' => [
                 'type' => 'input',
                 'size' => 60,
@@ -84,7 +84,7 @@ return [
             ],
         ],
         'title' => [
-            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_doctorate.title',
+            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_doctoralprogram.title',
             'config' => [
                 'type' => 'input',
                 'size' => 60,

@@ -8,7 +8,7 @@ use Wtl\HioTypo3Connector\Controller\PersonController;
 use Wtl\HioTypo3Connector\Controller\ProjectController;
 use Wtl\HioTypo3Connector\Controller\PublicationController;
 use Wtl\HioTypo3Connector\Controller\PatentController;
-use Wtl\HioTypo3Connector\Controller\DoctorateController;
+use Wtl\HioTypo3Connector\Controller\DoctoralProgramController;
 use Wtl\HioTypo3Connector\Controller\HabilitationController;
 
 
@@ -59,11 +59,11 @@ ExtensionUtility::configurePlugin(
     // extension name, matching the PHP namespaces (but without the vendor)
     'HioTypo3Connector',
     // arbitrary, but unique plugin name (not visible in the backend)
-    'DoctorateList',
+    'DoctoralProgramList',
     // all actions
-    [DoctorateController::class => 'index, show, search'],
+    [DoctoralProgramController::class => 'index, show, search'],
     // non-cacheable actions
-    [DoctorateController::class => 'search'],
+    [DoctoralProgramController::class => 'search'],
 );
 ExtensionUtility::configurePlugin(
     // extension name, matching the PHP namespaces (but without the vendor)
@@ -108,9 +108,9 @@ ExtensionUtility::configurePlugin(
     // extension name, matching the PHP namespaces (but without the vendor)
     'HioTypo3Connector',
     // arbitrary, but unique plugin name (not visible in the backend)
-    'SelectedPersonDoctorateList',
+    'SelectedPersonDoctoralProgramList',
     // all actions
-    [PersonController::class => 'doctorateList'],
+    [PersonController::class => 'doctoralProgramList'],
     // non-cacheable actions
 );
 ExtensionUtility::configurePlugin(

@@ -7,7 +7,7 @@ namespace Wtl\HioTypo3Connector\EventListener;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use Wtl\HioTypo3Connector\Domain\Dto\PersonDto;
 use Wtl\HioTypo3Connector\Domain\Repository\PersonRepository;
-use Wtl\HioTypo3Connector\Event\AttachHioPersonToHioDoctoratesEvent;
+use Wtl\HioTypo3Connector\Event\AttachHioPersonToHioDoctoralProgramsEvent;
 use Wtl\HioTypo3Connector\Event\AttachHioPersonToHioHabilitationsEvent;
 use Wtl\HioTypo3Connector\Event\AttachHioPersonToHioPatentsEvent;
 use Wtl\HioTypo3Connector\Event\AttachHioPersonToHioProjectsEvent;
@@ -27,23 +27,23 @@ class ReceiveHioPersonListener
     {
         $this->personRepository->save($event->getHioPerson(), $event->getStoragePid());
 
-        $this->attachRelatedDoctorates($event->getHioPerson());
+        $this->attachRelatedDoctoralPrograms($event->getHioPerson());
         $this->attachRelatedHabilitations($event->getHioPerson());
         $this->attachRelatedPatents($event->getHioPerson());
         $this->attachRelatedProjects($event->getHioPerson());
         $this->attachRelatedPublications($event->getHioPerson());
     }
 
-    protected function attachRelatedDoctorates(PersonDto $personDto): void
+    protected function attachRelatedDoctoralPrograms(PersonDto $personDto): void
     {
-        $hioDoctorateObjectIds  = array_map(
-            static fn($hioDoctorate) => $hioDoctorate->getId(),
-            $personDto->getDoctorates() ?? []
+        $hioDoctoralProgramsObjectIds  = array_map(
+            static fn($hioDoctoralProgram) => $hioDoctoralProgram->getId(),
+            $personDto->getDoctoralPrograms() ?? []
         );
         $this->eventDispatcher->dispatch(
-            new AttachHioPersonToHioDoctoratesEvent(
+            new AttachHioPersonToHioDoctoralProgramsEvent(
                 $personDto->getObjectId(),
-                $hioDoctorateObjectIds
+                $hioDoctoralProgramsObjectIds
             )
         );
     }
