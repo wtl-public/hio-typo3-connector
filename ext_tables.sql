@@ -37,7 +37,7 @@ CREATE TABLE tx_hiotypo3connector_domain_model_patent
     search_index MEDIUMBLOB,
 );
 
-CREATE TABLE tx_hiotypo3connector_domain_model_doctoral_program
+CREATE TABLE tx_hiotypo3connector_domain_model_doctoralprogram
 (
     object_id INT(11)  DEFAULT '0' NOT NULL,
     title     LONGTEXT DEFAULT '',
