@@ -388,7 +388,7 @@
                 <source>Number of projects</source>
             </trans-unit>
 
-            <trans-unit id="receive-hio-doctoralPrograms_reaction" resname="receive-hio-doctoralPrograms_reaction">
+            <trans-unit id="receive-hio-doctoral-programs_reaction" resname="receive-hio-doctoral-programs_reaction">
                 <source>Receive doctoral program data from HIO Middleware</source>
             </trans-unit>
             <trans-unit id="receive-hio-habilitations_reaction" resname="receive-hio-habilitations_reaction">
