@@ -10,19 +10,19 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
-use Wtl\HioTypo3Connector\Event\ReceiveHioDoctorateEvent;
-use Wtl\HioTypo3Connector\Services\HioDoctorateService;
+use Wtl\HioTypo3Connector\Event\ReceiveHioDoctoralProgramEvent;
+use Wtl\HioTypo3Connector\Services\HioDoctoralProgramService;
 use Wtl\HioTypo3Connector\Trait\WithConfigureImportCommandTrait;
 
-class DoctoratesImportCommand extends Command
+class DoctoralProgramsImportCommand extends Command
 {
     use WithConfigureImportCommandTrait;
 
-    protected static $defaultName = 'hio:doctorates:import';
+    protected static $defaultName = 'hio:doctoralPrograms:import';
 
     public function __construct(
-        protected readonly HioDoctorateService $hioDoctorateService,
-        protected readonly EventDispatcherInterface $eventDispatcher)
+        protected readonly HioDoctoralProgramService $hioDoctoralProgramService,
+        protected readonly EventDispatcherInterface  $eventDispatcher)
     {
         parent::__construct();
     }
@@ -34,7 +34,7 @@ class DoctoratesImportCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $this->hioDoctorateService->configure(
+        $this->hioDoctoralProgramService->configure(
             $input->getArgument('endpoint'),
             $input->getArgument('username'),
             $input->getArgument('password'),
@@ -44,22 +44,22 @@ class DoctoratesImportCommand extends Command
 
         $currentPage = 1;
         do {
-            $doctorates = $this->hioDoctorateService->getDoctorates($currentPage);
-            if ($this->hioDoctorateService->getMeta()->getTotal() === 0) {
-                $output->writeln('No new patents found');
+            $doctoralPrograms = $this->hioDoctoralProgramService->getDoctoralPrograms($currentPage);
+            if ($this->hioDoctoralProgramService->getMeta()->getTotal() === 0) {
+                $output->writeln('No new doctoral programs found');
                 return Command::SUCCESS;
             }
 
-            foreach ($doctorates as $doctorate) {
+            foreach ($doctoralPrograms as $doctoralProgram) {
                 $this->eventDispatcher->dispatch(
-                    new ReceiveHioDoctorateEvent($doctorate, (int)$input->getArgument('storagePageId'))
+                    new ReceiveHioDoctoralProgramEvent($doctoralProgram, (int)$input->getArgument('storagePageId'))
                 );
             }
 
             $currentPage++;
-        } while ($currentPage <= $this->hioDoctorateService->getMeta()->getLastPage());
+        } while ($currentPage <= $this->hioDoctoralProgramService->getMeta()->getLastPage());
 
-        $output->writeln($this->hioDoctorateService->getMeta()->getTotal() . ' Doctorates imported successfully');
+        $output->writeln($this->hioDoctoralProgramService->getMeta()->getTotal() . ' doctoral programs imported successfully');
         return Command::SUCCESS;
     }
 }

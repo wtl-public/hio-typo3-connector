@@ -21,9 +21,9 @@ return [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/list-of-patents.svg',
     ],
-    'tx-hio_typo3_connector-list-of-doctorates' => [
+    'tx-hio_typo3_connector-list-of-doctoral-programs' => [
         'provider' => SvgIconProvider::class,
-        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/list-of-doctorates.svg',
+        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/list-of-doctoralPrograms.svg',
     ],
     'tx-hio_typo3_connector-list-of-habilitations' => [
         'provider' => SvgIconProvider::class,
@@ -45,9 +45,9 @@ return [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/patent.svg',
     ],
-    'tx-hio_typo3_connector-doctorates' => [
+    'tx-hio_typo3_connector-doctoral-program' => [
         'provider' => SvgIconProvider::class,
-        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/doctorate.svg',
+        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/doctoralProgram.svg',
     ],
     'tx-hio_typo3_connector-habilitations' => [
         'provider' => SvgIconProvider::class,

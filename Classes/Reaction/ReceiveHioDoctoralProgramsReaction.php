@@ -9,10 +9,10 @@ use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\StreamFactoryInterface;
 use TYPO3\CMS\Reactions\Model\ReactionInstruction;
 use TYPO3\CMS\Reactions\Reaction\ReactionInterface;
-use Wtl\HioTypo3Connector\Domain\Dto\DoctorateDto;
-use Wtl\HioTypo3Connector\Event\ReceiveHioDoctorateEvent;
+use Wtl\HioTypo3Connector\Domain\Dto\DoctoralProgramDto;
+use Wtl\HioTypo3Connector\Event\ReceiveHioDoctoralProgramEvent;
 
-class ReceiveHioDoctoratesReaction implements ReactionInterface
+class ReceiveHioDoctoralProgramsReaction implements ReactionInterface
 {
     public function __construct(
         private readonly ResponseFactoryInterface   $responseFactory,
@@ -24,17 +24,17 @@ class ReceiveHioDoctoratesReaction implements ReactionInterface
 
     public static function getType(): string
     {
-        return 'receive-hio-doctorates';
+        return 'receive-hio-doctoral-programs';
     }
 
     public static function getDescription(): string
     {
-        return 'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:receive-hio-doctorates_reaction';
+        return 'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:receive-hio-doctoral-programs_reaction';
     }
 
     public static function getIconIdentifier(): string
     {
-        return 'tx-hio_typo3_connector-doctorates';
+        return 'tx-hio_typo3_connector-doctoral-programs';
     }
 
     public function react(
@@ -48,14 +48,14 @@ class ReceiveHioDoctoratesReaction implements ReactionInterface
             $storagePid = (int)($reaction->toArray()['storage_pid'] ?? 0);
             foreach ($payload['data'] as $value) {
                 $this->eventDispatcher->dispatch(
-                    new ReceiveHioDoctorateEvent(
-                        DoctorateDto::fromArray($value),
+                    new ReceiveHioDoctoralProgramEvent(
+                        DoctoralProgramDto::fromArray($value),
                         $storagePid
                     )
                 );
             }
         }
-        return $this->createJsonResponse(['status' => 'Doctorates imported']);
+        return $this->createJsonResponse(['status' => 'Doctoral programs imported']);
     }
 
     private function createJsonResponse(array $data, int $statusCode = 201): ResponseInterface

@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace Wtl\HioTypo3Connector\Domain\Dto;
 
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
-use Wtl\HioTypo3Connector\Domain\Dto\Collection\DoctorateDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Collection\DoctoralProgramDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Collection\HabilitationDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Collection\PatentDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Collection\ProjectDto;
@@ -21,7 +21,7 @@ class PersonDto
 
     protected string $name = '';
 
-    protected array $doctorates = [];
+    protected array $doctoralPrograms = [];
     protected array $habilitations = [];
     protected array $patents = [];
     protected array $projects = [];
@@ -64,13 +64,13 @@ class PersonDto
         $this->patents = $patents;
     }
 
-    public function getDoctorates(): array
+    public function getDoctoralPrograms(): array
     {
-        return $this->doctorates;
+        return $this->doctoralPrograms;
     }
-    public function setDoctorates(array $doctorates): void
+    public function setDoctoralPrograms(array $doctoralPrograms): void
     {
-        $this->doctorates = $doctorates;
+        $this->doctoralPrograms = $doctoralPrograms;
     }
 
     public function getHabilitations(): array
@@ -109,11 +109,11 @@ class PersonDto
         }
         $dto->setPatents($patents);
 
-        $doctorates = [];
-        foreach ($data['doctorates'] ?? [] as $doctorate) {
-            $doctorates[] = DoctorateDto::fromArray($doctorate);
+        $doctoralPrograms = [];
+        foreach ($data['doctoralPrograms'] ?? [] as $doctoralProgram) {
+            $doctoralPrograms[] = DoctoralProgramDto::fromArray($doctoralProgram);
         }
-        $dto->setDoctorates($doctorates);
+        $dto->setDoctoralPrograms($doctoralPrograms);
 
         $habilitations = [];
         foreach ($data['habilitations'] ?? [] as $habilitation) {

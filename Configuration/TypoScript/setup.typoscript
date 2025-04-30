@@ -25,8 +25,8 @@ plugin.tx_hiotypo3connector {
     patents {
       personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.patents.personTargetPageUid}
     }
-    doctorates {
-      personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.doctorates.personTargetPageUid}
+    doctoralPrograms {
+      personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.doctoralPrograms.personTargetPageUid}
     }
     habilitations {
       personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.habilitations.personTargetPageUid}

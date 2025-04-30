@@ -28,9 +28,9 @@ class Person extends AbstractEntity
     protected ObjectStorage $patents;
 
     /**
-     * @var ObjectStorage<Doctorate>
+     * @var ObjectStorage<DoctoralProgram>
      */
-    protected ObjectStorage $doctorates;
+    protected ObjectStorage $doctoralPrograms;
 
     /**
      * @var ObjectStorage<Habilitation>
@@ -57,7 +57,7 @@ class Person extends AbstractEntity
         $this->publications = new ObjectStorage();
         $this->projects = new ObjectStorage();
         $this->patents = new ObjectStorage();
-        $this->doctorates = new ObjectStorage();
+        $this->doctoralPrograms = new ObjectStorage();
         $this->habilitations = new ObjectStorage();
     }
 
@@ -157,25 +157,25 @@ class Person extends AbstractEntity
         return $this;
     }
 
-    public function getDoctorates(): ObjectStorage
+    public function getDoctoralPrograms(): ObjectStorage
     {
-        return $this->doctorates;
+        return $this->doctoralPrograms;
     }
-    public function setDoctorates(ObjectStorage $doctorates): void
+    public function setDoctoralPrograms(ObjectStorage $doctoralPrograms): void
     {
-        $this->doctorates = $doctorates;
+        $this->doctoralPrograms = $doctoralPrograms;
     }
-    public function addDoctorate(Doctorate $doctorate): self
+    public function addDoctoralProgram(DoctoralProgram $doctoralProgram): self
     {
-        if (!$this->doctorates->contains($doctorate)) {
-            $this->doctorates->attach($doctorate);
+        if (!$this->doctoralPrograms->contains($doctoralProgram)) {
+            $this->doctoralPrograms->attach($doctoralProgram);
         }
         return $this;
     }
-    public function removeDoctorate(Doctorate $doctorate): self
+    public function removeDoctoralProgram(DoctoralProgram $doctoralProgram): self
     {
-        if ($this->doctorates->contains($doctorate)) {
-            $this->doctorates->detach($doctorate);
+        if ($this->doctoralPrograms->contains($doctoralProgram)) {
+            $this->doctoralPrograms->detach($doctoralProgram);
         }
         return $this;
     }
@@ -208,7 +208,7 @@ class Person extends AbstractEntity
      * Get the value of searchIndex
      *
      * @return  string
-     */ 
+     */
     public function getSearchIndex()
     {
         return $this->searchIndex;
@@ -220,7 +220,7 @@ class Person extends AbstractEntity
      * @param  string  $searchIndex
      *
      * @return  self
-     */ 
+     */
     public function setSearchIndex(string $searchIndex)
     {
         $this->searchIndex = $searchIndex;

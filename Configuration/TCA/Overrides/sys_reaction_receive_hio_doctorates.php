@@ -13,13 +13,13 @@ if (ExtensionManagementUtility::isLoaded('reactions')) {
         'sys_reaction',
         'reaction_type',
         [
-            \Wtl\HioTypo3Connector\Reaction\ReceiveHioDoctoratesReaction::getDescription(),
-            \Wtl\HioTypo3Connector\Reaction\ReceiveHioDoctoratesReaction::getType(),
-            \Wtl\HioTypo3Connector\Reaction\ReceiveHioDoctoratesReaction::getIconIdentifier(),
+            \Wtl\HioTypo3Connector\Reaction\ReceiveHioDoctoralProgramsReaction::getDescription(),
+            \Wtl\HioTypo3Connector\Reaction\ReceiveHioDoctoralProgramsReaction::getType(),
+            \Wtl\HioTypo3Connector\Reaction\ReceiveHioDoctoralProgramsReaction::getIconIdentifier(),
         ]
     );
 
-    $GLOBALS['TCA']['sys_reaction']['types'][\Wtl\HioTypo3Connector\Reaction\ReceiveHioDoctoratesReaction::getType()] = [
+    $GLOBALS['TCA']['sys_reaction']['types'][\Wtl\HioTypo3Connector\Reaction\ReceiveHioDoctoralProgramsReaction::getType()] = [
         'showitem' => '
         --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
         --palette--;;config,

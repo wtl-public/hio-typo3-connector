@@ -136,13 +136,13 @@ return [
                 'MM' => 'tx_hiotypo3connector_person_patent_mm',
             ],
         ],
-        'doctorates' => [
-            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_person.doctorates',
+        'doctoralPrograms' => [
+            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_person.doctoralPrograms',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
-                'foreign_table' => 'tx_hiotypo3connector_domain_model_doctorate',
-                'MM' => 'tx_hiotypo3connector_person_doctorate_mm',
+                'foreign_table' => 'tx_hiotypo3connector_domain_model_doctoral_program',
+                'MM' => 'tx_hiotypo3connector_person_doctoral_program_mm',
             ],
         ],
         'habilitations' => [

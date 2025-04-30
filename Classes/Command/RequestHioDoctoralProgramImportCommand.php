@@ -9,9 +9,9 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class RequestHioDoctorateImportCommand extends RequestHioImportCommand
+class RequestHioDoctoralProgramImportCommand extends RequestHioImportCommand
 {
     protected const REQUESTED_ENTITY_TYPE = 'Doc';
 
-    protected static $defaultName = 'hio:request:doctorate:import';
+    protected static $defaultName = 'hio:request:doctoralProgram:import';
 }

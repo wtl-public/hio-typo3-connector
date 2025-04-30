@@ -11,25 +11,25 @@ use TYPO3\CMS\Core\Pagination\ArrayPaginator;
 use TYPO3\CMS\Core\Pagination\SimplePagination;
 use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 use TYPO3\CMS\Extbase\Property\PropertyMapper;
-use Wtl\HioTypo3Connector\Domain\Model\Doctorate;
-use Wtl\HioTypo3Connector\Domain\Repository\DoctorateRepository;
+use Wtl\HioTypo3Connector\Domain\Model\DoctoralProgram;
+use Wtl\HioTypo3Connector\Domain\Repository\DoctoralProgramRepository;
 
 #[AsController]
-class DoctorateController extends BaseController
+class DoctoralProgramController extends BaseController
 {
     protected int $pageUid;
 
     public function __construct(
-        protected readonly ModuleTemplateFactory $moduleTemplateFactory,
-        protected readonly DoctorateRepository $doctorateRepository,
-        protected readonly PropertyMapper $propertyMapper
+        protected readonly ModuleTemplateFactory     $moduleTemplateFactory,
+        protected readonly DoctoralProgramRepository $doctoralProgramRepository,
+        protected readonly PropertyMapper            $propertyMapper
     )
     {}
 
     public function indexAction(): ResponseInterface
     {
         $paginator = $this->getPaginator(
-            $this->doctorateRepository->findAll(),
+            $this->doctoralProgramRepository->findAll(),
         );
         $this->view->assignMultiple([
             'paginator' => $paginator,
@@ -43,7 +43,7 @@ class DoctorateController extends BaseController
     public function searchAction(int $currentPage = 1, string $searchWord = ''): ResponseInterface
     {
         $paginator = $this->getPaginator(
-            $this->doctorateRepository->findBySearchWord($searchWord),
+            $this->doctoralProgramRepository->findBySearchWord($searchWord),
         );
         $this->view->assignMultiple([
             'paginator' => $paginator,
@@ -54,11 +54,11 @@ class DoctorateController extends BaseController
         return $this->htmlResponse();
     }
 
-    public function showAction(Doctorate $doctorate, string $listAction = 'index'): ResponseInterface
+    public function showAction(DoctoralProgram $doctoralProgram, string $listAction = 'index'): ResponseInterface
     {
         $this->view->assignMultiple(
             [
-                'doctorate' => $doctorate,
+                'doctoralProgram' => $doctoralProgram,
                 'currentPageNumber' => $this->getCurrentPageNumberFromRequest(),
                 'searchWord' => $this->getSearchWordFromRequest(),
                 'listAction' => $listAction,
