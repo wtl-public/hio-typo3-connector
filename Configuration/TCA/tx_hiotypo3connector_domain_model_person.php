@@ -141,8 +141,8 @@ return [
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
-                'foreign_table' => 'tx_hiotypo3connector_domain_model_doctoral_program',
-                'MM' => 'tx_hiotypo3connector_person_doctoral_program_mm',
+                'foreign_table' => 'tx_hiotypo3connector_domain_model_doctoralprogram',
+                'MM' => 'tx_hiotypo3connector_person_doctoralprogram_mm',
             ],
         ],
         'habilitations' => [
