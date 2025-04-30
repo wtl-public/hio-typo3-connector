@@ -9,7 +9,7 @@ use Wtl\HioTypo3Connector\Domain\Repository\DoctoralProgramRepository;
 use Wtl\HioTypo3Connector\Domain\Repository\PersonRepository;
 use Wtl\HioTypo3Connector\Event\AttachHioPersonToHioDoctoralProgramsEvent;
 
-class AttachHioPersonToHioDoctoralProgramListener
+class AttachHioPersonToHioDoctoralProgramsListener
 {
     public function __construct(
         protected readonly DoctoralProgramRepository $doctoralProgramRepository,
