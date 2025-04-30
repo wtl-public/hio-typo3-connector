@@ -40,7 +40,7 @@ services:
         command: 'hio:publications:import'
         description: 'Import publication data from HISinOne'
 
-  Wtl\HioTypo3Connector\Command\RequestHioDoctoralProgramsImportCommand:
+  Wtl\HioTypo3Connector\Command\RequestHioDoctoralProgramImportCommand:
     tags:
       - name: console.command
         command: 'hio:request:doctoralProgram:import'
