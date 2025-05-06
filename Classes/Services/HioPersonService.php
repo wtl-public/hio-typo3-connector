@@ -16,6 +16,9 @@ class HioPersonService extends HioApiService
 
         $result = $apiResponse->getData();
         foreach ($result as $person) {
+            if (!$person['name']) {
+                continue;
+            }
             $persons[] = PersonDto::fromArray($person);
         }
         return $persons ?? [];
