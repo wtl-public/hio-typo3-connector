@@ -47,6 +47,10 @@ class ReceiveHioPersonsReaction implements ReactionInterface
         if (is_array($payload['data'] ?? false)) {
             $storagePid = (int)($reaction->toArray()['storage_pid'] ?? 0);
             foreach ($payload['data'] as $value) {
+                if (!$value['name']) {
+                    continue;
+                }
+
                 $this->eventDispatcher->dispatch(
                     new ReceiveHioPersonEvent(
                         PersonDto::fromArray($value),
