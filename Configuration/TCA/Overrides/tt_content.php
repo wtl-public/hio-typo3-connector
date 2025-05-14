@@ -45,7 +45,7 @@ ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
     'Selectedpersonhabilitationlist',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonHabilitations',
-    'tx-hio_typo3_connector-publications',
+    'tx-hio_typo3_connector-habilitations',
 );
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
