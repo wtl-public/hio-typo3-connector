@@ -120,14 +120,14 @@ return [
         'details' => [
             'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_publication.details',
             'config' => [
-                'type' => Types::BLOB,
+                'type' => Types::JSON,
                 'notnull' => false,
             ],
         ],
         'search_index' => [
             'label' => 'Search Index',
             'config' => [
-                'type' => Types::BLOB,
+                'type' => Types::JSON,
                 'notnull' => false,
             ],
         ],

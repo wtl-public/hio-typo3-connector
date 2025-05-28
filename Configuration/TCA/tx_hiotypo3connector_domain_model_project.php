@@ -97,14 +97,14 @@ return [
         'details' => [
             'label' => 'details',
             'config' => [
-                'type' => Types::BLOB,
+                'type' => Types::JSON,
                 'notnull' => false,
             ],
         ],
         'search_index' => [
             'label' => 'Search Index',
             'config' => [
-                'type' => Types::BLOB,
+                'type' => Types::JSON,
                 'notnull' => false,
             ],
         ],
