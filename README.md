@@ -1,6 +1,13 @@
 # HISinOne TYPO3 Connector
+Beim HISinOne TYPO3 Connector handelt es sich um eine TYPO3 Extension, die es ermöglicht, Forschungsdaten aus 
+HISinOne (HIO) in TYPO3 zu importieren und anzuzeigen. 
 
-## Initial Setup
+Die Extension unterstützt aktuell die Datentypen Personen, Projekte, Publikationen, Promotionen, Habilitationen und Patente.
+
+Damit die Extension genutzt werden kann, muss die Middleware "HIO-Publisher - Publisher für HISinOne" installiert und konfiguriert sein.
+Nähere Informationen dazu finden Sie hier https://hio-publisher.de.
+
+## Initiales Setup
 
 Im TYPO3 Backend:
 * unter `Admin Tools` -> `Extensions` -> `Extension Manager` die Extension `hio-typo3-connector` installieren
