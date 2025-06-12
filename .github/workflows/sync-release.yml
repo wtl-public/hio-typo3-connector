@@ -32,8 +32,7 @@ jobs:
           echo "Force-pushing to the main branch of the release repository..."
           # Wir erzwingen den Push (--force), da die Historie des Release-Repos
           # komplett durch den aktuellen Stand des Entwicklungs-Repos ersetzt werden soll.
-          # Das ist für einen reinen Release-Spiegel der korrekte Ansatz.
-          git push release_target HEAD:refs/heads/main --force
+          git push release_target HEAD:refs/heads/main
 
       # 3. Das Release-Objekt (Tag, Name, Beschreibung) im Ziel-Repo erstellen
       - name: 🎉 Create Release object in release repository
