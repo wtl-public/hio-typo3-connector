@@ -5,6 +5,12 @@
     "license": [
         "GPL-2.0-or-later"
     ],
+    "authors": [
+        {
+            "name": "Jan Bager",
+            "email": "jan.bager@wtl.de"
+        }
+    ],
     "require": {
         "typo3/cms-core": "^12.4 || ^13.0"
     },
