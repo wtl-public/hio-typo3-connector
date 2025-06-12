@@ -36,7 +36,7 @@ jobs:
           # Commit nur, wenn es Änderungen gibt
           if ! git diff --staged --quiet; then
             git commit -m "chore: Sync from development release ${{ github.event.release.tag_name }}"
-            git push origin main
+            git push origin HEAD:refs/heads/main
           else
             echo "Keine Änderungen zum Committen."
           fi
