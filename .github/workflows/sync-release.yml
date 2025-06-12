@@ -19,6 +19,23 @@ jobs:
           token: ${{ secrets.RELEASE_REPO_TOKEN }}
           ref: main  # Branch, auf dem die Releases erstellt werden sollen
 
+      - name: 🕵️‍♂️ DEBUG-Schritt
+        run: |
+          echo "--- DEBUG-Informationen ---"
+          echo "Wechsle in das 'release-repo' Verzeichnis..."
+          cd release-repo
+          echo "Aktuelles Verzeichnis: $(pwd)"
+          echo ""
+          echo ">>> git status"
+          git status
+          echo ""
+          echo ">>> git branch -a (zeigt alle lokalen und remote Branches)"
+          git branch -a
+          echo ""
+          echo ">>> git remote -v (zeigt die Remote-URL)"
+          git remote -v
+          echo "--- Ende der DEBUG-Informationen ---"
+
       - name: 🔄 Synchronize files
         run: |
           # Löscht alte Dateien im geklonten Release-Repo (außer .git-Verzeichnis)
