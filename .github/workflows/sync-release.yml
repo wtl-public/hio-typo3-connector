@@ -22,7 +22,7 @@ jobs:
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           
           # Füge das Remote-Repository HINZU, ABER MIT DEM TOKEN IN DER URL
-          git remote add release_repo "https://x-access-token:${{ secrets.RELEASE_REPO_TOKEN }}@github.com/wtl-public/hio-typo3-connector.git"
+          git remote add release_repo "https://${{ vars.RELEASE_USERNAME }}:${{ secrets.RELEASE_REPO_TOKEN }}@github.com/wtl-public/hio-typo3-connector.git"
           
           # Pushe den Code-Stand und den Tag
           # Wir pushen auf einen temporären Branch, um dann einen PR zu erstellen oder direkt zu mergen
