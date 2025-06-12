@@ -7,57 +7,43 @@ on:
 jobs:
   sync-and-release:
     runs-on: ubuntu-latest
+    permissions:
+        contents: write  # Erlaubt das Schreiben in das Repository
+
     steps:
-      - name: 🚚 Checkout development repository
+      # 1. Nur das Entwicklungs-Repo zum Zeitpunkt des Releases auschecken
+      - name: 🚚 Checkout development repository at release tag
         uses: actions/checkout@v4
+        # Diese Action checkt automatisch den Commit aus, der zum Release-Tag gehört
 
-      - name: 🚚 Checkout release repository
-        uses: actions/checkout@v4
-        with:
-          repository: wtl-public/hio-typo3-connector
-          path: release-repo
-          token: ${{ secrets.RELEASE_REPO_TOKEN }}
-          ref: main
-
-      - name: ⬆️ 3. Commit and push to release repository
+      # 2. Inhalt direkt zum Release-Repo pushen (ohne zweiten Checkout)
+      - name: 🛰️ Force-push content to release repository
         run: |
-          # Bricht das Skript bei Fehlern sofort ab
           set -e
-
-          echo "Wechsle in das Verzeichnis 'release-repo'..."
-          cd release-repo
+          echo "Adding new remote 'release_target'..."
+          # Wir fügen eine komplett neue Remote hinzu, um jegliche Konflikte mit 'origin' zu vermeiden.
+          # Das Token wird sicher direkt in die URL eingebettet.
+          git remote add release_target "https://x-access-token:${{ secrets.RELEASE_REPO_TOKEN }}@github.com/${{ vars.RELEASE_REPO_OWNER }}/${{ vars.RELEASE_REPO_NAME }}.git"
           
-          echo "Überprüfe die Git-Remote-Konfiguration:"
+          echo "Verifying new remote:"
           git remote -v
-          # Die obige Zeile MUSS auf dein RELEASE-REPO zeigen!
+          # Die Ausgabe muss jetzt 'origin' (Dev-Repo) und 'release_target' (Release-Repo) zeigen
 
-          echo "Konfiguriere Git-Benutzer..."
-          git config --global user.name "GitHub Action"
-          git config --global user.email "action@github.com"
-          
-          echo "Synchronisiere Dateien..."
-          # Wir löschen und kopieren jetzt hier, direkt im richtigen Verzeichnis
-          find . -mindepth 1 ! -name '.git' -exec rm -rf {} +
-          rsync -av --progress ../ ./ --exclude .git --exclude .github
+          echo "Force-pushing to the main branch of the release repository..."
+          # Wir erzwingen den Push (--force), da die Historie des Release-Repos
+          # komplett durch den aktuellen Stand des Entwicklungs-Repos ersetzt werden soll.
+          # Das ist für einen reinen Release-Spiegel der korrekte Ansatz.
+          git push release_target HEAD:refs/heads/main --force
 
-          echo "Füge Änderungen zum Commit hinzu..."
-          git add .
-
-          # Commit nur, wenn es Änderungen gibt
-          if ! git diff --staged --quiet; then
-            echo "Änderungen gefunden. Erstelle Commit und pushe..."
-            git commit -m "chore: Sync from development release ${{ github.event.release.tag_name }}"
-            git push origin HEAD:refs/heads/main # Anpassen, falls dein Branch 'master' heißt
-          else
-            echo "Keine Dateiänderungen zum Committen."
-          fi
-
-      - name: 🎉 Create Release in release repository
+      # 3. Das Release-Objekt (Tag, Name, Beschreibung) im Ziel-Repo erstellen
+      - name: 🎉 Create Release object in release repository
         uses: softprops/action-gh-release@v2
         with:
-          repository: wtl-public/hio-typo3-connector
+          # Wir verwenden die Variablen, um das Ziel-Repo anzugeben
+          repository: ${{ vars.RELEASE_REPO_OWNER }}/${{ vars.RELEASE_REPO_NAME }}
           tag_name: ${{ github.event.release.tag_name }}
           name: ${{ github.event.release.name }}
           body: ${{ github.event.release.body }}
           prerelease: ${{ github.event.release.prerelease }}
+          # Wichtig: Hier wird weiterhin das Token benötigt, um das Release zu erstellen
           token: ${{ secrets.RELEASE_REPO_TOKEN }}
