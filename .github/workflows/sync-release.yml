@@ -34,6 +34,7 @@ jobs:
           echo ""
           echo ">>> git remote -v (zeigt die Remote-URL)"
           git remote -v
+          cd ..
           echo "--- Ende der DEBUG-Informationen ---"
 
       - name: 🔄 Synchronize files
