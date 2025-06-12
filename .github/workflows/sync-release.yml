@@ -26,8 +26,7 @@ jobs:
           
           # Pushe den Code-Stand und den Tag
           # Wir pushen auf einen temporären Branch, um dann einen PR zu erstellen oder direkt zu mergen
-          git push release_repo "${{ github.ref_name }}":main --force
-          git push release_repo "${{ github.ref_name }}"
+          git push release_repo main
 
       - name: 'Create Release in Release Repo'
         uses: softprops/action-gh-release@v2
