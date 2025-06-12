@@ -19,31 +19,13 @@ jobs:
           token: ${{ secrets.RELEASE_REPO_TOKEN }}
           ref: main
 
-      - name: 🕵️‍♂️ DEBUG-Schritt
-        run: |
-          echo "--- DEBUG-Informationen ---"
-          echo "Wechsle in das 'release-repo' Verzeichnis..."
-          cd release-repo
-          echo "Aktuelles Verzeichnis: $(pwd)"
-          echo ""
-          echo ">>> git status"
-          git status
-          echo ""
-          echo ">>> git branch -a (zeigt alle lokalen und remote Branches)"
-          git branch -a
-          echo ""
-          echo ">>> git remote -v (zeigt die Remote-URL)"
-          git remote -v
-          cd ..
-          echo "--- Ende der DEBUG-Informationen ---"
-
       - name: 🔄 Synchronize files
         run: |
           # Löscht alte Dateien im geklonten Release-Repo (außer .git-Verzeichnis)
           find release-repo -mindepth 1 ! -name '.git' -exec rm -rf {} +
           echo "Verzeichnisinhalt: $(ls -a release-repo)"
           # Kopiert alle Dateien (außer .git) vom Entwicklungs- ins Release-Repo
-          rsync -av --progress . release-repo/ --exclude .git --exclude .github
+          rsync -av --progress . release-repo/ --exclude .git --exclude .github --exclude release-repo
 
       - name: ⬆️ Commit and push to release repository
         run: |
