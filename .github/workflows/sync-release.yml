@@ -19,10 +19,6 @@ jobs:
       # 2. Inhalt direkt zum Release-Repo pushen (ohne zweiten Checkout)
       - name: 🛰️ Force-push content to release repository
         run: |
-          echo "Temporarily disabling the default GITHUB_TOKEN credential helper..."
-          # Wir entfernen die Git-Konfiguration, die den GITHUB_TOKEN für alle github.com-Anfragen erzwingt.
-          git config --unset http.https://github.com/.extraheader
-          
           set -e
           echo "Adding new remote 'release_target'..."
           # Wir fügen eine komplett neue Remote hinzu, um jegliche Konflikte mit 'origin' zu vermeiden.
