@@ -17,6 +17,7 @@ jobs:
           repository: wtl-public/hio-typo3-connector
           path: release-repo
           token: ${{ secrets.RELEASE_REPO_TOKEN }}
+          ref: main  # Branch, auf dem die Releases erstellt werden sollen
 
       - name: 🔄 Synchronize files
         run: |
