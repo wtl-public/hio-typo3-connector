@@ -1,48 +1,42 @@
-name: Sync Release to Production
+name: 'Publish to Release Repository'
 
 on:
   release:
-    types: [ published ]
+    types: [created] # Löst die Action nur aus, wenn ein neues Release erstellt wird
 
 jobs:
-  sync-and-release:
+  publish:
     runs-on: ubuntu-latest
-    permissions:
-        contents: write  # Erlaubt das Schreiben in das Repository
-
     steps:
-      # 1. Nur das Entwicklungs-Repo zum Zeitpunkt des Releases auschecken
-      - name: 🚚 Checkout development repository at release tag
+      - name: 'Checkout Dev Repo'
         uses: actions/checkout@v4
-        # Diese Action checkt automatisch den Commit aus, der zum Release-Tag gehört
+        with:
+          fetch-depth: 0 # Notwendig, um alle Tags und Branches zu holen
 
-      # 2. Inhalt direkt zum Release-Repo pushen (ohne zweiten Checkout)
-      - name: 🛰️ Force-push content to release repository
+      - name: 'Push to Release Repo'
+        env:
+          RELEASE_REPO_TOKEN: ${{ secrets.RELEASE_REPO_TOKEN }}
+          RELEASE_REPO_URL: 'https://github.com/wtl-public/hio-typo3-connector.git' # Passe dies an
+          DEV_REPO_URL: 'https://github.com/${{ github.repository }}.git'
         run: |
-          set -e
-          echo "Adding new remote 'release_target'..."
-          # Wir fügen eine komplett neue Remote hinzu, um jegliche Konflikte mit 'origin' zu vermeiden.
-          # Das Token wird sicher direkt in die URL eingebettet.
-          git remote add release_target "https://x-access-token:${{ secrets.RELEASE_REPO_TOKEN }}@github.com/${{ vars.RELEASE_REPO_OWNER }}/${{ vars.RELEASE_REPO_NAME }}.git"
+          # Konfiguriere Git mit dem Token
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git remote add release_repo "${{ env.RELEASE_REPO_URL }}"
           
-          echo "Verifying new remote:"
-          git remote -v
-          # Die Ausgabe muss jetzt 'origin' (Dev-Repo) und 'release_target' (Release-Repo) zeigen
+          # Pushe den Code-Stand des ausgelösten Releases zum ReleaseRepo
+          git push release_repo "${{ github.ref_name }}":main --force --no-tags
+          
+          # Pushe den spezifischen Tag zum ReleaseRepo
+          git push release_repo "${{ github.ref_name }}"
 
-          echo "Force-pushing to the main branch of the release repository..."
-          # Wir erzwingen den Push (--force), da die Historie des Release-Repos
-          # komplett durch den aktuellen Stand des Entwicklungs-Repos ersetzt werden soll.
-          git push release_target HEAD:refs/heads/main
-
-      # 3. Das Release-Objekt (Tag, Name, Beschreibung) im Ziel-Repo erstellen
-      - name: 🎉 Create Release object in release repository
+      - name: 'Create Release in Release Repo'
         uses: softprops/action-gh-release@v2
         with:
-          # Wir verwenden die Variablen, um das Ziel-Repo anzugeben
-          repository: ${{ vars.RELEASE_REPO_OWNER }}/${{ vars.RELEASE_REPO_NAME }}
-          tag_name: ${{ github.event.release.tag_name }}
+          repository: 'DEIN_BENUTZERNAME/ReleaseRepo' # Passe dies an
+          token: ${{ secrets.RELEASE_REPO_TOKEN }}
+          tag_name: ${{ github.ref_name }}
           name: ${{ github.event.release.name }}
           body: ${{ github.event.release.body }}
           prerelease: ${{ github.event.release.prerelease }}
-          # Wichtig: Hier wird weiterhin das Token benötigt, um das Release zu erstellen
-          token: ${{ secrets.RELEASE_REPO_TOKEN }}
+          draft: false
