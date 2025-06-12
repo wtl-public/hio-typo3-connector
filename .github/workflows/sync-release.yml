@@ -40,7 +40,7 @@ jobs:
         run: |
           # Löscht alte Dateien im geklonten Release-Repo (außer .git-Verzeichnis)
           find release-repo -mindepth 1 ! -name '.git' -exec rm -rf {} +
-          echo "Verzeichnisinhalt: $(ls -a)"
+          echo "Verzeichnisinhalt: $(ls -a release-repo)"
           # Kopiert alle Dateien (außer .git) vom Entwicklungs- ins Release-Repo
           rsync -av --progress . release-repo/ --exclude .git --exclude .github
 
