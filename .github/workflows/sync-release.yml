@@ -2,7 +2,7 @@ name: Sync Release to Production
 
 on:
   release:
-    types: [published]
+    types: [ published ]
 
 jobs:
   sync-and-release:
@@ -19,26 +19,37 @@ jobs:
           token: ${{ secrets.RELEASE_REPO_TOKEN }}
           ref: main
 
-      - name: 🔄 Synchronize files
+      - name: ⬆️ 3. Commit and push to release repository
         run: |
-          # Löscht alte Dateien im geklonten Release-Repo (außer .git-Verzeichnis)
-          find release-repo -mindepth 1 ! -name '.git' -exec rm -rf {} +
-          echo "Verzeichnisinhalt: $(ls -a release-repo)"
-          # Kopiert alle Dateien (außer .git) vom Entwicklungs- ins Release-Repo
-          rsync -av --progress . release-repo/ --exclude .git --exclude .github --exclude release-repo
+          # Bricht das Skript bei Fehlern sofort ab
+          set -e
 
-      - name: ⬆️ Commit and push to release repository
-        run: |
+          echo "Wechsle in das Verzeichnis 'release-repo'..."
           cd release-repo
+          
+          echo "Überprüfe die Git-Remote-Konfiguration:"
+          git remote -v
+          # Die obige Zeile MUSS auf dein RELEASE-REPO zeigen!
+
+          echo "Konfiguriere Git-Benutzer..."
           git config --global user.name "GitHub Action"
           git config --global user.email "action@github.com"
+          
+          echo "Synchronisiere Dateien..."
+          # Wir löschen und kopieren jetzt hier, direkt im richtigen Verzeichnis
+          find . -mindepth 1 ! -name '.git' -exec rm -rf {} +
+          rsync -av --progress ../ ./ --exclude .git --exclude .github
+
+          echo "Füge Änderungen zum Commit hinzu..."
           git add .
+
           # Commit nur, wenn es Änderungen gibt
           if ! git diff --staged --quiet; then
+            echo "Änderungen gefunden. Erstelle Commit und pushe..."
             git commit -m "chore: Sync from development release ${{ github.event.release.tag_name }}"
-            git push origin HEAD:refs/heads/main
+            git push origin HEAD:refs/heads/main # Anpassen, falls dein Branch 'master' heißt
           else
-            echo "Keine Änderungen zum Committen."
+            echo "Keine Dateiänderungen zum Committen."
           fi
 
       - name: 🎉 Create Release in release repository
