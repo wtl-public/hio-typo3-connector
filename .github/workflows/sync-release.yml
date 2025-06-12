@@ -17,7 +17,7 @@ jobs:
           repository: wtl-public/hio-typo3-connector
           path: release-repo
           token: ${{ secrets.RELEASE_REPO_TOKEN }}
-          ref: main  # Branch, auf dem die Releases erstellt werden sollen
+          ref: main
 
       - name: 🕵️‍♂️ DEBUG-Schritt
         run: |
@@ -40,6 +40,7 @@ jobs:
         run: |
           # Löscht alte Dateien im geklonten Release-Repo (außer .git-Verzeichnis)
           find release-repo -mindepth 1 ! -name '.git' -exec rm -rf {} +
+          echo "Verzeichnisinhalt: $(ls -a)"
           # Kopiert alle Dateien (außer .git) vom Entwicklungs- ins Release-Repo
           rsync -av --progress . release-repo/ --exclude .git --exclude .github
 
