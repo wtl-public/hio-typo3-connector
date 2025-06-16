@@ -8,15 +8,34 @@ jobs:
   publish-release:
     runs-on: ubuntu-latest
     steps:
-      - name: 'Checkout Dev Repo'
+      - name: 'Checkout Development Repo'
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 # Notwendig, um alle Tags und Branches zu holen
+
+      - name: 'Checkout Release Repo'
+        uses: actions/checkout@v4
+        with:
+          repository: 'wtl-public/hio-typo3-connector'
+          token: ${{ secrets.RELEASE_REPO_TOKEN }}
+          ref: main
+          path: hio-release-repo
+          fetch-depth: 0 # Notwendig, um alle Tags und Branches zu holen
+
+      - name: 🔄 Synchronize files
+        run: |
+          # Löscht alte Dateien im geklonten Release-Repo (außer .git-Verzeichnis)
+          find hio-release-repo -mindepth 1 ! -name '.git' -exec rm -rf {} +
+          # Kopiert alle Dateien (außer .git) vom Entwicklungs- ins Release-Repo
+          rsync -av --progress . hio-release-repo/ --exclude .git --exclude .github
 
       - name: 'Configure Git and Push to Release Repo'
         env:
           RELEASE_REPO_TOKEN: ${{ secrets.RELEASE_REPO_TOKEN }}
         run: |
+          # Wechsle in das Verzeichnis des Release-Repositories
+          cd hio-release-repo
+          
           # Konfiguriere Git mit dem Benutzer des Tokens (optional, aber gute Praxis)
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
@@ -24,9 +43,14 @@ jobs:
           # Füge das Remote-Repository HINZU, ABER MIT DEM TOKEN IN DER URL
           git remote add release_repo "https://${{ github.actor }}:${{ secrets.RELEASE_REPO_TOKEN }}@github.com/wtl-public/hio-typo3-connector.git"
           
-          # Pushe den Code-Stand und den Tag
-          # Wir pushen auf einen temporären Branch, um dann einen PR zu erstellen oder direkt zu mergen
-          git push release_repo main --force
+           git add .
+          # Commit nur, wenn es Änderungen gibt
+          if ! git diff --staged --quiet; then
+            git commit -m "chore: Sync from development release ${{ github.event.release.tag_name }}"
+            git push release_repo main --force
+          else
+            echo "Keine Änderungen zum Committen."
+          fi
 
       - name: 'Create Release in Release Repo'
         uses: softprops/action-gh-release@v2
