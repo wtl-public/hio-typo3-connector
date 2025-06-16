@@ -44,7 +44,7 @@ jobs:
           # Commit nur, wenn es Änderungen gibt
           if ! git diff --staged --quiet; then
             git commit -m "chore: Sync from development release ${{ github.event.release.tag_name }}"
-            git push --force https://token:${{ secrets.RELEASE_REPO_TOKEN }}@github.com/wtl-public/hio-typo3-connector.git
+            git push --force https://token:${{ secrets.RELEASE_REPO_TOKEN }}@github.com/wtl-public/hio-typo3-connector.git main
           else
             echo "Keine Änderungen zum Committen."
           fi
