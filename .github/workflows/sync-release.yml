@@ -39,15 +39,12 @@ jobs:
           # Konfiguriere Git mit dem Benutzer des Tokens (optional, aber gute Praxis)
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git add .
           
-          # Füge das Remote-Repository HINZU, ABER MIT DEM TOKEN IN DER URL
-          git remote add release_repo "https://${{ github.actor }}:${{ secrets.RELEASE_REPO_TOKEN }}@github.com/wtl-public/hio-typo3-connector.git"
-          
-           git add .
           # Commit nur, wenn es Änderungen gibt
           if ! git diff --staged --quiet; then
             git commit -m "chore: Sync from development release ${{ github.event.release.tag_name }}"
-            git push release_repo main --force
+            git push --force https://token:${{ secrets.RELEASE_REPO_TOKEN }}@github.com/wtl-public/hio-typo3-connector.git
           else
             echo "Keine Änderungen zum Committen."
           fi
