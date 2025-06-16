@@ -26,12 +26,12 @@ jobs:
           
           # Pushe den Code-Stand und den Tag
           # Wir pushen auf einen temporären Branch, um dann einen PR zu erstellen oder direkt zu mergen
-          git push release_repo main
+          git push release_repo main --force
 
       - name: 'Create Release in Release Repo'
         uses: softprops/action-gh-release@v2
         with:
-          repository: 'wtl-public/hio-typo3-connector' # Korrekt für die Ziel-Repo
+          repository: 'wtl-public/hio-typo3-connector'
           token: ${{ secrets.RELEASE_REPO_TOKEN }}
           tag_name: ${{ github.ref_name }}
           name: ${{ github.event.release.name }}
