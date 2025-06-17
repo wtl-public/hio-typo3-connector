@@ -31,7 +31,7 @@ class OrgUnitDto
         $dto->setDetails($data);
         $dto->setSearchIndex($data);
 
-        $dto->setTitle($data['title'] ?? '');
+        $dto->setTitle($data['name'] ?? '');
 
         return $dto;
     }
