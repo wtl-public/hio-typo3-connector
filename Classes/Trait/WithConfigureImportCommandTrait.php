@@ -29,7 +29,7 @@ trait WithConfigureImportCommandTrait
                 'optional argument: basic auth password'
             )->addOption(
                 'verify-ssl',
-                'v',
+                'vs',
                 InputOption::VALUE_NONE,
                 'optional argument: verify API ssl certificate'
             );
