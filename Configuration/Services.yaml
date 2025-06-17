@@ -55,6 +55,11 @@ services:
       - name: console.command
         command: 'hio:request:habilitation:import'
         description: 'Request Import of habilitation data'
+  Wtl\HioTypo3Connector\Command\RequestHioOrgUnitImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:request:orgunit:import'
+        description: 'Request Import of organisation unit data'
   Wtl\HioTypo3Connector\Command\RequestHioPatentImportCommand:
     tags:
       - name: console.command
@@ -84,6 +89,10 @@ services:
     tags:
       - name: event.listener
         identifier: 'receiveHioHabilitationListener'
+  Wtl\HioTypo3Connector\EventListener\ReceiveHioOrgUnitListener:
+    tags:
+      - name: event.listener
+        identifier: 'receiveHioOrgUnitListener'
   Wtl\HioTypo3Connector\EventListener\ReceiveHioPatentListener:
     tags:
       - name: event.listener
