@@ -442,6 +442,10 @@
                 <source>Habilitations</source>
                 <target>Habilitationen</target>
             </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_orgunit" resname="tx_hiotypo3connector_domain_model_orgunit">
+                <source>Organisation unit</source>
+                <target>Organisationseinheit</target>
+            </trans-unit>
             <trans-unit id="tx_hiotypo3connector_domain_model_patent" resname="tx_hiotypo3connector_domain_model_patent">
                 <source>Patents</source>
                 <target>Patente</target>
@@ -518,6 +522,15 @@
             <trans-unit id="receive-hio-publications_reaction" resname="receive-hio-publications_reaction">
                 <source>Receive publication data from HIO Middleware</source>
                 <target>Empfang von Publikationen von der HIO Middleware</target>
+            </trans-unit>
+
+            <trans-unit id="tx_hiotypo3connector_domain_model_orgunit.object_id" resname="tx_hiotypo3connector_domain_model_orgunit.object_id">
+                <source>Organisation unit HISinOne-ID</source>
+                <target>ID</target>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_orgunit.title" resname="tx_hiotypo3connector_domain_model_orgunit.title">
+                <source>Organisation unit title</source>
+                <target>Titel</target>
             </trans-unit>
 
         </body>

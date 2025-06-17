@@ -12,24 +12,27 @@ plugin.tx_hiotypo3connector {
     }
   }
   settings {
-    publications {
-      personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.publications.personTargetPageUid}
-    }
-    persons {
-      publicationTargetPageUid = {$plugin.tx_hiotypo3connector.settings.persons.publicationTargetPageUid}
-      projectTargetPageUid = {$plugin.tx_hiotypo3connector.settings.persons.publicationTargetPageUid}
-    }
-    projects {
-      personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.projects.personTargetPageUid}
-    }
-    patents {
-      personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.patents.personTargetPageUid}
-    }
     doctoralPrograms {
       personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.doctoralPrograms.personTargetPageUid}
     }
     habilitations {
       personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.habilitations.personTargetPageUid}
+    }
+    orgunits {
+      personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.orgunits.personTargetPageUid}
+    }
+    patents {
+      personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.patents.personTargetPageUid}
+    }
+    persons {
+      projectTargetPageUid = {$plugin.tx_hiotypo3connector.settings.persons.publicationTargetPageUid}
+      publicationTargetPageUid = {$plugin.tx_hiotypo3connector.settings.persons.publicationTargetPageUid}
+    }
+    projects {
+      personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.projects.personTargetPageUid}
+    }
+    publications {
+      personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.publications.personTargetPageUid}
     }
   }
 }
