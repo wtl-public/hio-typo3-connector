@@ -11,7 +11,8 @@ jobs:
       - name: 'Checkout Development Repo'
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0 # Notwendig, um alle Tags und Branches zu holen
+          fetch-depth: 0
+          ref: main
 
       - name: 'Checkout Release Repo'
         uses: actions/checkout@v4
@@ -20,9 +21,9 @@ jobs:
           token: ${{ secrets.RELEASE_REPO_TOKEN }}
           ref: main
           path: hio-release-repo
-          fetch-depth: 0 # Notwendig, um alle Tags und Branches zu holen
+          fetch-depth: 0
 
-      - name: 🔄 Synchronize files
+      - name: 'Synchronize files'
         run: |
           # Löscht alte Dateien im geklonten Release-Repo (außer .git-Verzeichnis)
           find hio-release-repo -mindepth 1 ! -name '.git' -exec rm -rf {} +
@@ -35,17 +36,13 @@ jobs:
         run: |
           # Wechsle in das Verzeichnis des Release-Repositories
           cd hio-release-repo
-          
-          git status
-          
+                    
           # Konfiguriere Git mit dem Benutzer des Tokens (optional, aber gute Praxis)
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           
           git config --unset-all http.https://github.com/.extraheader
           git add .
-
-          git status
           
           # Commit nur, wenn es Änderungen gibt
           if ! git diff --staged --quiet; then
