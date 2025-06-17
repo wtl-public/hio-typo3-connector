@@ -19,6 +19,11 @@ services:
       - name: console.command
         command: 'hio:habilitations:import'
         description: 'Import habilitation data from HISinOne'
+  Wtl\HioTypo3Connector\Command\OrgUnitsImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:orgunits:import'
+        description: 'Import organisation unit data from HISinOne'
   Wtl\HioTypo3Connector\Command\PatentsImportCommand:
     tags:
       - name: console.command

@@ -4,6 +4,7 @@ declare(strict_types=1);
 defined('TYPO3') or die();
 
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
+use Wtl\HioTypo3Connector\Controller\OrgUnitController;
 use Wtl\HioTypo3Connector\Controller\PersonController;
 use Wtl\HioTypo3Connector\Controller\ProjectController;
 use Wtl\HioTypo3Connector\Controller\PublicationController;
@@ -74,6 +75,16 @@ ExtensionUtility::configurePlugin(
     [HabilitationController::class => 'index, show, search'],
     // non-cacheable actions
     [HabilitationController::class => 'search'],
+);
+ExtensionUtility::configurePlugin(
+// extension name, matching the PHP namespaces (but without the vendor)
+    'HioTypo3Connector',
+    // arbitrary, but unique plugin name (not visible in the backend)
+    'OrgUnitList',
+    // all actions
+    [OrgUnitController::class => 'index, show, search'],
+    // non-cacheable actions
+    [OrgUnitController::class => 'search'],
 );
 
 

@@ -43,6 +43,12 @@ ExtensionUtility::registerPlugin(
 );
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
+    'Orgunitlist',
+    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titleOrgUnits',
+    'tx-hio_typo3_connector-list-of-orgunits',
+);
+ExtensionUtility::registerPlugin(
+    'HioTypo3Connector',
     'Selectedpersonhabilitationlist',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonHabilitations',
     'tx-hio_typo3_connector-habilitations',
