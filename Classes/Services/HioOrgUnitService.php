@@ -6,7 +6,7 @@ use Wtl\HioTypo3Connector\Domain\Dto\OrgUnitDto;
 
 class HioOrgUnitService extends HioApiService
 {
-    public function getPatents(int $page = 1): array
+    public function getOrgUnits(int $page = 1): array
     {
         $apiResponse = $this->fetch($page);
 
@@ -16,8 +16,8 @@ class HioOrgUnitService extends HioApiService
 
         $result = $apiResponse->getData();
         foreach ($result as $orgUnit) {
-            $projects[] = OrgUnitDto::fromArray($orgUnit);
+            $orgUnits[] = OrgUnitDto::fromArray($orgUnit);
         }
-        return $projects ?? [];
+        return $orgUnits ?? [];
     }
 }

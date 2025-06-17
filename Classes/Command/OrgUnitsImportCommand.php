@@ -49,7 +49,7 @@ class OrgUnitsImportCommand extends Command
         $currentPage = 1;
         do {
             /** @var OrgUnitDto[] $orgUnits */
-            $orgUnits = $this->orgUnitService->getPatents($currentPage);
+            $orgUnits = $this->orgUnitService->getOrgUnits($currentPage);
             if ($this->orgUnitService->getMeta()->getTotal() === 0) {
                 $output->writeln('No new organisation units found');
                 return Command::SUCCESS;
