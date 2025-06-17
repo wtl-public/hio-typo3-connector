@@ -57,3 +57,11 @@ CREATE TABLE tx_hiotypo3connector_domain_model_citationstyle
 (
     label     VARCHAR(255) DEFAULT '',
 );
+
+CREATE TABLE tx_hiotypo3connector_domain_model_orgunit
+(
+    object_id INT(11)  DEFAULT '0' NOT NULL,
+    title     LONGTEXT DEFAULT '',
+    details   MEDIUMBLOB,
+    search_index MEDIUMBLOB,
+);
