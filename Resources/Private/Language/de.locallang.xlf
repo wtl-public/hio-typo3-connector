@@ -507,6 +507,10 @@
                 <source>Receive habilitation data from HIO Middleware</source>
                 <target>Empfang von Habilitationen von der HIO Middleware</target>
             </trans-unit>
+            <trans-unit id="receive-hio-orgunits_reaction" resname="receive-hio-orgunits_reaction">
+                <source>Receive organisation unit data from HIO Middleware</source>
+                <target>Empfang von Organisationseinheiten von der HIO Middleware</target>
+            </trans-unit>
             <trans-unit id="receive-hio-patents_reaction" resname="receive-hio-patents_reaction">
                 <source>Receive patent data from HIO Middleware</source>
                 <target>Empfang von Patenten von der HIO Middleware</target>

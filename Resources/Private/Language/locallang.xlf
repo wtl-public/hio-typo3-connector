@@ -397,6 +397,9 @@
             <trans-unit id="receive-hio-habilitations_reaction" resname="receive-hio-habilitations_reaction">
                 <source>Receive habilitation data from HIO Middleware</source>
             </trans-unit>
+            <trans-unit id="receive-hio-orgunits_reaction" resname="receive-hio-orgunits_reaction">
+                <source>Receive organisation unit data from HIO Middleware</source>
+            </trans-unit>
             <trans-unit id="receive-hio-patents_reaction" resname="receive-hio-patents_reaction">
                 <source>Receive patent data from HIO Middleware</source>
             </trans-unit>
