@@ -25,4 +25,8 @@ return [
         'path' => '/hio/typo3/connector/habilitation',
         'target' => 'Wtl\HioTypo3Connector\Controller\HabilitationController',
     ],
+    'tx_hio_typo3_connector_orgunit' => [
+        'path' => '/hio/typo3/connector/orgunit',
+        'target' => 'Wtl\HioTypo3Connector\Controller\OrgUnitController',
+    ],
 ];
