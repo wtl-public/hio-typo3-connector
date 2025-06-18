@@ -8,7 +8,7 @@ use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Backend\Attribute\AsController;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Core\Pagination\ArrayPaginator;
-use TYPO3\CMS\Core\Pagination\SimplePagination;
+use TYPO3\CMS\Core\Pagination\SlidingWindowPagination;
 use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 use TYPO3\CMS\Extbase\Property\PropertyMapper;
 use Wtl\HioTypo3Connector\Domain\Model\Patent;
@@ -34,7 +34,7 @@ class PatentController extends BaseController
         );
         $this->view->assignMultiple([
             'paginator' => $paginator,
-            'pagination' => new SimplePagination($paginator),
+            'pagination' => new SlidingWindowPagination($paginator, 12),
             'searchWord' => $this->getSearchWordFromRequest(),
         ]);
 
@@ -48,7 +48,7 @@ class PatentController extends BaseController
         );
         $this->view->assignMultiple([
             'paginator' => $paginator,
-            'pagination' => new SimplePagination($paginator),
+            'pagination' => new SlidingWindowPagination($paginator, 12),
             'searchWord' => $this->getSearchWordFromRequest(),
         ]);
 

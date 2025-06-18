@@ -9,7 +9,7 @@ use TYPO3\CMS\Backend\Attribute\AsController;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Core\Error\Http\PageNotFoundException;
 use TYPO3\CMS\Core\Http\ImmediateResponseException;
-use TYPO3\CMS\Core\Pagination\SimplePagination;
+use TYPO3\CMS\Core\Pagination\SlidingWindowPagination;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
@@ -42,7 +42,7 @@ class PersonController extends BaseController
         );
         $this->view->assignMultiple([
             'paginator' => $paginator,
-            'pagination' => new SimplePagination($paginator),
+            'pagination' => new SlidingWindowPagination($paginator, 12),
             'searchWord' => $this->getSearchWordFromRequest(),
         ]);
 
@@ -56,7 +56,7 @@ class PersonController extends BaseController
         );
         $this->view->assignMultiple([
             'paginator' => $paginator,
-            'pagination' => new SimplePagination($paginator),
+            'pagination' => new SlidingWindowPagination($paginator, 12),
             'searchWord' => $this->getSearchWordFromRequest(),
         ]);
 
