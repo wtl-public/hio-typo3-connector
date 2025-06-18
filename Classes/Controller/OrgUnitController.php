@@ -59,7 +59,7 @@ class OrgUnitController extends BaseController
     {
         $this->view->assignMultiple(
             [
-                'orgUnit' => $orgUnit,
+                'orgunit' => $orgUnit,
                 'currentPageNumber' => $this->getCurrentPageNumberFromRequest(),
                 'searchWord' => $this->getSearchWordFromRequest(),
                 'listAction' => $listAction,
