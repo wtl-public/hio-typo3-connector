@@ -6,6 +6,7 @@ namespace Wtl\HioTypo3Connector\Domain\Dto;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use Wtl\HioTypo3Connector\Domain\Dto\Collection\DoctoralProgramDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Collection\HabilitationDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Collection\OrganizationDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Collection\PatentDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Collection\ProjectDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Collection\PublicationDto;
@@ -26,6 +27,7 @@ class PersonDto
     protected array $patents = [];
     protected array $projects = [];
     protected array $publications = [];
+    protected array $organizations = [];
 
     public function getName(): string
     {
@@ -82,32 +84,22 @@ class PersonDto
         $this->habilitations = $habilitations;
     }
 
+    public function getOrganizations(): array
+    {
+        return $this->organizations;
+    }
+    public function setOrganizations(array $organizations): void
+    {
+        $this->organizations = $organizations;
+    }
+
     static public function fromArray(array $data): PersonDto
     {
-        $releaseYear = $publication['journal']['releaseYear'] ?? null;
         $dto = new self();
         $dto->setObjectId($data['id']);
         $dto->setName($data['name']);
         $dto->setDetails($data);
         $dto->setSearchIndex($data);
-
-        $publications = [];
-        foreach ($data['publications'] ?? [] as $publication) {
-            $publications[] = PublicationDto::fromArray($publication);
-        }
-        $dto->setPublications($publications);
-
-        $projects = [];
-        foreach ($data['projects'] ?? [] as $project) {
-            $projects[] = ProjectDto::fromArray($project);
-        }
-        $dto->setProjects($projects);
-
-        $patents = [];
-        foreach ($data['patents'] ?? [] as $patent) {
-            $patents[] = PatentDto::fromArray($patent);
-        }
-        $dto->setPatents($patents);
 
         $doctoralPrograms = [];
         foreach ($data['doctoralPrograms'] ?? [] as $doctoralProgram) {
@@ -120,6 +112,30 @@ class PersonDto
             $habilitations[] = HabilitationDto::fromArray($habilitation);
         }
         $dto->setHabilitations($habilitations);
+
+        $organizations = [];
+        foreach ($data['organizations'] ?? [] as $organization) {
+            $organizations[] = OrganizationDto::fromArray($organization);
+        }
+        $dto->setOrganizations($organizations);
+
+        $patents = [];
+        foreach ($data['patents'] ?? [] as $patent) {
+            $patents[] = PatentDto::fromArray($patent);
+        }
+        $dto->setPatents($patents);
+
+        $projects = [];
+        foreach ($data['projects'] ?? [] as $project) {
+            $projects[] = ProjectDto::fromArray($project);
+        }
+        $dto->setProjects($projects);
+
+        $publications = [];
+        foreach ($data['publications'] ?? [] as $publication) {
+            $publications[] = PublicationDto::fromArray($publication);
+        }
+        $dto->setPublications($publications);
 
         return $dto;
     }

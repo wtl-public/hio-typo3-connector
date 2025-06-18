@@ -7,6 +7,7 @@ class OrganizationDto
 {
     protected int $id;
     protected string $name = '';
+    protected string $role = '';
 
     public function getId(): int
     {
@@ -26,6 +27,15 @@ class OrganizationDto
         $this->name = $name;
     }
 
+    public function getRole(): string
+    {
+        return $this->role;
+    }
+    public function setRole(string $role): void
+    {
+        $this->role = $role;
+    }
+
     static public function fromArray(array $data): self
     {
         if (count($data) === 0) {
@@ -34,6 +44,7 @@ class OrganizationDto
         $organizationDto = new self();
         $organizationDto->setId($data['id']);
         $organizationDto->setName($data['name'] ?? '');
+        $organizationDto->setRole($data['role'] ?? '');
 
         return $organizationDto;
     }
