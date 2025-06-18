@@ -94,6 +94,13 @@
                 <source>List of habilitations available inHISinOne</source>
             </trans-unit>
 
+            <trans-unit id="titleOrgUnits" resname="titleOrgUnits">
+                <source>HISinOne Organisation units</source>
+            </trans-unit>
+            <trans-unit id="descriptionOrgUnits" resname="descriptionOrgUnits">
+                <source>List of organisation units available inHISinOne</source>
+            </trans-unit>
+
             <trans-unit id="ListPaginationPrevious" resname="ListPaginationPrevious">
                 <source>Previous</source>
             </trans-unit>

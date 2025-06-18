@@ -72,6 +72,15 @@
                 <target>Liste aller in HISinOne verfügbaren Habilitationen</target>
             </trans-unit>
 
+            <trans-unit id="titleOrgUnits" resname="titleOrgUnits">
+                <source>HISinOne Organisation units</source>
+                <target>HISinOne Organisationseinheiten</target>
+            </trans-unit>
+            <trans-unit id="descriptionOrgUnits" resname="descriptionOrgUnits">
+                <source>List of organisation units available inHISinOne</source>
+                <target>Liste aller in HISinOne verfügbaren Organisationseinheiten</target>
+            </trans-unit>
+
             <trans-unit id="titlePatents" resname="titlePatents">
                 <source>HISinOne Patents</source>
                 <target>HISinOne Patente</target>
