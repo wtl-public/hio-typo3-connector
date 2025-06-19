@@ -3,10 +3,11 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto\Collection;
 
-class OrganizationDto
+class OrgUnitDto
 {
     protected int $id;
     protected string $name = '';
+    protected string $role = '';
 
     public function getId(): int
     {
@@ -26,15 +27,25 @@ class OrganizationDto
         $this->name = $name;
     }
 
+    public function getRole(): string
+    {
+        return $this->role;
+    }
+    public function setRole(string $role): void
+    {
+        $this->role = $role;
+    }
+
     static public function fromArray(array $data): self
     {
         if (count($data) === 0) {
             return new self();
         }
-        $organizationDto = new self();
-        $organizationDto->setId($data['id']);
-        $organizationDto->setName($data['name'] ?? '');
+        $orgUnitDto = new self();
+        $orgUnitDto->setId($data['id']);
+        $orgUnitDto->setName($data['name'] ?? '');
+        $orgUnitDto->setRole($data['role'] ?? '');
 
-        return $organizationDto;
+        return $orgUnitDto;
     }
 }

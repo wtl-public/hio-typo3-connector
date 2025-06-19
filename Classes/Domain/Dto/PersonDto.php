@@ -6,7 +6,7 @@ namespace Wtl\HioTypo3Connector\Domain\Dto;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use Wtl\HioTypo3Connector\Domain\Dto\Collection\DoctoralProgramDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Collection\HabilitationDto;
-use Wtl\HioTypo3Connector\Domain\Dto\Collection\OrganizationDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Collection\OrgUnitDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Collection\PatentDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Collection\ProjectDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Collection\PublicationDto;
@@ -27,7 +27,7 @@ class PersonDto
     protected array $patents = [];
     protected array $projects = [];
     protected array $publications = [];
-    protected array $organizations = [];
+    protected array $orgUnits = [];
 
     public function getName(): string
     {
@@ -84,13 +84,13 @@ class PersonDto
         $this->habilitations = $habilitations;
     }
 
-    public function getOrganizations(): array
+    public function getOrgUnits(): array
     {
-        return $this->organizations;
+        return $this->orgUnits;
     }
-    public function setOrganizations(array $organizations): void
+    public function setOrgUnits(array $orgUnits): void
     {
-        $this->organizations = $organizations;
+        $this->orgUnits = $orgUnits;
     }
 
     static public function fromArray(array $data): PersonDto
@@ -113,11 +113,11 @@ class PersonDto
         }
         $dto->setHabilitations($habilitations);
 
-        $organizations = [];
-        foreach ($data['organizations'] ?? [] as $organization) {
-            $organizations[] = OrganizationDto::fromArray($organization);
+        $orgUnits = [];
+        foreach ($data['orgUnits'] ?? [] as $organization) {
+            $orgUnits[] = OrgUnitDto::fromArray($organization);
         }
-        $dto->setOrganizations($organizations);
+        $dto->setOrgUnits($orgUnits);
 
         $patents = [];
         foreach ($data['patents'] ?? [] as $patent) {

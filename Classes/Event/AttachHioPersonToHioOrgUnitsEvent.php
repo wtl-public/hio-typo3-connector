@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Event;
 
-class AttachHioPersonToHioOrganizationsEvent
+class AttachHioPersonToHioOrgUnitsEvent
 {
     public function __construct(
         protected readonly int $hioPersonObjectId,
-        protected readonly array $hioOrganizationObjectIds
+        protected readonly array $hioOrgUnitObjectIds
     )
     {
     }
@@ -18,8 +18,8 @@ class AttachHioPersonToHioOrganizationsEvent
         return $this->hioPersonObjectId;
     }
 
-    public function getHioOrganizationsObjectIds(): array
+    public function getHioOrgUnitObjectIds(): array
     {
-        return $this->hioOrganizationObjectIds;
+        return $this->hioOrgUnitObjectIds;
     }
 }
