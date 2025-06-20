@@ -153,6 +153,15 @@ return [
                 'foreign_table' => 'tx_hiotypo3connector_domain_model_habilitation',
                 'MM' => 'tx_hiotypo3connector_person_habilitation_mm',
             ],
+        ],
+        'orgunits' => [
+            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_person.orgunits',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'tx_hiotypo3connector_domain_model_orgunit',
+                'MM' => 'tx_hiotypo3connector_person_orgunit_mm',
+            ],
         ]
     ],
     'types' => [
