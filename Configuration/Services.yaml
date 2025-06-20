@@ -139,6 +139,10 @@ services:
     tags:
       - name: event.listener
         identifier: 'attachHioPersonToHioHabilitationsListener'
+  Wtl\HioTypo3Connector\EventListener\AttachHioPersonToHioOrgUnitsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioPersonToHioOrgUnitsListener'
   Wtl\HioTypo3Connector\EventListener\AttachHioPersonToHioPatentsListener:
     tags:
       - name: event.listener
