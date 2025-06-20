@@ -38,6 +38,11 @@ class Person extends AbstractEntity
     protected ObjectStorage $habilitations;
 
     /**
+     * @var ObjectStorage<OrgUnit>
+     */
+    protected ObjectStorage $orgUnits;
+
+    /**
      * @var string
      */
     protected mixed $details;
@@ -54,11 +59,12 @@ class Person extends AbstractEntity
 
     public function initializeObject(): void
     {
-        $this->publications = new ObjectStorage();
-        $this->projects = new ObjectStorage();
-        $this->patents = new ObjectStorage();
         $this->doctoralPrograms = new ObjectStorage();
         $this->habilitations = new ObjectStorage();
+        $this->orgUnits = new ObjectStorage();
+        $this->patents = new ObjectStorage();
+        $this->projects = new ObjectStorage();
+        $this->publications = new ObjectStorage();
     }
 
     public function getObjectId(): int
@@ -180,7 +186,6 @@ class Person extends AbstractEntity
         return $this;
     }
 
-
     public function getHabilitations(): ObjectStorage
     {
         return $this->habilitations;
@@ -200,6 +205,29 @@ class Person extends AbstractEntity
     {
         if ($this->habilitations->contains($habilitation)) {
             $this->habilitations->detach($habilitation);
+        }
+        return $this;
+    }
+
+    public function getOrgUnits(): ObjectStorage
+    {
+        return $this->orgUnits;
+    }
+    public function setOrgUnits(ObjectStorage $orgUnits): void
+    {
+        $this->orgUnits = $orgUnits;
+    }
+    public function addOrgUnit(OrgUnit $orgUnit): self
+    {
+        if (!$this->orgUnits->contains($orgUnit)) {
+            $this->orgUnits->attach($orgUnit);
+        }
+        return $this;
+    }
+    public function removeOrgUnit(OrgUnit $orgUnit): self
+    {
+        if ($this->orgUnits->contains($orgUnit)) {
+            $this->orgUnits->detach($orgUnit);
         }
         return $this;
     }

@@ -7,7 +7,7 @@ class PersonDto
 {
     protected ?int $id = null;
     protected string $name = '';
-    protected ?OrganizationDto $organization = null;
+    protected ?OrgUnitDto $organization = null;
     protected ?ResearchPartnerDto $researchPartner = null;
     protected ?string $role = null;
 
@@ -29,11 +29,11 @@ class PersonDto
         $this->name = $name;
     }
 
-    public function getOrganization(): OrganizationDto|null
+    public function getOrganization(): OrgUnitDto|null
     {
         return $this->organization;
     }
-    public function setOrganization(?OrganizationDto $organization): void
+    public function setOrganization(?OrgUnitDto $organization): void
     {
         $this->organization = $organization;
     }
@@ -67,7 +67,7 @@ class PersonDto
             $personDto->setRole($data['role']);
         }
         if (isset($data['organization']) && is_array($data['organization'])) {
-            $personDto->setOrganization(OrganizationDto::fromArray($data['organization']));
+            $personDto->setOrganization(OrgUnitDto::fromArray($data['organization']));
         }
         if (isset($data['researchPartner']) && is_array($data['researchPartner'])) {
             $personDto->setResearchPartner(ResearchPartnerDto::fromArray($data['researchPartner']));

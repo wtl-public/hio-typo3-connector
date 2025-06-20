@@ -9,6 +9,7 @@ use Wtl\HioTypo3Connector\Domain\Dto\PersonDto;
 use Wtl\HioTypo3Connector\Domain\Repository\PersonRepository;
 use Wtl\HioTypo3Connector\Event\AttachHioPersonToHioDoctoralProgramsEvent;
 use Wtl\HioTypo3Connector\Event\AttachHioPersonToHioHabilitationsEvent;
+use Wtl\HioTypo3Connector\Event\AttachHioPersonToHioOrgUnitsEvent;
 use Wtl\HioTypo3Connector\Event\AttachHioPersonToHioPatentsEvent;
 use Wtl\HioTypo3Connector\Event\AttachHioPersonToHioProjectsEvent;
 use Wtl\HioTypo3Connector\Event\AttachHioPersonToHioPublicationsEvent;
@@ -29,6 +30,7 @@ class ReceiveHioPersonListener
 
         $this->attachRelatedDoctoralPrograms($event->getHioPerson());
         $this->attachRelatedHabilitations($event->getHioPerson());
+        $this->attachRelatedOrgUnits($event->getHioPerson());
         $this->attachRelatedPatents($event->getHioPerson());
         $this->attachRelatedProjects($event->getHioPerson());
         $this->attachRelatedPublications($event->getHioPerson());
@@ -58,6 +60,20 @@ class ReceiveHioPersonListener
             new AttachHioPersonToHioHabilitationsEvent(
                 $hioPerson->getObjectId(),
                 $hioHabilitationObjectIds
+            )
+        );
+    }
+
+    protected function attachRelatedOrgUnits(PersonDto $hioPerson): void
+    {
+        $hioOrgUnitObjectIds = array_map(
+            static fn($hioOrgUnit) => $hioOrgUnit->getId(),
+            $hioPerson->getOrgUnits() ?? []
+        );
+        $this->eventDispatcher->dispatch(
+            new AttachHioPersonToHioOrgUnitsEvent(
+                $hioPerson->getObjectId(),
+                $hioOrgUnitObjectIds
             )
         );
     }
