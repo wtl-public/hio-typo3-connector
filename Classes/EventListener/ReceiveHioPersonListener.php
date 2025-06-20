@@ -67,7 +67,7 @@ class ReceiveHioPersonListener
     protected function attachRelatedOrgUnits(PersonDto $hioPerson): void
     {
         $hioOrgUnitObjectIds = array_map(
-            static fn($hioOrganization) => $hioOrganization->getId(),
+            static fn($hioOrgUnit) => $hioOrgUnit->getId(),
             $hioPerson->getOrgUnits() ?? []
         );
         $this->eventDispatcher->dispatch(
