@@ -27,6 +27,7 @@ CREATE TABLE tx_hiotypo3connector_domain_model_person
     patents      INT(11) DEFAULT '0' NOT NULL,
     doctoral_programs      INT(11) DEFAULT '0' NOT NULL,
     habilitations      INT(11) DEFAULT '0' NOT NULL,
+    orgunits      INT(11) DEFAULT '0' NOT NULL,
 );
 
 CREATE TABLE tx_hiotypo3connector_domain_model_patent
