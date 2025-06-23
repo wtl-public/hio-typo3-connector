@@ -114,7 +114,7 @@ class PersonDto
         $dto->setHabilitations($habilitations);
 
         $orgUnits = [];
-        foreach ($data['organizations'] ?? [] as $orgUnit) {
+        foreach ($data['orgUnits'] ?? [] as $orgUnit) {
             $orgUnits[] = OrgUnitDto::fromArray($orgUnit);
         }
         $dto->setOrgUnits($orgUnits);
