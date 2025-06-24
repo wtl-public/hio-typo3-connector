@@ -46,6 +46,15 @@ mod.wizards.newContentElement.wizardItems {
                     list_type = hiotypo3connector_selectedpersonhabilitationlist
                 }
             }
+            hio-typo3-connector_orgUnits-for-person {
+                iconIdentifier = tx-hio_typo3_connector-org-units
+                title = LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonOrgUnits
+                description = LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:descriptionPersonOrgUnits
+                tt_content_defValues {
+                    CType = list
+                    list_type = hiotypo3connector_selectedpersonorgunitlist
+                }
+            }
 
             hio-typo3-connector_publicationlist {
                 iconIdentifier = tx-hio_typo3_connector-list-of-publications

@@ -59,6 +59,12 @@ ExtensionUtility::registerPlugin(
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonPatents',
     'tx-hio_typo3_connector-patents',
 );
+ExtensionUtility::registerPlugin(
+    'HioTypo3Connector',
+    'Selectedpersonorgunitlist',
+    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonOrgUnits',
+    'tx-hio_typo3_connector-orgunits',
+);
 
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',

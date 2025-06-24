@@ -29,6 +29,10 @@ return [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/list-of-habilitations.svg',
     ],
+    'tx-hio_typo3_connector-list-of-org-units' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/list-of-orgUnits.svg',
+    ],
     'tx-hio_typo3_connector-publications' => [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/publication.svg',
@@ -52,5 +56,9 @@ return [
     'tx-hio_typo3_connector-habilitations' => [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/habilitation.svg',
+    ],
+    'tx-hio_typo3_connector-org-units' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/orgUnit.svg',
     ],
 ];

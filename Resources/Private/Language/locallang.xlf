@@ -32,7 +32,7 @@
                 <source>Habilitations</source>
             </trans-unit>
             <trans-unit id="tx_hiotypo3connector_domain_model_orgunit" resname="tx_hiotypo3connector_domain_model_orgunit">
-                <source>Organisation unit</source>
+                <source>Organization units</source>
             </trans-unit>
             <trans-unit id="tx_hiotypo3connector_domain_model_patent" resname="tx_hiotypo3connector_domain_model_patent">
                 <source>Patents</source>

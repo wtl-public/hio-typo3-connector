@@ -197,6 +197,20 @@ class PersonController extends BaseController
         return $this->htmlResponse();
     }
 
+    public function orgUnitListAction(): ResponseInterface
+    {
+        /** @var Person $selectedPerson */
+        $selectedPerson = $this->personRepository->findByUid($this->settings['personUid']);
+
+        $orgUnits = $selectedPerson->getOrgUnits() ?? [];
+
+        $this->view->assignMultiple([
+            'person' => $selectedPerson,
+        ]);
+
+        return $this->htmlResponse();
+    }
+
     public function habilitationListAction(): ResponseInterface
     {
         /** @var Person $selectedPerson */
