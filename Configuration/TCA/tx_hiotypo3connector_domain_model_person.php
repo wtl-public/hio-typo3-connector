@@ -154,7 +154,7 @@ return [
                 'MM' => 'tx_hiotypo3connector_person_habilitation_mm',
             ],
         ],
-        'orgunits' => [
+        'org_units' => [
             'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_person.orgunits',
             'config' => [
                 'type' => 'select',
