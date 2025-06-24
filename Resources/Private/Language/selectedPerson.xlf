@@ -79,6 +79,16 @@
                 <source>Select person please</source>
             </trans-unit>
 
+            <trans-unit id="titlePersonOrgUnits" resname="titlePersonOrgUnits">
+                <source>HISinOne organization units for person</source>
+            </trans-unit>
+            <trans-unit id="descriptionPersonOrgUnits" resname="descriptionPersonOrgUnits">
+                <source>Show all HISinOne organization units for the selected person</source>
+            </trans-unit>
+            <trans-unit id="flexform.orgunitlist.personUid" resname="flexform.orgunitlist.personUid">
+                <source>Select person please</source>
+            </trans-unit>
+
             <trans-unit id="titlePersonDoctoralPrograms" resname="titlePersonDoctoralPrograms">
                 <source>HISinOne doctoral programs for person</source>
             </trans-unit>
