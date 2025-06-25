@@ -125,13 +125,22 @@ ExtensionUtility::configurePlugin(
     // non-cacheable actions
 );
 ExtensionUtility::configurePlugin(
-    // extension name, matching the PHP namespaces (but without the vendor)
+// extension name, matching the PHP namespaces (but without the vendor)
     'HioTypo3Connector',
     // arbitrary, but unique plugin name (not visible in the backend)
     'SelectedPersonHabilitationList',
     // all actions
     [PersonController::class => 'habilitationList'],
-    // non-cacheable actions
+// non-cacheable actions
+);
+ExtensionUtility::configurePlugin(
+// extension name, matching the PHP namespaces (but without the vendor)
+    'HioTypo3Connector',
+    // arbitrary, but unique plugin name (not visible in the backend)
+    'SelectedPersonOrgUnitList',
+    // all actions
+    [PersonController::class => 'orgUnitList'],
+// non-cacheable actions
 );
 
 
