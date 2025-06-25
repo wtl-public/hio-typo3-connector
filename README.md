@@ -22,7 +22,16 @@ Im TYPO3 Backend:
 ```
 plugin.tx_hiotypo3connector {
     settings {
-      publications {
+      doctoralPrograms {
+        personTargetPageUid = 9
+      }
+      habilitations {
+        personTargetPageUid = 9
+      }
+      orgUnits {
+        personTargetPageUid = 9
+      }
+      patents {
         personTargetPageUid = 9
       }
       persons {
@@ -32,13 +41,7 @@ plugin.tx_hiotypo3connector {
       projects {
         personTargetPageUid = 9
       }
-      patents {
-        personTargetPageUid = 9
-      }
-      doctoralPrograms {
-        personTargetPageUid = 9
-      }
-      habilitations {
+      publications {
         personTargetPageUid = 9
       }
     }
@@ -51,6 +54,7 @@ Im TYPO3 Backend:
 * unter `Admin Tools` -> `Scheduler` -> die folgenden Import Tasks anlegen:
   * `hio:import:doctoralPrograms` - Importiert Promotionen aus HISinOne
   * `hio:import:habilitations` - Importiert Habilitationen aus HISinOne
+  * `hio:import:orgUnits` - Importiert Organisationseinheiten aus HISinOne
   * `hio:import:patents` - Importiert Patente aus HISinOne
   * `hio:import:persons` - Importiert Personen aus HISinOne
   * `hio:import:projects` - Importiert Projekte aus HISinOne
@@ -75,6 +79,7 @@ Im TYPO3 Backend:
 * unter `Admin Tools` -> `Reactions` -> die folgenden TYPO3 Webhooks (Reactions) anlegen:
   * `Receive doctoral program data from HIO Middleware` - Webhook zum Import von Promotionen
   * `Receive habilitation data from HIO Middleware` - Webhook zum Import von Habilitationen
+  * `Receive orgUnit data from HIO Middleware` - Webhook zum Import von Organisationseinheiten
   * `Receive patent data from HIO Middleware` - Webhook zum Import von Patenten
   * `Receive person data from HIO Middleware` - Webhook zum Import von Personen
   * `Receive project data from HIO Middleware` - Webhook zum Import von Projekten
@@ -88,6 +93,7 @@ Im TYPO3 Backend:
 * unter `Admin Tools` -> `Scheduler` -> die folgenden Import Requests anlegen:
   * `hio:request:doctoralProgram:import` - Startet den Import von Promotionen aus HISinOne
   * `hio:request:habilitation:import` - Startet den Import von Habilitationen aus HISinOne
+  * `hio:request:orgUnit:import` - Startet den Import von Organisationseinheiten aus HISinOne
   * `hio:request:patent:import` - Startet den Import von Patente aus HISinOne
   * `hio:request:person:import` - Startet den Import von Personen aus HISinOne
   * `hio:request:project:import` - Startet den Import von Projekte aus HISinOne
@@ -108,6 +114,7 @@ Im TYPO3 Backend:
 Im Module `Page` können die folgenden Frontend-Plugins eingefügt werden:
 
   * `HISinOne Habilitationen` - zeigt eine Liste von Habilitationen aus HISinOne an
+  * `HISinOne Organisationseinheiten` - zeigt eine Liste von Organisationseinheiten aus HISinOne an
   * `HISinOne Patente` - zeigt eine Liste von Patenten aus HISinOne an
   * `HISinOne Personen` - zeigt eine Liste von Personen aus HISinOne an
   * `HISinOne Projekte` - zeigt eine Liste von Projekten aus HISinOne an
@@ -116,6 +123,7 @@ Im Module `Page` können die folgenden Frontend-Plugins eingefügt werden:
 
 
   * `HISinOne Habilitationen der Person` - zeigt die Liste aller freigegebenen Habilitationen einer ausgewählten Person an
+  * `HISinOne Organisationseinheiten der Person` - zeigt die Liste aller freigegebenen Organisationseinheiten einer ausgewählten Person an
   * `HISinOne Patente der Person` - zeigt die Liste aller freigegebenen Patente einer ausgewählten Person an
   * `HISinOne Projekte der Person` - zeigt die Liste aller freigegebenen Projekte einer ausgewählten Person an
   * `HISinOne Promotionen der Person` - zeigt die Liste aller freigegebenen Promotionen einer ausgewählten Person an
