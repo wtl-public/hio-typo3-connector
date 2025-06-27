@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="EXT:hio_typo3_connector/Resources/Private/Language/Modules/locallang.xlf" date="2024-10-17T00:00:00Z" product-name="hio_typo3_connector">
+        <header/>
+        <body>
+            <trans-unit id="mlang_tabs_tab" resname="mlang_tabs_tab">
+                <source>HIO Connector</source>
+            </trans-unit>
+            <trans-unit id="titlePublications" resname="titlePublications">
+                <source>HISinOne Publications</source>
+            </trans-unit>
+            <trans-unit id="descriptionPublications" resname="descriptionPublications">
+                <source>List of publications available in HISinOne</source>
+            </trans-unit>
+            <trans-unit id="titlePublicationDetails" resname="titlePublicationDetails">
+                <source>HIO Publication Details</source>
+            </trans-unit>
+            <trans-unit id="publicationsTable" resname="publicationsTable">
+                <source>HIO Publications</source>
+            </trans-unit>
+            <trans-unit id="noPublications" resname="noPublications">
+                <source>No publications found.</source>
+            </trans-unit>
+
+            <trans-unit id="tx_hiotypo3connector_domain_model_citationstyle" resname="tx_hiotypo3connector_domain_model_citationstyle">
+                <source>Citationstyles</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_doctoral_program" resname="tx_hiotypo3connector_domain_model_doctoral_program">
+                <source>Doctoral programs</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_habilitation" resname="tx_hiotypo3connector_domain_model_habilitation">
+                <source>Habilitations</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_orgunit" resname="tx_hiotypo3connector_domain_model_orgunit">
+                <source>Organization units</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_patent" resname="tx_hiotypo3connector_domain_model_patent">
+                <source>Patents</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_person" resname="tx_hiotypo3connector_domain_model_person">
+                <source>Persons</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_project" resname="tx_hiotypo3connector_domain_model_project">
+                <source>Projects</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_publication" resname="tx_hiotypo3connector_domain_model_publication">
+                <source>Publications</source>
+            </trans-unit>
+
+            <trans-unit id="titleProjects" resname="titleProjects">
+                <source>HISinOne Projects</source>
+            </trans-unit>
+            <trans-unit id="descriptionProjects" resname="descriptionProjects">
+                <source>List of projects available inHISinOne</source>
+            </trans-unit>
+            <trans-unit id="projectsTable" resname="projectsTable">
+                <source>HIO Projects</source>
+            </trans-unit>
+            <trans-unit id="noProjects" resname="noProjects">
+                <source>No projects found.</source>
+            </trans-unit>
+
+            <trans-unit id="titlePatents" resname="titlePatents">
+                <source>HISinOne Patents</source>
+            </trans-unit>
+            <trans-unit id="descriptionPatents" resname="descriptionPatents">
+                <source>List of patents available inHISinOne</source>
+            </trans-unit>
+            <trans-unit id="patentsTable" resname="patentsTable">
+                <source>HIO Patents</source>
+            </trans-unit>
+            <trans-unit id="noPatents" resname="noPatents">
+                <source>No patents found.</source>
+            </trans-unit>
+
+            <trans-unit id="titlePersons" resname="titlePersons">
+                <source>HISinOne Persons</source>
+            </trans-unit>
+            <trans-unit id="descriptionPersons" resname="descriptionPersons">
+                <source>List of persons available in HISinOne</source>
+            </trans-unit>
+
+            <trans-unit id="titleDoctoralPrograms" resname="titleDoctoralPrograms">
+                <source>HISinOne Doctoral programs</source>
+            </trans-unit>
+            <trans-unit id="descriptionDoctoralPrograms" resname="descriptionDoctoralPrograms">
+                <source>List of doctoral programs available inHISinOne</source>
+            </trans-unit>
+
+            <trans-unit id="titleHabilitations" resname="titleHabilitations">
+                <source>HISinOne Habilitations</source>
+            </trans-unit>
+            <trans-unit id="descriptionHabilitations" resname="descriptionHabilitations">
+                <source>List of habilitations available inHISinOne</source>
+            </trans-unit>
+
+            <trans-unit id="titleOrgUnits" resname="titleOrgUnits">
+                <source>HISinOne Organisation units</source>
+            </trans-unit>
+            <trans-unit id="descriptionOrgUnits" resname="descriptionOrgUnits">
+                <source>List of organisation units available inHISinOne</source>
+            </trans-unit>
+
+            <trans-unit id="ListPaginationPrevious" resname="ListPaginationPrevious">
+                <source>Previous</source>
+            </trans-unit>
+            <trans-unit id="ListPaginationNext" resname="ListPaginationNext">
+                <source>Next</source>
+            </trans-unit>
+            <trans-unit id="ShowBackToList" resname="ShowBackToList">
+                <source>Back</source>
+            </trans-unit>
+
+            <trans-unit id="hio.patent.countryOfRegistration" resname="hio.patent.countryOfRegistration">
+                <source>country of registration</source>
+            </trans-unit>
+            <trans-unit id="hio.patent.description" resname="hio.patent.description">
+                <source>description</source>
+            </trans-unit>
+            <trans-unit id="hio.patent.grantDate" resname="hio.patent.grantDate">
+                <source>grant date</source>
+            </trans-unit>
+            <trans-unit id="hio.patent.inventor" resname="hio.patent.inventor">
+                <source>inventor</source>
+            </trans-unit>
+            <trans-unit id="hio.patent.inventors" resname="hio.patent.inventors">
+                <source>inventors</source>
+            </trans-unit>
+            <trans-unit id="hio.patent.patentNumber" resname="hio.patent.patentNumber">
+                <source>patent number</source>
+            </trans-unit>
+            <trans-unit id="hio.patent.priorityPatent" resname="hio.patent.priorityPatent">
+                <source>priority patent</source>
+            </trans-unit>
+            <trans-unit id="hio.patent.publicationNumber" resname="hio.patent.publicationNumber">
+                <source>publication number</source>
+            </trans-unit>
+            <trans-unit id="hio.patent.registrationDate" resname="hio.patent.registrationDate">
+                <source>registration date</source>
+            </trans-unit>
+            <trans-unit id="hio.patent.researchArea" resname="hio.patent.researchArea">
+                <source>research area</source>
+            </trans-unit>
+            <trans-unit id="hio.patent.researchAreas" resname="hio.patent.researchAreas">
+                <source>research areas</source>
+            </trans-unit>
+            <trans-unit id="hio.patent.status" resname="hio.patent.status">
+                <source>status</source>
+            </trans-unit>
+            <trans-unit id="hio.patent.subjectArea" resname="hio.patent.subjectArea">
+                <source>subject area</source>
+            </trans-unit>
+            <trans-unit id="hio.patent.subjectAreas" resname="hio.patent.subjectAreas">
+                <source>subject areas</source>
+            </trans-unit>
+            <trans-unit id="hio.patent.title" resname="hio.patent.title">
+                <source>title</source>
+            </trans-unit>
+            <trans-unit id="hio.patent.visibility" resname="hio.patent.visibility">
+                <source>visibility</source>
+            </trans-unit>
+
+
+            <trans-unit id="hio.list.project.status" resname="hio.list.project.status">
+                <source>Status</source>
+            </trans-unit>
+            <trans-unit id="hio.list.project.visibility" resname="hio.list.project.visibility">
+                <source>Sichtbarkeit</source>
+            </trans-unit>
+            <trans-unit id="hio.list.project.startDate" resname="hio.list.project.startDate">
+                <source>Beginn</source>
+            </trans-unit>
+
+            <trans-unit id="habilitation.admissionDate" resname="habilitation.admissionDate">
+                <source>admission date</source>
+            </trans-unit>
+            <trans-unit id="habilitation.certificateDate" resname="habilitation.certificateDate">
+                <source>certificate date</source>
+            </trans-unit>
+            <trans-unit id="habilitation.endDate" resname="habilitation.endDate">
+                <source>end date</source>
+            </trans-unit>
+            <trans-unit id="habilitation.organization" resname="habilitation.organization">
+                <source>organization</source>
+            </trans-unit>
+            <trans-unit id="habilitation.organizations" resname="habilitation.organizations">
+                <source>organizations</source>
+            </trans-unit>
+            <trans-unit id="habilitation.person" resname="habilitation.person">
+                <source>person</source>
+            </trans-unit>
+            <trans-unit id="habilitation.persons" resname="habilitation.persons">
+                <source>persons</source>
+            </trans-unit>
+            <trans-unit id="habilitation.language" resname="habilitation.language">
+                <source>language</source>
+            </trans-unit>
+            <trans-unit id="habilitation.registrationDate" resname="habilitation.registrationDate">
+                <source>registration date</source>
+            </trans-unit>
+            <trans-unit id="habilitation.researchArea" resname="habilitation.researchArea">
+                <source>research area</source>
+            </trans-unit>
+            <trans-unit id="habilitation.researchAreas" resname="habilitation.researchAreas">
+                <source>research areas</source>
+            </trans-unit>
+            <trans-unit id="habilitation.startDate" resname="habilitation.startDate">
+                <source>start date</source>
+            </trans-unit>
+            <trans-unit id="habilitation.status" resname="habilitation.status">
+                <source>status</source>
+            </trans-unit>
+            <trans-unit id="habilitation.title" resname="habilitation.title">
+                <source>title</source>
+            </trans-unit>
+            <trans-unit id="habilitation.type" resname="habilitation.type">
+                <source>type</source>
+            </trans-unit>
+
+
+            <trans-unit id="doctoralProgram.courseOfStudy" resname="doctoralProgram.courseOfStudy">
+                <source>course of study</source>
+            </trans-unit>
+            <trans-unit id="doctoralProgram.description" resname="doctoralProgram.description">
+                <source>description</source>
+            </trans-unit>
+            <trans-unit id="doctoralProgram.doctoralPositionAvailable" resname="doctoralProgram.doctoralPositionAvailable">
+                <source>doctoral position available</source>
+            </trans-unit>
+            <trans-unit id="doctoralProgram.endDate" resname="doctoralProgram.endDate">
+                <source>end date</source>
+            </trans-unit>
+            <trans-unit id="doctoralProgram.language" resname="doctoralProgram.language">
+                <source>language</source>
+            </trans-unit>
+            <trans-unit id="doctoralProgram.organization" resname="doctoralProgram.organization">
+                <source>organization</source>
+            </trans-unit>
+            <trans-unit id="doctoralProgram.organizations" resname="doctoralProgram.organizations">
+                <source>organizations</source>
+            </trans-unit>
+            <trans-unit id="doctoralProgram.person" resname="doctoralProgram.person">
+                <source>person</source>
+            </trans-unit>
+            <trans-unit id="doctoralProgram.persons" resname="doctoralProgram.persons">
+                <source>persons</source>
+            </trans-unit>
+            <trans-unit id="doctoralProgram.researchArea" resname="doctoralProgram.researchArea">
+                <source>research area</source>
+            </trans-unit>
+            <trans-unit id="doctoralProgram.researchAreas" resname="doctoralProgram.researchAreas">
+                <source>research areas</source>
+            </trans-unit>
+            <trans-unit id="doctoralProgram.scholarshipAvailable" resname="doctoralProgram.scholarshipAvailable">
+                <source>scholarship available</source>
+            </trans-unit>
+            <trans-unit id="doctoralProgram.startDate" resname="doctoralProgram.startDate">
+                <source>start date</source>
+            </trans-unit>
+            <trans-unit id="doctoralProgram.subjectArea" resname="doctoralProgram.subjectArea">
+                <source>subjectArea</source>
+            </trans-unit>
+            <trans-unit id="doctoralProgram.subjectAreas" resname="doctoralProgram.subjectAreas">
+                <source>subjectAreas</source>
+            </trans-unit>
+            <trans-unit id="doctoralProgram.title" resname="doctoralProgram.title">
+                <source>title</source>
+            </trans-unit>
+
+            <trans-unit id="hio.show.project.projectLead" resname="hio.show.project.projectLead">
+                <source>Project lead</source>
+            </trans-unit>
+            <trans-unit id="hio.show.project.type" resname="hio.show.project.type">
+                <source>Type</source>
+            </trans-unit>
+            <trans-unit id="hio.show.project.status" resname="hio.show.project.status">
+                <source>Status</source>
+            </trans-unit>
+            <trans-unit id="hio.show.project.startDate" resname="hio.show.project.startDate">
+                <source>Begin</source>
+            </trans-unit>
+            <trans-unit id="hio.show.project.endDate" resname="hio.show.project.endDate">
+                <source>End</source>
+            </trans-unit>
+            <trans-unit id="hio.show.project.persons" resname="hio.show.project.persons">
+                <source>Persons</source>
+            </trans-unit>
+            <trans-unit id="hio.show.project.objective" resname="hio.show.project.objective">
+                <source>Objective</source>
+            </trans-unit>
+            <trans-unit id="hio.show.project.subjectAreas" resname="hio.show.project.subjectAreas">
+                <source>Subject areas</source>
+            </trans-unit>
+            <trans-unit id="hio.show.project.subjectArea" resname="hio.show.project.subjectArea">
+                <source>Subject area</source>
+            </trans-unit>
+            <trans-unit id="hio.show.project.researchAreas" resname="hio.show.project.researchAreas">
+                <source>Research areas</source>
+            </trans-unit>
+            <trans-unit id="hio.show.project.researchArea" resname="hio.show.project.researchArea">
+                <source>Research area</source>
+            </trans-unit>
+            <trans-unit id="hio.show.project.abstract" resname="hio.show.project.abstract">
+                <source>Abstract</source>
+            </trans-unit>
+            <trans-unit id="hio.show.project.cooperation" resname="hio.show.project.cooperation">
+                <source>Cooperation</source>
+            </trans-unit>
+            <trans-unit id="hio.show.project.downloads" resname="hio.show.project.downloads">
+                <source>Downloads</source>
+            </trans-unit>
+            <trans-unit id="hio.show.project.selectTab" resname="hio.show.project.selectTab">
+                <source>Select a tab</source>
+            </trans-unit>
+            <trans-unit id="hio.show.project.noCooperation" resname="hio.show.project.noCooperation">
+                <source>No cooperation information available.</source>
+            </trans-unit>
+            <trans-unit id="hio.show.project.noDownloads" resname="hio.show.project.noDownloads">
+                <source>No downloads available.</source>
+            </trans-unit>
+
+            <trans-unit id="hio.show.publication.authors" resname="hio.show.publication.authors">
+                <source>Authors</source>
+            </trans-unit>
+            <trans-unit id="hio.show.publication.author" resname="hio.show.publication.author">
+                <source>Author</source>
+            </trans-unit>
+            <trans-unit id="hio.show.publication.journal" resname="hio.show.publication.journal">
+                <source>Journal</source>
+            </trans-unit>
+            <trans-unit id="hio.show.publication.globalIdentifiers.doi" resname="hio.show.publication.globalIdentifiers.doi">
+                <source>DOI</source>
+            </trans-unit>
+            <trans-unit id="hio.show.publication.keywords" resname="hio.show.publication.keywords">
+                <source>Keywords</source>
+            </trans-unit>
+            <trans-unit id="hio.show.publication.keyword" resname="hio.show.publication.keyword">
+                <source>Keyword</source>
+            </trans-unit>
+
+            <trans-unit id="hio.show.publication.conference.name" resname="hio.show.publication.conference.name">
+                <source>Conference</source>
+            </trans-unit>
+            <trans-unit id="hio.show.publication.conference.date" resname="hio.show.publication.conference.date">
+                <source>Date</source>
+            </trans-unit>
+            <trans-unit id="hio.show.publication.conference.language" resname="hio.show.publication.conference.language">
+                <source>Language</source>
+            </trans-unit>
+            <trans-unit id="hio.show.publication.conference.type" resname="hio.show.publication.conference.type">
+                <source>Type</source>
+            </trans-unit>
+
+            <trans-unit id="hio.show.publication.journal.title" resname="hio.show.publication.journal.title">
+                <source>Journal</source>
+            </trans-unit>
+            <trans-unit id="hio.show.publication.journal.issue" resname="hio.show.publication.journal.issue">
+                <source>Issue</source>
+            </trans-unit>
+            <trans-unit id="hio.show.publication.journal.releaseYear" resname="hio.show.publication.journal.releaseYear">
+                <source>Release year</source>
+            </trans-unit>
+            <trans-unit id="hio.show.publication.journal.pageRange" resname="hio.show.publication.journal.pageRange">
+                <source>Page range</source>
+            </trans-unit>
+            <trans-unit id="hio.show.publication.journal.volume" resname="hio.show.publication.journal.volume">
+                <source>Volume</source>
+            </trans-unit>
+
+            <trans-unit id="hio.show.person.ungroupedPublications" resname="hio.show.person.ungroupedPublications">
+                <source>Other publications</source>
+            </trans-unit>
+
+            <trans-unit id="apa-old-doi-prefix" resname="apa-old-doi-prefix">
+                <source>APA (American Psychological Association)</source>
+            </trans-unit>
+            <trans-unit id="harvard-anglia-ruskin-university" resname="harvard-anglia-ruskin-university">
+                <source>Harvard</source>
+            </trans-unit>
+            <trans-unit id="harvard-gesellschaft-fur-bildung-und-forschung-in-europa" resname="harvard-gesellschaft-fur-bildung-und-forschung-in-europa">
+                <source>Harvard (Gesellschaft für Bildung und Forschung in Europa)</source>
+            </trans-unit>
+
+            <trans-unit id="dynamicObjects.title" resname="dynamicObjects.title">
+                <source>Additional information</source>
+            </trans-unit>
+            <trans-unit id="search.placeholder" resname="search.placeholder">
+                <source>Search...</source>
+            </trans-unit>
+            <trans-unit id="search.button" resname="search.button">
+                <source>Search</source>
+            </trans-unit>
+
+            <trans-unit id="person.publications.count" resname="person.publications.count">
+                <source>Number of publications</source>
+            </trans-unit>
+            <trans-unit id="person.projects.count" resname="person.projects.count">
+                <source>Number of projects</source>
+            </trans-unit>
+
+            <trans-unit id="receive-hio-doctoral-programs_reaction" resname="receive-hio-doctoral-programs_reaction">
+                <source>Receive doctoral program data from HIO Middleware</source>
+            </trans-unit>
+            <trans-unit id="receive-hio-habilitations_reaction" resname="receive-hio-habilitations_reaction">
+                <source>Receive habilitation data from HIO Middleware</source>
+            </trans-unit>
+            <trans-unit id="receive-hio-orgunits_reaction" resname="receive-hio-orgunits_reaction">
+                <source>Receive organisation unit data from HIO Middleware</source>
+            </trans-unit>
+            <trans-unit id="receive-hio-patents_reaction" resname="receive-hio-patents_reaction">
+                <source>Receive patent data from HIO Middleware</source>
+            </trans-unit>
+            <trans-unit id="receive-hio-persons_reaction" resname="receive-hio-persons_reaction">
+                <source>Receive person data from HIO Middleware</source>
+            </trans-unit>
+            <trans-unit id="receive-hio-projects_reaction" resname="receive-hio-projects_reaction">
+                <source>Receive project data from HIO Middleware</source>
+            </trans-unit>
+            <trans-unit id="receive-hio-publications_reaction" resname="receive-hio-publications_reaction">
+                <source>Receive publication data from HIO Middleware</source>
+            </trans-unit>
+
+            <trans-unit id="tx_hiotypo3connector_domain_model_orgunit.object_id" resname="tx_hiotypo3connector_domain_model_orgunit.object_id">
+                <source>Organisation unit HISinOne-ID</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_orgunit.title" resname="tx_hiotypo3connector_domain_model_orgunit.title">
+                <source>Organisation unit title</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

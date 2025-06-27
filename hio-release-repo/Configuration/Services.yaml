@@ -1,0 +1,157 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+  Wtl\HioTypo3Connector\:
+    resource: '../Classes/*'
+  Wtl\HioTypo3Connector\Controller\PublicationController:
+    tags: [ 'backend.controller' ]
+  Wtl\HioTypo3Connector\Controller\ProjectController:
+    tags: [ 'backend.controller' ]
+  Wtl\HioTypo3Connector\Command\DoctoralProgramsImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:doctoralPrograms:import'
+        description: 'Import doctoral program data from HISinOne'
+  Wtl\HioTypo3Connector\Command\HabilitationsImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:habilitations:import'
+        description: 'Import habilitation data from HISinOne'
+  Wtl\HioTypo3Connector\Command\OrgUnitsImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:orgunits:import'
+        description: 'Import organisation unit data from HISinOne'
+  Wtl\HioTypo3Connector\Command\PatentsImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:patents:import'
+        description: 'Import patent data from HISinOne'
+  Wtl\HioTypo3Connector\Command\PersonsImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:persons:import'
+        description: 'Import person data from HISinOne'
+  Wtl\HioTypo3Connector\Command\ProjectsImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:projects:import'
+        description: 'Import project data from HISinOne'
+  Wtl\HioTypo3Connector\Command\PublicationsImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:publications:import'
+        description: 'Import publication data from HISinOne'
+
+  Wtl\HioTypo3Connector\Command\RequestHioDoctoralProgramImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:request:doctoralProgram:import'
+        description: 'Request Import of doctoral program data'
+  Wtl\HioTypo3Connector\Command\RequestHioHabilitationImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:request:habilitation:import'
+        description: 'Request Import of habilitation data'
+  Wtl\HioTypo3Connector\Command\RequestHioOrgUnitImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:request:orgunit:import'
+        description: 'Request Import of organisation unit data'
+  Wtl\HioTypo3Connector\Command\RequestHioPatentImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:request:patent:import'
+        description: 'Request Import of patent data'
+  Wtl\HioTypo3Connector\Command\RequestHioPersonImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:request:person:import'
+        description: 'Request Import of person data'
+  Wtl\HioTypo3Connector\Command\RequestHioProjectImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:request:project:import'
+        description: 'Request Import of project data'
+  Wtl\HioTypo3Connector\Command\RequestHioPublicationImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:request:publication:import'
+        description: 'Request Import of publication data'
+
+  Wtl\HioTypo3Connector\EventListener\ReceiveHioDoctoralProgramListener:
+    tags:
+      - name: event.listener
+        identifier: 'receiveHioDoctoralProgramListener'
+  Wtl\HioTypo3Connector\EventListener\ReceiveHioHabilitationListener:
+    tags:
+      - name: event.listener
+        identifier: 'receiveHioHabilitationListener'
+  Wtl\HioTypo3Connector\EventListener\ReceiveHioOrgUnitListener:
+    tags:
+      - name: event.listener
+        identifier: 'receiveHioOrgUnitListener'
+  Wtl\HioTypo3Connector\EventListener\ReceiveHioPatentListener:
+    tags:
+      - name: event.listener
+        identifier: 'receiveHioPatentListener'
+  Wtl\HioTypo3Connector\EventListener\ReceiveHioPersonListener:
+    tags:
+      - name: event.listener
+        identifier: 'receiveHioPersonListener'
+  Wtl\HioTypo3Connector\EventListener\ReceiveHioProjectListener:
+    tags:
+      - name: event.listener
+        identifier: 'receiveHioProjectListener'
+  Wtl\HioTypo3Connector\EventListener\ReceiveHioPublicationListener:
+    tags:
+      - name: event.listener
+        identifier: 'receiveHioPublicationListener'
+
+  Wtl\HioTypo3Connector\EventListener\AttachHioDoctoralProgramToHioPersonsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioDoctoralProgramToHioPersonsListener'
+  Wtl\HioTypo3Connector\EventListener\AttachHioHabilitationToHioPersonsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioHabilitationToHioPersonsListener'
+  Wtl\HioTypo3Connector\EventListener\AttachHioPublicationToHioPersonsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioPublicationToHioPersonsListener'
+  Wtl\HioTypo3Connector\EventListener\AttachHioProjectToHioPersonsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioProjectToHioPersonsListener'
+  Wtl\HioTypo3Connector\EventListener\AttachHioPatentToHioPersonsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioPatentToHioPersonsListener'
+
+  Wtl\HioTypo3Connector\EventListener\AttachHioPersonToHioDoctoralProgramsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioPersonToHioDoctoralProgramsListener'
+  Wtl\HioTypo3Connector\EventListener\AttachHioPersonToHioHabilitationsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioPersonToHioHabilitationsListener'
+  Wtl\HioTypo3Connector\EventListener\AttachHioPersonToHioOrgUnitsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioPersonToHioOrgUnitsListener'
+  Wtl\HioTypo3Connector\EventListener\AttachHioPersonToHioPatentsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioPersonToHioPatentsListener'
+  Wtl\HioTypo3Connector\EventListener\AttachHioPersonToHioProjectsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioPersonToHioProjectsListener'
+  Wtl\HioTypo3Connector\EventListener\AttachHioPersonToHioPublicationsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioPersonToHioPublicationsListener'
