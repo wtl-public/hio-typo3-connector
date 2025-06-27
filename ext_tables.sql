@@ -9,7 +9,7 @@ CREATE TABLE tx_hiotypo3connector_domain_model_project
 CREATE TABLE tx_hiotypo3connector_domain_model_publication
 (
     object_id    INT(11)  DEFAULT '0' NOT NULL,
-    title        VARCHAR(255) DEFAULT '',
+    title     LONGTEXT DEFAULT '',
     details      MEDIUMBLOB,
     search_index MEDIUMBLOB,
     type         VARCHAR(255) DEFAULT '',
