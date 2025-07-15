@@ -85,6 +85,11 @@ services:
       - name: console.command
         command: 'hio:request:publication:import'
         description: 'Request Import of publication data'
+  Wtl\HioTypo3Connector\Command\RequestHioSpinOffImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:request:spinoff:import'
+        description: 'Request Import of spinoff data'
 
   Wtl\HioTypo3Connector\EventListener\ReceiveHioDoctoralProgramListener:
     tags:
