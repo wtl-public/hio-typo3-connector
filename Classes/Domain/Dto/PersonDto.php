@@ -6,7 +6,7 @@ namespace Wtl\HioTypo3Connector\Domain\Dto;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use Wtl\HioTypo3Connector\Domain\Dto\Collection\DoctoralProgramDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Collection\HabilitationDto;
-use Wtl\HioTypo3Connector\Domain\Dto\Collection\OrgUnitDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Collection\PersonOrgUnitDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Collection\PatentDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Collection\ProjectDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Collection\PublicationDto;
@@ -115,7 +115,7 @@ class PersonDto
 
         $orgUnits = [];
         foreach ($data['orgUnits'] ?? [] as $orgUnit) {
-            $orgUnits[] = OrgUnitDto::fromArray($orgUnit);
+            $orgUnits[] = PersonOrgUnitDto::fromArray($orgUnit);
         }
         $dto->setOrgUnits($orgUnits);
 

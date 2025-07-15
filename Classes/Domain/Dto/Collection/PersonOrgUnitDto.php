@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto\Collection;
 
-class OrgUnitDto
+class PersonOrgUnitDto
 {
     protected int $id;
     protected string $name = '';
