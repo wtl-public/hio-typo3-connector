@@ -429,6 +429,9 @@
             <trans-unit id="receive-hio-publications_reaction" resname="receive-hio-publications_reaction">
                 <source>Receive publication data from HIO Middleware</source>
             </trans-unit>
+            <trans-unit id="receive-hio-spinoffs_reaction" resname="receive-hio-spinoffs_reaction">
+                <source>Receive spinoff data from HIO Middleware</source>
+            </trans-unit>
 
             <trans-unit id="tx_hiotypo3connector_domain_model_orgunit.object_id" resname="tx_hiotypo3connector_domain_model_orgunit.object_id">
                 <source>Organisation unit HISinOne-ID</source>
