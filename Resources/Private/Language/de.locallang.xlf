@@ -87,7 +87,7 @@
             </trans-unit>
             <trans-unit id="descriptionSpinOffs" resname="descriptionSpinOffs">
                 <source>List of spinoffs available in HISinOne</source>
-                <target>Liste aller in HISinOne verfügbaren Ausgründungen</target
+                <target>Liste aller in HISinOne verfügbaren Ausgründungen</target>
             </trans-unit>
 
             <trans-unit id="titlePatents" resname="titlePatents">
