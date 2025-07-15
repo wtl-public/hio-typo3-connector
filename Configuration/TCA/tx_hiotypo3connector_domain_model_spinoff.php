@@ -74,7 +74,7 @@ return [
         ],
         'object_id' => [
             'exclude' => true,
-            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_orgunit.object_id',
+            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_spinoff.object_id',
             'config' => [
                 'type' => 'input',
                 'size' => 60,
@@ -84,7 +84,7 @@ return [
             ],
         ],
         'name' => [
-            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_orgunit.name',
+            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_spinoff.name',
             'config' => [
                 'type' => 'input',
                 'size' => 60,

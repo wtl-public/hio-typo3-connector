@@ -49,6 +49,13 @@ ExtensionUtility::registerPlugin(
 );
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
+    'Spinofflist',
+    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titleSpinOffs',
+    'tx-hio_typo3_connector-list-of-spinoffs',
+);
+
+ExtensionUtility::registerPlugin(
+    'HioTypo3Connector',
     'Selectedpersonhabilitationlist',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonHabilitations',
     'tx-hio_typo3_connector-habilitations',
