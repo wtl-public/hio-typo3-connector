@@ -29,4 +29,8 @@ return [
         'path' => '/hio/typo3/connector/orgunit',
         'target' => 'Wtl\HioTypo3Connector\Controller\OrgUnitController',
     ],
+    'tx_hio_typo3_connector_spinoff' => [
+        'path' => '/hio/typo3/connector/spinoff',
+        'target' => 'Wtl\HioTypo3Connector\Controller\SpinOffController',
+    ],
 ];
