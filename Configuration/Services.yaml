@@ -114,6 +114,10 @@ services:
     tags:
       - name: event.listener
         identifier: 'receiveHioPublicationListener'
+  Wtl\HioTypo3Connector\EventListener\ReceiveHioSpinOffListener:
+    tags:
+      - name: event.listener
+        identifier: 'receiveHioSpinOffListener'
 
   Wtl\HioTypo3Connector\EventListener\AttachHioDoctoralProgramToHioPersonsListener:
     tags:
