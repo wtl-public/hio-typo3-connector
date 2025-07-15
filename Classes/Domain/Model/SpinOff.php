@@ -9,7 +9,7 @@ class SpinOff extends AbstractEntity
 {
     protected int $objectId = 0;
 
-    protected string $title = '';
+    protected string $name = '';
 
     /**
      * @var string
@@ -30,13 +30,13 @@ class SpinOff extends AbstractEntity
         $this->objectId = $objectId;
     }
 
-    public function getTitle(): string
+    public function getName(): string
     {
-        return $this->title;
+        return $this->name;
     }
-    public function setTitle($title): void
+    public function setName($name): void
     {
-        $this->title = $title;
+        $this->name = $name;
     }
 
     public function getDetails(): mixed
