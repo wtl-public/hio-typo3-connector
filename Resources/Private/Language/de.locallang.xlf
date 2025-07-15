@@ -59,7 +59,7 @@
                 <target>HISinOne Promotionen</target>
             </trans-unit>
             <trans-unit id="descriptionDoctoralPrograms" resname="descriptionDoctoralPrograms">
-                <source>List of doctoral programs available inHISinOne</source>
+                <source>List of doctoral programs available in HISinOne</source>
                 <target>Liste aller in HISinOne verfügbaren Promotionen</target>
             </trans-unit>
 
@@ -68,7 +68,7 @@
                 <target>HISinOne Habilitationen</target>
             </trans-unit>
             <trans-unit id="descriptionHabilitations" resname="descriptionHabilitations">
-                <source>List of habilitations available inHISinOne</source>
+                <source>List of habilitations available in HISinOne</source>
                 <target>Liste aller in HISinOne verfügbaren Habilitationen</target>
             </trans-unit>
 
@@ -77,8 +77,17 @@
                 <target>HISinOne Organisationseinheiten</target>
             </trans-unit>
             <trans-unit id="descriptionOrgUnits" resname="descriptionOrgUnits">
-                <source>List of organisation units available inHISinOne</source>
+                <source>List of organisation units available in HISinOne</source>
                 <target>Liste aller in HISinOne verfügbaren Organisationseinheiten</target>
+            </trans-unit>
+
+            <trans-unit id="titleSpinOffs" resname="titleSpinOffs">
+                <source>HISinOne Spin Offs</source>
+                <target>HISinOne Ausgründungen</target>
+            </trans-unit>
+            <trans-unit id="descriptionSpinOffs" resname="descriptionSpinOffs">
+                <source>List of spinoffs available in HISinOne</source>
+                <target>Liste aller in HISinOne verfügbaren Ausgründungen</target
             </trans-unit>
 
             <trans-unit id="titlePatents" resname="titlePatents">
@@ -86,7 +95,7 @@
                 <target>HISinOne Patente</target>
             </trans-unit>
             <trans-unit id="descriptionPatents" resname="descriptionPatents">
-                <source>List of patents available inHISinOne</source>
+                <source>List of patents available in HISinOne</source>
                 <target>Liste aller in HISinOne verfügbaren Patente</target>
             </trans-unit>
             <trans-unit id="patentsTable" resname="patentsTable">
@@ -470,6 +479,10 @@
             <trans-unit id="tx_hiotypo3connector_domain_model_publication" resname="tx_hiotypo3connector_domain_model_publication">
                 <source>Publications</source>
                 <target>Publikationen</target>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_spinoff" resname="tx_hiotypo3connector_domain_model_spinoff">
+                <source>SpinOffs</source>
+                <target>Ausgründungen</target
             </trans-unit>
 
             <trans-unit id="apa-old-doi-prefix" resname="apa-old-doi-prefix">

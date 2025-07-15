@@ -34,5 +34,8 @@ plugin.tx_hiotypo3connector {
     publications {
       personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.publications.personTargetPageUid}
     }
+    spinoffs {
+      personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.spinoffs.personTargetPageUid}
+    }
   }
 }

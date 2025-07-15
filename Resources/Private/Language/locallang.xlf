@@ -46,12 +46,15 @@
             <trans-unit id="tx_hiotypo3connector_domain_model_publication" resname="tx_hiotypo3connector_domain_model_publication">
                 <source>Publications</source>
             </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_spinoff" resname="tx_hiotypo3connector_domain_model_spinoff">
+                <source>SpinOffs</source>
+            </trans-unit>
 
             <trans-unit id="titleProjects" resname="titleProjects">
                 <source>HISinOne Projects</source>
             </trans-unit>
             <trans-unit id="descriptionProjects" resname="descriptionProjects">
-                <source>List of projects available inHISinOne</source>
+                <source>List of projects available in HISinOne</source>
             </trans-unit>
             <trans-unit id="projectsTable" resname="projectsTable">
                 <source>HIO Projects</source>
@@ -64,7 +67,7 @@
                 <source>HISinOne Patents</source>
             </trans-unit>
             <trans-unit id="descriptionPatents" resname="descriptionPatents">
-                <source>List of patents available inHISinOne</source>
+                <source>List of patents available in HISinOne</source>
             </trans-unit>
             <trans-unit id="patentsTable" resname="patentsTable">
                 <source>HIO Patents</source>
@@ -84,21 +87,28 @@
                 <source>HISinOne Doctoral programs</source>
             </trans-unit>
             <trans-unit id="descriptionDoctoralPrograms" resname="descriptionDoctoralPrograms">
-                <source>List of doctoral programs available inHISinOne</source>
+                <source>List of doctoral programs available in HISinOne</source>
             </trans-unit>
 
             <trans-unit id="titleHabilitations" resname="titleHabilitations">
                 <source>HISinOne Habilitations</source>
             </trans-unit>
             <trans-unit id="descriptionHabilitations" resname="descriptionHabilitations">
-                <source>List of habilitations available inHISinOne</source>
+                <source>List of habilitations available in HISinOne</source>
             </trans-unit>
 
             <trans-unit id="titleOrgUnits" resname="titleOrgUnits">
                 <source>HISinOne Organisation units</source>
             </trans-unit>
             <trans-unit id="descriptionOrgUnits" resname="descriptionOrgUnits">
-                <source>List of organisation units available inHISinOne</source>
+                <source>List of organisation units available in HISinOne</source>
+            </trans-unit>
+
+            <trans-unit id="titleSpinOffs" resname="titleSpinOffs">
+                <source>HISinOne Spin Offs</source>
+            </trans-unit>
+            <trans-unit id="descriptionSpinOffs" resname="descriptionSpinOffs">
+                <source>List of spinoffs available in HISinOne</source>
             </trans-unit>
 
             <trans-unit id="ListPaginationPrevious" resname="ListPaginationPrevious">
