@@ -74,3 +74,11 @@ CREATE TABLE tx_hiotypo3connector_domain_model_spinoff
     details   MEDIUMBLOB,
     search_index MEDIUMBLOB,
 );
+
+CREATE TABLE tx_hiotypo3connector_domain_model_researchinfrastructure
+(
+    object_id INT(11)  DEFAULT '0' NOT NULL,
+    title     LONGTEXT DEFAULT '',
+    details   MEDIUMBLOB,
+    search_index MEDIUMBLOB,
+);

@@ -41,8 +41,8 @@ class ProjectDto
     /**
      * @var SubjectAreaDto[]
      */
-    protected string $status = '';
     protected array $subjectAreas = [];
+    protected string $status = '';
     protected string $title = '';
     protected string $type = '';
     protected string $visibility = '';
