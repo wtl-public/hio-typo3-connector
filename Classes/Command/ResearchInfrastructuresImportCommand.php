@@ -10,19 +10,19 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
-use Wtl\HioTypo3Connector\Domain\Dto\SpinOffDto;
-use Wtl\HioTypo3Connector\Event\ReceiveHioSpinOffEvent;
-use Wtl\HioTypo3Connector\Services\HioSpinOffService;
+use Wtl\HioTypo3Connector\Domain\Dto\ResearchInfrastructureDto;
+use Wtl\HioTypo3Connector\Event\ReceiveHioResearchInfrastructureEvent;
+use Wtl\HioTypo3Connector\Services\HioResearchInfrastructureService;
 use Wtl\HioTypo3Connector\Trait\WithConfigureImportCommandTrait;
 
-class SpinOffsImportCommand extends Command
+class ResearchInfrastructuresImportCommand extends Command
 {
     use WithConfigureImportCommandTrait;
 
-    protected static $defaultName = 'hio:spinoffs:import';
+    protected static $defaultName = 'hio:researchinfrastructures:import';
 
     public function __construct(
-        private readonly HioSpinOffService $service,
+        private readonly HioResearchInfrastructureService $service,
         protected readonly EventDispatcherInterface $eventDispatcher
     )
     {
@@ -46,23 +46,23 @@ class SpinOffsImportCommand extends Command
 
         $currentPage = 1;
         do {
-            /** @var SpinOffDto[] $spinOffs */
-            $spinOffs = $this->service->getSpinOffs($currentPage);
+            /** @var ResearchInfrastructureDto[] $researchInfrastructureDtos */
+            $researchInfrastructureDtos = $this->service->getResearchInfrastructures($currentPage);
             if ($this->service->getMeta()->getTotal() === 0) {
-                $output->writeln('No new spin-offs found');
+                $output->writeln('No new research infrastructures found');
                 return Command::SUCCESS;
             }
 
-            foreach ($spinOffs as $spinOff) {
+            foreach ($researchInfrastructureDtos as $researchInfrastructureDto) {
                 $this->eventDispatcher->dispatch(
-                    new ReceiveHioSpinOffEvent($spinOff, (int)$input->getArgument('storagePageId'))
+                    new ReceiveHioResearchInfrastructureEvent($researchInfrastructureDto, (int)$input->getArgument('storagePageId'))
                 );
             }
 
             $currentPage++;
         } while ($currentPage <= $this->service->getMeta()->getLastPage());
 
-        $output->writeln($this->service->getMeta()->getTotal() . ' spin-offs imported successfully');
+        $output->writeln($this->service->getMeta()->getTotal() . ' research infrastructures imported successfully');
         return Command::SUCCESS;
     }
 }
