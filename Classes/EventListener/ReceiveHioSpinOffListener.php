@@ -11,7 +11,7 @@ use Wtl\HioTypo3Connector\Event\ReceiveHioSpinOffEvent;
 class ReceiveHioSpinOffListener
 {
     public function __construct(
-        protected readonly SpinOffRepository $spinOffRepository,
+        protected readonly SpinOffRepository $repository,
         protected readonly EventDispatcherInterface $eventDispatcher
     )
     {
@@ -19,6 +19,6 @@ class ReceiveHioSpinOffListener
 
     public function __invoke(ReceiveHioSpinOffEvent $event): void
     {
-        $this->spinOffRepository->save($event->getHioSpinOff(), $event->getStoragePid());
+        $this->repository->save($event->getHioSpinOff(), $event->getStoragePid());
     }
 }

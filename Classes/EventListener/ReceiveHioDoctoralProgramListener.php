@@ -12,14 +12,14 @@ use Wtl\HioTypo3Connector\Event\ReceiveHioDoctoralProgramEvent;
 class ReceiveHioDoctoralProgramListener
 {
     public function __construct(
-        protected readonly DoctoralProgramRepository $doctoralProgramRepository,
+        protected readonly DoctoralProgramRepository $repository,
         protected readonly EventDispatcherInterface  $eventDispatcher
     )
     {
     }
     public function __invoke(ReceiveHioDoctoralProgramEvent $event): void
     {
-        $this->doctoralProgramRepository->save($event->getHioDoctoralProgram(), $event->getStoragePid());
+        $this->repository->save($event->getHioDoctoralProgram(), $event->getStoragePid());
         $hioDoctoralProgramObjectId = $event->getHioDoctoralProgram()->getObjectId();
         $hioPersonObjectIds = array_map(
             static fn($hioPerson) => $hioPerson->getId(),

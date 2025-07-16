@@ -12,7 +12,7 @@ use Wtl\HioTypo3Connector\Event\ReceiveHioPatentEvent;
 class ReceiveHioPatentListener
 {
     public function __construct(
-        protected readonly PatentRepository $patentRepository,
+        protected readonly PatentRepository $repository,
         protected readonly EventDispatcherInterface $eventDispatcher
     )
     {
@@ -20,7 +20,7 @@ class ReceiveHioPatentListener
 
     public function __invoke(ReceiveHioPatentEvent $event): void
     {
-        $this->patentRepository->save($event->getHioPatent(), $event->getStoragePid());
+        $this->repository->save($event->getHioPatent(), $event->getStoragePid());
         $hioPatentObjectId = $event->getHioPatent()->getObjectId();
         $hioPersonObjectIds = array_map(
             static fn($hioPerson) => $hioPerson->getId(),

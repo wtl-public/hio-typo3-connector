@@ -18,7 +18,7 @@ use Wtl\HioTypo3Connector\Event\ReceiveHioPersonEvent;
 class ReceiveHioPersonListener
 {
     public function __construct(
-        protected readonly PersonRepository $personRepository,
+        protected readonly PersonRepository $repository,
         protected readonly EventDispatcherInterface $eventDispatcher
     )
     {
@@ -26,7 +26,7 @@ class ReceiveHioPersonListener
 
     public function __invoke(ReceiveHioPersonEvent $event): void
     {
-        $this->personRepository->save($event->getHioPerson(), $event->getStoragePid());
+        $this->repository->save($event->getHioPerson(), $event->getStoragePid());
 
         $this->attachRelatedDoctoralPrograms($event->getHioPerson());
         $this->attachRelatedHabilitations($event->getHioPerson());

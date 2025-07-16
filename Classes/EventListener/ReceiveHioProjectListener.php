@@ -12,7 +12,7 @@ use Wtl\HioTypo3Connector\Event\ReceiveHioProjectEvent;
 class ReceiveHioProjectListener
 {
     public function __construct(
-        protected readonly ProjectRepository $projectRepository,
+        protected readonly ProjectRepository $repository,
         protected readonly EventDispatcherInterface $eventDispatcher
     )
     {
@@ -20,7 +20,7 @@ class ReceiveHioProjectListener
 
     public function __invoke(ReceiveHioProjectEvent $event): void
     {
-        $this->projectRepository->save($event->getHioProject(), $event->getStoragePid());
+        $this->repository->save($event->getHioProject(), $event->getStoragePid());
         $hioProjectObjectId = $event->getHioProject()->getObjectId();
         $hioPersonObjectIds = array_map(
             static fn($hioPerson) => $hioPerson->getId(),

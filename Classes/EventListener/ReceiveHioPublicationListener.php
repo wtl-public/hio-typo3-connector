@@ -12,7 +12,7 @@ use Wtl\HioTypo3Connector\Event\ReceiveHioPublicationEvent;
 class ReceiveHioPublicationListener
 {
     public function __construct(
-        protected readonly PublicationRepository    $publicationRepository,
+        protected readonly PublicationRepository    $repository,
         protected readonly EventDispatcherInterface $eventDispatcher
     )
     {
@@ -20,7 +20,7 @@ class ReceiveHioPublicationListener
 
     public function __invoke(ReceiveHioPublicationEvent $event): void
     {
-        $this->publicationRepository->save($event->getHioPublication(), $event->getStoragePid());
+        $this->repository->save($event->getHioPublication(), $event->getStoragePid());
         $hioPublicationObjectId = $event->getHioPublication()->getObjectId();
         $hioPersonObjectIds = array_map(
             static fn($hioPerson) => $hioPerson->getId(),

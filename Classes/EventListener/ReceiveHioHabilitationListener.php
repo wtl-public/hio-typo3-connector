@@ -12,14 +12,14 @@ use Wtl\HioTypo3Connector\Event\ReceiveHioHabilitationEvent;
 class ReceiveHioHabilitationListener
 {
     public function __construct(
-        protected readonly HabilitationRepository $habilitationRepository,
+        protected readonly HabilitationRepository $repository,
         protected readonly EventDispatcherInterface $eventDispatcher
     )
     {
     }
     public function __invoke(ReceiveHioHabilitationEvent $event): void
     {
-        $this->habilitationRepository->save($event->getHioHabilitation(), $event->getStoragePid());
+        $this->repository->save($event->getHioHabilitation(), $event->getStoragePid());
         $hioHabilitationObjectId = $event->getHioHabilitation()->getObjectId();
         $hioPersonObjectIds = array_map(
             static fn($hioPerson) => $hioPerson->getId(),

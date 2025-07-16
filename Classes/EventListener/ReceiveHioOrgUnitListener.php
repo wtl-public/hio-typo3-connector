@@ -11,7 +11,7 @@ use Wtl\HioTypo3Connector\Event\ReceiveHioOrgUnitEvent;
 class ReceiveHioOrgUnitListener
 {
     public function __construct(
-        protected readonly OrgUnitRepository $orgUnitRepository,
+        protected readonly OrgUnitRepository $repository,
         protected readonly EventDispatcherInterface $eventDispatcher
     )
     {
@@ -19,6 +19,6 @@ class ReceiveHioOrgUnitListener
 
     public function __invoke(ReceiveHioOrgUnitEvent $event): void
     {
-        $this->orgUnitRepository->save($event->getHioOrgUnit(), $event->getStoragePid());
+        $this->repository->save($event->getHioOrgUnit(), $event->getStoragePid());
     }
 }
