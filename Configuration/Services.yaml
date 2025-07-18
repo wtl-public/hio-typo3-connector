@@ -48,7 +48,7 @@ services:
     tags:
       - name: console.command
         command: 'hio:spinoffs:import'
-        description: 'Import spin off data from HISinOne'
+        description: 'Import spin-off data from HISinOne'
   Wtl\HioTypo3Connector\Command\ResearchInfrastructuresImportCommand:
     tags:
       - name: console.command

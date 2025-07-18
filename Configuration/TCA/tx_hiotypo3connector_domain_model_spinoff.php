@@ -7,7 +7,7 @@ if (! defined('TYPO3')) {
     die('Access denied.');
 }
 
-$lllPrefix = 'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:';
+$lllPrefix = 'LLL:EXT:hio_typo3_connector/Resources/Private/Language/spinoff.xlf:';
 
 return [
     'ctrl' => [

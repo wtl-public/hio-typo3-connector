@@ -81,15 +81,6 @@
                 <target>Liste aller in HISinOne verfügbaren Organisationseinheiten</target>
             </trans-unit>
 
-            <trans-unit id="titleSpinOffs" resname="titleSpinOffs">
-                <source>HISinOne Spin-offs</source>
-                <target>HISinOne Ausgründungen</target>
-            </trans-unit>
-            <trans-unit id="descriptionSpinOffs" resname="descriptionSpinOffs">
-                <source>List of spin-offs available in HISinOne</source>
-                <target>Liste aller in HISinOne verfügbaren Ausgründungen</target>
-            </trans-unit>
-
             <trans-unit id="titlePatents" resname="titlePatents">
                 <source>HISinOne Patents</source>
                 <target>HISinOne Patente</target>
@@ -480,10 +471,6 @@
                 <source>Publications</source>
                 <target>Publikationen</target>
             </trans-unit>
-            <trans-unit id="tx_hiotypo3connector_domain_model_spinoff" resname="tx_hiotypo3connector_domain_model_spinoff">
-                <source>Spin-offs</source>
-                <target>Ausgründungen</target>
-            </trans-unit>
 
             <trans-unit id="apa-old-doi-prefix" resname="apa-old-doi-prefix">
                 <source>APA (American Psychological Association) </source>
@@ -549,10 +536,6 @@
                 <source>Receive publication data from HIO Middleware</source>
                 <target>Empfang von Publikationen von der HIO Middleware</target>
             </trans-unit>
-            <trans-unit id="receive-hio-spinoffs_reaction" resname="receive-hio-spinoffs_reaction">
-                <source>Receive spin-off data from HIO Middleware</source>
-                <target>Empfang von Ausgründungen von der HIO Middleware</target>
-            </trans-unit>
 
             <trans-unit id="tx_hiotypo3connector_domain_model_orgunit.object_id" resname="tx_hiotypo3connector_domain_model_orgunit.object_id">
                 <source>Organisation unit HISinOne-ID</source>
@@ -561,15 +544,6 @@
             <trans-unit id="tx_hiotypo3connector_domain_model_orgunit.title" resname="tx_hiotypo3connector_domain_model_orgunit.title">
                 <source>Organisation unit title</source>
                 <target>Titel</target>
-            </trans-unit>
-
-            <trans-unit id="tx_hiotypo3connector_domain_model_spinoff.object_id" resname="tx_hiotypo3connector_domain_model_spinoff.object_id">
-                <source>Spin-off HISinOne-ID</source>
-                <target>HISinOne-ID der Ausgründung</target>
-            </trans-unit>
-            <trans-unit id="tx_hiotypo3connector_domain_model_spinoff.title" resname="tx_hiotypo3connector_domain_model_spinoff.title">
-                <source>Spin-off title</source>
-                <target>Titel der Ausgründung</target>
             </trans-unit>
 
         </body>
