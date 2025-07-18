@@ -9,6 +9,9 @@
             <trans-unit id="descriptionResearchInfrastructure" resname="descriptionResearchInfrastructure">
                 <source>List of research infrastructures available in HISinOne</source>
             </trans-unit>
+            <trans-unit id="noResearchInfrastructures" resname="noResearchInfrastructures">
+                <source>No research infrastructures found</source>
+            </trans-unit>
 
             <trans-unit id="receive-hio-researchinfrastructures_reaction" resname="receive-hio-researchinfrastructures_reaction">
                 <source>Receive research infrastructure data from HIO Middleware</source>

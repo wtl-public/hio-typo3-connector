@@ -12,6 +12,10 @@
                 <source>List of organisation units available in HISinOne</source>
                 <target>Liste aller in HISinOne verfügbaren Organisationseinheiten</target>
             </trans-unit>
+            <trans-unit id="noOrgUnits" resname="noOrgUnits">
+                <source>No organization units found</source>
+                <target>Keine Organisationseinheiten gefunden</target>
+            </trans-unit>
 
             <trans-unit id="receive-hio-orgunits_reaction" resname="receive-hio-orgunits_reaction">
                 <source>Receive organisation unit data from HIO Middleware</source>

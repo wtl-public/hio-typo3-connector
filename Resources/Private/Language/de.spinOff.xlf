@@ -11,6 +11,10 @@
                 <source>List of spin-offs available in HISinOne</source>
                 <target>Liste aller in HISinOne verfügbaren Ausgründungen</target>
             </trans-unit>
+            <trans-unit id="noSpinOffs" resname="noSpinOffs">
+                <source>No spin-offs found</source>
+                <target>Keine Ausgründung gefunden</target>
+            </trans-unit>
 
             <trans-unit id="receive-hio-spinoffs_reaction" resname="receive-hio-spinoffs_reaction">
                 <source>Receive spin-off data from HIO Middleware</source>

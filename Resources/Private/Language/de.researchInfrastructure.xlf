@@ -11,6 +11,10 @@
                 <source>List of research infrastructures available in HISinOne</source>
                 <target>Liste der in HISinOne verfügbaren Forschungsinfrastrukturen</target>
             </trans-unit>
+            <trans-unit id="noResearchInfrastructures" resname="noResearchInfrastructures">
+                <source>No research infrastructures found</source>
+                <target>Keine Forschungsinfrastrukturen gefunden</target>
+            </trans-unit>
 
             <trans-unit id="receive-hio-researchinfrastructures_reaction" resname="receive-hio-researchinfrastructures_reaction">
                 <source>Receive research infrastructure data from HIO Middleware</source>
