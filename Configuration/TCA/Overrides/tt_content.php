@@ -49,6 +49,12 @@ ExtensionUtility::registerPlugin(
 );
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
+    'Researchinfrastructurelist',
+    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/researchInfrastructure.xlf:titleResearchInfrastructures',
+    'tx-hio_typo3_connector-list-of-research-infrastructures',
+);
+ExtensionUtility::registerPlugin(
+    'HioTypo3Connector',
     'Spinofflist',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/spinOff.xlf:titleSpinOffs',
     'tx-hio_typo3_connector-list-of-spinoffs',

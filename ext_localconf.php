@@ -11,6 +11,7 @@ use Wtl\HioTypo3Connector\Controller\PublicationController;
 use Wtl\HioTypo3Connector\Controller\PatentController;
 use Wtl\HioTypo3Connector\Controller\DoctoralProgramController;
 use Wtl\HioTypo3Connector\Controller\HabilitationController;
+use Wtl\HioTypo3Connector\Controller\ResearchInfrastructureController;
 use Wtl\HioTypo3Connector\Controller\SpinOffController;
 
 
@@ -86,6 +87,16 @@ ExtensionUtility::configurePlugin(
     [OrgUnitController::class => 'index, show, search'],
     // non-cacheable actions
     [OrgUnitController::class => 'search'],
+);
+ExtensionUtility::configurePlugin(
+// extension name, matching the PHP namespaces (but without the vendor)
+    'HioTypo3Connector',
+    // arbitrary, but unique plugin name (not visible in the backend)
+    'ResearchInfrastructureList',
+    // all actions
+    [ResearchInfrastructureController::class => 'index, show, search'],
+    // non-cacheable actions
+    [ResearchInfrastructureController::class => 'search'],
 );
 ExtensionUtility::configurePlugin(
 // extension name, matching the PHP namespaces (but without the vendor)
