@@ -31,9 +31,6 @@
             <trans-unit id="tx_hiotypo3connector_domain_model_habilitation" resname="tx_hiotypo3connector_domain_model_habilitation">
                 <source>Habilitations</source>
             </trans-unit>
-            <trans-unit id="tx_hiotypo3connector_domain_model_orgunit" resname="tx_hiotypo3connector_domain_model_orgunit">
-                <source>Organization units</source>
-            </trans-unit>
             <trans-unit id="tx_hiotypo3connector_domain_model_patent" resname="tx_hiotypo3connector_domain_model_patent">
                 <source>Patents</source>
             </trans-unit>
@@ -92,13 +89,6 @@
             </trans-unit>
             <trans-unit id="descriptionHabilitations" resname="descriptionHabilitations">
                 <source>List of habilitations available in HISinOne</source>
-            </trans-unit>
-
-            <trans-unit id="titleOrgUnits" resname="titleOrgUnits">
-                <source>HISinOne Organisation units</source>
-            </trans-unit>
-            <trans-unit id="descriptionOrgUnits" resname="descriptionOrgUnits">
-                <source>List of organisation units available in HISinOne</source>
             </trans-unit>
 
             <trans-unit id="ListPaginationPrevious" resname="ListPaginationPrevious">
@@ -404,9 +394,6 @@
             <trans-unit id="receive-hio-habilitations_reaction" resname="receive-hio-habilitations_reaction">
                 <source>Receive habilitation data from HIO Middleware</source>
             </trans-unit>
-            <trans-unit id="receive-hio-orgunits_reaction" resname="receive-hio-orgunits_reaction">
-                <source>Receive organisation unit data from HIO Middleware</source>
-            </trans-unit>
             <trans-unit id="receive-hio-patents_reaction" resname="receive-hio-patents_reaction">
                 <source>Receive patent data from HIO Middleware</source>
             </trans-unit>
@@ -418,13 +405,6 @@
             </trans-unit>
             <trans-unit id="receive-hio-publications_reaction" resname="receive-hio-publications_reaction">
                 <source>Receive publication data from HIO Middleware</source>
-            </trans-unit>
-
-            <trans-unit id="tx_hiotypo3connector_domain_model_orgunit.object_id" resname="tx_hiotypo3connector_domain_model_orgunit.object_id">
-                <source>Organisation unit HISinOne-ID</source>
-            </trans-unit>
-            <trans-unit id="tx_hiotypo3connector_domain_model_orgunit.title" resname="tx_hiotypo3connector_domain_model_orgunit.title">
-                <source>Organisation unit title</source>
             </trans-unit>
 
         </body>

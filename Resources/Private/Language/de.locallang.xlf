@@ -72,15 +72,6 @@
                 <target>Liste aller in HISinOne verfügbaren Habilitationen</target>
             </trans-unit>
 
-            <trans-unit id="titleOrgUnits" resname="titleOrgUnits">
-                <source>HISinOne Organisation units</source>
-                <target>HISinOne Organisationseinheiten</target>
-            </trans-unit>
-            <trans-unit id="descriptionOrgUnits" resname="descriptionOrgUnits">
-                <source>List of organisation units available in HISinOne</source>
-                <target>Liste aller in HISinOne verfügbaren Organisationseinheiten</target>
-            </trans-unit>
-
             <trans-unit id="titlePatents" resname="titlePatents">
                 <source>HISinOne Patents</source>
                 <target>HISinOne Patente</target>
@@ -451,10 +442,6 @@
                 <source>Habilitations</source>
                 <target>Habilitationen</target>
             </trans-unit>
-            <trans-unit id="tx_hiotypo3connector_domain_model_orgunit" resname="tx_hiotypo3connector_domain_model_orgunit">
-                <source>Organization units</source>
-                <target>Organisationseinheiten</target>
-            </trans-unit>
             <trans-unit id="tx_hiotypo3connector_domain_model_patent" resname="tx_hiotypo3connector_domain_model_patent">
                 <source>Patents</source>
                 <target>Patente</target>
@@ -516,10 +503,6 @@
                 <source>Receive habilitation data from HIO Middleware</source>
                 <target>Empfang von Habilitationen von der HIO Middleware</target>
             </trans-unit>
-            <trans-unit id="receive-hio-orgunits_reaction" resname="receive-hio-orgunits_reaction">
-                <source>Receive organisation unit data from HIO Middleware</source>
-                <target>Empfang von Organisationseinheiten von der HIO Middleware</target>
-            </trans-unit>
             <trans-unit id="receive-hio-patents_reaction" resname="receive-hio-patents_reaction">
                 <source>Receive patent data from HIO Middleware</source>
                 <target>Empfang von Patenten von der HIO Middleware</target>
@@ -535,15 +518,6 @@
             <trans-unit id="receive-hio-publications_reaction" resname="receive-hio-publications_reaction">
                 <source>Receive publication data from HIO Middleware</source>
                 <target>Empfang von Publikationen von der HIO Middleware</target>
-            </trans-unit>
-
-            <trans-unit id="tx_hiotypo3connector_domain_model_orgunit.object_id" resname="tx_hiotypo3connector_domain_model_orgunit.object_id">
-                <source>Organisation unit HISinOne-ID</source>
-                <target>ID</target>
-            </trans-unit>
-            <trans-unit id="tx_hiotypo3connector_domain_model_orgunit.title" resname="tx_hiotypo3connector_domain_model_orgunit.title">
-                <source>Organisation unit title</source>
-                <target>Titel</target>
             </trans-unit>
 
         </body>
