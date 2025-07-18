@@ -90,6 +90,11 @@ services:
       - name: console.command
         command: 'hio:request:spinoff:import'
         description: 'Request Import of spinoff data'
+  Wtl\HioTypo3Connector\Command\RequestHioResearchInfrastructureImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:request:researchinfrastructure:import'
+        description: 'Request Import of research infrastructure data'
 
   Wtl\HioTypo3Connector\EventListener\ReceiveHioDoctoralProgramListener:
     tags:
