@@ -3,11 +3,11 @@
     <file source-language="en" target-language="de" datatype="plaintext" original="EXT:hio_typo3_connector/Resources/Private/Language/Modules/researchInfrastructure.xlf" date="2025-07-18T00:00:00Z" product-name="hio_typo3_connector">
         <header/>
         <body>
-            <trans-unit id="titleResearchInfrastructure" resname="titleResearchInfrastructure">
+            <trans-unit id="titleResearchInfrastructures" resname="titleResearchInfrastructures">
                 <source>HISinOne Research infrastructures</source>
                 <target>HISinOne Forschungsinfrastrukturen</target>
             </trans-unit>
-            <trans-unit id="descriptionResearchInfrastructure" resname="descriptionResearchInfrastructure">
+            <trans-unit id="descriptionResearchInfrastructures" resname="descriptionResearchInfrastructures">
                 <source>List of research infrastructures available in HISinOne</source>
                 <target>Liste der in HISinOne verfügbaren Forschungsinfrastrukturen</target>
             </trans-unit>
