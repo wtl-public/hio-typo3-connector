@@ -2,35 +2,35 @@
 
 namespace Wtl\HioTypo3Connector\Domain\Repository;
 
-use Wtl\HioTypo3Connector\Domain\Dto\OrgUnitDto;
-use Wtl\HioTypo3Connector\Domain\Model\OrgUnit;
+use Wtl\HioTypo3Connector\Domain\Dto\ResearchInfrastructureDto;
+use Wtl\HioTypo3Connector\Domain\Model\ResearchInfrastructure;
 
 class ResearchInfrastructureRepository extends BaseRepository
 {
-    public function save(OrgUnitDto $orgUnitDto, $storagePageId): void
+    public function save(ResearchInfrastructureDto $dto, $storagePageId): void
     {
-        $orgUnitModel = $this->findByObjectId($orgUnitDto->getObjectId());
+        $model = $this->findByObjectId($dto->getObjectId());
 
-        if ($orgUnitModel === null) {
-            $orgUnitModel = new OrgUnit();
-            $orgUnitModel->setObjectId($orgUnitDto->getObjectId());
-            $orgUnitModel->setTitle($orgUnitDto->getTitle());
-            $orgUnitModel->setDetails($orgUnitDto->getDetails());
-            $orgUnitModel->setSearchIndex($orgUnitDto->getSearchIndex());
-            $orgUnitModel->setPid($storagePageId);
+        if ($model === null) {
+            $model = new ResearchInfrastructure();
+            $model->setObjectId($dto->getObjectId());
+            $model->setTitle($dto->getTitle());
+            $model->setDetails($dto->getDetails());
+            $model->setSearchIndex($dto->getSearchIndex());
+            $model->setPid($storagePageId);
 
-            $this->add($orgUnitModel);
+            $this->add($model);
         } else {
-            $orgUnitModel->setObjectId($orgUnitDto->getObjectId());
-            $orgUnitModel->setTitle($orgUnitDto->getTitle());
-            $orgUnitModel->setDetails($orgUnitDto->getDetails());
-            $orgUnitModel->setSearchIndex($orgUnitDto->getSearchIndex());
-            $this->update($orgUnitModel);
+            $model->setObjectId($dto->getObjectId());
+            $model->setTitle($dto->getTitle());
+            $model->setDetails($dto->getDetails());
+            $model->setSearchIndex($dto->getSearchIndex());
+            $this->update($model);
         }
         $this->persistenceManager->persistAll();
     }
 
-    public function findByObjectId(int $objectId): ?OrgUnit
+    public function findByObjectId(int $objectId): ?ResearchInfrastructure
     {
         return $this->findOneBy(['objectId' => $objectId]);
     }
