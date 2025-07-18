@@ -82,11 +82,11 @@
             </trans-unit>
 
             <trans-unit id="titleSpinOffs" resname="titleSpinOffs">
-                <source>HISinOne Spin Offs</source>
+                <source>HISinOne Spin-offs</source>
                 <target>HISinOne Ausgründungen</target>
             </trans-unit>
             <trans-unit id="descriptionSpinOffs" resname="descriptionSpinOffs">
-                <source>List of spinoffs available in HISinOne</source>
+                <source>List of spin-offs available in HISinOne</source>
                 <target>Liste aller in HISinOne verfügbaren Ausgründungen</target>
             </trans-unit>
 
@@ -481,7 +481,7 @@
                 <target>Publikationen</target>
             </trans-unit>
             <trans-unit id="tx_hiotypo3connector_domain_model_spinoff" resname="tx_hiotypo3connector_domain_model_spinoff">
-                <source>SpinOffs</source>
+                <source>Spin-offs</source>
                 <target>Ausgründungen</target>
             </trans-unit>
 
@@ -550,7 +550,7 @@
                 <target>Empfang von Publikationen von der HIO Middleware</target>
             </trans-unit>
             <trans-unit id="receive-hio-spinoffs_reaction" resname="receive-hio-spinoffs_reaction">
-                <source>Receive spinoff data from HIO Middleware</source>
+                <source>Receive spin-off data from HIO Middleware</source>
                 <target>Empfang von Ausgründungen von der HIO Middleware</target>
             </trans-unit>
 
@@ -561,6 +561,15 @@
             <trans-unit id="tx_hiotypo3connector_domain_model_orgunit.title" resname="tx_hiotypo3connector_domain_model_orgunit.title">
                 <source>Organisation unit title</source>
                 <target>Titel</target>
+            </trans-unit>
+
+            <trans-unit id="tx_hiotypo3connector_domain_model_spinoff.object_id" resname="tx_hiotypo3connector_domain_model_spinoff.object_id">
+                <source>Spin-off HISinOne-ID</source>
+                <target>HISinOne-ID der Ausgründung</target>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_spinoff.title" resname="tx_hiotypo3connector_domain_model_spinoff.title">
+                <source>Spin-off title</source>
+                <target>Titel der Ausgründung</target>
             </trans-unit>
 
         </body>

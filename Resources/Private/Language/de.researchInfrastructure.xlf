@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="EXT:hio_typo3_connector/Resources/Private/Language/Modules/researchInfrastructure.xlf" date="2025-07-18T00:00:00Z" product-name="hio_typo3_connector">
+        <header/>
+        <body>
+            <trans-unit id="titleResearchInfrastructure" resname="titleResearchInfrastructure">
+                <source>HISinOne Research infrastructures</source>
+                <target>HISinOne Forschungsinfrastrukturen</target>
+            </trans-unit>
+            <trans-unit id="descriptionResearchInfrastructure" resname="descriptionResearchInfrastructure">
+                <source>List of research infrastructures available in HISinOne</source>
+                <target>Liste der in HISinOne verfügbaren Forschungsinfrastrukturen</target>
+            </trans-unit>
+
+            <trans-unit id="receive-hio-researchinfrastructures_reaction" resname="receive-hio-researchinfrastructures_reaction">
+                <source>Receive research infrastructure data from HIO Middleware</source>
+                <target>Forschungsinfrastruktur-Daten von HIO Middleware empfangen</target>
+            </trans-unit>
+
+            <trans-unit id="tx_hiotypo3connector_domain_model_researchinfrastructure" resname="tx_hiotypo3connector_domain_model_researchinfrastructure">
+                <source>Research infrastructure</source>
+                <target>Forschungsinfrastruktur</target>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_researchinfrastructure.object_id" resname="tx_hiotypo3connector_domain_model_researchinfrastructure.object_id">
+                <source>Research infrastructure HISinOne-ID</source>
+                <target>HISinOne-ID der Forschungsinfrastruktur</target>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_researchinfrastructure.title" resname="tx_hiotypo3connector_domain_model_researchinfrastructure.title">
+                <source>Research infrastructure title</source>
+                <target>Titel der Forschungsinfrastruktur</target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>
