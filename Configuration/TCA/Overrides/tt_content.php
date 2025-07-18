@@ -32,7 +32,7 @@ ExtensionUtility::registerPlugin(
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
     'Doctoralprogramlist',
-    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titleDoctoralPrograms',
+    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/doctoralProgram.xlf:titleDoctoralPrograms',
     'tx-hio_typo3_connector-list-of-doctoral-programs',
 );
 ExtensionUtility::registerPlugin(

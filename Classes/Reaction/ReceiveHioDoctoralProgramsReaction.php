@@ -29,7 +29,7 @@ class ReceiveHioDoctoralProgramsReaction implements ReactionInterface
 
     public static function getDescription(): string
     {
-        return 'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:receive-hio-doctoral-programs_reaction';
+        return 'LLL:EXT:hio_typo3_connector/Resources/Private/Language/doctoralProgram.xlf:receive-hio-doctoral-programs_reaction';
     }
 
     public static function getIconIdentifier(): string
