@@ -29,7 +29,7 @@ class ReceiveHioHabilitationsReaction implements ReactionInterface
 
     public static function getDescription(): string
     {
-        return 'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:receive-hio-habilitations_reaction';
+        return 'LLL:EXT:hio_typo3_connector/Resources/Private/Language/habilitation.xlf:receive-hio-habilitations_reaction';
     }
 
     public static function getIconIdentifier(): string

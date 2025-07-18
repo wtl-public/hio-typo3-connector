@@ -28,9 +28,6 @@
             <trans-unit id="tx_hiotypo3connector_domain_model_doctoral_program" resname="tx_hiotypo3connector_domain_model_doctoral_program">
                 <source>Doctoral programs</source>
             </trans-unit>
-            <trans-unit id="tx_hiotypo3connector_domain_model_habilitation" resname="tx_hiotypo3connector_domain_model_habilitation">
-                <source>Habilitations</source>
-            </trans-unit>
             <trans-unit id="tx_hiotypo3connector_domain_model_patent" resname="tx_hiotypo3connector_domain_model_patent">
                 <source>Patents</source>
             </trans-unit>
@@ -82,13 +79,6 @@
             </trans-unit>
             <trans-unit id="descriptionDoctoralPrograms" resname="descriptionDoctoralPrograms">
                 <source>List of doctoral programs available in HISinOne</source>
-            </trans-unit>
-
-            <trans-unit id="titleHabilitations" resname="titleHabilitations">
-                <source>HISinOne Habilitations</source>
-            </trans-unit>
-            <trans-unit id="descriptionHabilitations" resname="descriptionHabilitations">
-                <source>List of habilitations available in HISinOne</source>
             </trans-unit>
 
             <trans-unit id="ListPaginationPrevious" resname="ListPaginationPrevious">
@@ -160,53 +150,6 @@
             <trans-unit id="hio.list.project.startDate" resname="hio.list.project.startDate">
                 <source>Beginn</source>
             </trans-unit>
-
-            <trans-unit id="habilitation.admissionDate" resname="habilitation.admissionDate">
-                <source>admission date</source>
-            </trans-unit>
-            <trans-unit id="habilitation.certificateDate" resname="habilitation.certificateDate">
-                <source>certificate date</source>
-            </trans-unit>
-            <trans-unit id="habilitation.endDate" resname="habilitation.endDate">
-                <source>end date</source>
-            </trans-unit>
-            <trans-unit id="habilitation.organization" resname="habilitation.organization">
-                <source>organization</source>
-            </trans-unit>
-            <trans-unit id="habilitation.organizations" resname="habilitation.organizations">
-                <source>organizations</source>
-            </trans-unit>
-            <trans-unit id="habilitation.person" resname="habilitation.person">
-                <source>person</source>
-            </trans-unit>
-            <trans-unit id="habilitation.persons" resname="habilitation.persons">
-                <source>persons</source>
-            </trans-unit>
-            <trans-unit id="habilitation.language" resname="habilitation.language">
-                <source>language</source>
-            </trans-unit>
-            <trans-unit id="habilitation.registrationDate" resname="habilitation.registrationDate">
-                <source>registration date</source>
-            </trans-unit>
-            <trans-unit id="habilitation.researchArea" resname="habilitation.researchArea">
-                <source>research area</source>
-            </trans-unit>
-            <trans-unit id="habilitation.researchAreas" resname="habilitation.researchAreas">
-                <source>research areas</source>
-            </trans-unit>
-            <trans-unit id="habilitation.startDate" resname="habilitation.startDate">
-                <source>start date</source>
-            </trans-unit>
-            <trans-unit id="habilitation.status" resname="habilitation.status">
-                <source>status</source>
-            </trans-unit>
-            <trans-unit id="habilitation.title" resname="habilitation.title">
-                <source>title</source>
-            </trans-unit>
-            <trans-unit id="habilitation.type" resname="habilitation.type">
-                <source>type</source>
-            </trans-unit>
-
 
             <trans-unit id="doctoralProgram.courseOfStudy" resname="doctoralProgram.courseOfStudy">
                 <source>course of study</source>
@@ -390,9 +333,6 @@
 
             <trans-unit id="receive-hio-doctoral-programs_reaction" resname="receive-hio-doctoral-programs_reaction">
                 <source>Receive doctoral program data from HIO Middleware</source>
-            </trans-unit>
-            <trans-unit id="receive-hio-habilitations_reaction" resname="receive-hio-habilitations_reaction">
-                <source>Receive habilitation data from HIO Middleware</source>
             </trans-unit>
             <trans-unit id="receive-hio-patents_reaction" resname="receive-hio-patents_reaction">
                 <source>Receive patent data from HIO Middleware</source>

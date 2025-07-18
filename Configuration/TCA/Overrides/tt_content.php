@@ -38,19 +38,19 @@ ExtensionUtility::registerPlugin(
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
     'Habilitationlist',
-    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titleHabilitations',
+    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/habilitation.xlf:titleHabilitations',
     'tx-hio_typo3_connector-list-of-habilitations',
 );
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
     'Orgunitlist',
-    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titleOrgUnits',
+    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/orgUnit.xlf:titleOrgUnits',
     'tx-hio_typo3_connector-list-of-orgunits',
 );
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
     'Spinofflist',
-    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titleSpinOffs',
+    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/spinOff.xlf:titleSpinOffs',
     'tx-hio_typo3_connector-list-of-spinoffs',
 );
 

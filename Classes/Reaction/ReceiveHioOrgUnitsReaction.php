@@ -29,7 +29,7 @@ class ReceiveHioOrgUnitsReaction implements ReactionInterface
 
     public static function getDescription(): string
     {
-        return 'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:receive-hio-orgunits_reaction';
+        return 'LLL:EXT:hio_typo3_connector/Resources/Private/Language/orgUnit.xlf:receive-hio-orgunits_reaction';
     }
 
     public static function getIconIdentifier(): string
