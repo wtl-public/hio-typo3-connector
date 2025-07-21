@@ -12,9 +12,7 @@ use TYPO3\CMS\Core\Pagination\SlidingWindowPagination;
 use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 use TYPO3\CMS\Extbase\Property\PropertyMapper;
 use Wtl\HioTypo3Connector\Domain\Model\ResearchInfrastructure;
-use Wtl\HioTypo3Connector\Domain\Model\SpinOff;
 use Wtl\HioTypo3Connector\Domain\Repository\ResearchInfrastructureRepository;
-use Wtl\HioTypo3Connector\Domain\Repository\SpinOffRepository;
 
 #[AsController]
 class ResearchInfrastructureController extends BaseController
