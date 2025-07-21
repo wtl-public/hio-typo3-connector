@@ -57,7 +57,7 @@ ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
     'Spinofflist',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/spinOff.xlf:titleSpinOffs',
-    'tx-hio_typo3_connector-list-of-spinoffs',
+    'tx-hio_typo3_connector-list-of-spin-offs',
 );
 
 ExtensionUtility::registerPlugin(
