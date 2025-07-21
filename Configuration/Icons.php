@@ -33,6 +33,14 @@ return [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/list-of-orgUnits.svg',
     ],
+    'tx-hio_typo3_connector-list-of-research-infrastructures' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/researchInfrastructure.svg',
+    ],
+    'tx-hio_typo3_connector-list-of-spin-offs' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/spinOff.svg',
+    ],
     'tx-hio_typo3_connector-publications' => [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/publication.svg',
