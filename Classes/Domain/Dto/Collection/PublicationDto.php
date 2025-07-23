@@ -9,10 +9,8 @@ use Wtl\HioTypo3Connector\Domain\Dto\Publication\JournalDto;
 
 class PublicationDto
 {
-    protected ?ConferenceDto $conference = null;
     protected string $document = '';
     protected ?int $id = null;
-    protected ?JournalDto $journal = null;
     protected string $resource = '';
     protected ?bool $reviewed = null;
     protected string $status = '';
@@ -20,16 +18,6 @@ class PublicationDto
     protected string $title = '';
     protected string $type = '';
     protected string $visibility = '';
-
-    public function getConference(): ?ConferenceDto
-    {
-        return $this->conference;
-    }
-
-    public function setConference(?ConferenceDto $conference): void
-    {
-        $this->conference = $conference;
-    }
 
     public function getDocument(): string
     {
@@ -49,16 +37,6 @@ class PublicationDto
     public function setId(?int $id): void
     {
         $this->id = $id;
-    }
-
-    public function getJournal(): ?JournalDto
-    {
-        return $this->journal;
-    }
-
-    public function setJournal(?JournalDto $journal): void
-    {
-        $this->journal = $journal;
     }
 
     public function getResource(): string
@@ -134,14 +112,8 @@ class PublicationDto
     public static function fromArray(array $data): self
     {
         $dto = new self();
-        if (is_array($data['conference'])) {
-            $dto->setConference(ConferenceDto::fromArray($data['conference']));
-        }
         $dto->setDocument($data['document'] ?? '');
         $dto->setId($data['id'] ?? null);
-        if (is_array($data['journal'])) {
-            $dto->setJournal(JournalDto::fromArray($data['journal']));
-        }
         $dto->setResource($data['resource'] ?? '');
         $dto->setReviewed($data['reviewed'] ?? null);
         $dto->setStatus($data['status'] ?? '');
