@@ -2,10 +2,33 @@
 Beim HISinOne TYPO3 Connector handelt es sich um eine TYPO3 Extension, die es ermöglicht, Forschungsdaten aus 
 HISinOne (HIO) in TYPO3 zu importieren und anzuzeigen. 
 
-Die Extension unterstützt aktuell die Datentypen Personen, Projekte, Publikationen, Promotionen, Habilitationen und Patente.
+Die Extension unterstützt aktuell die folgenden Datentypen:
+* Personen 
+* Projekte
+* Publikationen
+* Organisationseinheiten
+* Promotionen
+* Ausgründungen
+* Habilitationen
+* Patente
 
 Damit die Extension genutzt werden kann, muss die Middleware "HIO-Publisher - Publisher für HISinOne" installiert und konfiguriert sein.
 Nähere Informationen dazu finden Sie hier https://hio-publisher.de.
+
+## Für Agenturen
+Die HISinOne TYPO3 Connector Extension ist eine Open Source TYPO3 Extension, die von der WEBTEAM LEIPZIG GmbH entwickelt wurde. 
+Sie ist für den Einsatz in TYPO3 Version 12.4 und höher geeignet und kann von Agenturen und TYPO3 Entwicklerinnen und Entwicklern genutzt werden,
+um Forschungsdaten aus HISinOne in TYPO3 zu integrieren.
+
+Solltet Euch bei der Integration der HISinOne TYPO3 Connector Extension in Euer Projekt Unterstützung benötigen, 
+könnt Ihr Euch gerne an und wenden.
+
+**WEBTEAM LEIPZIG GmbH**\
+Gutenbergplatz 1\
+04103 Leipzig
+
+Email: info+hio@wtl.de\
+Web: https://hio-publisher.de
 
 ## Initiales Setup
 
