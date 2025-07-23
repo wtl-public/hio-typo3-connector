@@ -23,12 +23,12 @@ um Forschungsdaten aus HISinOne in TYPO3 zu integrieren.
 Solltet Euch bei der Integration der HISinOne TYPO3 Connector Extension in Euer Projekt Unterstützung benötigen, 
 könnt Ihr Euch gerne an und wenden.
 
-**WEBTEAM LEIPZIG GmbH**\
-Gutenbergplatz 1\
+**WEBTEAM LEIPZIG GmbH**  
+Gutenbergplatz 1  
 04103 Leipzig
 
-Email: info+hio@wtl.de\
-Web: https://hio-publisher.de
+Email: <mailto:info+hio@wtl.de>  
+Web: <https://hio-publisher.de>
 
 ## Initiales Setup
 
