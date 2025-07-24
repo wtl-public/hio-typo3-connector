@@ -34,9 +34,14 @@ class ProjectDto
      */
     protected array $persons = [];
     /**
-     * @var ResearchAreaDto[]
+     * @var string[]
      */
     protected array $researchAreas = [];
+    /**
+     * @var string[]
+     */
+    protected array $researchAreasKdsf = [];
+    protected string $shorttext = '';
     protected ?\DateTime $startDate = null;
     /**
      * @var SubjectAreaDto[]
@@ -45,6 +50,7 @@ class ProjectDto
     protected string $status = '';
     protected string $title = '';
     protected string $type = '';
+    protected string $uniquename = '';
     protected string $visibility = '';
 
     public function getTitle(): string
@@ -165,6 +171,33 @@ class ProjectDto
         $this->researchAreas = $researchAreas;
     }
 
+    public function getResearchAreasKdsf(): array
+    {
+        return $this->researchAreasKdsf;
+    }
+    public function setResearchAreasKdsf(array $researchAreasKdsf): void
+    {
+        $this->researchAreasKdsf = $researchAreasKdsf;
+    }
+
+    public function getUniquename(): string
+    {
+        return $this->uniquename;
+    }
+    public function setUniquename(string $uniquename): void
+    {
+        $this->uniquename = $uniquename;
+    }
+
+    public function getShorttext(): string
+    {
+        return $this->shorttext;
+    }
+    public function setShorttext(string $shorttext): void
+    {
+        $this->shorttext = $shorttext;
+    }
+
     public function getPersons(): array
     {
         return $this->persons;
@@ -190,9 +223,13 @@ class ProjectDto
         if (isset($data['startDate'])) {
             $project->setStartDate(new \DateTime($data['startDate']));
         }
+        $project->setResearchAreas($data['researchAreas'] ?? []);
+        $project->setResearchAreasKdsf($data['researchAreasKdsf'] ?? []);
+        $project->setShorttext($data['shorttext'] ?? '');
         $project->setStatus($data['status'] ?? '');
         $project->setTitle($data['title'] ?? '');
         $project->setType($data['type'] ?? '');
+        $project->setUniquename($data['uniquename'] ?? '');
         $project->setVisibility($data['visibility'] ?? '');
 
         $members = [];
