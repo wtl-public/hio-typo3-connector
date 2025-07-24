@@ -67,6 +67,11 @@ plugin.tx_hiotypo3connector {
       publications {
         personTargetPageUid = 9
       }
+      projectDetails {
+        persons {
+          filterProjectLead = Projektleiter/-in
+        }
+      }
     }
 }
 ```
