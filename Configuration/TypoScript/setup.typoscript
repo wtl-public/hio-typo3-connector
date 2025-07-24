@@ -37,5 +37,10 @@ plugin.tx_hiotypo3connector {
     spinoffs {
       personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.spinoffs.personTargetPageUid}
     }
+    projectDetails {
+      persons {
+        filterProjectLead = {$plugin.tx_hiotypo3connector.settings.projectDetails.persons.filterProjectLead}
+      }
+    }
   }
 }
