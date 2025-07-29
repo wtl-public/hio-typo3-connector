@@ -32,3 +32,16 @@ jobs:
 
       - name: Upload EXT:${{ env.EXTENSION_KEY }} as ${{ env.VERSION }} to TER
         run: php ~/.composer/vendor/bin/tailor ter:publish ${{ env.VERSION }} --artefact=${{ env.REPOSITORY_URL }}/archive/${{ env.VERSION }}.zip --comment="New release of version ${{ env.VERSION }} - see details, changelog and documentation on ${{ env.REPOSITORY_URL }}"
+
+  packagist-release:
+    name: Packagist release
+    runs-on: ubuntu-latest
+    env:
+      TYPO3_EXTENSION_KEY: 'hio_typo3_connector'
+      PACKAGIST_PACKAGE_URL: 'https://packagist.org/packages/wtl/hio-typo3-connector'
+      PACKAGIST_API_TOKEN: ${{ secrets.PACKAGIST_API_TOKEN }}
+    if: ${{ github.repository == 'wtl-public/hio-typo3-connector' }} # Stellt sicher, dass die Action nur im Release-Repository ausgeführt wird
+    steps:
+      - name: Trigger on tag push
+        id: trigger_tag_push
+        run: curl -XPOST -H'content-type:application/json' 'https://packagist.org/api/update-package?username=webteam-leipzig&apiToken=${{env.PACKAGIST_API_TOKEN}}' -d'{"repository":{"url":"${{env.PACKAGIST_PACKAGE_URL}}"}}'
