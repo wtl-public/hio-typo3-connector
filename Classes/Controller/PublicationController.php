@@ -27,8 +27,18 @@ class PublicationController extends BaseController
 
     public function indexAction(): ResponseInterface
     {
+        $orderBy = $this->settings['orderBy'] ?? '';
+        $publications = [];
+        if ($orderBy !== '') {
+            [$propertyName, $order] = explode(':', $orderBy);
+            if (in_array($propertyName, ['title', 'type', 'releaseYear'])) {
+                $publications = $this->publicationRepository->getPublications([$propertyName => $order]);
+            }
+        } else {
+            $publications = $this->publicationRepository->findAll();
+        }
         $paginator = $this->getPaginator(
-            $this->publicationRepository->findAll(),
+            $publications,
         );
 
         $this->view->assignMultiple([

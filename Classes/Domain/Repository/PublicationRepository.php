@@ -54,4 +54,13 @@ class PublicationRepository extends BaseRepository
 
         return $query->execute();
     }
+
+    public function getPublications(?array $ordering = []): array
+    {
+        $query = $this->createQuery();
+        $query->setOrderings($ordering);
+        $query->getQuerySettings()->setRespectStoragePage(false);
+
+        return $query->execute();
+    }
 }
