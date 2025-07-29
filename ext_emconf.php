@@ -3,7 +3,7 @@
 $EM_CONF["hio_typo3_connector"] = [
     'title' => 'hio-typo3-connector',
     'description' => 'TYPO3 Connector for HISinOne',
-    'version' => '0.7.41',
+    'version' => '0.7.42',
     'state' => 'stable',
     'constraints' => [
         'depends' => [
