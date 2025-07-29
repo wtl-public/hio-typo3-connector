@@ -45,7 +45,7 @@ ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
     'Orgunitlist',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/orgUnit.xlf:titleOrgUnits',
-    'tx-hio_typo3_connector-list-of-orgunits',
+    'tx-hio_typo3_connector-list-of-org-units',
 );
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
@@ -76,7 +76,7 @@ ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
     'Selectedpersonorgunitlist',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonOrgUnits',
-    'tx-hio_typo3_connector-orgunits',
+    'tx-hio_typo3_connector-org-units',
 );
 
 ExtensionUtility::registerPlugin(
