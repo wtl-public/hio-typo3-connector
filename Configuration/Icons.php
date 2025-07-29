@@ -35,11 +35,11 @@ return [
     ],
     'tx-hio_typo3_connector-list-of-research-infrastructures' => [
         'provider' => SvgIconProvider::class,
-        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/list-of-researchInfrastructure.svg',
+        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/list-of-researchInfrastructures.svg',
     ],
     'tx-hio_typo3_connector-list-of-spin-offs' => [
         'provider' => SvgIconProvider::class,
-        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/list-of-spinOff.svg',
+        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/list-of-spinOffs.svg',
     ],
     'tx-hio_typo3_connector-list-of-nominations' => [
         'provider' => SvgIconProvider::class,
@@ -85,7 +85,7 @@ return [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/prize.svg',
     ],
-    'tx-hio_typo3_connector-research-infrastructure' => [
+    'tx-hio_typo3_connector-research-infrastructures' => [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/researchInfrastructure.svg',
     ],
