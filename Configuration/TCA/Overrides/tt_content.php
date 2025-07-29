@@ -131,3 +131,8 @@ ExtensionManagementUtility::addPiFlexFormValue(
     'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/SelectedPersonHabilitationList.xml',
 );
 
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['hiotypo3connector_publicationlist'] = 'pi_flexform';
+ExtensionManagementUtility::addPiFlexFormValue(
+    'hiotypo3connector_publicationlist',
+    'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/PublicationList.xml',
+);
