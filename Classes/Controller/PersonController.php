@@ -43,21 +43,21 @@ class PersonController extends BaseController
         $this->view->assignMultiple([
             'paginator' => $paginator,
             'pagination' => new SlidingWindowPagination($paginator, 12),
-            'searchWord' => $this->getSearchWordFromRequest(),
+            'searchTerm' => $this->getSearchTermFromRequest(),
         ]);
 
         return $this->htmlResponse();
     }
 
-    public function searchAction(int $currentPage = 1, string $searchWord = ''): ResponseInterface
+    public function searchAction(int $currentPage = 1, string $searchTerm = ''): ResponseInterface
     {
         $paginator = $this->getPaginator(
-            $this->personRepository->findBySearchWord($searchWord),
+            $this->personRepository->findBySearchTerm($searchTerm),
         );
         $this->view->assignMultiple([
             'paginator' => $paginator,
             'pagination' => new SlidingWindowPagination($paginator, 12),
-            'searchWord' => $this->getSearchWordFromRequest(),
+            'searchTerm' => $this->getSearchTermFromRequest(),
         ]);
 
         return $this->htmlResponse();
@@ -89,7 +89,7 @@ class PersonController extends BaseController
             [
                 'person' => $person,
                 'currentPageNumber' => $this->getCurrentPageNumberFromRequest(),
-                'searchWord' => $this->getSearchWordFromRequest(),
+                'searchTerm' => $this->getSearchTermFromRequest(),
                 'listAction' => $listAction,
             ]
         );

@@ -35,21 +35,21 @@ class PatentController extends BaseController
         $this->view->assignMultiple([
             'paginator' => $paginator,
             'pagination' => new SlidingWindowPagination($paginator, 12),
-            'searchWord' => $this->getSearchWordFromRequest(),
+            'searchTerm' => $this->getSearchTermFromRequest(),
         ]);
 
         return $this->htmlResponse();
     }
 
-    public function searchAction(int $currentPage = 1, String $searchWord = ''): ResponseInterface
+    public function searchAction(int $currentPage = 1, String $searchTerm = ''): ResponseInterface
     {
         $paginator = $this->getPaginator(
-            $this->patentRepository->findBySearchWord($searchWord),
+            $this->patentRepository->findBySearchTerm($searchTerm),
         );
         $this->view->assignMultiple([
             'paginator' => $paginator,
             'pagination' => new SlidingWindowPagination($paginator, 12),
-            'searchWord' => $this->getSearchWordFromRequest(),
+            'searchTerm' => $this->getSearchTermFromRequest(),
         ]);
 
         return $this->htmlResponse();
@@ -61,7 +61,7 @@ class PatentController extends BaseController
             [
                 'patent' => $patent,
                 'currentPageNumber' => $this->getCurrentPageNumberFromRequest(),
-                'searchWord' => $this->getSearchWordFromRequest(),
+                'searchTerm' => $this->getSearchTermFromRequest(),
                 'listAction' => $listAction,
             ]
         );

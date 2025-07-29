@@ -15,10 +15,10 @@ class BaseController extends AbstractController
             : 1;
     }
 
-    protected function getSearchWordFromRequest(): string
+    protected function getSearchTermFromRequest(): string
     {
-        return $this->request->hasArgument('searchWord')
-            ? (string)$this->request->getArgument('searchWord')
+        return $this->request->hasArgument('searchTerm')
+            ? (string)$this->request->getArgument('searchTerm')
             : '';
     }
 

@@ -6,7 +6,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
-class BaseRepository extends Repository 
+class BaseRepository extends Repository
 {
     public function initializeObject(): void
     {
@@ -15,13 +15,13 @@ class BaseRepository extends Repository
         $this->setDefaultQuerySettings($querySettings);
     }
 
-    public function findBySearchWord(string $searchWord)
+    public function findBySearchTerm(string $searchTerm)
     {
-        $searchWord = trim($searchWord);
+        $searchTerm = trim($searchTerm);
         $query = $this->createQuery();
         $query->matching(
             $query->logicalOr(
-                $query->like('searchIndex', '%' . strtolower($searchWord) . '%'),
+                $query->like('searchIndex', '%' . strtolower($searchTerm) . '%'),
             )
         );
 
