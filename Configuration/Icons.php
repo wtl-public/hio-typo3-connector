@@ -35,11 +35,19 @@ return [
     ],
     'tx-hio_typo3_connector-list-of-research-infrastructures' => [
         'provider' => SvgIconProvider::class,
-        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/researchInfrastructure.svg',
+        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/list-of-researchInfrastructure.svg',
     ],
     'tx-hio_typo3_connector-list-of-spin-offs' => [
         'provider' => SvgIconProvider::class,
-        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/spinOff.svg',
+        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/list-of-spinOff.svg',
+    ],
+    'tx-hio_typo3_connector-list-of-nominations' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/list-of-nominations.svg',
+    ],
+    'tx-hio_typo3_connector-list-of-prizes' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/list-of-prizes.svg',
     ],
     'tx-hio_typo3_connector-publications' => [
         'provider' => SvgIconProvider::class,
@@ -68,5 +76,21 @@ return [
     'tx-hio_typo3_connector-org-units' => [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/orgUnit.svg',
+    ],
+    'tx-hio_typo3_connector-nominations' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/nomination.svg',
+    ],
+    'tx-hio_typo3_connector-prizes' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/prize.svg',
+    ],
+    'tx-hio_typo3_connector-research-infrastructure' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/researchInfrastructure.svg',
+    ],
+    'tx-hio_typo3_connector-spin-offs' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/spinOff.svg',
     ],
 ];
