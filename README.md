@@ -21,7 +21,7 @@ Sie ist für den Einsatz in TYPO3 Version 12.4 und höher geeignet und kann von 
 um Forschungsdaten aus HISinOne in TYPO3 zu integrieren.
 
 Solltet Euch bei der Integration der HISinOne TYPO3 Connector Extension in Euer Projekt Unterstützung benötigen, 
-könnt Ihr Euch gerne an und wenden.
+könnt Ihr Euch gerne an uns wenden.
 
 **WEBTEAM LEIPZIG GmbH**  
 Gutenbergplatz 1  
