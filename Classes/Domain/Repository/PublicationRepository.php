@@ -55,7 +55,7 @@ class PublicationRepository extends BaseRepository
         return $query->execute();
     }
 
-    public function getPublications(?array $ordering = []): array
+    public function getPublications(?array $ordering = [])
     {
         $query = $this->createQuery();
         $query->setOrderings($ordering);
