@@ -25,7 +25,7 @@ return [
         'security' => [
             'ignorePageTypeRestriction' => true,
         ],
-        'iconfile' => 'EXT:hio_typo3_connector/Resources/Public/Icons/orgunit.svg',
+        'iconfile' => 'EXT:hio_typo3_connector/Resources/Public/Icons/orgUnit.svg',
     ],
     'columns' => [
         'hidden' => [

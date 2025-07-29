@@ -25,7 +25,7 @@ return [
         'security' => [
             'ignorePageTypeRestriction' => true,
         ],
-        'iconfile' => 'EXT:hio_typo3_connector/Resources/Public/Icons/spinoff.svg',
+        'iconfile' => 'EXT:hio_typo3_connector/Resources/Public/Icons/spinOff.svg',
     ],
     'columns' => [
         'hidden' => [
