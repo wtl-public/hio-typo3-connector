@@ -19,6 +19,7 @@ use Wtl\HioTypo3Connector\Domain\Model\Person;
 use Wtl\HioTypo3Connector\Domain\Repository\CitationStyleRepository;
 use Wtl\HioTypo3Connector\Domain\Repository\PersonRepository;
 use Wtl\HioTypo3Connector\Domain\Repository\PublicationRepository;
+use Wtl\HioTypo3Connector\Services\Statistics\PersonStats;
 
 #[AsController]
 class PersonController extends BaseController
@@ -30,7 +31,8 @@ class PersonController extends BaseController
         protected readonly PersonRepository      $personRepository,
         protected readonly PropertyMapper        $propertyMapper,
         protected readonly PublicationRepository $publicationRepository,
-        protected readonly CitationStyleRepository $citationStyleRepository
+        protected readonly CitationStyleRepository $citationStyleRepository,
+        protected readonly PersonStats $personStatsService,
     )
     {
     }
@@ -91,7 +93,8 @@ class PersonController extends BaseController
                 'currentPageNumber' => $this->getCurrentPageNumberFromRequest(),
                 'searchTerm' => $this->getSearchTermFromRequest(),
                 'listAction' => $listAction,
-                'statistics' => $this->publicationRepository->countPublicationsByTypeAndPerson($person) ?? [],
+                'statistics' => $this->personStatsService->getPublicationTypeStats($person) ?? [],
+                'coAuthors' => $this->personStatsService->getCoAuthorshipStats($person) ?? [],
             ]
         );
         return $this->htmlResponse();
@@ -157,7 +160,8 @@ class PersonController extends BaseController
             'groupedPublications' => $groupedPublications ?? [],
             'ungroupedPublications' => $ungroupedPublications ?? [],
             'selectedCitationStyle' => $selectedCitationStyle,
-            'statistics' => $this->publicationRepository->countPublicationsByTypeAndPerson($selectedPerson) ?? [],
+            'statistics' => $this->personStatsService->getPublicationTypeStats($selectedPerson) ?? [],
+            'coAuthors' => $this->personStatsService->getCoAuthorshipStats($selectedPerson) ?? [],
         ]);
 
         return $this->htmlResponse();
