@@ -91,6 +91,7 @@ class PersonController extends BaseController
                 'currentPageNumber' => $this->getCurrentPageNumberFromRequest(),
                 'searchTerm' => $this->getSearchTermFromRequest(),
                 'listAction' => $listAction,
+                'statistics' => $this->publicationRepository->countPublicationsByTypeAndPerson($person) ?? [],
             ]
         );
         return $this->htmlResponse();
