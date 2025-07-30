@@ -156,6 +156,7 @@ class PersonController extends BaseController
             'groupedPublications' => $groupedPublications ?? [],
             'ungroupedPublications' => $ungroupedPublications ?? [],
             'selectedCitationStyle' => $selectedCitationStyle,
+            'statistics' => $this->publicationRepository->countPublicationsByTypeAndPerson($selectedPerson) ?? [],
         ]);
 
         return $this->htmlResponse();

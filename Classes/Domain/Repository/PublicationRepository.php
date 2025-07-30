@@ -63,4 +63,21 @@ class PublicationRepository extends BaseRepository
 
         return $query->execute();
     }
+
+    public function countPublicationsByTypeAndPerson(Person $person): array
+    {
+        $publicationIds = [];
+        foreach ($person->getPublications() as $publication) {
+            $publicationIds[] = $publication->getObjectId();
+        }
+
+        $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
+        $query->statement(
+            'SELECT type, COUNT(*) as count FROM tx_hiotypo3connector_domain_model_publication WHERE object_id IN (' . implode(',', $publicationIds) . ') GROUP BY type ORDER BY count DESC'
+        );
+
+        return $query->execute(true);
+    }
+
 }
