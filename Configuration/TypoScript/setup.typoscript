@@ -12,6 +12,7 @@ plugin.tx_hiotypo3connector {
     }
   }
   settings {
+    iconIdentifier = tx-hio_typo3_connector-icon
     doctoralPrograms {
       personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.doctoralPrograms.personTargetPageUid}
     }
