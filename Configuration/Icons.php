@@ -7,7 +7,7 @@ use TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider;
 return [
     'tx-hio_typo3_connector-icon' => [
         'provider' => SvgIconProvider::class,
-        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/hio-typo3-connector-logo.svg',
+        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/Extension.svg',
     ],
     'tx-hio_typo3_connector-list-of-publications' => [
         'provider' => SvgIconProvider::class,
