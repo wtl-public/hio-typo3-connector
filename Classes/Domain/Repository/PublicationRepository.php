@@ -70,6 +70,9 @@ class PublicationRepository extends BaseRepository
         foreach ($person->getPublications() as $publication) {
             $publicationIds[] = $publication->getObjectId();
         }
+        if (empty($publicationIds)) {
+            return [];
+        }
 
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(false);
