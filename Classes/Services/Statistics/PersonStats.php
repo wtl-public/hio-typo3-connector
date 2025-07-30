@@ -27,6 +27,9 @@ class PersonStats
             $details = $publication->getDetails();
             if (isset($details['persons']) && is_array($details['persons'])) {
                 foreach ($details['persons'] as $coAuthor) {
+                    if ($coAuthor['name'] === $person->getName()) {
+                        continue; // Skip the person themselves
+                    }
                     $coAuthorName = $coAuthor['name'] ?? 'Unknown';
                     if (isset($coAuthorships[$coAuthorName])) {
                         $coAuthorships[$coAuthorName]++;
