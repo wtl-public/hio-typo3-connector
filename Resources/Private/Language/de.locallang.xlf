@@ -359,6 +359,10 @@
                 <target>Empfang von Publikationen von der HIO Middleware</target>
             </trans-unit>
 
+            <trans-unit id="flexform.publicationlist.orderBy.showTypeStatistics" resname="flexform.publicationlist.orderBy.showTypeStatistics">
+                <source>Display publication type statistics</source>
+                <target>Publikationstyp-Statistik anzeigen</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
