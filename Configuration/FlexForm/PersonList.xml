@@ -15,15 +15,31 @@
                         <config>
                             <type>check</type>
                             <items type="array">
-                                <numIndex index="1" type="array">
+                                <numIndex index="0" type="array">
                                     <label>
                                         LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.enabled
                                     </label>
-                                    <value>1</value>
+                                    <value/>
                                 </numIndex>
                             </items>
                         </config>
                     </settings.showTypeStatistics>
+                    <settings.showCoAuthorshipStatistics>
+                        <label>
+                            LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.publicationlist.showCoAuthorshipStatistics
+                        </label>
+                        <config>
+                            <type>check</type>
+                            <items type="array">
+                                <numIndex index="0" type="array">
+                                    <label>
+                                        LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.enabled
+                                    </label>
+                                    <value/>
+                                </numIndex>
+                            </items>
+                        </config>
+                    </settings.showCoAuthorshipStatistics>
                 </el>
             </ROOT>
         </sDEF>
