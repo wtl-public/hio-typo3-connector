@@ -93,8 +93,8 @@ class PersonController extends BaseController
                 'currentPageNumber' => $this->getCurrentPageNumberFromRequest(),
                 'searchTerm' => $this->getSearchTermFromRequest(),
                 'listAction' => $listAction,
-                'statistics' => $this->personStatsService->getPublicationTypeStats($person) ?? [],
-                'coAuthors' => $this->personStatsService->getCoAuthorshipStats($person) ?? [],
+                'typeStatistics' => $this->personStatsService->getPublicationTypeStats($person) ?? [],
+                'coAuthorshipStatistics' => $this->personStatsService->getCoAuthorshipStats($person) ?? [],
             ]
         );
         return $this->htmlResponse();
@@ -160,8 +160,8 @@ class PersonController extends BaseController
             'groupedPublications' => $groupedPublications ?? [],
             'ungroupedPublications' => $ungroupedPublications ?? [],
             'selectedCitationStyle' => $selectedCitationStyle,
-            'statistics' => $this->personStatsService->getPublicationTypeStats($selectedPerson) ?? [],
-            'coAuthors' => $this->personStatsService->getCoAuthorshipStats($selectedPerson) ?? [],
+            'typeStatistics' => $this->personStatsService->getPublicationTypeStats($selectedPerson) ?? [],
+            'coAuthorshipStatistics' => $this->personStatsService->getCoAuthorshipStats($selectedPerson) ?? [],
         ]);
 
         return $this->htmlResponse();
