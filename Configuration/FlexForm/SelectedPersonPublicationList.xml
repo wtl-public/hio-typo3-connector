@@ -128,7 +128,6 @@
                             LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.publicationlist.showTypeStatistics
                         </label>
                         <config>
-                            <default>1</default>
                             <type>check</type>
                             <items type="array">
                                 <numIndex index="1" type="array">
@@ -140,6 +139,22 @@
                             </items>
                         </config>
                     </settings.showTypeStatistics>
+                    <showForgotPassword>
+                        <label>
+                            LLL:EXT:felogin/locallang_db.xlf:tt_content.pi_flexform.show_forgot_password
+                        </label>
+                        <config>
+                            <type>check</type>
+                            <items type="array">
+                                <numIndex index="1" type="array">
+                                    <label>
+                                        LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.enabled
+                                    </label>
+                                    <value>1</value>
+                                </numIndex>
+                            </items>
+                        </config>
+                    </showForgotPassword>
                 </el>
             </ROOT>
         </sDEF>
