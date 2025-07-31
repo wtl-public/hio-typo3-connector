@@ -64,6 +64,9 @@
             <trans-unit id="flexform.publicationlist.showTypeStatistics" resname="flexform.publicationlist.showTypeStatistics">
                 <source>Display publication type statistics</source>
             </trans-unit>
+            <trans-unit id="flexform.publicationlist.showCoAuthorshipStatistics" resname="flexform.publicationlist.showCoAuthorshipStatistics">
+                <source>Display publication coauthorship statistics</source>
+            </trans-unit>
 
             <trans-unit id="titlePersonProjects" resname="titlePersonProjects">
                 <source>HISinOne projects for person</source>

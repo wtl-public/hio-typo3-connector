@@ -84,6 +84,10 @@
                 <source>Display publication type statistics</source>
                 <target>Anzahl nach Publikationstypen anzeigen</target>
             </trans-unit>
+            <trans-unit id="flexform.publicationlist.showCoAuthorshipStatistics" resname="flexform.publicationlist.showCoAuthorshipStatistics">
+                <source>Display publication coauthorship statistics</source>
+                <target>Co-Autoren anzeigen</target>
+            </trans-unit>
 
             <trans-unit id="titlePersonProjects" resname="titlePersonProjects">
                 <source>HISinOne projects for person</source>
