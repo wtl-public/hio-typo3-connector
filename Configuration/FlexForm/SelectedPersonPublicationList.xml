@@ -123,17 +123,22 @@
                             </items>
                         </config>
                     </settings.orderBy>
-                    <settings.externalLink>
+                    <settings.showTypeStatistics>
                         <label>
-                            LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.publicationlist.externalLink
+                            LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.publicationlist.orderBy.showTypeStatistics
                         </label>
                         <config>
-                            <type>input</type>
-                            <size>50</size>
-                            <max>255</max>
-                            <eval>trim</eval>
+                            <type>check</type>
+                            <items type="array">
+                                <numIndex index="1" type="array">
+                                    <label>
+                                        LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.enabled
+                                    </label>
+                                    <value>1</value>
+                                </numIndex>
+                            </items>
                         </config>
-                    </settings.externalLink>
+                    </settings.showTypeStatistics>
                 </el>
             </ROOT>
         </sDEF>
