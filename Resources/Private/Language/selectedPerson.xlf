@@ -4,6 +4,12 @@
         <header/>
         <body>
 
+            <trans-unit id="flexform.publicationlist.sheet.title" resname="flexform.publicationlist.sheet.title">
+                <source>Publications list settings</source>
+            </trans-unit>
+            <trans-unit id="flexform.personlist.sheet.title" resname="flexform.personlist.sheet.title">
+                <source>Persons list settings</source>
+            </trans-unit>
             <trans-unit id="titlePersonPublications" resname="titlePersonPublications">
                 <source>HISinOne publications for person</source>
             </trans-unit>
@@ -54,6 +60,9 @@
             </trans-unit>
             <trans-unit id="flexform.publicationlist.groupBy.releaseYear" resname="flexform.publicationlist.groupBy.releaseYear">
                 <source>Release year</source>
+            </trans-unit>
+            <trans-unit id="flexform.publicationlist.showTypeStatistics" resname="flexform.publicationlist.showTypeStatistics">
+                <source>Display publication type statistics</source>
             </trans-unit>
 
             <trans-unit id="titlePersonProjects" resname="titlePersonProjects">

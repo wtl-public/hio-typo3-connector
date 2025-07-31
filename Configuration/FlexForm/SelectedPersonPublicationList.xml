@@ -4,7 +4,7 @@
         <sDEF>
             <ROOT>
                 <sheetTitle>
-                    LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.sheet.general
+                    LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.publicationlist.sheet.title
                 </sheetTitle>
                 <type>array</type>
                 <el>
