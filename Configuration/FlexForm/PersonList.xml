@@ -40,6 +40,23 @@
                             </items>
                         </config>
                     </settings.showCoAuthorshipStatistics>
+                    <settings.showProjectStatusStatistics>
+                        <label>
+                            LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:flexform.projectlist.showProjectStatusStatistics
+                        </label>
+                        <config>
+                            <type>check</type>
+                            <items type="array">
+                                <numIndex index="0" type="array">
+                                    <label>
+                                        LLL:EXT:core/Resources/Private/Language/locallang_core.xlf:labels.enabled
+                                    </label>
+                                    <value/>
+                                </numIndex>
+                            </items>
+                        </config>
+                    </settings.showProjectStatusStatistics>
+
                 </el>
             </ROOT>
         </sDEF>
