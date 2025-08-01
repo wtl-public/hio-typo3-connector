@@ -95,6 +95,7 @@ class PersonController extends BaseController
                 'listAction' => $listAction,
                 'typeStatistics' => $this->personStatsService->getPublicationTypeStats($person) ?? [],
                 'coAuthorshipStatistics' => $this->personStatsService->getCoAuthorshipStats($person) ?? [],
+                'projectStatusStatistics' => $this->personStatsService->getProjectCountByStatus($person) ?? [],
             ]
         );
         return $this->htmlResponse();
@@ -174,6 +175,7 @@ class PersonController extends BaseController
 
         $this->view->assignMultiple([
             'person' => $selectedPerson,
+            'projectStatusStatistics' => $this->personStatsService->getProjectCountByStatus($selectedPerson) ?? [],
         ]);
 
         return $this->htmlResponse();

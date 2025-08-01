@@ -3,12 +3,14 @@
 namespace Wtl\HioTypo3Connector\Services\Statistics;
 
 use Wtl\HioTypo3Connector\Domain\Model\Person;
+use Wtl\HioTypo3Connector\Domain\Repository\ProjectRepository;
 use Wtl\HioTypo3Connector\Domain\Repository\PublicationRepository;
 
 class PersonStats
 {
     public function __construct(
         protected readonly PublicationRepository $publicationRepository,
+        protected readonly ProjectRepository $projectRepository
     )
     {
     }
@@ -42,5 +44,22 @@ class PersonStats
 
         arsort($coAuthorships);
         return $coAuthorships;
+    }
+
+    public function getProjectCountByStatus(Person $person): array
+    {
+        $projects = $person->getProjects();
+        $projectStatusCounts = [];
+        foreach ($projects as $project) {
+            $details = $project->getDetails();
+            $projectStatus = $details['status'] ?? 'Unknown';
+            if (isset($projectStatusCounts[$projectStatus])) {
+                $projectStatusCounts[$projectStatus]++;
+            } else {
+                $projectStatusCounts[$projectStatus] = 1;
+            }
+        }
+        arsort($projectStatusCounts);
+        return $projectStatusCounts;
     }
 }
