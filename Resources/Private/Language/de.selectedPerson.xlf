@@ -101,9 +101,8 @@
                 <source>Select person please</source>
                 <target>Person auswählen</target>
             </trans-unit>
-            <trans-unit id="flexform.projectlist.externalLink" resname="flexform.projectlist.externalLink">
-                <source>Link to project details (optional)</source>
-                <target>Link zu Projektdetails (optional)</target>
+            <trans-unit id="flexform.projectlist.showProjectStatusStatistics" resname="flexform.projectlist.showProjectStatusStatistics">
+                <source>Display project status statistics</source>
             </trans-unit>
 
             <trans-unit id="titlePersonPatents" resname="titlePersonPatents">

@@ -77,8 +77,8 @@
             <trans-unit id="flexform.projectlist.personUid" resname="flexform.projectlist.personUid">
                 <source>Select person please</source>
             </trans-unit>
-            <trans-unit id="flexform.projectlist.externalLink" resname="flexform.projectlist.externalLink">
-                <source>Link to project details (optional)</source>
+            <trans-unit id="flexform.projectlist.showProjectStatusStatistics" resname="flexform.projectlist.showProjectStatusStatistics">
+                <source>Display project status statistics</source>
             </trans-unit>
 
             <trans-unit id="titlePersonPatents" resname="titlePersonPatents">
