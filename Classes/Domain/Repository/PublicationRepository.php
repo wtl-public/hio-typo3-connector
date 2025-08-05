@@ -46,6 +46,9 @@ class PublicationRepository extends BaseRepository
         foreach ($person->getPublications() as $publication) {
             $publicationIds[] = $publication->getObjectId();
         }
+        if (empty($publicationIds)) {
+            return [];
+        }
 
         $query = $this->createQuery();
         $query->setOrderings($ordering);
@@ -67,11 +70,12 @@ class PublicationRepository extends BaseRepository
     public function countPublicationsByTypeAndPerson(Person $person): array
     {
         $publicationIds = [];
-        foreach ($person->getPublications() as $publication) {
-            $publicationIds[] = $publication->getObjectId();
-        }
-        if (empty($publicationIds)) {
+        $publications = $person->getPublications();
+        if ($publications->empty()) {
             return [];
+        }
+        foreach ($publications as $publication) {
+            $publicationIds[] = $publication->getObjectId();
         }
 
         $query = $this->createQuery();
