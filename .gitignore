@@ -11,5 +11,3 @@
 
 /.cache/
 /Build/testing-docker/.env
-
-/hio-release-repo
