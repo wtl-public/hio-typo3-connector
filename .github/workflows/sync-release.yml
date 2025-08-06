@@ -27,7 +27,7 @@ jobs:
       - name: 'Synchronize files'
         run: |
           # Löscht alte Dateien im geklonten Release-Repo (außer .git-Verzeichnis)
-          # find hio-release-repo -mindepth 1 ! -name '.git' -exec rm -rf {} +
+          find hio-release-repo -mindepth 1 ! -name '.git' ! -path 'hio-release-repo/.git/*' -exec rm -rf {} +
           # Kopiert alle Dateien (außer .git) vom Entwicklungs- ins Release-Repo
           rsync -av --progress . hio-release-repo/ --exclude .git --exclude hio-release-repo
 
