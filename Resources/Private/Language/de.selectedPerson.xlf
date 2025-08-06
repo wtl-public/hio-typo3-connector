@@ -10,7 +10,7 @@
             </trans-unit>
             <trans-unit id="flexform.personlist.sheet.title" resname="flexform.personlist.sheet.title">
                 <source>Persons list settings</source>
-                <target>Personenlisten-Einstellungen</target
+                <target>Personenlisten-Einstellungen</target>
             </trans-unit>
             <trans-unit id="titlePersonPublications" resname="titlePersonPublications">
                 <source>HISinOne publications for person</source>
