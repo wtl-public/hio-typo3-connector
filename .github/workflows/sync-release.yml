@@ -29,7 +29,7 @@ jobs:
           # Löscht alte Dateien im geklonten Release-Repo (außer .git-Verzeichnis)
           find hio-release-repo -mindepth 1 ! -name '.git' -exec rm -rf {} +
           # Kopiert alle Dateien (außer .git) vom Entwicklungs- ins Release-Repo
-          rsync -av --progress . hio-release-repo/ --exclude .git --exclude .github
+          rsync -av --progress . hio-release-repo/ --exclude .git --exclude .github --exclude hio-release-repo
 
       - name: 'Configure Git and Push to Release Repo'
         env:
