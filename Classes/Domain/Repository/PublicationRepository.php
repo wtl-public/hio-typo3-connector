@@ -71,7 +71,7 @@ class PublicationRepository extends BaseRepository
     {
         $publicationIds = [];
         $publications = $person->getPublications();
-        if ($publications->empty()) {
+        if (empty($publications)) {
             return [];
         }
         foreach ($publications as $publication) {
