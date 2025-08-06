@@ -27,27 +27,23 @@ jobs:
       - name: 'Synchronize files'
         run: |
           # Löscht alte Dateien im geklonten Release-Repo (außer .git-Verzeichnis)
-          find hio-release-repo -mindepth 1 ! -name '.git' -exec rm -rf {} +
-                    
+          # find hio-release-repo -mindepth 1 ! -name '.git' -exec rm -rf {} +
           # Kopiert alle Dateien (außer .git) vom Entwicklungs- ins Release-Repo
-          rsync -av --progress . hio-release-repo/ --exclude .git --exclude .github --exclude hio-release-repo
+          rsync -av --progress . hio-release-repo/ --exclude .git --exclude hio-release-repo
 
       - name: 'Configure Git and Push to Release Repo'
         env:
           RELEASE_REPO_TOKEN: ${{ secrets.RELEASE_REPO_TOKEN }}
-        working-directory: hio-release-repo
         run: |
-          git status
-          git config --unset-all http.https://github.com/.extraheader
           # Wechsle in das Verzeichnis des Release-Repositories
-          # cd hio-release-repo
-          git status                    
+          cd hio-release-repo
+                    
           # Konfiguriere Git mit dem Benutzer des Tokens (optional, aber gute Praxis)
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           
+          git config --unset-all http.https://github.com/.extraheader
           git add .
-          git status
           
           # Commit nur, wenn es Änderungen gibt
           if ! git diff --staged --quiet; then
