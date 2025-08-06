@@ -35,15 +35,17 @@ jobs:
         env:
           RELEASE_REPO_TOKEN: ${{ secrets.RELEASE_REPO_TOKEN }}
         run: |
+          git status
+          git config --unset-all http.https://github.com/.extraheader
           # Wechsle in das Verzeichnis des Release-Repositories
           cd hio-release-repo
-                    
+          git status                    
           # Konfiguriere Git mit dem Benutzer des Tokens (optional, aber gute Praxis)
           git config --global user.name "${{ github.actor }}"
           git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           
-          git config --unset-all http.https://github.com/.extraheader
           git add .
+          git status
           
           # Commit nur, wenn es Änderungen gibt
           if ! git diff --staged --quiet; then
