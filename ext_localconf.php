@@ -43,9 +43,9 @@ ExtensionUtility::configurePlugin(
     // arbitrary, but unique plugin name (not visible in the backend)
     'PersonList',
     // all actions
-    [PersonController::class => 'index, show, search'],
+    [PersonController::class => 'index, show'],
     // non-cacheable actions
-    [PersonController::class => 'search'],
+    [PersonController::class => 'index'],
 );
 
 ExtensionUtility::configurePlugin(

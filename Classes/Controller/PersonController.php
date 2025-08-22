@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Wtl\HioTypo3Connector\Controller;
 
 use Psr\Http\Message\ResponseInterface;
+use Psr\Log\LoggerInterface;
 use TYPO3\CMS\Backend\Attribute\AsController;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Core\Error\Http\PageNotFoundException;
@@ -15,6 +16,7 @@ use TYPO3\CMS\Core\Utility\MathUtility;
 use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 use TYPO3\CMS\Extbase\Property\PropertyMapper;
 use TYPO3\CMS\Frontend\Controller\ErrorController;
+use Wtl\HioTypo3Connector\Domain\Dto\Filter\FilterDto;
 use Wtl\HioTypo3Connector\Domain\Model\Person;
 use Wtl\HioTypo3Connector\Domain\Repository\CitationStyleRepository;
 use Wtl\HioTypo3Connector\Domain\Repository\PersonRepository;
@@ -33,33 +35,39 @@ class PersonController extends BaseController
         protected readonly PublicationRepository $publicationRepository,
         protected readonly CitationStyleRepository $citationStyleRepository,
         protected readonly PersonStats $personStatsService,
+        protected readonly LoggerInterface $logger,
     )
     {
     }
 
-    public function indexAction(): ResponseInterface
+    public function initializeIndexAction(): void
     {
-        $paginator = $this->getPaginator(
-            $this->personRepository->findAll(),
-        );
-        $this->view->assignMultiple([
-            'paginator' => $paginator,
-            'pagination' => new SlidingWindowPagination($paginator, 12),
-            'searchTerm' => $this->getSearchTermFromRequest(),
-        ]);
-
-        return $this->htmlResponse();
+        $filter = $this->getFilterFromRequest();
+        $this->request = $this->request->withArgument('filter',  $filter);
     }
-
-    public function searchAction(int $currentPage = 1, string $searchTerm = ''): ResponseInterface
+    public function indexAction(FilterDto $filter, int $currentPageNumber = 1): ResponseInterface
     {
+        if ($this->request->getMethod() === 'POST') {
+            if ($filter->shouldReset()) {
+                $filter = $filter->resetFilter();
+            }
+            return $this->redirect(
+                actionName: 'index',
+                arguments: [
+                    'filter' => $filter->toArray(),
+                    'currentPageNumber' => $currentPageNumber
+                ]
+            );
+        }
+
+//        var_dump($filter);exit();
         $paginator = $this->getPaginator(
-            $this->personRepository->findBySearchTerm($searchTerm),
+            $this->personRepository->findByFilter($filter),
         );
         $this->view->assignMultiple([
             'paginator' => $paginator,
             'pagination' => new SlidingWindowPagination($paginator, 12),
-            'searchTerm' => $this->getSearchTermFromRequest(),
+            'filter' => $filter,
         ]);
 
         return $this->htmlResponse();
@@ -75,13 +83,15 @@ class PersonController extends BaseController
                 $this->request = $this->request->withArgument('person', $person);
             }
         }
+        $filter = $this->getFilterFromRequest();
+        $this->request = $this->request->withArgument('filter', $filter);
     }
 
     /**
      * @throws ImmediateResponseException
      * @throws PageNotFoundException
      */
-    public function showAction(?Person $person = null, string $listAction = 'index'): ResponseInterface
+    public function showAction(?Person $person = null): ResponseInterface
     {
         if ($person === null) {
             $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction($this->request, 'Person not found');
@@ -91,8 +101,7 @@ class PersonController extends BaseController
             [
                 'person' => $person,
                 'currentPageNumber' => $this->getCurrentPageNumberFromRequest(),
-                'searchTerm' => $this->getSearchTermFromRequest(),
-                'listAction' => $listAction,
+                'filter' => $this->getFilterFromRequest(),
                 'typeStatistics' => $this->personStatsService->getPublicationTypeStats($person) ?? [],
                 'coAuthorshipStatistics' => $this->personStatsService->getCoAuthorshipStats($person) ?? [],
                 'projectStatusStatistics' => $this->personStatsService->getProjectCountByStatus($person) ?? [],
