@@ -4,12 +4,21 @@ declare(strict_types=1);
 namespace Wtl\HioTypo3Connector\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use Wtl\HioTypo3Connector\Trait\WithEndDate;
+use Wtl\HioTypo3Connector\Trait\WithStartDate;
 
 class Project extends AbstractEntity
 {
+    use WithEndDate;
+    use WithStartDate;
+
     protected int $objectId = 0;
 
+    protected string $status = '';
+
     protected string $title = '';
+
+    protected string $type = '';
 
     /**
      * @var string
@@ -30,6 +39,15 @@ class Project extends AbstractEntity
         $this->objectId = $objectId;
     }
 
+    public function getStatus(): string
+    {
+        return $this->status;
+    }
+    public function setStatus($status): void
+    {
+        $this->status = $status;
+    }
+
     public function getTitle(): string
     {
         return $this->title;
@@ -37,6 +55,15 @@ class Project extends AbstractEntity
     public function setTitle($title): void
     {
         $this->title = $title;
+    }
+
+    public function getType(): string
+    {
+        return $this->type;
+    }
+    public function setType($type): void
+    {
+        $this->type = $type;
     }
 
     public function getDetails(): mixed
@@ -52,7 +79,7 @@ class Project extends AbstractEntity
      * Get the value of searchIndex
      *
      * @return  string
-     */ 
+     */
     public function getSearchIndex()
     {
         return $this->searchIndex;
@@ -64,7 +91,7 @@ class Project extends AbstractEntity
      * @param  string  $searchIndex
      *
      * @return  self
-     */ 
+     */
     public function setSearchIndex(string $searchIndex)
     {
         $this->searchIndex = $searchIndex;

@@ -22,16 +22,14 @@ class FilterDto
 
     public function showFilterForm(): self
     {
-        $clone = clone $this;
         $this->showFilterForm = true;
-        return $clone;
+        return $this;
     }
 
     public function hideFilterForm(): self
     {
-        $clone = clone $this;
         $this->showFilterForm = false;
-        return $clone;
+        return $this;
     }
 
     public function shouldReset(): bool
@@ -46,9 +44,8 @@ class FilterDto
 
     public function withSearchTerm(?string $searchTerm): self
     {
-        $clone = clone $this;
-        $clone->searchTerm = $searchTerm;
-        return $clone;
+        $this->searchTerm = $searchTerm;
+        return $this;
     }
 
     public function getSearchTerm(): ?string

@@ -12,7 +12,7 @@ use TYPO3\CMS\Core\Pagination\ArrayPaginator;
 use TYPO3\CMS\Core\Pagination\SlidingWindowPagination;
 use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 use TYPO3\CMS\Extbase\Property\PropertyMapper;
-use Wtl\HioTypo3Connector\Domain\Dto\Filter\FilterDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Filter\ProjectFilter;
 use Wtl\HioTypo3Connector\Domain\Model\Project;
 use Wtl\HioTypo3Connector\Domain\Repository\ProjectRepository;
 
@@ -35,7 +35,7 @@ class ProjectController extends BaseController
         $this->request = $this->request->withArgument('filter',  $filter);
     }
 
-    public function indexAction(FilterDto $filter, int $currentPageNumber = 1): ResponseInterface
+    public function indexAction(ProjectFilter $filter, int $currentPageNumber = 1): ResponseInterface
     {
         if ($this->request->getMethod() === 'POST') {
             if ($filter->shouldReset()) {
@@ -53,10 +53,13 @@ class ProjectController extends BaseController
         $paginator = $this->getPaginator(
             $this->projectRepository->findByFilter($filter),
         );
+
         $this->view->assignMultiple([
             'paginator' => $paginator,
             'pagination' => new SlidingWindowPagination($paginator, 12),
             'filter' => $this->getFilterFromRequest(),
+            'statusOptions' => $this->getProjectStatusOptions(),
+            'typeOptions' => $this->getProjectTypeOptions(),
         ]);
 
         return $this->htmlResponse();
@@ -78,5 +81,52 @@ class ProjectController extends BaseController
             ]
         );
         return $this->htmlResponse();
+    }
+
+    protected function getFilterFromRequest(): ProjectFilter
+    {
+        $filter = new ProjectFilter();
+        if ($this->request->hasArgument('filter')) {
+            $filter = $this->request->getArgument('filter');
+            if (! $filter instanceof ProjectFilter) {
+                try {
+                    $filter = ProjectFilter::fromRequest($this->request);
+                }
+                catch (\Throwable $e) {
+                    $this->logger->error(
+                        'Failed to parse filter from request: ' . $e->getMessage(),
+                        ['exception' => $e]
+                    );
+                    $filter = new ProjectFilter();
+                }
+            }
+        }
+        return $filter;
+    }
+
+    protected function getProjectStatusOptions(): array
+    {
+        $options = array_map(
+            fn($value) => ['value' => $value['status'], 'label' => $value['status']],
+            $this->projectRepository->getProjectStatus() ?? []
+        );
+        if (!empty($options)) {
+            array_unshift($options, ['value' => '', 'label' => 'Alle']);
+        }
+
+        return $options ?? [];
+    }
+
+    protected function getProjectTypeOptions(): array
+    {
+        $options = array_map(
+            fn($value) => ['value' => $value['type'], 'label' => $value['type']],
+            $this->projectRepository->getProjectTypes() ?? []
+        );
+        if (!empty($options)) {
+            array_unshift($options, ['value' => '', 'label' => 'Alle']);
+        }
+
+        return $options ?? [];
     }
 }

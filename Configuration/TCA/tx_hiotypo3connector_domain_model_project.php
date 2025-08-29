@@ -94,6 +94,34 @@ return [
                 'required' => false,
             ],
         ],
+        'end_date' => [
+            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_project.endDate',
+            'config' => [
+                'type' => 'datetime',
+                'dbType' => 'datetime',
+                'nullable' => true,
+            ],
+        ],
+        'start_date' => [
+            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_project.startDate',
+            'config' => [
+                'type' => 'datetime',
+                'dbType' => 'datetime',
+                'nullable' => true,
+            ],
+        ],
+        'status' => [
+            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_project.status',
+            'config' => [
+                'type' => 'passthrough',
+            ],
+        ],
+        'type' => [
+            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_project.type',
+            'config' => [
+                'type' => 'passthrough',
+            ],
+        ],
         'details' => [
             'label' => 'details',
             'config' => [
