@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="de" datatype="plaintext" original="EXT:hio_typo3_connector/Resources/Private/Language/Modules/projectHighlights.xlf" date="2024-10-17T00:00:00Z" product-name="hio_typo3_connector">
+        <header/>
+        <body>
+
+            <trans-unit id="flexform.sheet.general" resname="flexform.sheet.general">
+                <source>Selected projects</source>
+                <target>Ausgewählte Projekte</target>
+            </trans-unit>
+            <trans-unit id="flexform.plugin.title" resname="flexform.plugin.title">
+                <source>Display selected projects</source>
+                <target>Ausgewählte Projekte anzeigen</target>
+            </trans-unit>
+            <trans-unit id="flexform.plugin.description" resname="flexform.plugin.description">
+                <source>Show a number of manually selected projects</source>
+                <target>Zeigt eine Anzahl manuell ausgewählter Projekte an</target>
+            </trans-unit>
+            <trans-unit id="flexform.projectUids" resname="flexform.projectUids">
+                <source>Select projects please</source>
+                <target>Bitte Projekte auswählen</target>
+            </trans-unit>
+            <trans-unit id="flexform.projectImages" resname="flexform.projectImages">
+                <source>Select project images please</source>
+                <target>Bitte Projektbilder auswählen</target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

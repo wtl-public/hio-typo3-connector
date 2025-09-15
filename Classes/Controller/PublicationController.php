@@ -97,6 +97,31 @@ class PublicationController extends BaseController
         return $this->htmlResponse();
     }
 
+    public function highlightsAction()
+    {
+        $publicationUids = explode(',', $this->settings['publicationUids']) ?? [];
+        $query = $this->publicationRepository->createQuery();
+        $query->matching(
+            $query->in('uid', $publicationUids)
+        );
+        $publications = $query->execute();
+        $orderedPublications = [];
+        array_map(
+            function ($uid) use ($publications, &$orderedPublications) {
+                foreach ($publications as $publication) {
+                    if ($publication->getUid() == $uid) {
+                        $orderedPublications[] = $publication;
+                        break;
+                    }
+                }
+            },
+            $publicationUids
+        );
+
+        $this->view->assign('publications', $orderedPublications);
+        return $this->htmlResponse();
+    }
+
     protected function getFilterFromRequest(): PublicationFilter
     {
         $filter = new PublicationFilter();

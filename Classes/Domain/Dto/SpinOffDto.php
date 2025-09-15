@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto;
 
-use Wtl\HioTypo3Connector\Domain\Dto\Collection\SpinOffOrgUnitDto;
+use Wtl\HioTypo3Connector\Domain\Dto\SpinOff\OrgUnitDto;
 use Wtl\HioTypo3Connector\Trait\WithDetails;
 use Wtl\HioTypo3Connector\Trait\WithEndDate;
 use Wtl\HioTypo3Connector\Trait\WithLanguage;
@@ -23,7 +23,7 @@ class SpinOffDto
 
     protected string $description = '';
     protected string $name;
-    // @var SpinOffOrgUnitDto[]
+    // @var OrgUnitDto[]
     protected array $orgUnits = [];
     protected array $researchAreas = [];
     protected array $subjectAreas = [];
@@ -93,7 +93,7 @@ class SpinOffDto
 
         $orgUnits = [];
         foreach ($data['orgUnits'] ?? [] as $orgUnit) {
-            $orgUnits[] = SpinOffOrgUnitDto::fromArray($orgUnit);
+            $orgUnits[] = OrgUnitDto::fromArray($orgUnit);
         }
         $dto->setOrgUnits($orgUnits);
 

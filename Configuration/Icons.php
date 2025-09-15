@@ -97,4 +97,13 @@ return [
         'provider' => SvgIconProvider::class,
         'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/spinOff.svg',
     ],
+
+    'tx-hio_typo3_connector-project-highlights' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/list-of-projects.svg',
+    ],
+    'tx-hio_typo3_connector-publication-highlights' => [
+        'provider' => SvgIconProvider::class,
+        'source' => 'EXT:hio_typo3_connector/Resources/Public/Icons/list-of-publications.svg',
+    ],
 ];

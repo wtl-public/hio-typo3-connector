@@ -87,11 +87,11 @@ class Person extends AbstractEntity
 
     public function getDetails(): mixed
     {
-        return $this->details;
+        return json_decode($this->details, true);
     }
     public function setDetails($details): void
     {
-        $this->details = $details;
+        $this->details = json_encode($details);
     }
 
     public function getPublications(): ObjectStorage

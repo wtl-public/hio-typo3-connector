@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="de" datatype="plaintext" original="EXT:hio_typo3_connector/Resources/Private/Language/Modules/publicationHighlights.xlf" date="2024-10-17T00:00:00Z" product-name="hio_typo3_connector">
+        <header/>
+        <body>
+
+            <trans-unit id="flexform.sheet.general" resname="flexform.sheet.general">
+                <source>Selected publications</source>
+                <target>Ausgewählte Publikationen</target>
+            </trans-unit>
+            <trans-unit id="flexform.plugin.title" resname="flexform.plugin.title">
+                <source>Display selected publications</source>
+                <target>Ausgewählte Publikationen anzeigen</target>
+            </trans-unit>
+            <trans-unit id="flexform.plugin.description" resname="flexform.plugin.description">
+                <source>Show a number of manually selected publications</source>
+                <target>Zeigt eine Anzahl manuell ausgewählter Publikationen an</target>
+            </trans-unit>
+            <trans-unit id="flexform.publicationUids" resname="flexform.publicationUids">
+                <source>Select publications please</source>
+                <target>Bitte Publikationen auswählen</target>
+            </trans-unit>
+            <trans-unit id="flexform.publicationImages" resname="flexform.publicationImages">
+                <source>Select publication images please</source>
+                <target>Bitte Bilder zu den Publikationen auswählen</target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

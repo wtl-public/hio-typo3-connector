@@ -141,3 +141,27 @@ ExtensionManagementUtility::addPiFlexFormValue(
     'hiotypo3connector_personlist',
     'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/PersonList.xml',
 );
+
+ExtensionUtility::registerPlugin(
+    'HioTypo3Connector',
+    'ProjectHighlights',
+    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/projectHighlights.xlf:flexform.plugin.title',
+    'tx-hio_typo3_connector-project-highlights',
+);
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['hiotypo3connector_projecthighlights'] = 'pi_flexform';
+ExtensionManagementUtility::addPiFlexFormValue(
+    'hiotypo3connector_projecthighlights',
+    'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/ProjectHighlights.xml',
+);
+
+ExtensionUtility::registerPlugin(
+    'HioTypo3Connector',
+    'PublicationHighlights',
+    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/publicationHighlights.xlf:flexform.plugin.title',
+    'tx-hio_typo3_connector-publication-highlights',
+);
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['hiotypo3connector_publicationhighlights'] = 'pi_flexform';
+ExtensionManagementUtility::addPiFlexFormValue(
+    'hiotypo3connector_publicationhighlights',
+    'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/PublicationHighlights.xml',
+);

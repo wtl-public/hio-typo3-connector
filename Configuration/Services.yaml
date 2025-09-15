@@ -178,3 +178,32 @@ services:
     tags:
       - name: event.listener
         identifier: 'attachHioPersonToHioPublicationsListener'
+
+  Wtl\HioTypo3Connector\EventListener\AttachHioOrgUnitToHioDoctoralProgramsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioOrgUnitToHioDoctoralProgramsListener'
+  Wtl\HioTypo3Connector\EventListener\AttachHioOrgUnitToHioHabilitationsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioOrgUnitToHioHabilitationsListener'
+  Wtl\HioTypo3Connector\EventListener\AttachHioOrgUnitToHioPatentsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioOrgUnitToHioPatentsListener'
+  Wtl\HioTypo3Connector\EventListener\AttachHioOrgUnitToHioProjectsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioOrgUnitToHioProjectsListener'
+  Wtl\HioTypo3Connector\EventListener\AttachHioOrgUnitToHioPublicationsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioOrgUnitToHioPublicationsListener'
+  Wtl\HioTypo3Connector\EventListener\AttachHioOrgUnitToHioResearchInfrastructuresListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioOrgUnitToHioResearchInfrastructuresListener'
+  Wtl\HioTypo3Connector\EventListener\AttachHioOrgUnitToHioSpinOffsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioOrgUnitToHioSpinOffsListener'

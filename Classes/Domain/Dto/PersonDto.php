@@ -4,12 +4,14 @@ declare(strict_types=1);
 namespace Wtl\HioTypo3Connector\Domain\Dto;
 
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
-use Wtl\HioTypo3Connector\Domain\Dto\Collection\DoctoralProgramDto;
-use Wtl\HioTypo3Connector\Domain\Dto\Collection\HabilitationDto;
-use Wtl\HioTypo3Connector\Domain\Dto\Collection\PersonOrgUnitDto;
-use Wtl\HioTypo3Connector\Domain\Dto\Collection\PatentDto;
-use Wtl\HioTypo3Connector\Domain\Dto\Collection\ProjectDto;
-use Wtl\HioTypo3Connector\Domain\Dto\Collection\PublicationDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Person\AddressDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Person\AttributeDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Person\DoctoralProgramDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Person\HabilitationDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Person\OrgUnitDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Person\PatentDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Person\ProjectDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Person\PublicationDto;
 use Wtl\HioTypo3Connector\Trait\WithDetails;
 use Wtl\HioTypo3Connector\Trait\WithObjectId;
 use Wtl\HioTypo3Connector\Trait\WithSearchIndex;
@@ -22,6 +24,10 @@ class PersonDto
 
     protected string $name = '';
 
+    //  @var AddressDto[]
+    protected array $addresses = [];
+    // @var AttributeDto[]
+    protected array $attributes = [];
     protected array $doctoralPrograms = [];
     protected array $habilitations = [];
     protected array $patents = [];
@@ -29,10 +35,31 @@ class PersonDto
     protected array $publications = [];
     protected array $orgUnits = [];
 
+    public function getAddresses(): array
+    {
+        return $this->addresses;
+    }
+
+    public function setAddresses(array $addresses): void
+    {
+        $this->addresses = $addresses;
+    }
+
+    public function getAttributes(): array
+    {
+        return $this->attributes;
+    }
+
+    public function setAttributes(array $attributes): void
+    {
+        $this->attributes = $attributes;
+    }
+
     public function getName(): string
     {
         return $this->name;
     }
+
     public function setName(string $name): void
     {
         $this->name = $name;
@@ -52,6 +79,7 @@ class PersonDto
     {
         return $this->projects;
     }
+
     public function setProjects(array $projects): void
     {
         $this->projects = $projects;
@@ -61,6 +89,7 @@ class PersonDto
     {
         return $this->patents;
     }
+
     public function setPatents(array $patents): void
     {
         $this->patents = $patents;
@@ -70,6 +99,7 @@ class PersonDto
     {
         return $this->doctoralPrograms;
     }
+
     public function setDoctoralPrograms(array $doctoralPrograms): void
     {
         $this->doctoralPrograms = $doctoralPrograms;
@@ -79,6 +109,7 @@ class PersonDto
     {
         return $this->habilitations;
     }
+
     public function setHabilitations(array $habilitations): void
     {
         $this->habilitations = $habilitations;
@@ -88,6 +119,7 @@ class PersonDto
     {
         return $this->orgUnits;
     }
+
     public function setOrgUnits(array $orgUnits): void
     {
         $this->orgUnits = $orgUnits;
@@ -101,41 +133,14 @@ class PersonDto
         $dto->setDetails($data);
         $dto->setSearchIndex($data);
 
-        $doctoralPrograms = [];
-        foreach ($data['doctoralPrograms'] ?? [] as $doctoralProgram) {
-            $doctoralPrograms[] = DoctoralProgramDto::fromArray($doctoralProgram);
-        }
-        $dto->setDoctoralPrograms($doctoralPrograms);
-
-        $habilitations = [];
-        foreach ($data['habilitations'] ?? [] as $habilitation) {
-            $habilitations[] = HabilitationDto::fromArray($habilitation);
-        }
-        $dto->setHabilitations($habilitations);
-
-        $orgUnits = [];
-        foreach ($data['orgUnits'] ?? [] as $orgUnit) {
-            $orgUnits[] = PersonOrgUnitDto::fromArray($orgUnit);
-        }
-        $dto->setOrgUnits($orgUnits);
-
-        $patents = [];
-        foreach ($data['patents'] ?? [] as $patent) {
-            $patents[] = PatentDto::fromArray($patent);
-        }
-        $dto->setPatents($patents);
-
-        $projects = [];
-        foreach ($data['projects'] ?? [] as $project) {
-            $projects[] = ProjectDto::fromArray($project);
-        }
-        $dto->setProjects($projects);
-
-        $publications = [];
-        foreach ($data['publications'] ?? [] as $publication) {
-            $publications[] = PublicationDto::fromArray($publication);
-        }
-        $dto->setPublications($publications);
+        $dto->setAddresses(array_map(fn($item) => AddressDto::fromArray($item), $data['addresses'] ?? []));
+        $dto->setAttributes(array_map(fn($item) => AttributeDto::fromArray($item), $data['attributes'] ?? []));
+        $dto->setDoctoralPrograms(array_map(fn($item) => DoctoralProgramDto::fromArray($item), $data['doctoralPrograms'] ?? []));
+        $dto->setHabilitations(array_map(fn($item) => HabilitationDto::fromArray($item), $data['habilitations'] ?? []));
+        $dto->setOrgUnits(array_map(fn($item) => OrgUnitDto::fromArray($item), $data['orgUnits'] ?? []));
+        $dto->setPatents(array_map(fn($item) => PatentDto::fromArray($item), $data['patents'] ?? []));
+        $dto->setProjects(array_map(fn($item) => ProjectDto::fromArray($item), $data['projects'] ?? []));
+        $dto->setPublications(array_map(fn($item) => PublicationDto::fromArray($item), $data['publications'] ?? []));
 
         return $dto;
     }

@@ -1,13 +1,16 @@
 <?php
 declare(strict_types=1);
 
-namespace Wtl\HioTypo3Connector\Domain\Dto\Collection;
+namespace Wtl\HioTypo3Connector\Domain\Dto\Publication;
+
+use Wtl\HioTypo3Connector\Domain\Dto\Person\OrgUnitDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Person\ResearchPartnerDto;
 
 class PersonDto
 {
     protected ?int $id = null;
     protected string $name = '';
-    protected ?PersonOrgUnitDto $organization = null;
+    protected ?OrgUnitDto $orgUnit = null;
     protected ?ResearchPartnerDto $researchPartner = null;
     protected ?string $role = null;
 
@@ -29,13 +32,13 @@ class PersonDto
         $this->name = $name;
     }
 
-    public function getOrganization(): PersonOrgUnitDto|null
+    public function getOrgUnit(): OrgUnitDto|null
     {
-        return $this->organization;
+        return $this->orgUnit;
     }
-    public function setOrganization(?PersonOrgUnitDto $organization): void
+    public function setOrgUnit(?OrgUnitDto $orgUnit): void
     {
-        $this->organization = $organization;
+        $this->orgUnit = $orgUnit;
     }
 
     public function getResearchPartner(): ?ResearchPartnerDto
@@ -67,7 +70,7 @@ class PersonDto
             $personDto->setRole($data['role']);
         }
         if (isset($data['organization']) && is_array($data['organization'])) {
-            $personDto->setOrganization(PersonOrgUnitDto::fromArray($data['organization']));
+            $personDto->setOrgUnit(OrgUnitDto::fromArray($data['organization']));
         }
         if (isset($data['researchPartner']) && is_array($data['researchPartner'])) {
             $personDto->setResearchPartner(ResearchPartnerDto::fromArray($data['researchPartner']));

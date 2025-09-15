@@ -108,6 +108,69 @@ return [
                 'notnull' => false,
             ],
         ],
+        'publications' => [
+            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_orgunit.publications',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'tx_hiotypo3connector_domain_model_publication',
+                'MM' => 'tx_hiotypo3connector_orgunit_publication_mm',
+            ],
+        ],
+        'projects' => [
+            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_orgunit.projects',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'tx_hiotypo3connector_domain_model_project',
+                'MM' => 'tx_hiotypo3connector_orgunit_project_mm',
+            ],
+        ],
+        'patents' => [
+            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_orgunit.patents',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'tx_hiotypo3connector_domain_model_patent',
+                'MM' => 'tx_hiotypo3connector_orgunit_patent_mm',
+            ],
+        ],
+        'doctoral_programs' => [
+            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_orgunit.doctoralPrograms',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'tx_hiotypo3connector_domain_model_doctoralprogram',
+                'MM' => 'tx_hiotypo3connector_orgunit_doctoralprogram_mm',
+            ],
+        ],
+        'habilitations' => [
+            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_orgunit.habilitations',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'tx_hiotypo3connector_domain_model_habilitation',
+                'MM' => 'tx_hiotypo3connector_orgunit_habilitation_mm',
+            ],
+        ],
+        'research_infrastructures' => [
+            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_orgunit.researchInfrastructures',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'tx_hiotypo3connector_domain_model_researchinfrastructure',
+                'MM' => 'tx_hiotypo3connector_orgunit_researchinfrastructure_mm',
+            ],
+        ],
+        'spin_offs' => [
+            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_orgunit.spinOffs',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'tx_hiotypo3connector_domain_model_spinoff',
+                'MM' => 'tx_hiotypo3connector_orgunit_spinoff_mm',
+            ],
+        ],
     ],
     'types' => [
         0 => [

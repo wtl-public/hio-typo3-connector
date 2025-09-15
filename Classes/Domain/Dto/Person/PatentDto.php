@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Wtl\HioTypo3Connector\Domain\Dto\Collection;
+namespace Wtl\HioTypo3Connector\Domain\Dto\Person;
 
 class PatentDto
 {

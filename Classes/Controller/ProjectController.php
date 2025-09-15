@@ -83,6 +83,31 @@ class ProjectController extends BaseController
         return $this->htmlResponse();
     }
 
+    public function highlightsAction()
+    {
+        $projectUids = explode(',', $this->settings['projectUids']) ?? [];
+        $query = $this->projectRepository->createQuery();
+        $query->matching(
+            $query->in('uid', $projectUids)
+        );
+        $projects = $query->execute();
+        $orderedProjects = [];
+        array_map(
+            function ($uid) use ($projects, &$orderedProjects) {
+                foreach ($projects as $project) {
+                    if ($project->getUid() == $uid) {
+                        $orderedProjects[] = $project;
+                        break;
+                    }
+                }
+            },
+            $projectUids
+        );
+
+        $this->view->assign('projects', $orderedProjects);
+        return $this->htmlResponse();
+    }
+
     protected function getFilterFromRequest(): ProjectFilter
     {
         $filter = new ProjectFilter();

@@ -19,8 +19,10 @@ plugin.tx_hiotypo3connector {
     habilitations {
       personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.habilitations.personTargetPageUid}
     }
-    orgunits {
+    orgUnits {
       personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.orgunits.personTargetPageUid}
+      projectTargetPageUid = {$plugin.tx_hiotypo3connector.settings.persons.projectTargetPageUid}
+      publicationTargetPageUid = {$plugin.tx_hiotypo3connector.settings.persons.publicationTargetPageUid}
     }
     patents {
       personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.patents.personTargetPageUid}

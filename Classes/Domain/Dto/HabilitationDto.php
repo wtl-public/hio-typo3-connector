@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto;
 
-use Wtl\HioTypo3Connector\Domain\Dto\Collection\OrganizationDto;
-use Wtl\HioTypo3Connector\Domain\Dto\Collection\PersonDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Habilitation\OrgUnitDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Habilitation\PersonDto;
 use Wtl\HioTypo3Connector\Trait\WithDetails;
 use Wtl\HioTypo3Connector\Trait\WithObjectId;
 use Wtl\HioTypo3Connector\Trait\WithSearchIndex;
@@ -21,9 +21,9 @@ class HabilitationDto
 
     protected string $language = '';
     /**
-     * @var OrganizationDto[]
+     * @var OrgUnitDto[]
      */
-    protected array $organizations = [];
+    protected array $orgUnits = [];
     /**
      * @var PersonDto[]
      */
@@ -75,13 +75,13 @@ class HabilitationDto
         $this->language = $language;
     }
 
-    public function getOrganizations(): array
+    public function getOrgUnits(): array
     {
-        return $this->organizations;
+        return $this->orgUnits;
     }
-    public function setOrganizations(array $organizations): void
+    public function setOrgUnits(array $orgUnits): void
     {
-        $this->organizations = $organizations;
+        $this->orgUnits = $orgUnits;
     }
 
     public function getPersons(): array
@@ -172,7 +172,9 @@ class HabilitationDto
         if (isset($data['endDate'])) {
             $habilitationDto->setEndDate(new \DateTime($data['endDate']));
         }
+        $habilitationDto->setOrgUnits(array_map(fn($item) => OrgUnitDto::fromArray($item), $data['persons'] ?? []));
         $habilitationDto->setPersons(array_map(fn($item) => PersonDto::fromArray($item), $data['persons'] ?? []));
+
         if (isset($data['registrationDate'])) {
             $habilitationDto->setRegistrationDate(new \DateTime($data['registrationDate']));
         }

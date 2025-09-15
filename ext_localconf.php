@@ -165,4 +165,22 @@ ExtensionUtility::configurePlugin(
 // non-cacheable actions
 );
 
+ExtensionUtility::configurePlugin(
+// extension name, matching the PHP namespaces (but without the vendor)
+    'HioTypo3Connector',
+    // arbitrary, but unique plugin name (not visible in the backend)
+    'ProjectHighlights',
+    // all actions
+    [ProjectController::class => 'highlights'],
+// non-cacheable actions
+);
+ExtensionUtility::configurePlugin(
+// extension name, matching the PHP namespaces (but without the vendor)
+    'HioTypo3Connector',
+    // arbitrary, but unique plugin name (not visible in the backend)
+    'PublicationHighlights',
+    // all actions
+    [PublicationController::class => 'highlights'],
+// non-cacheable actions
+);
 

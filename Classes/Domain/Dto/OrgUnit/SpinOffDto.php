@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace Wtl\HioTypo3Connector\Domain\Dto\Collection;
+namespace Wtl\HioTypo3Connector\Domain\Dto\OrgUnit;
 
-class OrganizationDto
+class SpinOffDto
 {
     protected int $id;
     protected string $name = '';
@@ -31,10 +31,10 @@ class OrganizationDto
         if (count($data) === 0) {
             return new self();
         }
-        $organizationDto = new self();
-        $organizationDto->setId($data['id']);
-        $organizationDto->setName($data['name'] ?? '');
+        $orgUnitDto = new self();
+        $orgUnitDto->setId($data['id']);
+        $orgUnitDto->setName($data['name'] ?? '');
 
-        return $organizationDto;
+        return $orgUnitDto;
     }
 }

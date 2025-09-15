@@ -3,10 +3,11 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto;
 
+use Wtl\HioTypo3Connector\Domain\Dto\Publication\AttributeDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Publication\ConferenceDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Publication\GlobalIdentifierDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Publication\JournalDto;
-use Wtl\HioTypo3Connector\Domain\Dto\Collection\PersonDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Publication\PersonDto;
 use Wtl\HioTypo3Connector\Trait\WithDetails;
 use Wtl\HioTypo3Connector\Trait\WithObjectId;
 use Wtl\HioTypo3Connector\Trait\WithSearchIndex;
@@ -18,7 +19,7 @@ class PublicationDto
     use WithSearchIndex;
 
     protected string $abstract = '';
-    protected string $access = '';
+    protected string $openAccess = '';
     /*
      * @var CitationDto[]
      */
@@ -189,13 +190,13 @@ class PublicationDto
         $this->status = $status;
     }
 
-    public function getAccess(): string
+    public function getOpenAccess(): string
     {
-        return $this->access;
+        return $this->openAccess;
     }
-    public function setAccess(string $access): void
+    public function setOpenAccess(string $openAccess): void
     {
-        $this->access = $access;
+        $this->openAccess = $openAccess;
     }
 
     public function getReleaseYear(): ?int
@@ -209,24 +210,20 @@ class PublicationDto
 
     static public function fromArray(array $data): PublicationDto
     {
-        $releaseYear = $publication['journal']['releaseYear'] ?? null;
-        $publicationDto = new self();
-        $publicationDto->setObjectId($data['id']);
-        $publicationDto->setDetails($data);
-        $publicationDto->setSearchIndex($data);
+        $dto = new self();
+        $dto->setObjectId($data['id']);
+        $dto->setDetails($data);
+        $dto->setSearchIndex($data);
 
-        $publicationDto->setTitle($data['title']);
-        $publicationDto->setType($data['type']);
-        $publicationDto->setReleaseYear($releaseYear);
-        $publicationDto->setCitations($data['citations'] ?? []);
-
-        $authors = [];
-        foreach ($data['persons'] ?? [] as $person) {
-            if (is_array($person)) {
-                $authors[] = PersonDto::fromArray($person);
-            }
-        }
-        $publicationDto->setPersons($authors ?? []);
-        return $publicationDto;
+        $dto->setAbstract($data['abstract'] ?? '');
+        $dto->setCitations($data['citations'] ?? []);
+        $dto->setOpenAccess($data['openAccess'] ?? '');
+        $dto->setPersons(array_map(fn($item) => PersonDto::fromArray($item), $data['persons'] ?? []));
+        $dto->setReleaseYear($data['releaseYear'] ?? null);
+        $dto->setStatus($data['status'] ?? '');
+        $dto->setTitle($data['title']);
+        $dto->setType($data['type']);
+        $dto->setVisibility($data['visibility'] ?? '');
+        return $dto;
     }
 }
