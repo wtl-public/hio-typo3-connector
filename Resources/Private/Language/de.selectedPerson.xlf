@@ -32,6 +32,10 @@
                 <source>Order by</source>
                 <target>Sortierung</target>
             </trans-unit>
+            <trans-unit id="flexform.publicationlist.addOrderBy" resname="flexform.publicationlist.addOrderBy">
+                <source>additional Order by</source>
+                <target>zweite Sortierung</target>
+            </trans-unit>
             <trans-unit id="flexform.publicationlist.orderBy.uid" resname="flexform.publicationlist.orderBy.uid">
                 <source>none</source>
                 <target>keine Sortierung</target>

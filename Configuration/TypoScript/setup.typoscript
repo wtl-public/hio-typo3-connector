@@ -45,5 +45,11 @@ plugin.tx_hiotypo3connector {
         filterProjectLead = {$plugin.tx_hiotypo3connector.settings.projectDetails.persons.filterProjectLead}
       }
     }
+    featuredProjects {
+      projectTargetPageUid = {$plugin.tx_hiotypo3connector.settings.featuredProjects.projectTargetPageUid}
+    }
+    featuredPublications {
+      publicationTargetPageUid = {$plugin.tx_hiotypo3connector.settings.featuredPublications.publicationTargetPageUid}
+    }
   }
 }

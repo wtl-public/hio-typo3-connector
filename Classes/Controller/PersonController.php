@@ -13,7 +13,6 @@ use TYPO3\CMS\Core\Http\ImmediateResponseException;
 use TYPO3\CMS\Core\Pagination\SlidingWindowPagination;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
-use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 use TYPO3\CMS\Extbase\Property\PropertyMapper;
 use TYPO3\CMS\Frontend\Controller\ErrorController;
 use Wtl\HioTypo3Connector\Domain\Dto\Filter\FilterDto;
@@ -60,7 +59,6 @@ class PersonController extends BaseController
             );
         }
 
-//        var_dump($filter);exit();
         $paginator = $this->getPaginator(
             $this->personRepository->findByFilter($filter),
         );
@@ -130,11 +128,13 @@ class PersonController extends BaseController
 
         if ($selectedPerson) {
             $publications = $selectedPerson->getPublications() ?? [];
-            if ($orderBy !== '') {
-                [$propertyName, $order] = explode(':', $orderBy);
-                if (in_array($propertyName, ['title', 'type', 'releaseYear'])) {
-                    $publications = $this->publicationRepository->getPublicationsByPerson($selectedPerson, [$propertyName => $order]);
-                }
+            
+            // get order settings from plugin configuration
+            $orderings = $this->getPublicationOrderingFromProperty('orderBy');
+            $orderings = array_merge($orderings, $this->getPublicationOrderingFromProperty('addOrderBy'));
+            
+            if ($orderings !== []) {
+                $publications = $this->publicationRepository->getPublicationsByPerson($selectedPerson, $orderings);
             }
 
             $groupBy = $this->settings['groupBy'] ?? '';

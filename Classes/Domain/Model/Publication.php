@@ -8,6 +8,8 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 class Publication extends AbstractEntity
 {
+    public const ORDERABLE_COLUMNS = ['title', 'type', 'releaseYear'];
+    
     protected int $objectId = 0;
 
     protected string $title = '';

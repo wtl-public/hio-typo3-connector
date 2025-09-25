@@ -9,7 +9,6 @@ use Psr\Log\LoggerInterface;
 use TYPO3\CMS\Backend\Attribute\AsController;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Core\Pagination\SlidingWindowPagination;
-use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 use TYPO3\CMS\Extbase\Property\PropertyMapper;
 use Wtl\HioTypo3Connector\Domain\Dto\Filter\PublicationFilter;
 use Wtl\HioTypo3Connector\Domain\Model\Publication;
@@ -48,16 +47,13 @@ class PublicationController extends BaseController
                 ]
             );
         }
-        $orderBy = $this->settings['orderBy'] ?? '';
-        $publications = [];
-        if ($orderBy !== '') {
-            [$propertyName, $order] = explode(':', $orderBy);
-            if (in_array($propertyName, ['title', 'type', 'releaseYear'])) {
-                $publications = $this->publicationRepository->findByFilter($filter, [$propertyName => $order]);
-            }
-        } else {
-            $publications = $this->publicationRepository->findByFilter($filter);
-        }
+        
+        // get order settings from plugin configuration
+        $orderings = $this->getPublicationOrderingFromProperty('orderBy');
+        $orderings = array_merge($orderings, $this->getPublicationOrderingFromProperty('addOrderBy'));
+        
+        $publications = $this->publicationRepository->findByFilter($filter, $orderings);
+
         $paginator = $this->getPaginator(
             $publications,
         );
