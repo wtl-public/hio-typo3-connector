@@ -8,7 +8,6 @@ class AddressDto
     protected ?int $addressTagId = null;
     protected ?string $city = null;
     protected ?string $country = null;
-    protected int $id;
     protected ?string $postOfficeBox = null;
     protected ?string $postcode = null;
     protected ?string $state = null;
@@ -54,16 +53,6 @@ class AddressDto
     public function setCountry(?string $country): void
     {
         $this->country = $country;
-    }
-
-    public function getId(): int
-    {
-        return $this->id;
-    }
-
-    public function setId(int $id): void
-    {
-        $this->id = $id;
     }
 
     public function getPostOfficeBox(): ?string
@@ -133,7 +122,6 @@ class AddressDto
         $dto->setAddressTagId($data['addressTagId'] ?? null);
         $dto->setCity($data['city'] ?? null);
         $dto->setCountry($data['country'] ?? null);
-        $dto->setId($data['id']);
         $dto->setPostOfficeBox($data['postOfficeBox'] ?? null);
         $dto->setPostcode($data['postcode'] ?? null);
         $dto->setState($data['state'] ?? null);

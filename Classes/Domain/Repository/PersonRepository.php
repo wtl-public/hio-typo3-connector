@@ -14,14 +14,14 @@ class PersonRepository extends BaseRepository
         if ($personModel === null) {
             $personModel = new Person();
             $personModel->setObjectId($personDto->getObjectId());
-            $personModel->setDetails(json_encode($personDto->getDetails()));
+            $personModel->setDetails($personDto->getDetails());
             $personModel->setSearchIndex($personDto->getSearchIndex());
             $personModel->setName($personDto->getName());
             $personModel->setPid($storagePageId);
             $this->add($personModel);
         } else {
             $personModel->setObjectId($personDto->getObjectId());
-            $personModel->setDetails(json_encode($personDto->getDetails()));
+            $personModel->setDetails($personDto->getDetails());
             $personModel->setSearchIndex($personDto->getSearchIndex());
             $personModel->setName($personDto->getName());
             $this->update($personModel);

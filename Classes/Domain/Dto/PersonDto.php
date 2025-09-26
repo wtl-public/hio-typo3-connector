@@ -22,7 +22,7 @@ class PersonDto
     use WithDetails;
     use WithSearchIndex;
 
-    protected string $name = '';
+    protected string $name;
 
     //  @var AddressDto[]
     protected array $addresses = [];
@@ -129,7 +129,7 @@ class PersonDto
     {
         $dto = new self();
         $dto->setObjectId($data['id']);
-        $dto->setName($data['name']);
+        $dto->setName($data['name']['displayName'] ?? '');
         $dto->setDetails($data);
         $dto->setSearchIndex($data);
 
