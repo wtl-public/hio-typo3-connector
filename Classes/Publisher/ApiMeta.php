@@ -8,12 +8,12 @@ class ApiMeta
     protected int $perPage;
     protected int $lastPage;
     protected int $total;
-    protected int $from;
-    protected int $to;
+    protected ?int $from;
+    protected ?int $to;
     protected string $path;
     protected array $links;
 
-    public function __construct(int $currentPage = 0, int $perPage = 0, int $lastPage = 0, int $total = 0, int $from = 0, int $to = 0, string $path = '', array $links = [])
+    public function __construct(int $currentPage = 0, int $perPage = 0, int $lastPage = 0, int $total = 0, ?int $from = 0, ?int $to = 0, string $path = '', array $links = [])
     {
         $this->currentPage = $currentPage;
         $this->perPage = $perPage;
