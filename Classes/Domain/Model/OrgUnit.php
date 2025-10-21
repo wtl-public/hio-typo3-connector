@@ -33,9 +33,14 @@ class OrgUnit extends AbstractEntity
     protected ObjectStorage $habilitations;
 
     /**
-     * @var ObjectStorage<Publication>
+     * @var ObjectStorage<Patent>
      */
-    protected ObjectStorage $publications;
+    protected ObjectStorage $patents;
+
+    /**
+     * @var ObjectStorage<Person>
+     */
+    protected ObjectStorage $persons;
 
     /**
      * @var ObjectStorage<Project>
@@ -43,9 +48,9 @@ class OrgUnit extends AbstractEntity
     protected ObjectStorage $projects;
 
     /**
-     * @var ObjectStorage<Patent>
+     * @var ObjectStorage<Publication>
      */
-    protected ObjectStorage $patents;
+    protected ObjectStorage $publications;
 
     /**
      * @var ObjectStorage<ResearchInfrastructure>
@@ -67,6 +72,7 @@ class OrgUnit extends AbstractEntity
         $this->doctoralPrograms = new ObjectStorage();
         $this->habilitations = new ObjectStorage();
         $this->patents = new ObjectStorage();
+        $this->persons = new ObjectStorage();
         $this->projects = new ObjectStorage();
         $this->publications = new ObjectStorage();
         $this->researchInfrastructures = new ObjectStorage();
@@ -121,6 +127,29 @@ class OrgUnit extends AbstractEntity
     {
         $this->searchIndex = $searchIndex;
 
+        return $this;
+    }
+
+    public function getPersons(): ObjectStorage
+    {
+        return $this->persons;
+    }
+    public function setPersons(ObjectStorage $persons): void
+    {
+        $this->persons = $persons;
+    }
+    public function addPerson(Person $person): self
+    {
+        if (!$this->persons->contains($person)) {
+            $this->persons->attach($person);
+        }
+        return $this;
+    }
+    public function removePerson(Person $person): self
+    {
+        if ($this->persons->contains($person)) {
+            $this->persons->detach($person);
+        }
         return $this;
     }
 

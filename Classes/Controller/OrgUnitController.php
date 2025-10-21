@@ -14,7 +14,11 @@ use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
 use TYPO3\CMS\Extbase\Property\PropertyMapper;
 use Wtl\HioTypo3Connector\Domain\Dto\Filter\FilterDto;
 use Wtl\HioTypo3Connector\Domain\Model\OrgUnit;
+use Wtl\HioTypo3Connector\Domain\Model\Person;
+use Wtl\HioTypo3Connector\Domain\Repository\CitationStyleRepository;
 use Wtl\HioTypo3Connector\Domain\Repository\OrgUnitRepository;
+use Wtl\HioTypo3Connector\Domain\Repository\PublicationRepository;
+use Wtl\HioTypo3Connector\Services\Statistics\OrgUnitStats;
 
 #[AsController]
 class OrgUnitController extends BaseController
@@ -24,8 +28,11 @@ class OrgUnitController extends BaseController
     public function __construct(
         protected readonly ModuleTemplateFactory $moduleTemplateFactory,
         protected readonly OrgUnitRepository $orgUnitRepository,
+        protected readonly PublicationRepository $publicationRepository,
+        protected readonly CitationStyleRepository $citationStyleRepository,
         protected readonly PropertyMapper $propertyMapper,
         protected readonly LoggerInterface $logger,
+        protected readonly OrgUnitStats $orgUnitStatsService,
     )
     {}
 
@@ -86,6 +93,97 @@ class OrgUnitController extends BaseController
                 'filter' => $this->getFilterFromRequest(),
             ]
         );
+        return $this->htmlResponse();
+    }
+
+    public function publicationListAction(): ResponseInterface
+    {
+        $orderBy = $this->settings['orderBy'] ?? '';
+
+        /** @var OrgUnit $selectedOrgUnit */
+        $selectedOrgUnit = $this->orgUnitRepository->findByUid($this->settings['orgUnitUid']);
+        if ($this->settings['citationStyle'] && $this->settings['citationStyle'] !== '') {
+            $citationStyleModel = $this->citationStyleRepository->findByUid($this->settings['citationStyle']);
+            if($citationStyleModel) {
+                $selectedCitationStyle = $citationStyleModel->getLabel();
+            } else {
+                $selectedCitationStyle = $this->citationStyleRepository->findAll()->getFirst()->getLabel();
+            }
+        } else  {
+            $selectedCitationStyle = false;
+        }
+
+        if ($selectedOrgUnit) {
+            $publications = $selectedOrgUnit->getPublications() ?? [];
+
+            // get order settings from plugin configuration
+            $orderings = $this->getPublicationOrderingFromProperty('orderBy');
+            $orderings = array_merge($orderings, $this->getPublicationOrderingFromProperty('addOrderBy'));
+
+            if ($orderings !== []) {
+                $publications = $this->publicationRepository->getPublicationsByOrgUnit($selectedOrgUnit, $orderings);
+            }
+
+            $groupBy = $this->settings['groupBy'] ?? '';
+            if ($groupBy !== '') {
+                $ungroupedPublications = [];
+                $groupedPublications = [];
+                switch ($groupBy) {
+                    case 'releaseYear':
+                        foreach ($publications as $publication) {
+                            if ($publication->getReleaseYear() === null) {
+                                $ungroupedPublications[] = $publication;
+                            } else {
+                                $groupedPublications[] = $publication;
+                            }
+                        }
+                        break;
+                    case 'type':
+                        foreach ($publications as $publication) {
+                            if ($publication->getType() === '') {
+                                $ungroupedPublications[] = $publication;
+                            } else {
+                                $groupedPublications[] = $publication;
+                            }
+                        }
+                        break;
+                }
+            }
+        }
+
+        $this->view->assignMultiple([
+            'orgUnit' => $selectedOrgUnit,
+            'publications' => $publications ?? [],
+            'groupedPublications' => $groupedPublications ?? [],
+            'ungroupedPublications' => $ungroupedPublications ?? [],
+            'selectedCitationStyle' => $selectedCitationStyle,
+        ]);
+
+        return $this->htmlResponse();
+    }
+
+    public function projectListAction(): ResponseInterface
+    {
+        /** @var OrgUnit $selectedOrgUnit */
+        $selectedOrgUnit = $this->orgUnitRepository->findByUid($this->settings['orgUnitUid']);
+
+        $this->view->assignMultiple([
+            'orgUnit' => $selectedOrgUnit,
+            'projectStatusStatistics' => $this->orgUnitStatsService->getProjectCountByStatus($selectedOrgUnit) ?? [],
+        ]);
+
+        return $this->htmlResponse();
+    }
+
+    public function patentListAction(): ResponseInterface
+    {
+        /** @var OrgUnit $selectedOrgUnit */
+        $selectedOrgUnit = $this->orgUnitRepository->findByUid($this->settings['orgUnitUid']);
+
+        $this->view->assignMultiple([
+            'orgUnit' => $selectedOrgUnit,
+        ]);
+
         return $this->htmlResponse();
     }
 }

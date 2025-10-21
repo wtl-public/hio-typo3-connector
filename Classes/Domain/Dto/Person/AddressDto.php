@@ -2,16 +2,19 @@
 
 namespace Wtl\HioTypo3Connector\Domain\Dto\Person;
 
+use Wtl\HioTypo3Connector\Domain\Dto\Misc\AddressTagDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Misc\NotificationCategoryDto;
+
 class AddressDto
 {
     protected ?string $addressAddition = null;
-    protected ?string $addressTag = null;
+    protected ?AddressTagDto $addressTag = null;
     protected ?string $city = null;
     protected ?string $country = null;
     protected ?string $email = null;
     protected ?string $hyperlink = null;
     protected ?string $messenger = null;
-    protected ?string $notificationCategory = null;
+    protected ?NotificationCategoryDto $notificationCategory = null;
     protected ?string $phone = null;
     protected ?string $postOfficeBox = null;
     protected ?string $postcode = null;
@@ -27,12 +30,12 @@ class AddressDto
         $this->addressAddition = $addressAddition;
     }
 
-    public function getAddressTag(): ?string
+    public function getAddressTag(): ?AddressTagDto
     {
         return $this->addressTag;
     }
 
-    public function setAddressTag(?string $addressTag): void
+    public function setAddressTag(?AddressTagDto $addressTag): void
     {
         $this->addressTag = $addressTag;
     }
@@ -87,12 +90,12 @@ class AddressDto
         $this->messenger = $messenger;
     }
 
-    public function getNotificationCategory(): ?string
+    public function getNotificationCategory(): ?NotificationCategoryDto
     {
         return $this->notificationCategory;
     }
 
-    public function setNotificationCategory(?string $notificationCategory): void
+    public function setNotificationCategory(?NotificationCategoryDto $notificationCategory): void
     {
         $this->notificationCategory = $notificationCategory;
     }
@@ -141,13 +144,17 @@ class AddressDto
     {
         $dto = new self();
         $dto->setAddressAddition($data['addressAddition'] ?? null);
-        $dto->setAddressTag($data['addressTag'] ?? null);
+        if ($data['addressTag']) {
+            $dto->setAddressTag(AddressTagDto::fromArray($data['addressTag']) ?? null);
+        }
         $dto->setCity($data['city'] ?? null);
         $dto->setCountry($data['country'] ?? null);
         $dto->setEmail($data['email'] ?? null);
         $dto->setHyperlink($data['hyperlink'] ?? null);
         $dto->setMessenger($data['messenger'] ?? null);
-        $dto->setNotificationCategory($data['notificationCategory'] ?? null);
+        if ($data['notificationCategory']) {
+            $dto->setNotificationCategory(NotificationCategoryDto::fromArray($data['notificationCategory']));
+        }
         $dto->setPhone($data['phone'] ?? null);
         $dto->setPostOfficeBox($data['postOfficeBox'] ?? null);
         $dto->setPostcode($data['postcode'] ?? null);

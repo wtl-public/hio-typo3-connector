@@ -3,10 +3,13 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto\Publication;
 
+use Wtl\HioTypo3Connector\Trait\WithName;
+
 class LanguageDto
 {
+    use WithName;
+
     protected string $isoCode = '';
-    protected string $name = '';
 
     public function getIsoCode(): string
     {
@@ -15,15 +18,6 @@ class LanguageDto
     public function setIsoCode(string $isoCode): void
     {
         $this->isoCode = $isoCode;
-    }
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-    public function setName(string $name): void
-    {
-        $this->name = $name;
     }
 
     static public function fromArray(array $data): self

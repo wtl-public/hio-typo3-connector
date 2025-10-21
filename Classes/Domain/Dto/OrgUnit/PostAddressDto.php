@@ -2,11 +2,14 @@
 
 namespace Wtl\HioTypo3Connector\Domain\Dto\OrgUnit;
 
-class AddressDto
+use Wtl\HioTypo3Connector\Domain\Dto\Misc\AddressTagDto;
+
+class PostAddressDto
 {
-    protected ?string $additionalAddressInfo = null;
-    protected ?int $addressTagId = null;
+    protected ?string $addressAddition = null;
+    protected ?AddressTagDto $addressTag = null;
     protected ?string $city = null;
+    protected ?string $company = null;
     protected ?string $country = null;
     protected ?string $postOfficeBox = null;
     protected ?string $postcode = null;
@@ -15,24 +18,24 @@ class AddressDto
     protected ?\DateTime $validFrom = null;
     protected ?\DateTime $validTo = null;
 
-    public function getAdditionalAddressInfo(): ?string
+    public function getAddressAddition(): ?string
     {
-        return $this->additionalAddressInfo;
+        return $this->addressAddition;
     }
 
-    public function setAdditionalAddressInfo(?string $additionalAddressInfo): void
+    public function setAddressAddition(?string $addressAddition): void
     {
-        $this->additionalAddressInfo = $additionalAddressInfo;
+        $this->addressAddition = $addressAddition;
     }
 
-    public function getAddressTagId(): ?int
+    public function getAddressTag(): ?AddressTagDto
     {
-        return $this->addressTagId;
+        return $this->addressTag;
     }
 
-    public function setAddressTagId(?int $addressTagId): void
+    public function setAddressTag(?AddressTagDto $addressTag): void
     {
-        $this->addressTagId = $addressTagId;
+        $this->addressTag = $addressTag;
     }
 
     public function getCity(): ?string
@@ -53,6 +56,15 @@ class AddressDto
     public function setCountry(?string $country): void
     {
         $this->country = $country;
+    }
+
+    public function getCompany(): ?string
+    {
+        return $this->company;
+    }
+    public function setCompany(?string $company): void
+    {
+        $this->company = $company;
     }
 
     public function getPostOfficeBox(): ?string
@@ -115,11 +127,11 @@ class AddressDto
         $this->validTo = $validTo;
     }
 
-    static public function fromArray(array $data): AddressDto
+    static public function fromArray(array $data): PostAddressDto
     {
         $dto = new self();
-        $dto->setAdditionalAddressInfo($data['additionalAddressInfo'] ?? null);
-        $dto->setAddressTagId($data['addressTagId'] ?? null);
+        $dto->setAddressAddition($data['addressAddition'] ?? null);
+        $dto->setAddressTag(AddressTagDto::fromArray($data['addressTag']) ?? null);
         $dto->setCity($data['city'] ?? null);
         $dto->setCountry($data['country'] ?? null);
         $dto->setPostOfficeBox($data['postOfficeBox'] ?? null);

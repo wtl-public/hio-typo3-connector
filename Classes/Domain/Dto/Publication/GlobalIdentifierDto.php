@@ -3,28 +3,13 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto\Publication;
 
+use Wtl\HioTypo3Connector\Trait\WithId;
+use Wtl\HioTypo3Connector\Trait\WithType;
+
 class GlobalIdentifierDto
 {
-    protected string $id = '';
-    protected string $type = '';
-
-    public function getId(): string
-    {
-        return $this->id;
-    }
-    public function setId(string $id): void
-    {
-        $this->id = $id;
-    }
-
-    public function getType(): string
-    {
-        return $this->type;
-    }
-    public function setType(string $type): void
-    {
-        $this->type = $type;
-    }
+    use WithId;
+    use WithType;
 
     static public function fromArray(array $data): self
     {

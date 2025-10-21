@@ -12,9 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use Wtl\HioTypo3Connector\Domain\Dto\OrgUnitDto;
 use Wtl\HioTypo3Connector\Event\ReceiveHioOrgUnitEvent;
-use Wtl\HioTypo3Connector\Event\ReceiveHioPatentEvent;
 use Wtl\HioTypo3Connector\Services\HioOrgUnitService;
-use Wtl\HioTypo3Connector\Services\HioPatentService;
 use Wtl\HioTypo3Connector\Trait\WithConfigureImportCommandTrait;
 
 class OrgUnitsImportCommand extends Command

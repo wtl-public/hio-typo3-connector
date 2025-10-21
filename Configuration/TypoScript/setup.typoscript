@@ -20,9 +20,11 @@ plugin.tx_hiotypo3connector {
       personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.habilitations.personTargetPageUid}
     }
     orgUnits {
-      personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.orgunits.personTargetPageUid}
-      projectTargetPageUid = {$plugin.tx_hiotypo3connector.settings.persons.projectTargetPageUid}
-      publicationTargetPageUid = {$plugin.tx_hiotypo3connector.settings.persons.publicationTargetPageUid}
+      personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.orgUnits.personTargetPageUid}
+      projectTargetPageUid = {$plugin.tx_hiotypo3connector.settings.orgUnits.projectTargetPageUid}
+      publicationTargetPageUid = {$plugin.tx_hiotypo3connector.settings.orgUnits.publicationTargetPageUid}
+      patentTargetPageUid = {$plugin.tx_hiotypo3connector.settings.orgUnits.patentTargetPageUid}
+      doctoralProgramTargetPageUid = {$plugin.tx_hiotypo3connector.settings.orgUnits.doctoralProgramTargetPageUid}
     }
     patents {
       personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.patents.personTargetPageUid}
@@ -30,12 +32,20 @@ plugin.tx_hiotypo3connector {
     persons {
       projectTargetPageUid = {$plugin.tx_hiotypo3connector.settings.persons.projectTargetPageUid}
       publicationTargetPageUid = {$plugin.tx_hiotypo3connector.settings.persons.publicationTargetPageUid}
+      patentTargetPageUid = {$plugin.tx_hiotypo3connector.settings.persons.patentTargetPageUid}
+      doctoralProgramTargetPageUid = {$plugin.tx_hiotypo3connector.settings.persons.doctoralProgramTargetPageUid}
     }
     projects {
       personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.projects.personTargetPageUid}
     }
     publications {
       personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.publications.personTargetPageUid}
+    }
+    nominations {
+      personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.nominations.personTargetPageUid}
+      orgUnitTargetPageUid = {$plugin.tx_hiotypo3connector.settings.nominations.orgUnitTargetPageUid}
+      projectTargetPageUid = {$plugin.tx_hiotypo3connector.settings.nominations.projectTargetPageUid}
+      publicationTargetPageUid = {$plugin.tx_hiotypo3connector.settings.nominations.publicationTargetPageUid}
     }
     spinoffs {
       personTargetPageUid = {$plugin.tx_hiotypo3connector.settings.spinoffs.personTargetPageUid}

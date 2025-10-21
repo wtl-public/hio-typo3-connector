@@ -3,23 +3,37 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto;
 
-use Wtl\HioTypo3Connector\Domain\Dto\Publication\AttributeDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Misc\OpenAccessDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Misc\ResearchAreaDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Misc\ResearchAreaKdsfDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Misc\StatusDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Misc\SubjectAreaDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Misc\VisibilityDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Publication\ConferenceDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Publication\GlobalIdentifierDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Publication\JournalDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Publication\KeywordDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Publication\PersonDto;
 use Wtl\HioTypo3Connector\Trait\WithDetails;
 use Wtl\HioTypo3Connector\Trait\WithObjectId;
 use Wtl\HioTypo3Connector\Trait\WithSearchIndex;
+use Wtl\HioTypo3Connector\Trait\WithStatus;
+use Wtl\HioTypo3Connector\Trait\WithTitle;
+use Wtl\HioTypo3Connector\Trait\WithType;
+use Wtl\HioTypo3Connector\Trait\WithVisibility;
 
 class PublicationDto
 {
     use WithObjectId;
     use WithDetails;
     use WithSearchIndex;
+    use WithStatus;
+    use WithTitle;
+    use WithType;
+    use WithVisibility;
 
     protected string $abstract = '';
-    protected string $openAccess = '';
+    protected ?OpenAccessDto $openAccess = null;
     /*
      * @var CitationDto[]
      */
@@ -31,9 +45,6 @@ class PublicationDto
      */
     protected array $globalIdentifiers;
     protected ?JournalDto $journal = null;
-    /**
-     * @var string[]
-     */
     protected array $keywords = [];
     /*
          *  @var LanguageDto[]
@@ -44,13 +55,13 @@ class PublicationDto
      */
     protected array $persons = [];
     protected ?int $releaseYear = null;
+    protected array $researchAreas = [];
+    protected array $researchAreasKdsf = [];
+
     protected string $resource = '';
     protected string $reviewed = '';
-    protected string $status = '';
+    protected array $subjectAreas = [];
     protected string $subtitle = '';
-    protected string $title = '';
-    protected string $type = '';
-    protected string $visibility = '';
 
     public function getCitations(): array
     {
@@ -60,10 +71,6 @@ class PublicationDto
     {
         $this->citations = $citations;
     }
-    public function getTitle(): string
-    {
-        return $this->title;
-    }
     public function getSubtitle(): string
     {
         return $this->subtitle;
@@ -71,10 +78,6 @@ class PublicationDto
     public function getAbstract(): string
     {
         return $this->abstract;
-    }
-    public function getType(): string
-    {
-        return $this->type;
     }
     public function getDocument(): string
     {
@@ -96,14 +99,36 @@ class PublicationDto
     {
         $this->abstract = $abstract;
     }
-    public function setType(string $type): void
-    {
-        $this->type = $type;
-    }
     public function setDocument(string $document): void
     {
         $this->document = $document;
     }
+
+    public function getResearchAreas(): array
+    {
+        return $this->researchAreas;
+    }
+    public function setResearchAreas(array $researchAreas): void
+    {
+        $this->researchAreas = $researchAreas;
+    }
+    public function getResearchAreasKdsf(): array
+    {
+        return $this->researchAreasKdsf;
+    }
+    public function setResearchAreasKdsf(array $researchAreasKdsf): void
+    {
+        $this->researchAreasKdsf = $researchAreasKdsf;
+    }
+    public function getSubjectAreas(): array
+    {
+        return $this->subjectAreas;
+    }
+    public function setSubjectAreas(array $subjectAreas): void
+    {
+        $this->subjectAreas = $subjectAreas;
+    }
+
     public function setResource(string $resource): void
     {
         $this->resource = $resource;
@@ -112,12 +137,6 @@ class PublicationDto
     {
         $this->reviewed = $reviewed;
     }
-
-    public function setTitle(string $title): void
-    {
-        $this->title = $title;
-    }
-
     public function getPersons(): array
     {
         return $this->persons;
@@ -172,29 +191,11 @@ class PublicationDto
         $this->globalIdentifiers = $globalIdentifiers;
     }
 
-    public function getVisibility(): string
-    {
-        return $this->visibility;
-    }
-    public function setVisibility(string $visibility): void
-    {
-        $this->visibility = $visibility;
-    }
-
-    public function getStatus(): string
-    {
-        return $this->status;
-    }
-    public function setStatus(string $status): void
-    {
-        $this->status = $status;
-    }
-
-    public function getOpenAccess(): string
+    public function getOpenAccess(): ?OpenAccessDto
     {
         return $this->openAccess;
     }
-    public function setOpenAccess(string $openAccess): void
+    public function setOpenAccess(?OpenAccessDto $openAccess): void
     {
         $this->openAccess = $openAccess;
     }
@@ -217,13 +218,19 @@ class PublicationDto
 
         $dto->setAbstract($data['abstract'] ?? '');
         $dto->setCitations($data['citations'] ?? []);
-        $dto->setOpenAccess($data['openAccess'] ?? '');
+        if ($data['openAccess']) {
+            $dto->setOpenAccess(OpenAccessDto::fromArray($data['openAccess']));
+        }
+        $dto->setKeywords(array_map(fn($item) => KeywordDto::fromArray($item), $data['keywords'] ?? []));
         $dto->setPersons(array_map(fn($item) => PersonDto::fromArray($item), $data['persons'] ?? []));
         $dto->setReleaseYear($data['releaseYear'] ?? null);
-        $dto->setStatus($data['status'] ?? '');
+        $dto->setResearchAreas(array_map(fn($item) => ResearchAreaDto::fromArray($item), $data['researchAreas'] ?? []));
+        $dto->setResearchAreasKdsf(array_map(fn($item) => ResearchAreaKdsfDto::fromArray($item), $data['researchAreasKdsf'] ?? []));
+        $dto->setStatus(StatusDto::fromArray($data['status']) ?? null);
+        $dto->setSubjectAreas(array_map(fn($item) => SubjectAreaDto::fromArray($item), $data['subjectAreas'] ?? []));
         $dto->setTitle($data['title']);
         $dto->setType($data['type']);
-        $dto->setVisibility($data['visibility'] ?? '');
+        $dto->setVisibility(VisibilityDto::fromArray($data['visibility']) ?? null);
         return $dto;
     }
 }

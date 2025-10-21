@@ -54,6 +54,11 @@ services:
       - name: console.command
         command: 'hio:research-infrastructures:import'
         description: 'Import research infrastructure data from HISinOne'
+  Wtl\HioTypo3Connector\Command\NominationsImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:nominations:import'
+        description: 'Import nomination data from HISinOne'
 
   Wtl\HioTypo3Connector\Command\RequestHioDoctoralProgramImportCommand:
     tags:
@@ -85,6 +90,11 @@ services:
       - name: console.command
         command: 'hio:request:project:import'
         description: 'Request Import of project data'
+  Wtl\HioTypo3Connector\Command\RequestHioNominationImportCommand:
+    tags:
+      - name: console.command
+        command: 'hio:request:nomination:import'
+        description: 'Request Import of nomination data'
   Wtl\HioTypo3Connector\Command\RequestHioPublicationImportCommand:
     tags:
       - name: console.command
@@ -132,6 +142,10 @@ services:
     tags:
       - name: event.listener
         identifier: 'receiveHioSpinOffListener'
+  Wtl\HioTypo3Connector\EventListener\ReceiveHioNominationListener:
+    tags:
+      - name: event.listener
+        identifier: 'receiveHioNominationListener'
 
   Wtl\HioTypo3Connector\EventListener\AttachHioDoctoralProgramToHioPersonsListener:
     tags:
@@ -191,6 +205,10 @@ services:
     tags:
       - name: event.listener
         identifier: 'attachHioOrgUnitToHioPatentsListener'
+  Wtl\HioTypo3Connector\EventListener\AttachHioOrgUnitToHioPersonsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioOrgUnitToHioPersonsListener'
   Wtl\HioTypo3Connector\EventListener\AttachHioOrgUnitToHioProjectsListener:
     tags:
       - name: event.listener
@@ -207,3 +225,20 @@ services:
     tags:
       - name: event.listener
         identifier: 'attachHioOrgUnitToHioSpinOffsListener'
+
+  Wtl\HioTypo3Connector\EventListener\AttachHioNominationToHioPersonsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioNominationToHioPersonsListener'
+  Wtl\HioTypo3Connector\EventListener\AttachHioNominationToHioProjectsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioNominationToHioProjectsListener'
+  Wtl\HioTypo3Connector\EventListener\AttachHioNominationToHioPublicationsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioNominationToHioPublicationsListener'
+  Wtl\HioTypo3Connector\EventListener\AttachHioNominationToHioOrgUnitsListener:
+    tags:
+      - name: event.listener
+        identifier: 'attachHioNominationToHioOrgUnitsListener'

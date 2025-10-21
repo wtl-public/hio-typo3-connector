@@ -3,26 +3,21 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto\Publication;
 
+use Wtl\HioTypo3Connector\Trait\WithLanguage;
+use Wtl\HioTypo3Connector\Trait\WithName;
+use Wtl\HioTypo3Connector\Trait\WithType;
+
 class ConferenceDto
 {
-    protected string $name = '';
+    use WithName;
+    use WithLanguage;
+    use WithType;
+
     protected string $text = '';
     protected ?string $city = null;
     protected ?string $country = null;
-    protected ?string $type = '';
-    protected string $language = '';
     protected string $startDate;
     protected string $endDate;
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): void
-    {
-        $this->name = $name;
-    }
 
     public function getText(): string
     {
@@ -52,26 +47,6 @@ class ConferenceDto
     public function setCountry(?string $country): void
     {
         $this->country = $country;
-    }
-
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(?string $type): void
-    {
-        $this->type = $type;
-    }
-
-    public function getLanguage(): string
-    {
-        return $this->language;
-    }
-
-    public function setLanguage(string $language): void
-    {
-        $this->language = $language;
     }
 
     public function getStartDate(): string

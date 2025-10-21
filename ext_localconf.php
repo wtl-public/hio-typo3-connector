@@ -4,6 +4,7 @@ declare(strict_types=1);
 defined('TYPO3') or die();
 
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
+use Wtl\HioTypo3Connector\Controller\NominationController;
 use Wtl\HioTypo3Connector\Controller\OrgUnitController;
 use Wtl\HioTypo3Connector\Controller\PersonController;
 use Wtl\HioTypo3Connector\Controller\ProjectController;
@@ -108,6 +109,12 @@ ExtensionUtility::configurePlugin(
     // non-cacheable actions
     [SpinOffController::class => 'search'],
 );
+ExtensionUtility::configurePlugin(
+    'HioTypo3Connector',
+    'NominationList',
+    [NominationController::class => 'index, show'],
+    [],
+);
 
 
 ExtensionUtility::configurePlugin(
@@ -184,3 +191,22 @@ ExtensionUtility::configurePlugin(
 // non-cacheable actions
 );
 
+
+ExtensionUtility::configurePlugin(
+    'HioTypo3Connector',
+    'SelectedOrgUnitPublicationList',
+    [OrgUnitController::class => 'publicationList'],
+    []
+);
+ExtensionUtility::configurePlugin(
+    'HioTypo3Connector',
+    'SelectedOrgUnitProjectList',
+    [OrgUnitController::class => 'projectList'],
+    []
+);
+ExtensionUtility::configurePlugin(
+    'HioTypo3Connector',
+    'SelectedOrgUnitPatentList',
+    [OrgUnitController::class => 'patentList'],
+    []
+);

@@ -245,6 +245,10 @@
                 <source>Other publications</source>
             </trans-unit>
 
+            <trans-unit id="hio.show.orgUnit.ungroupedPublications" resname="hio.show.orgUnit.ungroupedPublications">
+                <source>Other publications</source>
+            </trans-unit>
+
             <trans-unit id="apa-old-doi-prefix" resname="apa-old-doi-prefix">
                 <source>APA (American Psychological Association)</source>
             </trans-unit>

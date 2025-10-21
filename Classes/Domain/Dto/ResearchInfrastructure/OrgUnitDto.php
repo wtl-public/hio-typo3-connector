@@ -3,38 +3,15 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto\ResearchInfrastructure;
 
+use Wtl\HioTypo3Connector\Trait\WithId;
+use Wtl\HioTypo3Connector\Trait\WithName;
+use Wtl\HioTypo3Connector\Trait\WithRole;
+
 class OrgUnitDto
 {
-    protected int $id;
-    protected string $name = '';
-    protected string $role = '';
-
-    public function getId(): int
-    {
-        return $this->id;
-    }
-    public function setId(int $id): void
-    {
-        $this->id = $id;
-    }
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-    public function setName(string $name): void
-    {
-        $this->name = $name;
-    }
-
-    public function getRole(): string
-    {
-        return $this->role;
-    }
-    public function setRole(string $role): void
-    {
-        $this->role = $role;
-    }
+    use WithId;
+    use WithName;
+    use WithRole;
 
     static public function fromArray(array $data): self
     {

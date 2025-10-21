@@ -44,35 +44,47 @@ Im TYPO3 Backend:
 
 ```
 plugin.tx_hiotypo3connector {
-    settings {
-      doctoralPrograms {
-        personTargetPageUid = 9
-      }
-      habilitations {
-        personTargetPageUid = 9
-      }
-      orgUnits {
-        personTargetPageUid = 9
-      }
-      patents {
-        personTargetPageUid = 9
-      }
+  settings {
+    doctoralPrograms {
+      publicationTargetPageUid = 7
+      projectTargetPageUid = 6
+      personTargetPageUid = 9
+      patentTargetPageUid = 12
+      doctoralProgramTargetPageUid = 15
+    }
+    habilitations {
+      personTargetPageUid = 9
+    }
+    orgUnits {
+      personTargetPageUid = 9
+    }
+    patents {
+      personTargetPageUid = 9
+    }
+    persons {
+      publicationTargetPageUid = 7
+      projectTargetPageUid = 6
+      patentTargetPageUid = 12
+      doctoralProgramTargetPageUid = 15
+    }
+    projects {
+      personTargetPageUid = 9
+    }
+    publications {
+      personTargetPageUid = 9
+    }
+    projectDetails {
       persons {
-        publicationTargetPageUid = 7
-        projectTargetPageUid = 8
-      }
-      projects {
-        personTargetPageUid = 9
-      }
-      publications {
-        personTargetPageUid = 9
-      }
-      projectDetails {
-        persons {
-          filterProjectLead = Projektleiter/-in
-        }
+        filterProjectLead = Projektleiter/-in
       }
     }
+    featuredProjects {
+      projectTargetPageUid = 6
+    }
+    featuredPublications {
+      publicationTargetPageUid = 7
+    }
+  }
 }
 ```
 
@@ -80,13 +92,16 @@ plugin.tx_hiotypo3connector {
 
 Im TYPO3 Backend:
 * unter `Admin Tools` -> `Scheduler` -> die folgenden Import Tasks anlegen:
-  * `hio:import:doctoralPrograms` - Importiert Promotionen aus HISinOne
-  * `hio:import:habilitations` - Importiert Habilitationen aus HISinOne
-  * `hio:import:orgUnits` - Importiert Organisationseinheiten aus HISinOne
-  * `hio:import:patents` - Importiert Patente aus HISinOne
-  * `hio:import:persons` - Importiert Personen aus HISinOne
-  * `hio:import:projects` - Importiert Projekte aus HISinOne
-  * `hio:import:publications` - Importiert Publikationen aus HISinOne
+  * `hio:doctoral-programs:import` - Importiert Promotionen aus HISinOne
+  * `hio:habilitations:import` - Importiert Habilitationen aus HISinOne
+  * `hio:nominations:import` - Importiert Preisanerkennungen aus HISinOne
+  * `hio:org-units:import` - Importiert Organisationseinheiten aus HISinOne
+  * `hio:patents:import` - Importiert Patente aus HISinOne
+  * `hio:persons:import` - Importiert Personen aus HISinOne
+  * `hio:projects:import` - Importiert Projekte aus HISinOne
+  * `hio:publications:import` - Importiert Publikationen aus HISinOne
+  * `hio:research-infrastructures:import` - Importiert Forschungsinfrastrukturen aus HISinOne
+  * `hio:spinoffs:import` - Importiert Ausgründungen aus HISinOne
   
 
 * jeder der genannten Tasks hat folgende Parameter:
@@ -107,11 +122,14 @@ Im TYPO3 Backend:
 * unter `Admin Tools` -> `Reactions` -> die folgenden TYPO3 Webhooks (Reactions) anlegen:
   * `Receive doctoral program data from HIO Middleware` - Webhook zum Import von Promotionen
   * `Receive habilitation data from HIO Middleware` - Webhook zum Import von Habilitationen
+  * `Receive nomination data from HIO Middleware` - Webhook zum Import von Preisanerkennungen
   * `Receive orgUnit data from HIO Middleware` - Webhook zum Import von Organisationseinheiten
   * `Receive patent data from HIO Middleware` - Webhook zum Import von Patenten
   * `Receive person data from HIO Middleware` - Webhook zum Import von Personen
   * `Receive project data from HIO Middleware` - Webhook zum Import von Projekten
   * `Receive publication data from HIO Middleware` - Webhook zum Import von Publikationen
+  * `Receive research-infrastructure data from HIO Middleware` - Webhook zum Import von Forschungsinfrastrukturen
+  * `Receive spinoff data from HIO Middleware` - Webhook zum Import von Ausgründungen
 
 * jeder der genannten Webhooks hat folgende Parameter:
   * `Storage page ID` - die Speicherseite, unter der die importierten Datensätze gespeichert werden
@@ -121,6 +139,7 @@ Im TYPO3 Backend:
 * unter `Admin Tools` -> `Scheduler` -> die folgenden Import Requests anlegen:
   * `hio:request:doctoralProgram:import` - Startet den Import von Promotionen aus HISinOne
   * `hio:request:habilitation:import` - Startet den Import von Habilitationen aus HISinOne
+  * `hio:request:nomination:import` - Startet den Import von Preisanerkennungen aus HISinOne
   * `hio:request:orgUnit:import` - Startet den Import von Organisationseinheiten aus HISinOne
   * `hio:request:patent:import` - Startet den Import von Patente aus HISinOne
   * `hio:request:person:import` - Startet den Import von Personen aus HISinOne

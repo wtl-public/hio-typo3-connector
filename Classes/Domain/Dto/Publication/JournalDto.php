@@ -3,23 +3,17 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto\Publication;
 
+use Wtl\HioTypo3Connector\Trait\WithTitle;
+
 class JournalDto
 {
-    protected string $title = '';
+    use WithTitle;
+
     protected int $releaseYear = 0;
     protected ?string $volume = null;
     protected string $issue = '';
     protected string $pageRange = '';
     protected string $publisher = '';
-
-    public function getTitle(): string
-    {
-        return $this->title;
-    }
-    public function setTitle(string $title): void
-    {
-        $this->title = $title;
-    }
 
     public function getReleaseYear(): int
     {

@@ -22,7 +22,7 @@ class ProjectRepository extends BaseRepository
 
            $projectModel->setEndDate($projectDto->getEndDate());
             $projectModel->setStartDate($projectDto->getStartDate());
-            $projectModel->setStatus($projectDto->getStatus());
+            $projectModel->setStatus($projectDto->getStatus()->getName());
             $projectModel->setTitle($projectDto->getTitle());
             $projectModel->setType($projectDto->getType());
             $this->add($projectModel);
@@ -33,7 +33,7 @@ class ProjectRepository extends BaseRepository
 
             $projectModel->setEndDate($projectDto->getEndDate());
             $projectModel->setStartDate($projectDto->getStartDate());
-            $projectModel->setStatus($projectDto->getStatus());
+            $projectModel->setStatus($projectDto->getStatus()->getName());
             $projectModel->setTitle($projectDto->getTitle());
             $projectModel->setType($projectDto->getType());
             $this->update($projectModel);

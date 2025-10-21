@@ -12,8 +12,8 @@ use Wtl\HioTypo3Connector\Event\AttachHioPersonToHioOrgUnitsEvent;
 class AttachHioPersonToHioOrgUnitsListener
 {
     public function __construct(
-        protected readonly OrgUnitRepository  $orgUnitRepository,
         protected readonly PersonRepository   $personRepository,
+        protected readonly OrgUnitRepository  $orgUnitRepository,
         protected readonly PersistenceManager $persistenceManager,
     )
     {

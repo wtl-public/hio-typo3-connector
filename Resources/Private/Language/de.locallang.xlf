@@ -284,6 +284,10 @@
                 <source>Other publications</source>
                 <target>Weitere Veröffentlichungen</target>
             </trans-unit>
+            <trans-unit id="hio.show.orgUnit.ungroupedPublications" resname="hio.show.orgUnit.ungroupedPublications">
+                <source>Other publications</source>
+                <target>Weitere Veröffentlichungen</target>
+            </trans-unit>
 
             <trans-unit id="tx_hiotypo3connector_domain_model_citationstyle" resname="tx_hiotypo3connector_domain_model_citationstyle">
                 <source>Citationstyles</source>

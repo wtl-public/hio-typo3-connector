@@ -17,6 +17,10 @@ return [
         'path' => '/hio/typo3/connector/patent',
         'target' => 'Wtl\HioTypo3Connector\Controller\PatentController',
     ],
+    'tx_hio_typo3_connector_nomination' => [
+        'path' => '/hio/typo3/connector/nomination',
+        'target' => 'Wtl\HioTypo3Connector\Controller\NominationController',
+    ],
     'tx_hio_typo3_connector_doctoralProgram' => [
         'path' => '/hio/typo3/connector/doctoralProgram',
         'target' => 'Wtl\HioTypo3Connector\Controller\DoctoralProgramController',

@@ -3,15 +3,23 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto\OrgUnit;
 
+use Wtl\HioTypo3Connector\Trait\WithDescription;
+use Wtl\HioTypo3Connector\Trait\WithEndDate;
+use Wtl\HioTypo3Connector\Trait\WithId;
+use Wtl\HioTypo3Connector\Trait\WithLanguage;
+use Wtl\HioTypo3Connector\Trait\WithStartDate;
+use Wtl\HioTypo3Connector\Trait\WithTitle;
+
 class DoctoralProgramDto
 {
+    use WithDescription;
+    use WithEndDate;
+    use WithId;
+    use WithLanguage;
+    use WithStartDate;
+    use WithTitle;
+
     protected ?string $courseOfStudy = '';
-    protected ?string $description = '';
-    protected ?\DateTime $endDate = null;
-    protected int $id;
-    protected string $language = '';
-    protected ?\DateTime $startDate = null;
-    protected string $title = '';
 
     public function getCourseOfStudy(): ?string
     {
@@ -21,66 +29,6 @@ class DoctoralProgramDto
     public function setCourseOfStudy(?string $courseOfStudy): void
     {
         $this->courseOfStudy = $courseOfStudy;
-    }
-
-    public function getDescription(): ?string
-    {
-        return $this->description;
-    }
-
-    public function setDescription(?string $description): void
-    {
-        $this->description = $description;
-    }
-
-    public function getEndDate(): ?\DateTime
-    {
-        return $this->endDate;
-    }
-
-    public function setEndDate(?\DateTime $endDate): void
-    {
-        $this->endDate = $endDate;
-    }
-
-    public function getId(): int
-    {
-        return $this->id;
-    }
-
-    public function setId(int $id): void
-    {
-        $this->id = $id;
-    }
-
-    public function getLanguage(): string
-    {
-        return $this->language;
-    }
-
-    public function setLanguage(string $language): void
-    {
-        $this->language = $language;
-    }
-
-    public function getStartDate(): ?\DateTime
-    {
-        return $this->startDate;
-    }
-
-    public function setStartDate(?\DateTime $startDate): void
-    {
-        $this->startDate = $startDate;
-    }
-
-    public function getTitle(): string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(string $title): void
-    {
-        $this->title = $title;
     }
 
     static public function fromArray(array $data): self

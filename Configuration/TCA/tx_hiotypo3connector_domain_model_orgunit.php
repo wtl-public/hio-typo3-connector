@@ -135,6 +135,15 @@ return [
                 'MM' => 'tx_hiotypo3connector_orgunit_patent_mm',
             ],
         ],
+        'persons' => [
+            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_orgunit.persons',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'tx_hiotypo3connector_domain_model_person',
+                'MM' => 'tx_hiotypo3connector_orgunit_person_mm',
+            ],
+        ],
         'doctoral_programs' => [
             'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_orgunit.doctoralPrograms',
             'config' => [

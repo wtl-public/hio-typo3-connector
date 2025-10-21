@@ -3,22 +3,37 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto;
 
+use Wtl\HioTypo3Connector\Domain\Dto\Misc\StatusDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Misc\VisibilityDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Project\FundingProgramDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Project\PersonDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Project\ResearchAreaDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Project\SubjectAreaDto;
 use Wtl\HioTypo3Connector\Trait\WithDetails;
+use Wtl\HioTypo3Connector\Trait\WithEndDate;
+use Wtl\HioTypo3Connector\Trait\WithLanguage;
 use Wtl\HioTypo3Connector\Trait\WithObjectId;
 use Wtl\HioTypo3Connector\Trait\WithSearchIndex;
+use Wtl\HioTypo3Connector\Trait\WithStartDate;
+use Wtl\HioTypo3Connector\Trait\WithStatus;
+use Wtl\HioTypo3Connector\Trait\WithTitle;
+use Wtl\HioTypo3Connector\Trait\WithType;
+use Wtl\HioTypo3Connector\Trait\WithVisibility;
 
 class ProjectDto
 {
     use WithObjectId;
     use WithDetails;
+    use WithEndDate;
+    use WithLanguage;
     use WithSearchIndex;
+    use WithStartDate;
+    use WithStatus;
+    use WithTitle;
+    use WithType;
+    use WithVisibility;
 
     protected string $abstract = '';
-    protected ?\DateTime $endDate = null;
     /**
      * @var FundingProgramDto[]
      */
@@ -27,7 +42,6 @@ class ProjectDto
      * @var string[]
      */
     protected array $keywords = [];
-    protected string $language = '';
     protected string $objective = '';
     /**
      * @var PersonDto[]
@@ -42,25 +56,11 @@ class ProjectDto
      */
     protected array $researchAreasKdsf = [];
     protected string $shorttext = '';
-    protected ?\DateTime $startDate = null;
     /**
      * @var SubjectAreaDto[]
      */
     protected array $subjectAreas = [];
-    protected string $status = '';
-    protected string $title = '';
-    protected string $type = '';
     protected string $uniquename = '';
-    protected string $visibility = '';
-
-    public function getTitle(): string
-    {
-        return $this->title;
-    }
-    public function setTitle(string $title): void
-    {
-        $this->title = $title;
-    }
 
     public function getAbstract(): string
     {
@@ -90,15 +90,6 @@ class ProjectDto
         $this->keywords = $keywords;
     }
 
-    public function getType(): string
-    {
-        return $this->type;
-    }
-    public function setType(string $type): void
-    {
-        $this->type = $type;
-    }
-
     public function getObjective(): string
     {
         return $this->objective;
@@ -106,51 +97,6 @@ class ProjectDto
     public function setObjective(string $objective): void
     {
         $this->objective = $objective;
-    }
-
-    public function getLanguage(): string
-    {
-        return $this->language;
-    }
-    public function setLanguage(string $language): void
-    {
-        $this->language = $language;
-    }
-
-    public function getStatus(): string
-    {
-        return $this->status;
-    }
-    public function setStatus(string $status): void
-    {
-        $this->status = $status;
-    }
-
-    public function getVisibility(): string
-    {
-        return $this->visibility;
-    }
-    public function setVisibility(string $visibility): void
-    {
-        $this->visibility = $visibility;
-    }
-
-    public function getStartDate(): \DateTime|null
-    {
-        return $this->startDate;
-    }
-    public function setStartDate(?\DateTime $startDate): void
-    {
-        $this->startDate = $startDate;
-    }
-
-    public function getEndDate(): \DateTime|null
-    {
-        return $this->endDate;
-    }
-    public function setEndDate(?\DateTime $endDate): void
-    {
-        $this->endDate = $endDate;
     }
 
     public function getSubjectAreas(): array
@@ -226,11 +172,11 @@ class ProjectDto
         $project->setResearchAreas($data['researchAreas'] ?? []);
         $project->setResearchAreasKdsf($data['researchAreasKdsf'] ?? []);
         $project->setShorttext($data['shorttext'] ?? '');
-        $project->setStatus($data['status'] ?? '');
+        $project->setStatus(StatusDto::fromArray($data['status']) ?? null);
         $project->setTitle($data['title'] ?? '');
         $project->setType($data['type'] ?? '');
         $project->setUniquename($data['uniquename'] ?? '');
-        $project->setVisibility($data['visibility'] ?? '');
+        $project->setVisibility(VisibilityDto::fromArray($data['visibility']) ?? null);
 
         $members = [];
         foreach ($data['persons'] ?? [] as $person) {

@@ -5,21 +5,28 @@ namespace Wtl\HioTypo3Connector\Domain\Dto;
 
 use Wtl\HioTypo3Connector\Domain\Dto\DoctoralProgram\OrgUnitDto;
 use Wtl\HioTypo3Connector\Domain\Dto\DoctoralProgram\PersonDto;
+use Wtl\HioTypo3Connector\Trait\WithDescription;
 use Wtl\HioTypo3Connector\Trait\WithDetails;
+use Wtl\HioTypo3Connector\Trait\WithEndDate;
+use Wtl\HioTypo3Connector\Trait\WithLanguage;
 use Wtl\HioTypo3Connector\Trait\WithObjectId;
 use Wtl\HioTypo3Connector\Trait\WithSearchIndex;
+use Wtl\HioTypo3Connector\Trait\WithStartDate;
+use Wtl\HioTypo3Connector\Trait\WithTitle;
 
 class DoctoralProgramDto
 {
-    use WithObjectId;
+    use WithDescription;
     use WithDetails;
+    use WithEndDate;
+    use WithLanguage;
+    use WithObjectId;
     use WithSearchIndex;
+    use WithStartDate;
+    use WithTitle;
 
     protected string $courseOfStudy = '';
-    protected string $description = '';
     protected bool $doctoralPositionAvailable = false;
-    protected ?\DateTime $endDate = null;
-    protected string $language = '';
 
     /**
      * @var OrgUnitDto[]
@@ -34,19 +41,8 @@ class DoctoralProgramDto
      */
     protected array $researchAreas = [];
     protected bool $scholarshipAvailable = false;
-    protected ?\DateTime $startDate = null;
 
     protected array $subjectAreas = [];
-    protected string $title = '';
-
-    public function getTitle(): string
-    {
-        return $this->title;
-    }
-    public function setTitle(string $title): void
-    {
-        $this->title = $title;
-    }
 
     public function getCourseOfStudy(): string
     {
@@ -57,15 +53,6 @@ class DoctoralProgramDto
         $this->courseOfStudy = $courseOfStudy;
     }
 
-    public function getDescription(): string
-    {
-        return $this->description;
-    }
-    public function setDescription(string $description): void
-    {
-        $this->description = $description;
-    }
-
     public function getDoctoralPositionAvailable(): bool
     {
         return $this->doctoralPositionAvailable;
@@ -73,24 +60,6 @@ class DoctoralProgramDto
     public function setDoctoralPositionAvailable(bool $doctoralPositionAvailable): void
     {
         $this->doctoralPositionAvailable = $doctoralPositionAvailable;
-    }
-
-    public function getEndDate(): ?\DateTime
-    {
-        return $this->endDate;
-    }
-    public function setEndDate(?\DateTime $endDate): void
-    {
-        $this->endDate = $endDate;
-    }
-
-    public function getLanguage(): string
-    {
-        return $this->language;
-    }
-    public function setLanguage(string $language): void
-    {
-        $this->language = $language;
     }
 
     public function getSubjectAreas(): array
@@ -136,15 +105,6 @@ class DoctoralProgramDto
     public function setScholarshipAvailable(bool $scholarshipAvailable): void
     {
         $this->scholarshipAvailable = $scholarshipAvailable;
-    }
-
-    public function getStartDate(): ?\DateTime
-    {
-        return $this->startDate;
-    }
-    public function setStartDate(?\DateTime $startDate): void
-    {
-        $this->startDate = $startDate;
     }
 
     static public function fromArray(array $data): DoctoralProgramDto

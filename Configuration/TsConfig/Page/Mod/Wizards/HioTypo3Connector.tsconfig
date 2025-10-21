@@ -92,6 +92,15 @@ mod.wizards.newContentElement.wizardItems {
                     list_type = hiotypo3connector_patentlist
                 }
             }
+            hio-typo3-connector_nominationlist {
+                iconIdentifier = tx-hio_typo3_connector-list-of-nominations
+                title = LLL:EXT:hio_typo3_connector/Resources/Private/Language/nomination.xlf:titleNominations
+                description = LLL:EXT:hio_typo3_connector/Resources/Private/Language/nomination.xlf:descriptionNominations
+                tt_content_defValues {
+                    CType = list
+                    list_type = hiotypo3connector_nominationlist
+                }
+            }
             hio-typo3-connector_doctoralprogramlist {
                 iconIdentifier = tx-hio_typo3_connector-list-of-doctoral-programs
                 title = LLL:EXT:hio_typo3_connector/Resources/Private/Language/doctoralProgram.xlf:titleDoctoralPrograms
@@ -155,6 +164,35 @@ mod.wizards.newContentElement.wizardItems {
                 tt_content_defValues {
                     CType = list
                     list_type = hiotypo3connector_publicationhighlights
+                }
+            }
+
+
+            hio-typo3-connector_publications-for-orgunit {
+                iconIdentifier = tx-hio_typo3_connector-publications
+                title = LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedOrgUnit.xlf:titleOrgUnitPublications
+                description = LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedOrgUnit.xlf:descriptionOrgunitPublications
+                tt_content_defValues {
+                    CType = list
+                    list_type = hiotypo3connector_selectedorgunitpublicationlist
+                }
+            }
+            hio-typo3-connector_projects-for-orgunit {
+                iconIdentifier = tx-hio_typo3_connector-projects
+                title = LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedOrgUnit.xlf:titleOrgUnitProjects
+                description = LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedOrgUnit.xlf:descriptionOrgunitProjects
+                tt_content_defValues {
+                    CType = list
+                    list_type = hiotypo3connector_selectedorgunitprojectlist
+                }
+            }
+            hio-typo3-connector_patents-for-orgunit {
+                iconIdentifier = tx-hio_typo3_connector-patents
+                title = LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedOrgUnit.xlf:titleOrgUnitPatents
+                description = LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedOrgUnit.xlf:descriptionOrgunitPatents
+                tt_content_defValues {
+                    CType = list
+                    list_type = hiotypo3connector_selectedorgunitpatentlist
                 }
             }
         }

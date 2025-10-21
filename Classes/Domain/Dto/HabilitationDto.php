@@ -6,20 +6,31 @@ namespace Wtl\HioTypo3Connector\Domain\Dto;
 use Wtl\HioTypo3Connector\Domain\Dto\Habilitation\OrgUnitDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Habilitation\PersonDto;
 use Wtl\HioTypo3Connector\Trait\WithDetails;
+use Wtl\HioTypo3Connector\Trait\WithEndDate;
+use Wtl\HioTypo3Connector\Trait\WithLanguage;
 use Wtl\HioTypo3Connector\Trait\WithObjectId;
 use Wtl\HioTypo3Connector\Trait\WithSearchIndex;
+use Wtl\HioTypo3Connector\Trait\WithStartDate;
+use Wtl\HioTypo3Connector\Trait\WithStatus;
+use Wtl\HioTypo3Connector\Trait\WithTitle;
+use Wtl\HioTypo3Connector\Trait\WithType;
 
 class HabilitationDto
 {
+    use WithEndDate;
+    use WithLanguage;
     use WithObjectId;
     use WithDetails;
     use WithSearchIndex;
+    use WithStartDate;
+    use WithStatus;
+    use WithTitle;
+    use WithType;
 
     protected ?\DateTime $admissionDate = null;
     protected ?\DateTime $certificateDate = null;
     protected ?\DateTime $endDate = null;
 
-    protected string $language = '';
     /**
      * @var OrgUnitDto[]
      */
@@ -34,10 +45,7 @@ class HabilitationDto
      */
     protected array $researchAreas = [];
     protected ?\DateTime $startDate = null;
-    protected string $status = '';
     protected array $subjectAreas = [];
-    protected string $title = '';
-    protected string $type = '';
 
     public function getAdmissionDate(): ?\DateTime
     {
@@ -55,24 +63,6 @@ class HabilitationDto
     public function setCertificateDate(?\DateTime $certificateDate): void
     {
         $this->certificateDate = $certificateDate;
-    }
-
-    public function getEndDate(): ?\DateTime
-    {
-        return $this->endDate;
-    }
-    public function setEndDate(?\DateTime $endDate): void
-    {
-        $this->endDate = $endDate;
-    }
-
-    public function getLanguage(): string
-    {
-        return $this->language;
-    }
-    public function setLanguage(string $language): void
-    {
-        $this->language = $language;
     }
 
     public function getOrgUnits(): array
@@ -111,24 +101,6 @@ class HabilitationDto
         $this->researchAreas = $researchAreas;
     }
 
-    public function getStartDate(): ?\DateTime
-    {
-        return $this->startDate;
-    }
-    public function setStartDate(?\DateTime $startDate): void
-    {
-        $this->startDate = $startDate;
-    }
-
-    public function getStatus(): string
-    {
-        return $this->status;
-    }
-    public function setStatus(string $status): void
-    {
-        $this->status = $status;
-    }
-
     public function getSubjectAreas(): array
     {
         return $this->subjectAreas;
@@ -136,24 +108,6 @@ class HabilitationDto
     public function setSubjectAreas(array $subjectAreas): void
     {
         $this->subjectAreas = $subjectAreas;
-    }
-
-    public function getTitle(): string
-    {
-        return $this->title;
-    }
-    public function setTitle(string $title): void
-    {
-        $this->title = $title;
-    }
-
-    public function getType(): string
-    {
-        return $this->type;
-    }
-    public function setType(string $type): void
-    {
-        $this->type = $type;
     }
 
     static public function fromArray(array $data): HabilitationDto

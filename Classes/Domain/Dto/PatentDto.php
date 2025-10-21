@@ -3,19 +3,28 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto;
 
+use Wtl\HioTypo3Connector\Domain\Dto\Misc\StatusDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Misc\VisibilityDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Patent\PersonDto;
+use Wtl\HioTypo3Connector\Trait\WithDescription;
 use Wtl\HioTypo3Connector\Trait\WithDetails;
 use Wtl\HioTypo3Connector\Trait\WithObjectId;
 use Wtl\HioTypo3Connector\Trait\WithSearchIndex;
+use Wtl\HioTypo3Connector\Trait\WithStatus;
+use Wtl\HioTypo3Connector\Trait\WithTitle;
+use Wtl\HioTypo3Connector\Trait\WithVisibility;
 
 class PatentDto
 {
-    use WithObjectId;
     use WithDetails;
+    use WithDescription;
+    use WithObjectId;
     use WithSearchIndex;
+    use WithStatus;
+    use WithTitle;
+    use WithVisibility;
 
     protected string $countryOfRegistration = '';
-    protected string $description = '';
     protected ?\DateTime $grantDate = null;
     /**
      * @var PersonDto[]
@@ -30,40 +39,10 @@ class PatentDto
      * @var string[]
      */
     protected array $researchAreas = [];
-    protected string $status = '';
     /**
      * @var string[]
      */
     protected array $subjectAreas = [];
-    protected string $title = '';
-    protected string $visibility = '';
-
-    public function getTitle(): string
-    {
-        return $this->title;
-    }
-    public function setTitle(string $title): void
-    {
-        $this->title = $title;
-    }
-
-    public function getStatus(): string
-    {
-        return $this->status;
-    }
-    public function setStatus(string $status): void
-    {
-        $this->status = $status;
-    }
-
-    public function getVisibility(): string
-    {
-        return $this->visibility;
-    }
-    public function setVisibility(string $visibility): void
-    {
-        $this->visibility = $visibility;
-    }
 
     public function getSubjectAreas(): array
     {
@@ -90,15 +69,6 @@ class PatentDto
     public function setPersons(array $persons): void
     {
         $this->persons = $persons;
-    }
-
-    public function getDescription(): string
-    {
-        return $this->description;
-    }
-    public function setDescription(string $description): void
-    {
-        $this->description = $description;
     }
 
     public function getPatentNumber(): string
@@ -174,10 +144,10 @@ class PatentDto
         $patentDto->setPublicationNumber($data['publicationNumber'] ?? null);
         $patentDto->setRegistrationDate(isset($data['registrationDate']) ? new \DateTime($data['registrationDate']) : null);
         $patentDto->setResearchAreas($data['researchAreas'] ?? []);
-        $patentDto->setStatus($data['status'] ?? '');
+        $patentDto->setStatus(StatusDto::fromArray($data['status']) ?? '');
         $patentDto->setSubjectAreas($data['subjectAreas'] ?? []);
         $patentDto->setTitle($data['title'] ?? '');
-        $patentDto->setVisibility($data['visibility'] ?? '');
+        $patentDto->setVisibility(VisibilityDto::fromArray($data['visibility']) ?? '');
 
         return $patentDto;
     }
