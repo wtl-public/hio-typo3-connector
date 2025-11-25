@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto\OrgUnit;
 
+use Wtl\HioTypo3Connector\Domain\Dto\DoctoralProgram\CourseOfStudyDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Misc\LanguageDto;
 use Wtl\HioTypo3Connector\Trait\WithDescription;
 use Wtl\HioTypo3Connector\Trait\WithEndDate;
 use Wtl\HioTypo3Connector\Trait\WithId;
@@ -19,14 +21,14 @@ class DoctoralProgramDto
     use WithStartDate;
     use WithTitle;
 
-    protected ?string $courseOfStudy = '';
+    protected ?CourseOfStudyDto $courseOfStudy;
 
-    public function getCourseOfStudy(): ?string
+    public function getCourseOfStudy(): ?CourseOfStudyDto
     {
         return $this->courseOfStudy;
     }
 
-    public function setCourseOfStudy(?string $courseOfStudy): void
+    public function setCourseOfStudy(?CourseOfStudyDto $courseOfStudy): void
     {
         $this->courseOfStudy = $courseOfStudy;
     }
@@ -34,11 +36,11 @@ class DoctoralProgramDto
     static public function fromArray(array $data): self
     {
         $dto = new self();
-        $dto->setCourseOfStudy($data['courseOfStudy'] ?? '');
+        $dto->setCourseOfStudy(CourseOfStudyDto::fromArray($data['courseOfStudy']) ?? null);
         $dto->setDescription($data['description'] ?? '');
         $dto->setEndDate(isset($data['endDate']) ? new \DateTime($data['endDate']) : null);
         $dto->setId($data['id']);
-        $dto->setLanguage($data['language'] ?? '');
+        $dto->setLanguage(LanguageDto::fromArray($data['language']) ?? null);
         $dto->setStartDate(isset($data['startDate']) ? new \DateTime($data['startDate']) : null);
         $dto->setTitle($data['title']);
         return $dto;

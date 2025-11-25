@@ -4,7 +4,9 @@ declare(strict_types=1);
 namespace Wtl\HioTypo3Connector\Domain\Dto;
 
 use DateTime;
+use Wtl\HioTypo3Connector\Domain\Dto\Misc\ScopeDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Misc\StatusDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Misc\TypeDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Misc\VisibilityDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Nomination\NomineeDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Nomination\OrgUnitDto;
@@ -28,7 +30,6 @@ class NominationDto
     use WithSearchIndex;
     use WithStatus;
     use WithTitle;
-    use WithType;
     use WithVisibility;
 
     protected ?DateTime $entryDate = null;
@@ -40,12 +41,15 @@ class NominationDto
     protected ?PrizeDto $prize = null;
     protected ?array $projects = null;
     protected ?array $publications = null;
-    protected ?string $scope = null;
+    protected ?ScopeDto $scope;
+
+    protected ?TypeDto $type;
 
     public function getEntryDate(): DateTime|null
     {
         return $this->entryDate;
     }
+
     public function setEntryDate(?DateTime $entryDate): void
     {
         $this->entryDate = $entryDate;
@@ -55,6 +59,7 @@ class NominationDto
     {
         return $this->nominationYear;
     }
+
     public function setNominationYear(?int $nominationYear): void
     {
         $this->nominationYear = $nominationYear;
@@ -64,6 +69,7 @@ class NominationDto
     {
         return $this->nominees;
     }
+
     public function setNominees(array $nominees): void
     {
         $this->nominees = $nominees;
@@ -73,6 +79,7 @@ class NominationDto
     {
         return $this->orgUnits;
     }
+
     public function setOrgUnits(array $orgUnits): void
     {
         $this->orgUnits = $orgUnits;
@@ -82,14 +89,17 @@ class NominationDto
     {
         return $this->prize;
     }
+
     public function setPrize(PrizeDto|null $prize): void
     {
         $this->prize = $prize;
     }
+
     public function getProjects(): array
     {
         return $this->projects;
     }
+
     public function setProjects(array $projects): void
     {
         $this->projects = $projects;
@@ -104,13 +114,25 @@ class NominationDto
     {
         $this->publications = $publications;
     }
-    public function getScope(): ?string
+
+    public function getScope(): ?ScopeDto
     {
         return $this->scope;
     }
-    public function setScope(?string $scope): void
+
+    public function setScope(?ScopeDto $scope): void
     {
         $this->scope = $scope;
+    }
+
+    public function getType(): ?TypeDto
+    {
+        return $this->type;
+    }
+
+    public function setType(?TypeDto $type): void
+    {
+        $this->type = $type;
     }
 
     static public function fromArray(array $data): NominationDto
@@ -128,11 +150,11 @@ class NominationDto
         $dto->setProjects(array_map(fn($item) => ProjectDto::fromArray($item), $data['projects'] ?? []));
         $dto->setPrize(isset($data['prize']) ? PrizeDto::fromArray($data['prize']) : null);
         $dto->setPublications(array_map(fn($item) => PublicationDto::fromArray($item), $data['publications'] ?? []));
-        $dto->setScope($data['scope'] ?? '');
+        $dto->setScope(ScopeDto::fromArray($data['scope']) ?? '');
         $dto->setSearchIndex($data);
         $dto->setStatus(StatusDto::fromArray($data['status']) ?? null);
         $dto->setTitle($data['title'] ?? '');
-        $dto->setType($data['type'] ?? '');
+        $dto->setType(TypeDto::fromArray($data['type']) ?? '');
         $dto->setVisibility(VisibilityDto::fromArray($data['visibility']) ?? '');
 
         return $dto;

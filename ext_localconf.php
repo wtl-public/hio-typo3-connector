@@ -194,6 +194,12 @@ ExtensionUtility::configurePlugin(
 
 ExtensionUtility::configurePlugin(
     'HioTypo3Connector',
+    'SelectedOrgUnitPersonList',
+    [OrgUnitController::class => 'personList'],
+    []
+);
+ExtensionUtility::configurePlugin(
+    'HioTypo3Connector',
     'SelectedOrgUnitPublicationList',
     [OrgUnitController::class => 'publicationList'],
     []

@@ -94,6 +94,17 @@ return [
                 'required' => false,
             ],
         ],
+        'budget_source_types' => [
+            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_project.budgetSourceTypes',
+            'config' => [
+                'type' => 'input',
+                'size' => 60,
+                'max' => 2048,
+                'eval' => 'trim',
+                'readOnly' => true,
+                'required' => false,
+            ],
+        ],
         'end_date' => [
             'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_project.endDate',
             'config' => [

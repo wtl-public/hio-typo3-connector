@@ -20,7 +20,7 @@ class PublicationRepository extends BaseRepository
             $publicationModel = new Publication();
             $publicationModel->setObjectId($publicationDto->getObjectId());
             $publicationModel->setTitle($publicationDto->getTitle());
-            $publicationModel->setType($publicationDto->getType());
+            $publicationModel->setType($publicationDto->getPublicationType()->getName());
             $publicationModel->setDetails($publicationDto->getDetails());
             $publicationModel->setSearchIndex($publicationDto->getSearchIndex());
             $publicationModel->setPid($storagePid);
@@ -30,7 +30,7 @@ class PublicationRepository extends BaseRepository
         } else {
             $publicationModel->setObjectId($publicationDto->getObjectId());
             $publicationModel->setTitle($publicationDto->getTitle());
-            $publicationModel->setType($publicationDto->getType());
+            $publicationModel->setType($publicationDto->getPublicationType()->getName());
             $publicationModel->setDetails($publicationDto->getDetails());
             $publicationModel->setSearchIndex($publicationDto->getSearchIndex());
             $publicationModel->setReleaseYear($publicationDto->getReleaseYear());

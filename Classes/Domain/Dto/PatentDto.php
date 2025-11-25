@@ -5,7 +5,9 @@ namespace Wtl\HioTypo3Connector\Domain\Dto;
 
 use Wtl\HioTypo3Connector\Domain\Dto\Misc\StatusDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Misc\VisibilityDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Patent\CountryOfRegistrationDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Patent\PersonDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Patent\PriorityPatentDto;
 use Wtl\HioTypo3Connector\Trait\WithDescription;
 use Wtl\HioTypo3Connector\Trait\WithDetails;
 use Wtl\HioTypo3Connector\Trait\WithObjectId;
@@ -24,14 +26,14 @@ class PatentDto
     use WithTitle;
     use WithVisibility;
 
-    protected string $countryOfRegistration = '';
+    protected ?CountryOfRegistrationDto $countryOfRegistration;
     protected ?\DateTime $grantDate = null;
     /**
      * @var PersonDto[]
      */
     protected array $persons = [];
     protected string $patentNumber = '';
-    protected ?bool $priorityPatent = null;
+    protected ?PriorityPatentDto $priorityPatent;
     protected ?string $publicationNumber = null;
 
     protected ?\DateTime $registrationDate = null;
@@ -81,22 +83,22 @@ class PatentDto
         $this->patentNumber = $patentNumber;
     }
 
-    public function getPriorityPatent(): ?bool
+    public function getPriorityPatent(): ?PriorityPatentDto
     {
         return $this->priorityPatent;
     }
 
-    public function setPriorityPatent(?bool $priorityPatent): void
+    public function setPriorityPatent(?PriorityPatentDto $priorityPatent): void
     {
         $this->priorityPatent = $priorityPatent;
     }
 
-    public function getCountryOfRegistration(): string
+    public function getCountryOfRegistration(): ?CountryOfRegistrationDto
     {
         return $this->countryOfRegistration;
     }
 
-    public function setCountryOfRegistration(string $countryOfRegistration): void
+    public function setCountryOfRegistration(?CountryOfRegistrationDto $countryOfRegistration): void
     {
         $this->countryOfRegistration = $countryOfRegistration;
     }
@@ -135,12 +137,12 @@ class PatentDto
         $patentDto->setDetails($data);
         $patentDto->setSearchIndex($data);
 
-        $patentDto->setCountryOfRegistration($data['countryOfRegistration'] ?? '');
+        $patentDto->setCountryOfRegistration(CountryOfRegistrationDto::fromArray($data['countryOfRegistration']) ?? null);
         $patentDto->setDescription($data['description'] ?? '');
         $patentDto->setGrantDate(isset($data['grantDate']) ? new \DateTime($data['grantDate']) : null);
         $patentDto->setPatentNumber($data['patentNumber'] ?? '');
         $patentDto->setPersons(array_map(fn($item) => PersonDto::fromArray($item), $data['persons'] ?? []));
-        $patentDto->setPriorityPatent($data['priorityPatent'] ?? null);
+        $patentDto->setPriorityPatent(PriorityPatentDto::fromArray($data['priorityPatent']) ?? null);
         $patentDto->setPublicationNumber($data['publicationNumber'] ?? null);
         $patentDto->setRegistrationDate(isset($data['registrationDate']) ? new \DateTime($data['registrationDate']) : null);
         $patentDto->setResearchAreas($data['researchAreas'] ?? []);

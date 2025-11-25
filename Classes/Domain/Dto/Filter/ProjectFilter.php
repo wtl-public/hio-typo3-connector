@@ -12,11 +12,12 @@ class ProjectFilter extends FilterDto
         protected bool $showFilterForm = true,
         protected bool $reset = false,
         protected ?string $searchTerm = null,
+        protected ?array $budgetSourceTypes = null,
         protected ?string $endDateFrom = null,
         protected ?string $endDateTo = null,
+        protected ?string $status = null,
         protected ?string $startDateFrom = null,
         protected ?string $startDateTo = null,
-        protected ?string $status = null,
         protected ?string $type = null,
     )
     {
@@ -76,6 +77,17 @@ class ProjectFilter extends FilterDto
         return $this->type;
     }
 
+    public function withBudgetSourceType(?array $budgetSourceTypes): self
+    {
+        $this->budgetSourceTypes = $budgetSourceTypes;
+        return $this;
+    }
+
+    public function getBudgetSourceTypes(): ?array
+    {
+        return $this->budgetSourceTypes;
+    }
+
     public function withStatus(?string $status): self
     {
         $this->status = $status;
@@ -91,6 +103,7 @@ class ProjectFilter extends FilterDto
         return array_merge(
             parent::toArray(),
             [
+                'budgetSourceTypes' => $this->getBudgetSourceTypes(),
                 'startDateFrom' => $this->getStartDateFrom(),
                 'startDateTo' => $this->getStartDateTo(),
                 'endDateFrom' => $this->getEndDateFrom(),
@@ -112,6 +125,9 @@ class ProjectFilter extends FilterDto
         }
         if (isset($filter['reset'])) {
             $instance->reset = (bool)$filter['reset'];
+        }
+        if (isset($filter['budgetSourceTypes'])) {
+            $instance->budgetSourceTypes = (array)$filter['budgetSourceTypes'];
         }
         if (isset($filter['startDateFrom'])) {
             $instance->startDateFrom = (string)$filter['startDateFrom'];

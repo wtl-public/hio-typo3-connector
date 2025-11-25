@@ -3,13 +3,17 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto;
 
+use Wtl\HioTypo3Connector\Domain\Dto\Misc\LanguageDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Misc\ResearchAreaDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Misc\ResearchAreaKdsfDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Misc\StatusDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Misc\VisibilityDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Project\FundingProgramDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Project\PersonDto;
-use Wtl\HioTypo3Connector\Domain\Dto\Project\ResearchAreaDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Project\ProjectObjectiveDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Project\SubjectAreaDto;
 use Wtl\HioTypo3Connector\Trait\WithDetails;
+use Wtl\HioTypo3Connector\Trait\WithDynamicObjects;
 use Wtl\HioTypo3Connector\Trait\WithEndDate;
 use Wtl\HioTypo3Connector\Trait\WithLanguage;
 use Wtl\HioTypo3Connector\Trait\WithObjectId;
@@ -24,6 +28,7 @@ class ProjectDto
 {
     use WithObjectId;
     use WithDetails;
+    use WithDynamicObjects;
     use WithEndDate;
     use WithLanguage;
     use WithSearchIndex;
@@ -42,17 +47,17 @@ class ProjectDto
      * @var string[]
      */
     protected array $keywords = [];
-    protected string $objective = '';
+    protected ?ProjectObjectiveDto $projectObjective;
     /**
      * @var PersonDto[]
      */
     protected array $persons = [];
     /**
-     * @var string[]
+     * @var ResearchAreaDto[]
      */
     protected array $researchAreas = [];
     /**
-     * @var string[]
+     * @var ResearchAreaKdsfDto[]
      */
     protected array $researchAreasKdsf = [];
     protected string $shorttext = '';
@@ -90,13 +95,13 @@ class ProjectDto
         $this->keywords = $keywords;
     }
 
-    public function getObjective(): string
+    public function getProjectObjective(): ?ProjectObjectiveDto
     {
-        return $this->objective;
+        return $this->projectObjective;
     }
-    public function setObjective(string $objective): void
+    public function setProjectObjective(?ProjectObjectiveDto $projectObjective): void
     {
-        $this->objective = $objective;
+        $this->projectObjective = $projectObjective;
     }
 
     public function getSubjectAreas(): array
@@ -161,16 +166,17 @@ class ProjectDto
         $project->setSearchIndex($data);
 
         $project->setAbstract($data['abstract'] ?? '');
+        $project->setDynamicObjects($data['dynamicObjects'] ?? []);
         if (isset($data['endDate'])) {
             $project->setEndDate(new \DateTime($data['endDate']));
         }
-        $project->setLanguage($data['language'] ?? '');
-        $project->setObjective($data['objective'] ?? '');
+        $project->setLanguage(LanguageDto::fromArray($data['language']) ?? null);
+        $project->setProjectObjective(isset($data['projectObjective']) ? ProjectObjectiveDto::fromArray($data['projectObjective']) : null);
         if (isset($data['startDate'])) {
             $project->setStartDate(new \DateTime($data['startDate']));
         }
-        $project->setResearchAreas($data['researchAreas'] ?? []);
-        $project->setResearchAreasKdsf($data['researchAreasKdsf'] ?? []);
+        $project->setResearchAreas(array_map(fn($item) => ResearchAreaDto::fromArray($item), $data['researchAreas'] ?? []));
+        $project->setResearchAreasKdsf(array_map(fn($item) => ResearchAreaKdsfDto::fromArray($item), $data['researchAreasKdfs'] ?? []));
         $project->setShorttext($data['shorttext'] ?? '');
         $project->setStatus(StatusDto::fromArray($data['status']) ?? null);
         $project->setTitle($data['title'] ?? '');

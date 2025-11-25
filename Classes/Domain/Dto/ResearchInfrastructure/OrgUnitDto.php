@@ -11,7 +11,6 @@ class OrgUnitDto
 {
     use WithId;
     use WithName;
-    use WithRole;
 
     static public function fromArray(array $data): self
     {
@@ -21,7 +20,6 @@ class OrgUnitDto
         $orgUnitDto = new self();
         $orgUnitDto->setId($data['id']);
         $orgUnitDto->setName($data['name'] ?? '');
-        $orgUnitDto->setRole($data['role'] ?? '');
 
         return $orgUnitDto;
     }

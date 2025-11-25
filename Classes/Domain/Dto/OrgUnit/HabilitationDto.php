@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto\OrgUnit;
 
+use Wtl\HioTypo3Connector\Domain\Dto\Misc\LanguageDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Misc\StatusDto;
 use Wtl\HioTypo3Connector\Trait\WithEndDate;
 use Wtl\HioTypo3Connector\Trait\WithId;
@@ -25,7 +26,7 @@ class HabilitationDto
         $dto = new self();
         $dto->setEndDate(isset($data['endDate']) ? new \DateTime($data['endDate']) : null);
         $dto->setId($data['id']);
-        $dto->setLanguage($data['language'] ?? '');
+        $dto->setLanguage(LanguageDto::fromArray($data['language']) ?? null);
         $dto->setStartDate(isset($data['startDate']) ? new \DateTime($data['startDate']) : null);
         $dto->setStatus(StatusDto::fromArray($data['status']) ?? null);
         $dto->setTitle($data['title']);

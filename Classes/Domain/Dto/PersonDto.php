@@ -3,11 +3,12 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto;
 
-use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use Wtl\HioTypo3Connector\Domain\Dto\Person\AccountDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Person\AddressDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Person\AttributeDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Person\DoctoralProgramDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Person\HabilitationDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Person\NameDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Person\OrgUnitDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Person\PatentDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Person\ProjectDto;
@@ -19,10 +20,14 @@ use Wtl\HioTypo3Connector\Trait\WithSearchIndex;
 
 class PersonDto
 {
-    use WithName;
     use WithObjectId;
     use WithDetails;
     use WithSearchIndex;
+
+    /**
+     * @var AccountDto[]
+     */
+    protected array $accounts = [];
 
     //  @var AddressDto[]
     protected array $addresses = [];
@@ -30,10 +35,20 @@ class PersonDto
     protected array $attributes = [];
     protected array $doctoralPrograms = [];
     protected array $habilitations = [];
+    protected NameDto $name;
     protected array $patents = [];
     protected array $projects = [];
     protected array $publications = [];
     protected array $orgUnits = [];
+
+    public function getAccounts(): array
+    {
+        return $this->accounts;
+    }
+    public function setAccounts(array $accounts): void
+    {
+        $this->accounts = $accounts;
+    }
 
     public function getAddresses(): array
     {
@@ -53,6 +68,15 @@ class PersonDto
     public function setAttributes(array $attributes): void
     {
         $this->attributes = $attributes;
+    }
+
+    public function getName(): NameDto
+    {
+        return $this->name;
+    }
+    public function setName(NameDto $name): void
+    {
+        $this->name = $name;
     }
 
     public function getPublications(): array
@@ -119,10 +143,11 @@ class PersonDto
     {
         $dto = new self();
         $dto->setObjectId($data['id']);
-        $dto->setName($data['name']['displayName'] ?? '');
+        $dto->setName(NameDto::fromArray($data['name']));
         $dto->setDetails($data);
         $dto->setSearchIndex($data);
 
+        $dto->setAccounts(array_map(fn($item) => AccountDto::fromArray($item), $data['accounts'] ?? []));
         $dto->setAddresses(array_map(fn($item) => AddressDto::fromArray($item), $data['addresses'] ?? []));
         $dto->setAttributes(array_map(fn($item) => AttributeDto::fromArray($item), $data['attributes'] ?? []));
         $dto->setDoctoralPrograms(array_map(fn($item) => DoctoralProgramDto::fromArray($item), $data['doctoralPrograms'] ?? []));

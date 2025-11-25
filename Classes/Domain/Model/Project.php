@@ -12,8 +12,9 @@ class Project extends AbstractEntity
     use WithEndDate;
     use WithStartDate;
 
-    protected int $objectId = 0;
+    protected string $budgetSourceTypes = '';
 
+    protected int $objectId = 0;
     protected string $status = '';
 
     protected string $title = '';
@@ -29,6 +30,30 @@ class Project extends AbstractEntity
      * @var string
      */
     protected mixed $searchIndex;
+
+    public function getBudgetSourceTypes(): string
+    {
+        return $this->budgetSourceTypes;
+    }
+    public function setBudgetSourceTypes(string $budgetSourceTypes): void
+    {
+        $this->budgetSourceTypes = $budgetSourceTypes;
+    }
+
+    public function extractBudgetSourceTypes(array $projectDetails): string
+    {
+        $budgetSourceTypes = '';
+        if ($projectDetails && isset($projectDetails['fundingPrograms'])) {
+            $budgetSourceTypes = [];
+            foreach ($this->getDetails()['fundingPrograms'] as $fundingProgram) {
+                if (isset($fundingProgram['budgetSourceType'])) {
+                    $budgetSourceTypes[] = $fundingProgram['budgetSourceType'];
+                }
+            }
+            $budgetSourceTypes = implode(',', array_unique($budgetSourceTypes));
+        }
+        return $budgetSourceTypes;
+    }
 
     public function getObjectId(): int
     {

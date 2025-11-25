@@ -1,13 +1,14 @@
 CREATE TABLE tx_hiotypo3connector_domain_model_project
 (
-    object_id    INT(11)  DEFAULT '0' NOT NULL,
-    title        LONGTEXT     DEFAULT '',
-    details      MEDIUMBLOB,
-    search_index MEDIUMBLOB,
-    status         VARCHAR(255) DEFAULT '',
-    type         VARCHAR(255) DEFAULT '',
-    start_date   DATETIME  DEFAULT NULL,
-    end_date     DATETIME DEFAULT NULL,
+    object_id           INT(11)  DEFAULT '0' NOT NULL,
+    title               LONGTEXT     DEFAULT '',
+    details             MEDIUMBLOB,
+    search_index        MEDIUMBLOB,
+    budget_source_types LONGTEXT     DEFAULT '',
+    status              VARCHAR(255) DEFAULT '',
+    type                VARCHAR(255) DEFAULT '',
+    start_date          DATETIME     DEFAULT NULL,
+    end_date            DATETIME     DEFAULT NULL,
 );
 
 CREATE TABLE tx_hiotypo3connector_domain_model_publication
@@ -65,18 +66,18 @@ CREATE TABLE tx_hiotypo3connector_domain_model_citationstyle
 
 CREATE TABLE tx_hiotypo3connector_domain_model_orgunit
 (
-    object_id    INT(11)  DEFAULT '0' NOT NULL,
-    title        LONGTEXT DEFAULT '',
-    details      MEDIUMBLOB,
-    search_index MEDIUMBLOB,
-    publications      INT(11) DEFAULT '0' NOT NULL,
-    projects          INT(11) DEFAULT '0' NOT NULL,
-    patents           INT(11) DEFAULT '0' NOT NULL,
-    persons           INT(11) DEFAULT '0' NOT NULL,
-    doctoral_programs INT(11) DEFAULT '0' NOT NULL,
-    habilitations     INT(11) DEFAULT '0' NOT NULL,
-    research_infrastructures     INT(11) DEFAULT '0' NOT NULL,
-    spin_offs     INT(11) DEFAULT '0' NOT NULL,
+    object_id                INT(11)  DEFAULT '0' NOT NULL,
+    title                    LONGTEXT DEFAULT '',
+    details                  MEDIUMBLOB,
+    search_index             MEDIUMBLOB,
+    publications             INT(11) DEFAULT '0' NOT NULL,
+    projects                 INT(11) DEFAULT '0' NOT NULL,
+    patents                  INT(11) DEFAULT '0' NOT NULL,
+    persons                  INT(11) DEFAULT '0' NOT NULL,
+    doctoral_programs        INT(11) DEFAULT '0' NOT NULL,
+    habilitations            INT(11) DEFAULT '0' NOT NULL,
+    research_infrastructures INT(11) DEFAULT '0' NOT NULL,
+    spin_offs                INT(11) DEFAULT '0' NOT NULL,
 );
 
 CREATE TABLE tx_hiotypo3connector_domain_model_spinoff
@@ -97,17 +98,17 @@ CREATE TABLE tx_hiotypo3connector_domain_model_researchinfrastructure
 
 CREATE TABLE tx_hiotypo3connector_domain_model_nomination
 (
-    object_id         INT(11)  DEFAULT '0' NOT NULL,
-    title              LONGTEXT DEFAULT '',
-    nominees           INT(11) DEFAULT '0' NOT NULL,
-    org_units           INT(11) DEFAULT '0' NOT NULL,
-    projects          INT(11) DEFAULT '0' NOT NULL,
-    publications      INT(11) DEFAULT '0' NOT NULL,
-    scope         VARCHAR(255) DEFAULT NULL,
-    status         VARCHAR(255) DEFAULT NULL,
-    type         VARCHAR(255) DEFAULT NULL,
-    visibility         VARCHAR(255) DEFAULT NULL,
+    object_id       INT(11)  DEFAULT '0' NOT NULL,
+    title           LONGTEXT     DEFAULT '',
+    nominees        INT(11) DEFAULT '0' NOT NULL,
+    org_units       INT(11) DEFAULT '0' NOT NULL,
+    projects        INT(11) DEFAULT '0' NOT NULL,
+    publications    INT(11) DEFAULT '0' NOT NULL,
+    scope           VARCHAR(255) DEFAULT NULL,
+    status          VARCHAR(255) DEFAULT NULL,
+    type            VARCHAR(255) DEFAULT NULL,
+    visibility      VARCHAR(255) DEFAULT NULL,
     nomination_year INT(11) DEFAULT NULL,
-    details           MEDIUMBLOB,
-    search_index      MEDIUMBLOB,
+    details         MEDIUMBLOB,
+    search_index    MEDIUMBLOB,
 );

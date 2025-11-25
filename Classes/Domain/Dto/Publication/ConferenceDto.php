@@ -3,19 +3,21 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto\Publication;
 
+use Wtl\HioTypo3Connector\Domain\Dto\Misc\CountryDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Misc\LanguageDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Publication\Conference\ConferenceEventTypeDto;
 use Wtl\HioTypo3Connector\Trait\WithLanguage;
 use Wtl\HioTypo3Connector\Trait\WithName;
-use Wtl\HioTypo3Connector\Trait\WithType;
 
 class ConferenceDto
 {
     use WithName;
     use WithLanguage;
-    use WithType;
 
     protected string $text = '';
     protected ?string $city = null;
-    protected ?string $country = null;
+    protected ?ConferenceEventTypeDto $conferenceEventType;
+    protected ?CountryDto $country;
     protected string $startDate;
     protected string $endDate;
 
@@ -39,12 +41,22 @@ class ConferenceDto
         $this->city = $city;
     }
 
-    public function getCountry(): ?string
+    public function getConferenceEventType(): ?ConferenceEventTypeDto
+    {
+        return $this->conferenceEventType;
+    }
+    public function setConferenceEventType(?ConferenceEventTypeDto $conferenceEventType): void
+    {
+        $this->conferenceEventType = $conferenceEventType;
+    }
+
+
+    public function getCountry(): ?CountryDto
     {
         return $this->country;
     }
 
-    public function setCountry(?string $country): void
+    public function setCountry(?CountryDto $country): void
     {
         $this->country = $country;
     }
@@ -72,14 +84,14 @@ class ConferenceDto
     static public function fromArray(array $data): self
     {
         $conferenceData = new self();
-        $conferenceData->setName($data['name']);
-        $conferenceData->setText($data['text']);
         $conferenceData->setCity($data['city'] ?? null);
-        $conferenceData->setCountry($data['country'] ?? null);
-        $conferenceData->setType($data['type'] ?? null);
-        $conferenceData->setLanguage($data['language']);
-        $conferenceData->setStartDate($data['startDate']);
+        $conferenceData->setConferenceEventType(isset($data['conferenceEventType']) ? ConferenceEventTypeDto::fromArray($data['conferenceEventType']) : null);
+        $conferenceData->setCountry(isset($data['country']) ? CountryDto::fromArray($data['country']) : null);
         $conferenceData->setEndDate($data['endDate']);
+        $conferenceData->setLanguage(isset($data['language']) ? LanguageDto::fromArray($data['language']) : null);
+        $conferenceData->setName($data['name']);
+        $conferenceData->setStartDate($data['startDate']);
+        $conferenceData->setText($data['text']);
 
         return $conferenceData;
     }

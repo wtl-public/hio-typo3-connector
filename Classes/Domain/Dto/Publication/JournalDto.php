@@ -13,12 +13,13 @@ class JournalDto
     protected ?string $volume = null;
     protected string $issue = '';
     protected string $pageRange = '';
-    protected string $publisher = '';
+    protected ?PublisherDto $publisher;
 
     public function getReleaseYear(): int
     {
         return $this->releaseYear;
     }
+
     public function setReleaseYear(int $releaseYear): void
     {
         $this->releaseYear = $releaseYear;
@@ -28,6 +29,7 @@ class JournalDto
     {
         return $this->volume;
     }
+
     public function setVolume(?string $volume): void
     {
         $this->volume = $volume;
@@ -37,6 +39,7 @@ class JournalDto
     {
         return $this->issue;
     }
+
     public function setIssue(string $issue): void
     {
         $this->issue = $issue;
@@ -46,16 +49,18 @@ class JournalDto
     {
         return $this->pageRange;
     }
+
     public function setPageRange(string $pageRange): void
     {
         $this->pageRange = $pageRange;
     }
 
-    public function getPublisher(): string
+    public function getPublisher(): ?PublisherDto
     {
         return $this->publisher;
     }
-    public function setPublisher(string $publisher): void
+
+    public function setPublisher(?PublisherDto $publisher): void
     {
         $this->publisher = $publisher;
     }
@@ -68,7 +73,7 @@ class JournalDto
         $journalData->setVolume($data['volume'] ?? null);
         $journalData->setIssue($data['issue'] ?? '');
         $journalData->setPageRange($data['pageRange'] ?? '');
-        $journalData->setPublisher($data['publisher'] ?? '');
+        $journalData->setPublisher(isset($data['publisher']) ? PublisherDto::fromArray($data['publisher']) : null);
 
         return $journalData;
     }

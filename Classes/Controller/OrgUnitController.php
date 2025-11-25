@@ -162,6 +162,18 @@ class OrgUnitController extends BaseController
         return $this->htmlResponse();
     }
 
+    public function personListAction(): ResponseInterface
+    {
+        /** @var OrgUnit $selectedOrgUnit */
+        $selectedOrgUnit = $this->orgUnitRepository->findByUid($this->settings['orgUnitUid']);
+
+        $this->view->assignMultiple([
+            'orgUnit' => $selectedOrgUnit,
+        ]);
+
+        return $this->htmlResponse();
+    }
+
     public function projectListAction(): ResponseInterface
     {
         /** @var OrgUnit $selectedOrgUnit */

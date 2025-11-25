@@ -4,8 +4,14 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto\ResearchInfrastructure;
 
+use Wtl\HioTypo3Connector\Domain\Dto\Misc\DocumentTypeDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Misc\OpenAccessDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Misc\StatusDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Misc\VisibilityDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Publication\PublicationTypeDto;
+use Wtl\HioTypo3Connector\Domain\Dto\ResearchInfrastructure\Publication\PeerReviewedDto;
+use Wtl\HioTypo3Connector\Domain\Dto\ResearchInfrastructure\Publication\PublicationResourceDto;
+use Wtl\HioTypo3Connector\Domain\Dto\ResearchInfrastructure\Publication\PublisherDto;
 use Wtl\HioTypo3Connector\Trait\WithId;
 use Wtl\HioTypo3Connector\Trait\WithStatus;
 use Wtl\HioTypo3Connector\Trait\WithTitle;
@@ -20,39 +26,83 @@ class PublicationDto
     use WithType;
     use WithVisibility;
 
-    protected string $document = '';
-    protected string $resource = '';
-    protected ?bool $reviewed = null;
+    protected ?string $abstract;
+    protected ?DocumentTypeDto $documentType;
+    protected ?OpenAccessDto $openAccess;
+    protected ?PeerReviewedDto $peerReviewed;
+    protected ?PublicationResourceDto $publicationResource;
+    protected ?PublicationTypeDto $publicationType;
+    protected ?PublisherDto $publisher;
     protected string $subtitle = '';
 
-    public function getDocument(): string
+    public function getAbstract(): ?string
     {
-        return $this->document;
+        return $this->abstract;
     }
 
-    public function setDocument(string $document): void
+    public function setAbstract(?string $abstract): void
     {
-        $this->document = $document;
+        $this->abstract = $abstract;
     }
 
-    public function getResource(): string
+    public function getDocumentType(): ?DocumentTypeDto
     {
-        return $this->resource;
+        return $this->documentType;
     }
 
-    public function setResource(string $resource): void
+    public function setDocumentType(?DocumentTypeDto $documentType): void
     {
-        $this->resource = $resource;
+        $this->documentType = $documentType;
     }
 
-    public function getReviewed(): ?bool
+    public function getOpenAccess(): ?OpenAccessDto
     {
-        return $this->reviewed;
+        return $this->openAccess;
     }
 
-    public function setReviewed(?bool $reviewed): void
+    public function setOpenAccess(?OpenAccessDto $openAccess): void
     {
-        $this->reviewed = $reviewed;
+        $this->openAccess = $openAccess;
+    }
+
+    public function getPeerReviewed(): ?PeerReviewedDto
+    {
+        return $this->peerReviewed;
+    }
+
+    public function setPeerReviewed(?PeerReviewedDto $peerReviewed): void
+    {
+        $this->peerReviewed = $peerReviewed;
+    }
+
+    public function getPublicationResource(): ?PublicationResourceDto
+    {
+        return $this->publicationResource;
+    }
+
+    public function setPublicationResource(?PublicationResourceDto $publicationResource): void
+    {
+        $this->publicationResource = $publicationResource;
+    }
+
+    public function getPublicationType(): ?PublicationTypeDto
+    {
+        return $this->publicationType;
+    }
+
+    public function setPublicationType(?PublicationTypeDto $publicationType): void
+    {
+        $this->publicationType = $publicationType;
+    }
+
+    public function getPublisher(): ?PublisherDto
+    {
+        return $this->publisher;
+    }
+
+    public function setPublisher(?PublisherDto $publisher): void
+    {
+        $this->publisher = $publisher;
     }
 
     public function getSubtitle(): string
@@ -65,18 +115,25 @@ class PublicationDto
         $this->subtitle = $subtitle;
     }
 
-    public static function fromArray(array $data): self
+    public static function fromArray(array $data): ?self
     {
+        if( empty($data)) {
+            return null;
+        }
         $dto = new self();
-        $dto->setDocument($data['document'] ?? '');
+        $dto->setAbstract($data['abstract'] ?? null);
+        $dto->setDocumentType(is_array($data['documentType']) ? DocumentTypeDto::fromArray($data['documentType']) : null);
         $dto->setId($data['id'] ?? null);
-        $dto->setResource($data['resource'] ?? '');
-        $dto->setReviewed($data['reviewed'] ?? null);
-        $dto->setStatus(StatusDto::fromArray($data['status']) ?? null);
+        $dto->setOpenAccess(is_array($data['openAccess']) ? OpenAccessDto::fromArray($data['openAccess']) : null);
+        $dto->setPeerReviewed(is_array($data['peerReviewed']) ? PeerReviewedDto::fromArray($data['peerReviewed']) : null);
+        $dto->setPublicationResource(is_array($data['publicationResource']) ? PublicationResourceDto::fromArray($data['publicationResource']) : null);
+        $dto->setPublicationType(is_array($data['publicationType']) ? PublicationTypeDto::fromArray($data['publicationType']) : null);
+        $dto->setPublisher(is_array($data['publisher']) ? PublisherDto::fromArray($data['publisher']) : null);
+        $dto->setStatus(is_array($data['status']) ? StatusDto::fromArray($data['status']) : null);
         $dto->setSubtitle($data['subtitle'] ?? '');
         $dto->setTitle($data['title'] ?? '');
         $dto->setType($data['type'] ?? '');
-        $dto->setVisibility(VisibilityDto::fromArray($data['visibility']) ?? null);
+        $dto->setVisibility(is_array($data['visibility']) ? VisibilityDto::fromArray($data['visibility']) : null);
 
         return $dto;
     }

@@ -107,6 +107,12 @@ ExtensionUtility::registerPlugin(
 
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
+    'SelectedOrgUnitPersonList',
+    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedOrgUnit.xlf:titleOrgUnitPersons',
+    'tx-hio_typo3_connector-persons',
+);
+ExtensionUtility::registerPlugin(
+    'HioTypo3Connector',
     'SelectedOrgUnitPublicationList',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedOrgUnit.xlf:titleOrgUnitPublications',
     'tx-hio_typo3_connector-publications',
@@ -131,9 +137,10 @@ $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['hiotypo3conn
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['hiotypo3connector_selectedpersonprojectlist'] = 'pi_flexform';
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['hiotypo3connector_selectedpersonpublicationlist'] = 'pi_flexform';
 
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['hiotypo3connector_selectedorgunitpublicationlist'] = 'pi_flexform';
-$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['hiotypo3connector_selectedorgunitprojectlist'] = 'pi_flexform';
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['hiotypo3connector_selectedorgunitpatentlist'] = 'pi_flexform';
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['hiotypo3connector_selectedorgunitpersonlist'] = 'pi_flexform';
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['hiotypo3connector_selectedorgunitprojectlist'] = 'pi_flexform';
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['hiotypo3connector_selectedorgunitpublicationlist'] = 'pi_flexform';
 
 // Configuration/TCA/Overrides/tt_content.php
 ExtensionManagementUtility::addPiFlexFormValue(
@@ -173,6 +180,10 @@ ExtensionManagementUtility::addPiFlexFormValue(
 ExtensionManagementUtility::addPiFlexFormValue(
     'hiotypo3connector_selectedorgunitpatentlist',
     'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/SelectedOrgUnitPatentList.xml',
+);
+ExtensionManagementUtility::addPiFlexFormValue(
+    'hiotypo3connector_selectedorgunitpersonlist',
+    'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/SelectedOrgUnitPersonList.xml',
 );
 
 

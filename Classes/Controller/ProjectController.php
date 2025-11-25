@@ -58,6 +58,7 @@ class ProjectController extends BaseController
             'paginator' => $paginator,
             'pagination' => new SlidingWindowPagination($paginator, 12),
             'filter' => $this->getFilterFromRequest(),
+            'budgetSourceTypeOptions' => $this->getProjectBudgetSourceTypeOptions(),
             'statusOptions' => $this->getProjectStatusOptions(),
             'typeOptions' => $this->getProjectTypeOptions(),
         ]);
@@ -151,6 +152,16 @@ class ProjectController extends BaseController
         if (!empty($options)) {
             array_unshift($options, ['value' => '', 'label' => 'Alle']);
         }
+
+        return $options ?? [];
+    }
+
+    protected function getProjectBudgetSourceTypeOptions(): array
+    {
+        $options = array_map(
+            fn($value) => ['value' => $value, 'label' => $value],
+            $this->projectRepository->getProjectBudgetSourceTypes() ?? []
+        );
 
         return $options ?? [];
     }

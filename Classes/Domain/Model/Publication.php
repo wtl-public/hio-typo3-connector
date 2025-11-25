@@ -98,9 +98,9 @@ class Publication extends AbstractEntity
         return $this->type;
     }
 
-    public function setType($type): void
+    public function setType(string $publicationType): void
     {
-        $this->type = $type;
+        $this->type = $publicationType;
     }
 
     public function getReleaseYear(): ?string

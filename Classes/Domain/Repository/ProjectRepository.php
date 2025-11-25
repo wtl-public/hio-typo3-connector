@@ -20,7 +20,9 @@ class ProjectRepository extends BaseRepository
             $projectModel->setDetails($projectDto->getDetails());
             $projectModel->setSearchIndex($projectDto->getSearchIndex());
 
-           $projectModel->setEndDate($projectDto->getEndDate());
+            $budgetSourceTypes = $projectModel->extractBudgetSourceTypes($projectDto->getDetails());
+            $projectModel->setBudgetSourceTypes($budgetSourceTypes);
+            $projectModel->setEndDate($projectDto->getEndDate());
             $projectModel->setStartDate($projectDto->getStartDate());
             $projectModel->setStatus($projectDto->getStatus()->getName());
             $projectModel->setTitle($projectDto->getTitle());
@@ -31,6 +33,8 @@ class ProjectRepository extends BaseRepository
             $projectModel->setDetails($projectDto->getDetails());
             $projectModel->setSearchIndex($projectDto->getSearchIndex());
 
+            $budgetSourceTypes = $projectModel->extractBudgetSourceTypes($projectDto->getDetails());
+            $projectModel->setBudgetSourceTypes($budgetSourceTypes);
             $projectModel->setEndDate($projectDto->getEndDate());
             $projectModel->setStartDate($projectDto->getStartDate());
             $projectModel->setStatus($projectDto->getStatus()->getName());
@@ -76,6 +80,16 @@ class ProjectRepository extends BaseRepository
             $constraints[] = $query->lessThanOrEqual('endDate', $filter->getEndDateTo());
         }
 
+        if ($filter->getBudgetSourceTypes()) {
+            if (is_array($filter->getBudgetSourceTypes())) {
+                $budgetSourceTypeConstraints = [];
+                foreach ($filter->getBudgetSourceTypes() as $budgetSourceType) {
+                    $budgetSourceTypeConstraints[] = $query->like('budgetSourceTypes', '%' . $budgetSourceType . '%');
+                }
+                $constraints[] = $query->logicalOr(...$budgetSourceTypeConstraints);
+            }
+        }
+
         if ($filter->getStatus()) {
             $constraints[] = $query->equals('status', $filter->getStatus());
         }
@@ -92,7 +106,6 @@ class ProjectRepository extends BaseRepository
         if ($ordering) {
             $query->setOrderings($ordering);
         }
-//        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($query, 'Optional Title');
         return $query->execute();
     }
 
@@ -114,5 +127,29 @@ class ProjectRepository extends BaseRepository
             'SELECT DISTINCT type FROM tx_hiotypo3connector_domain_model_project WHERE type IS NOT NULL AND type != "" ORDER BY type'
         );
         return $query->execute(true);
+    }
+
+    public function getProjectBudgetSourceTypes()
+    {
+        $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(false);
+        $query->statement(
+            'SELECT DISTINCT budget_source_types FROM tx_hiotypo3connector_domain_model_project WHERE budget_source_types IS NOT NULL AND budget_source_types != ""'
+        );
+        $resultSet = $query->execute(true);
+        if (!$resultSet) {
+            return [];
+        }
+
+        $budgetSourceTypes = [];
+        foreach ($resultSet as $result) {
+            $allTypes = explode(',', $result['budget_source_types']);
+            $budgetSourceTypes = array_merge($budgetSourceTypes ?? [], $allTypes);
+        }
+
+        $budgetSourceTypes = array_unique($budgetSourceTypes);
+        sort($budgetSourceTypes);
+
+        return $budgetSourceTypes;
     }
 }
