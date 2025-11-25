@@ -3,26 +3,8 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto\DoctoralProgram;
 
-use Wtl\HioTypo3Connector\Trait\WithId;
-use Wtl\HioTypo3Connector\Trait\WithName;
-use Wtl\HioTypo3Connector\Trait\WithUniqueName;
+use Wtl\HioTypo3Connector\Domain\Dto\AbstractPropertyDto;
 
-class  DoctoralPositionAvailableDto
+class  DoctoralPositionAvailableDto extends AbstractPropertyDto
 {
-    use WithId;
-    use WithName;
-    use WithUniqueName;
-
-    static public function fromArray(?array $data): ?DoctoralPositionAvailableDto
-    {
-        if ($data === null) {
-            return null;
-        }
-        $dto = new self();
-        $dto->setId($data['id']);
-        $dto->setName($data['name'] ?? '');
-        $dto->setUniqueName($data['uniquename'] ?? '');
-
-        return  $dto;
-    }
 }

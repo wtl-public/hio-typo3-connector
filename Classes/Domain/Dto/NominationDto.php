@@ -8,6 +8,8 @@ use Wtl\HioTypo3Connector\Domain\Dto\Misc\ScopeDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Misc\StatusDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Misc\TypeDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Misc\VisibilityDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Nomination\NominationRangeDto;
+use Wtl\HioTypo3Connector\Domain\Dto\Nomination\NominationTypeDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Nomination\NomineeDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Nomination\OrgUnitDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Nomination\PrizeDto;
@@ -33,6 +35,8 @@ class NominationDto
     use WithVisibility;
 
     protected ?DateTime $entryDate = null;
+    protected ?NominationRangeDto $nominationRange;
+    protected ?NominationTypeDto $nominationType;
     protected ?int $nominationYear = null;
     /** @var NomineeDto[] */
     protected ?array $nominees = null;
@@ -41,9 +45,6 @@ class NominationDto
     protected ?PrizeDto $prize = null;
     protected ?array $projects = null;
     protected ?array $publications = null;
-    protected ?ScopeDto $scope;
-
-    protected ?TypeDto $type;
 
     public function getEntryDate(): DateTime|null
     {
@@ -115,24 +116,24 @@ class NominationDto
         $this->publications = $publications;
     }
 
-    public function getScope(): ?ScopeDto
+    public function getNominationRange(): ?NominationRangeDto
     {
-        return $this->scope;
+        return $this->nominationRange;
     }
 
-    public function setScope(?ScopeDto $scope): void
+    public function setNominationRange(?NominationRangeDto $nominationRange): void
     {
-        $this->scope = $scope;
+        $this->nominationRange = $nominationRange;
     }
 
-    public function getType(): ?TypeDto
+    public function getNominationType(): ?NominationTypeDto
     {
-        return $this->type;
+        return $this->nominationType;
     }
 
-    public function setType(?TypeDto $type): void
+    public function setNominationType(?NominationTypeDto $nominationType): void
     {
-        $this->type = $type;
+        $this->nominationType = $nominationType;
     }
 
     static public function fromArray(array $data): NominationDto
@@ -150,12 +151,12 @@ class NominationDto
         $dto->setProjects(array_map(fn($item) => ProjectDto::fromArray($item), $data['projects'] ?? []));
         $dto->setPrize(isset($data['prize']) ? PrizeDto::fromArray($data['prize']) : null);
         $dto->setPublications(array_map(fn($item) => PublicationDto::fromArray($item), $data['publications'] ?? []));
-        $dto->setScope(ScopeDto::fromArray($data['scope']) ?? '');
         $dto->setSearchIndex($data);
-        $dto->setStatus(StatusDto::fromArray($data['status']) ?? null);
+        $dto->setStatus(isset($data['status']) ? StatusDto::fromArray($data['status']) : null);
         $dto->setTitle($data['title'] ?? '');
-        $dto->setType(TypeDto::fromArray($data['type']) ?? '');
-        $dto->setVisibility(VisibilityDto::fromArray($data['visibility']) ?? '');
+        $dto->setNominationRange(isset($data['nominationRange']) ? NominationRangeDto::fromArray($data['nominationRange']) : null);
+        $dto->setNominationType(isset($data['nominationType']) ? NominationTypeDto::fromArray($data['nominationType']) : null);
+        $dto->setVisibility(isset($data['visibility']) ? VisibilityDto::fromArray($data['visibility']) : null);
 
         return $dto;
     }

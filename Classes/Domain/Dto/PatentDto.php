@@ -137,19 +137,19 @@ class PatentDto
         $patentDto->setDetails($data);
         $patentDto->setSearchIndex($data);
 
-        $patentDto->setCountryOfRegistration(CountryOfRegistrationDto::fromArray($data['countryOfRegistration']) ?? null);
+        $patentDto->setCountryOfRegistration(isset($data['countryOfRegistration']) ? CountryOfRegistrationDto::fromArray($data['countryOfRegistration']) : null);
         $patentDto->setDescription($data['description'] ?? '');
         $patentDto->setGrantDate(isset($data['grantDate']) ? new \DateTime($data['grantDate']) : null);
         $patentDto->setPatentNumber($data['patentNumber'] ?? '');
         $patentDto->setPersons(array_map(fn($item) => PersonDto::fromArray($item), $data['persons'] ?? []));
-        $patentDto->setPriorityPatent(PriorityPatentDto::fromArray($data['priorityPatent']) ?? null);
+        $patentDto->setPriorityPatent(isset($data['priorityPatent']) ? PriorityPatentDto::fromArray($data['priorityPatent']) : null);
         $patentDto->setPublicationNumber($data['publicationNumber'] ?? null);
         $patentDto->setRegistrationDate(isset($data['registrationDate']) ? new \DateTime($data['registrationDate']) : null);
         $patentDto->setResearchAreas($data['researchAreas'] ?? []);
-        $patentDto->setStatus(StatusDto::fromArray($data['status']) ?? '');
+        $patentDto->setStatus(isset($data['status']) ? StatusDto::fromArray($data['status']) : null);
         $patentDto->setSubjectAreas($data['subjectAreas'] ?? []);
         $patentDto->setTitle($data['title'] ?? '');
-        $patentDto->setVisibility(VisibilityDto::fromArray($data['visibility']) ?? '');
+        $patentDto->setVisibility(isset($data['visibility']) ? VisibilityDto::fromArray($data['visibility']) : null);
 
         return $patentDto;
     }

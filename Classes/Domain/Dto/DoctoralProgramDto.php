@@ -146,15 +146,15 @@ class DoctoralProgramDto
 
         $dto->setCourseOfStudy(CourseOfStudyDto::fromArray($data['courseOfStudy']) ?? null);
         $dto->setDescription($data['description'] ?? '');
-        $dto->setDoctoralPositionAvailable(DoctoralPositionAvailableDto::fromArray($data['doctoralPositionAvailable']) ?? null);
+        $dto->setDoctoralPositionAvailable(isset($data['doctoralPositionAvailable']) ? DoctoralPositionAvailableDto::fromArray($data['doctoralPositionAvailable']) : null);
         $dto->setEndDate(isset($data['endDate']) ? new \DateTime($data['endDate']) : null);
-        $dto->setLanguage(LanguageDto::fromArray($data['language']) ?? null);
+        $dto->setLanguage(isset($data['language']) ? LanguageDto::fromArray($data['language']) : null);
         $dto->setSubjectAreas(array_map(fn($item) => SubjectAreaDto::fromArray($item), $data['subjectAreas'] ?? []));
         $dto->setResearchAreas(array_map(fn($item) => ResearchAreaDto::fromArray($item), $data['researchAreas'] ?? []));
         $dto->setResearchAreasKdsf(array_map(fn($item) => ResearchAreaKdsfDto::fromArray($item), $data['researchAreasKdsf'] ?? []));
         $dto->setPersons(array_map(fn($item) => PersonDto::fromArray($item), $data['persons'] ?? []));
         $dto->setOrgUnits(array_map(fn($item) => OrgUnitDto::fromArray($item), $data['organizations'] ?? []));
-        $dto->setScholarshipAvailable(ScholarshipAvailableDto::fromArray($data['scholarshipAvailable']) ?? null);
+        $dto->setScholarshipAvailable(isset($data['scholarshipAvailable']) ? ScholarshipAvailableDto::fromArray($data['scholarshipAvailable']) : null);
         $dto->setStartDate(isset($data['startDate']) ? new \DateTime($data['startDate']) : null);
         $dto->setTitle($data['title'] ?? '');
         return $dto;

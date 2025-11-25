@@ -14,7 +14,6 @@ use Wtl\HioTypo3Connector\Domain\Dto\Person\PatentDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Person\ProjectDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Person\PublicationDto;
 use Wtl\HioTypo3Connector\Trait\WithDetails;
-use Wtl\HioTypo3Connector\Trait\WithName;
 use Wtl\HioTypo3Connector\Trait\WithObjectId;
 use Wtl\HioTypo3Connector\Trait\WithSearchIndex;
 
