@@ -59,7 +59,7 @@ class ReceiveHioPersonsReaction implements ReactionInterface
                 );
             }
         }
-        return $this->createJsonResponse(['status' => 'Publications imported']);
+        return $this->createJsonResponse(['status' => 'Projects imported']);
     }
 
     private function createJsonResponse(array $data, int $statusCode = 201): ResponseInterface

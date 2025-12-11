@@ -87,11 +87,11 @@ class ConferenceDto
         $conferenceData->setCity($data['city'] ?? null);
         $conferenceData->setConferenceEventType(isset($data['conferenceEventType']) ? ConferenceEventTypeDto::fromArray($data['conferenceEventType']) : null);
         $conferenceData->setCountry(isset($data['country']) ? CountryDto::fromArray($data['country']) : null);
-        $conferenceData->setEndDate($data['endDate']);
+        $conferenceData->setEndDate($data['endDate'] ?? '');
         $conferenceData->setLanguage(isset($data['language']) ? LanguageDto::fromArray($data['language']) : null);
-        $conferenceData->setName($data['name']);
-        $conferenceData->setStartDate($data['startDate']);
-        $conferenceData->setText($data['text']);
+        $conferenceData->setName($data['name'] ?? '');
+        $conferenceData->setStartDate($data['startDate'] ?? '');
+        $conferenceData->setText($data['text'] ?? '');
 
         return $conferenceData;
     }
