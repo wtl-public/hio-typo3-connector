@@ -29,10 +29,10 @@ class ResearchInfrastructureDto
         $dto = new self();
         $dto->setDescription($data['description'] ?? '');
         $dto->setId($data['id']);
-        $dto->setLanguage(LanguageDto::fromArray($data['language']) ?? null);
+        $dto->setLanguage(isset($data['language']) ? LanguageDto::fromArray($data['language']) : null);
         $dto->setTitle($data['name'] ?? '');
         $dto->setType($data['type'] ?? '');
-        $dto->setVisibility(VisibilityDto::fromArray($data['visibility']) ?? null);
+        $dto->setVisibility(isset($data['visibility']) ? VisibilityDto::fromArray($data['visibility']) : null);
 
         return $dto;
     }

@@ -23,7 +23,7 @@ class HabilitationDto
         $dto = new self();
         $dto->setEndDate(isset($data['endDate']) ? new \DateTime($data['endDate']) : null);
         $dto->setId($data['id']);
-        $dto->setLanguage(LanguageDto::fromArray($data['language']) ?? null);
+        $dto->setLanguage(isset($data['language']) ? LanguageDto::fromArray($data['language']) : null);
         $dto->setStartDate(isset($data['startDate']) ? new \DateTime($data['startDate']) : null);
         $dto->setTitle($data['title']);
         return $dto;

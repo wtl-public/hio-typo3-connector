@@ -122,18 +122,18 @@ class PublicationDto
         }
         $dto = new self();
         $dto->setAbstract($data['abstract'] ?? null);
-        $dto->setDocumentType(is_array($data['documentType']) ? DocumentTypeDto::fromArray($data['documentType']) : null);
+        $dto->setDocumentType((isset($data['documentType']) && is_array($data['documentType'])) ? DocumentTypeDto::fromArray($data['documentType']) : null);
         $dto->setId($data['id'] ?? null);
-        $dto->setOpenAccess(is_array($data['openAccess']) ? OpenAccessDto::fromArray($data['openAccess']) : null);
-        $dto->setPeerReviewed(is_array($data['peerReviewed']) ? PeerReviewedDto::fromArray($data['peerReviewed']) : null);
-        $dto->setPublicationResource(is_array($data['publicationResource']) ? PublicationResourceDto::fromArray($data['publicationResource']) : null);
-        $dto->setPublicationType(is_array($data['publicationType']) ? PublicationTypeDto::fromArray($data['publicationType']) : null);
-        $dto->setPublisher(is_array($data['publisher']) ? PublisherDto::fromArray($data['publisher']) : null);
-        $dto->setStatus(is_array($data['status']) ? StatusDto::fromArray($data['status']) : null);
+        $dto->setOpenAccess((isset($data['openAccess']) && is_array($data['openAccess'])) ? OpenAccessDto::fromArray($data['openAccess']) : null);
+        $dto->setPeerReviewed((isset($data['peerReviewed']) && is_array($data['peerReviewed'])) ? PeerReviewedDto::fromArray($data['peerReviewed']) : null);
+        $dto->setPublicationResource((isset($data['publicationResource']) && is_array($data['publicationResource'])) ? PublicationResourceDto::fromArray($data['publicationResource']) : null);
+        $dto->setPublicationType((isset($data['publicationType']) && is_array($data['publicationType'])) ? PublicationTypeDto::fromArray($data['publicationType']) : null);
+        $dto->setPublisher((isset($data['publisher']) && is_array($data['publisher'])) ? PublisherDto::fromArray($data['publisher']) : null);
+        $dto->setStatus((isset($data['status']) && is_array($data['status'])) ? StatusDto::fromArray($data['status']) : null);
         $dto->setSubtitle($data['subtitle'] ?? '');
         $dto->setTitle($data['title'] ?? '');
         $dto->setType($data['type'] ?? '');
-        $dto->setVisibility(is_array($data['visibility']) ? VisibilityDto::fromArray($data['visibility']) : null);
+        $dto->setVisibility((isset($data['visibility']) && is_array($data['visibility'])) ? VisibilityDto::fromArray($data['visibility']) : null);
 
         return $dto;
     }

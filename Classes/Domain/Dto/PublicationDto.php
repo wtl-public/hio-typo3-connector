@@ -249,10 +249,10 @@ class PublicationDto
         $dto->setReleaseYear($data['releaseYear'] ?? null);
         $dto->setResearchAreas(array_map(fn($item) => ResearchAreaDto::fromArray($item), $data['researchAreas'] ?? []));
         $dto->setResearchAreasKdsf(array_map(fn($item) => ResearchAreaKdsfDto::fromArray($item), $data['researchAreasKdsf'] ?? []));
-        $dto->setStatus(StatusDto::fromArray($data['status']) ?? null);
+        $dto->setStatus(isset($data['status']) ? StatusDto::fromArray($data['status']) : null);
         $dto->setSubjectAreas(array_map(fn($item) => SubjectAreaDto::fromArray($item), $data['subjectAreas'] ?? []));
         $dto->setTitle($data['title']);
-        $dto->setVisibility(VisibilityDto::fromArray($data['visibility']) ?? null);
+        $dto->setVisibility(isset($data['visibility']) ? VisibilityDto::fromArray($data['visibility']) : null);
         return $dto;
     }
 }

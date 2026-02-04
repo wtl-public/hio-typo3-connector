@@ -64,9 +64,9 @@ class PriorityPatentDto
         $dto->setId($data['id']);
         $dto->setPatentNumber($data['patentNumber'] ?? '');
         $dto->setRegistrationDate(isset($data['registrationDate']) ? new \DateTime($data['registrationDate']) : null);
-        $dto->setStatus(StatusDto::fromArray($data['status']) ?? null);
+        $dto->setStatus(isset($data['status']) ? StatusDto::fromArray($data['status']) : null);
         $dto->setTitle($data['title']);
-        $dto->setVisibility(VisibilityDto::fromArray($data['visibility']) ?? null);
+        $dto->setVisibility(isset($data['visibility']) ? VisibilityDto::fromArray($data['visibility']) : null);
         return $dto;
     }
 }

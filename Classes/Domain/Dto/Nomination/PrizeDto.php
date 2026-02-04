@@ -64,11 +64,11 @@ class PrizeDto
         $instance->setAwardingOrganizations(array_map(fn($item) => AwardingOrganizationDto::fromArray($item), $data['awardingOrganizations'] ?? []));
         $instance->setCategory($data['category'] ?? null);
         $instance->setDescription($data['description'] ?? null);
-        $instance->setEndowed(EndowedDto::fromArray($data['endowed']) ?? null);
+        $instance->setEndowed(isset($data['endowed']) ? EndowedDto::fromArray($data['endowed']) : null);
         $instance->setId($data['id'] ?? null);
-        $instance->setStatus(StatusDto::fromArray($data['status']) ?? null);
+        $instance->setStatus(isset($data['status']) ? StatusDto::fromArray($data['status']) : null);
         $instance->setTitle($data['title'] ?? null);
-        $instance->setPrizeType(TypeDto::fromArray($data['prizeType']) ?? null);
+        $instance->setPrizeType(isset($data['prizeType']) ? TypeDto::fromArray($data['prizeType']) : null);
         return $instance;
     }
 }

@@ -144,7 +144,7 @@ class DoctoralProgramDto
         $dto->setDetails($data);
         $dto->setSearchIndex($data);
 
-        $dto->setCourseOfStudy(CourseOfStudyDto::fromArray($data['courseOfStudy']) ?? null);
+        $dto->setCourseOfStudy(isset($data['courseOfStudy']) ? CourseOfStudyDto::fromArray($data['courseOfStudy']) : null);
         $dto->setDescription($data['description'] ?? '');
         $dto->setDoctoralPositionAvailable(isset($data['doctoralPositionAvailable']) ? DoctoralPositionAvailableDto::fromArray($data['doctoralPositionAvailable']) : null);
         $dto->setEndDate(isset($data['endDate']) ? new \DateTime($data['endDate']) : null);

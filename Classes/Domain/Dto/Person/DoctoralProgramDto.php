@@ -36,11 +36,11 @@ class DoctoralProgramDto
     static public function fromArray(array $data): self
     {
         $dto = new self();
-        $dto->setCourseOfStudy(CourseOfStudyDto::fromArray($data['courseOfStudy']) ?? null);
+        $dto->setCourseOfStudy(isset($data['courseOfStudy']) ? CourseOfStudyDto::fromArray($data['courseOfStudy']) : null);
         $dto->setDescription($data['description'] ?? '');
         $dto->setEndDate(isset($data['endDate']) ? new \DateTime($data['endDate']) : null);
         $dto->setId($data['id']);
-        $dto->setLanguage(LanguageDto::fromArray($data['language']) ?? null);
+        $dto->setLanguage(isset($data['language']) ? LanguageDto::fromArray($data['language']) : null);
         $dto->setStartDate(isset($data['startDate']) ? new \DateTime($data['startDate']) : null);
         $dto->setTitle($data['title']);
         return $dto;

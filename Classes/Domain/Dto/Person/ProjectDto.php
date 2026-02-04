@@ -43,13 +43,13 @@ class ProjectDto
         $dto = new self();
         $dto->setEndDate(isset($data['endDate']) ? new \DateTime($data['endDate']) : null);
         $dto->setId($data['id']);
-        $dto->setLanguage(LanguageDto::fromArray($data['language']) ?? null);
+        $dto->setLanguage(isset($data['language']) ? LanguageDto::fromArray($data['language']) : null);
         $dto->setObjective($data['objective'] ?? '');
         $dto->setStartDate(isset($data['startDate']) ? new \DateTime($data['startDate']) : null);
-        $dto->setStatus(StatusDto::fromArray($data['status']) ?? null);
+        $dto->setStatus(isset($data['status']) ? StatusDto::fromArray($data['status']) : null);
         $dto->setTitle($data['title']);
         $dto->setType($data['type'] ?? null);
-        $dto->setVisibility(VisibilityDto::fromArray($data['visibility']) ?? null);
+        $dto->setVisibility(isset($data['visibility']) ? VisibilityDto::fromArray($data['visibility']) : null);
         return $dto;
     }
 }

@@ -131,7 +131,7 @@ class PostAddressDto
     {
         $dto = new self();
         $dto->setAddressAddition($data['addressAddition'] ?? null);
-        $dto->setAddressTag(AddressTagDto::fromArray($data['addressTag']) ?? null);
+        $dto->setAddressTag(isset($data['addressTag']) ? AddressTagDto::fromArray($data['addressTag']) : null);
         $dto->setCity($data['city'] ?? null);
         $dto->setCountry($data['country'] ?? null);
         $dto->setPostOfficeBox($data['postOfficeBox'] ?? null);

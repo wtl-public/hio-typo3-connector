@@ -74,11 +74,11 @@ class PublicationDto
         $dto->setId($data['id'] ?? null);
         $dto->setResource($data['resource'] ?? '');
         $dto->setReviewed($data['reviewed'] ?? null);
-        $dto->setStatus(StatusDto::fromArray($data['status']) ?? null);
+        $dto->setStatus(isset($data['status']) ? StatusDto::fromArray($data['status']) : null);
         $dto->setSubtitle($data['subtitle'] ?? '');
         $dto->setTitle($data['title'] ?? '');
         $dto->setType($data['type'] ?? '');
-        $dto->setVisibility(VisibilityDto::fromArray($data['visibility']) ?? null);
+        $dto->setVisibility(isset($data['visibility']) ? VisibilityDto::fromArray($data['visibility']) : null);
 
         return $dto;
     }

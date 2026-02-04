@@ -81,13 +81,13 @@ class ResearchInfrastructureDto
 
         $dto->setDescription($data['description'] ?? '');
         $dto->setDynamicObjects($data['dynamicObjects'] ?? []);
-        $dto->setLanguage(LanguageDto::fromArray($data['language']) ?? null);
+        $dto->setLanguage(isset($data['language']) ? LanguageDto::fromArray($data['language']) : null);
         $dto->setOrgUnits(array_map(fn($item) => OrgUnitDto::fromArray($item), $data['orgUnits'] ?? []));
         $dto->setPublications(array_map(fn($item) => PublicationDto::fromArray($item), $data['publications'] ?? []));
-        $dto->setResearchInfrastructureKind(is_array($data['researchInfrastructureKind']) ? ResearchInfrastructureKindDto::fromArray($data['researchInfrastructureKind']) : null);
-        $dto->setResearchInfrastructureType(is_array($data['researchInfrastructureType']) ? ResearchInfrastructureTypeDto::fromArray($data['researchInfrastructureType']) : null);
+        $dto->setResearchInfrastructureKind((isset($data['researchInfrastructureKind']) && is_array($data['researchInfrastructureKind'])) ? ResearchInfrastructureKindDto::fromArray($data['researchInfrastructureKind']) : null);
+        $dto->setResearchInfrastructureType((isset($data['researchInfrastructureType']) && is_array($data['researchInfrastructureType'])) ? ResearchInfrastructureTypeDto::fromArray($data['researchInfrastructureType']) : null);
         $dto->setTitle($data['title'] ?? '');
-        $dto->setVisibility(VisibilityDto::fromArray($data['visibility']) ?? '');
+        $dto->setVisibility(isset($data['visibility']) ? VisibilityDto::fromArray($data['visibility']) : '');
 
         return $dto;
     }

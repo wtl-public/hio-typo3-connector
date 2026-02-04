@@ -170,7 +170,7 @@ class ProjectDto
         if (isset($data['endDate'])) {
             $project->setEndDate(new \DateTime($data['endDate']));
         }
-        $project->setLanguage(LanguageDto::fromArray($data['language']) ?? null);
+        $project->setLanguage(isset($data['language']) ? LanguageDto::fromArray($data['language']) : null);
         $project->setProjectObjective(isset($data['projectObjective']) ? ProjectObjectiveDto::fromArray($data['projectObjective']) : null);
         if (isset($data['startDate'])) {
             $project->setStartDate(new \DateTime($data['startDate']));
@@ -178,11 +178,11 @@ class ProjectDto
         $project->setResearchAreas(array_map(fn($item) => ResearchAreaDto::fromArray($item), $data['researchAreas'] ?? []));
         $project->setResearchAreasKdsf(array_map(fn($item) => ResearchAreaKdsfDto::fromArray($item), $data['researchAreasKdfs'] ?? []));
         $project->setShorttext($data['shorttext'] ?? '');
-        $project->setStatus(StatusDto::fromArray($data['status']) ?? null);
+        $project->setStatus(isset($data['status']) ? StatusDto::fromArray($data['status']) : null);
         $project->setTitle($data['title'] ?? '');
         $project->setType($data['type'] ?? '');
         $project->setUniquename($data['uniquename'] ?? '');
-        $project->setVisibility(VisibilityDto::fromArray($data['visibility']) ?? null);
+        $project->setVisibility(isset($data['visibility']) ? VisibilityDto::fromArray($data['visibility']) : null);
 
         $members = [];
         foreach ($data['persons'] ?? [] as $person) {

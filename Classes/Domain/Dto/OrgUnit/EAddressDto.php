@@ -46,10 +46,10 @@ class EAddressDto
     static public function fromArray(array $data): EAddressDto
     {
         $dto = new self();
-        $dto->setAddressTag(AddressTagDto::fromArray($data['addressTag'] ?? null));
-        $dto->setEAddressType(EAddressTypeDto::fromArray($data['eAddressType'] ?? null));
-        $dto->setValidFrom(new \DateTime($data['validFrom']) ?? null);
-        $dto->setValidTo(new \DateTime($data['validTo']) ?? null);
+        $dto->setAddressTag(isset($data['addressTag']) ? AddressTagDto::fromArray($data['addressTag']) : null);
+        $dto->setEAddressType(isset($data['eAddressType']) ? EAddressTypeDto::fromArray($data['eAddressType']) : null);
+        $dto->setValidFrom(isset($data['validFrom']) ? new \DateTime($data['validFrom']) : null);
+        $dto->setValidTo(isset($data['validTo']) ? new \DateTime($data['validTo']) : null);
         $dto->setValue($data['value'] ?? null);
         return $dto;
     }

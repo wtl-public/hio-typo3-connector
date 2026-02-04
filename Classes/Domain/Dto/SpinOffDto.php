@@ -90,7 +90,7 @@ class SpinOffDto
 
         $dto->setDescription($data['description'] ?? '');
         $dto->setEndDate(isset($data['endDate']) ? new \DateTime($data['endDate']) : null);
-        $dto->setLanguage(LanguageDto::fromArray($data['language']) ?? null);
+        $dto->setLanguage(isset($data['language']) ? LanguageDto::fromArray($data['language']) : null);
         $dto->setName($data['name'] ?? '');
 
         $dto->setOrgUnits(array_map(fn($item) => OrgUnitDto::fromArray($item), $data['orgUnits'] ?? []));

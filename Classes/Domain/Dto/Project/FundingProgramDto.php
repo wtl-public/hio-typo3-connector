@@ -34,7 +34,7 @@ class FundingProgramDto
         $fundingProgramDto = new self();
         $fundingProgramDto->setId($data['id']);
         $fundingProgramDto->setFunderName($data['funderName'] ?? '');
-        $fundingProgramDto->setBudgetSource(BudgetSourceDto::fromArray($data['budgetSource']) ?? null);
+        $fundingProgramDto->setBudgetSource(isset($data['budgetSource']) ? BudgetSourceDto::fromArray($data['budgetSource']) : null);
 
         return $fundingProgramDto;
     }

@@ -73,11 +73,11 @@ class BudgetSourceDto
     {
         $fundingProgramDto = new self();
         $fundingProgramDto->setId($data['id']);
-        $fundingProgramDto->setBudgetSourceCategory(BudgetSourceCategoryDto::fromArray($data['budgetSourceCategory']) ?? null);
-        $fundingProgramDto->setBudgetSourceType(BudgetSourceTypeDto::fromArray($data['budgetSourceType']) ?? null);
-        $fundingProgramDto->setFunderCategoryKdsf(FunderCategoryKdsfDto::fromArray($data['funderCategoryKdsf']) ?? null);
-        $fundingProgramDto->setProjectManagement(ProjectManagementDto::fromArray($data['projectManagement']) ?? null);
-        $fundingProgramDto->setResearchPartner(ResearchPartnerDto::fromArray($data['researchPartner']) ?? null);
+        $fundingProgramDto->setBudgetSourceCategory(isset($data['budgetSourceCategory']) ? BudgetSourceCategoryDto::fromArray($data['budgetSourceCategory']) : null);
+        $fundingProgramDto->setBudgetSourceType(isset($data['budgetSourceType']) ? BudgetSourceTypeDto::fromArray($data['budgetSourceType']) : null);
+        $fundingProgramDto->setFunderCategoryKdsf(isset($data['funderCategoryKdsf']) ? FunderCategoryKdsfDto::fromArray($data['funderCategoryKdsf']) : null);
+        $fundingProgramDto->setProjectManagement(isset($data['projectManagement']) ? ProjectManagementDto::fromArray($data['projectManagement']) : null);
+        $fundingProgramDto->setResearchPartner(isset($data['researchPartner']) ? ResearchPartnerDto::fromArray($data['researchPartner']) : null);
 
         return $fundingProgramDto;
     }
