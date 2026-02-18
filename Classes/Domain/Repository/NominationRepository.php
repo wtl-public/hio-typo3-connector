@@ -18,7 +18,7 @@ class NominationRepository extends BaseRepository
             $model->setObjectId($dto->getObjectId());
             $model->setStatus($dto->getStatus()->getName());
             $model->setTitle($dto->getTitle());
-            $model->setType($dto->getNominationType()->getName());
+            $model->setType($dto->getNominationType() ? $dto->getNominationType()->getName() : '');
             $model->setVisibility($dto->getVisibility()->getName());
             $model->setDetails($dto->getDetails());
             $model->setSearchIndex($dto->getSearchIndex());
@@ -30,7 +30,7 @@ class NominationRepository extends BaseRepository
             $model->setObjectId($dto->getObjectId());
             $model->setStatus($dto->getStatus()->getName());
             $model->setTitle($dto->getTitle());
-            $model->setType($dto->getNominationType()->getName());
+            $model->setType($dto->getNominationType() ? $dto->getNominationType()->getName() : '');
             $model->setVisibility($dto->getVisibility()->getName());
             $model->setDetails($dto->getDetails());
             $model->setSearchIndex($dto->getSearchIndex());
