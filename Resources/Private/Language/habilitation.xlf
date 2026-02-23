@@ -25,6 +25,14 @@
                 <source>Habilitation title</source>
             </trans-unit>
 
+            <!-- TCA Tab Labels -->
+            <trans-unit id="tab.keyfact_type" resname="tab.keyfact_type">
+                <source>General</source>
+            </trans-unit>
+            <trans-unit id="tab.system" resname="tab.system">
+                <source>System</source>
+            </trans-unit>
+
             <trans-unit id="habilitation.admissionDate" resname="habilitation.admissionDate">
                 <source>admission date</source>
             </trans-unit>

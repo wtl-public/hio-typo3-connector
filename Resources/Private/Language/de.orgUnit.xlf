@@ -35,6 +35,50 @@
                 <target>Titel</target>
             </trans-unit>
 
+            <!-- TCA Tab Labels -->
+            <trans-unit id="tab.keyfact_type" resname="tab.keyfact_type">
+                <source>General</source>
+                <target>Allgemein</target>
+            </trans-unit>
+            <trans-unit id="tab.system" resname="tab.system">
+                <source>System</source>
+                <target>System</target>
+            </trans-unit>
+
+            <!-- OrgUnit Relation Labels -->
+            <trans-unit id="tx_hiotypo3connector_domain_model_orgunit.publications" resname="tx_hiotypo3connector_domain_model_orgunit.publications">
+                <source>Related publications</source>
+                <target>Verknüpfte Publikationen</target>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_orgunit.projects" resname="tx_hiotypo3connector_domain_model_orgunit.projects">
+                <source>Related projects</source>
+                <target>Verknüpfte Projekte</target>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_orgunit.patents" resname="tx_hiotypo3connector_domain_model_orgunit.patents">
+                <source>Related patents</source>
+                <target>Verknüpfte Patente</target>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_orgunit.persons" resname="tx_hiotypo3connector_domain_model_orgunit.persons">
+                <source>Related persons</source>
+                <target>Verknüpfte Personen</target>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_orgunit.doctoralPrograms" resname="tx_hiotypo3connector_domain_model_orgunit.doctoralPrograms">
+                <source>Related doctoral programs</source>
+                <target>Verknüpfte Promotionen</target>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_orgunit.habilitations" resname="tx_hiotypo3connector_domain_model_orgunit.habilitations">
+                <source>Related habilitations</source>
+                <target>Verknüpfte Habilitationen</target>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_orgunit.researchInfrastructures" resname="tx_hiotypo3connector_domain_model_orgunit.researchInfrastructures">
+                <source>Related research infrastructures</source>
+                <target>Verknüpfte Forschungsinfrastrukturen</target>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_orgunit.spinOffs" resname="tx_hiotypo3connector_domain_model_orgunit.spinOffs">
+                <source>Related spin-offs</source>
+                <target>Verknüpfte Ausgründungen</target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>

@@ -63,6 +63,32 @@
                 <source>Related nominees</source>
                 <target>Verknüpfte Personen</target>
             </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_nomination.scope" resname="tx_hiotypo3connector_domain_model_nomination.scope">
+                <source>Scope</source>
+                <target>Geltungsbereich</target>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_nomination.status" resname="tx_hiotypo3connector_domain_model_nomination.status">
+                <source>Status</source>
+                <target>Status</target>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_nomination.type" resname="tx_hiotypo3connector_domain_model_nomination.type">
+                <source>Type</source>
+                <target>Typ</target>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_nomination.visibility" resname="tx_hiotypo3connector_domain_model_nomination.visibility">
+                <source>Visibility</source>
+                <target>Sichtbarkeit</target>
+            </trans-unit>
+
+            <!-- TCA Tab Labels -->
+            <trans-unit id="tab.keyfact_type" resname="tab.keyfact_type">
+                <source>General</source>
+                <target>Allgemein</target>
+            </trans-unit>
+            <trans-unit id="tab.system" resname="tab.system">
+                <source>System</source>
+                <target>System</target>
+            </trans-unit>
 
             <trans-unit id="flexform.nominationlist.orderBy" resname="flexform.nominationlist.orderBy">
                 <source>Sort order</source>

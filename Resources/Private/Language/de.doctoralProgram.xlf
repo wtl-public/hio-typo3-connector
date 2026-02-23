@@ -31,6 +31,30 @@
                 <target>Titel der Promotion</target>
             </trans-unit>
 
+            <!-- Correct labels matching TCA config (doctoralprogram without underscore) -->
+            <trans-unit id="tx_hiotypo3connector_domain_model_doctoralprogram" resname="tx_hiotypo3connector_domain_model_doctoralprogram">
+                <source>Doctoral programs</source>
+                <target>Promotionen</target>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_doctoralprogram.object_id" resname="tx_hiotypo3connector_domain_model_doctoralprogram.object_id">
+                <source>Doctoral program HISinOne-ID</source>
+                <target>HISinOne-ID der Promotion</target>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_doctoralprogram.title" resname="tx_hiotypo3connector_domain_model_doctoralprogram.title">
+                <source>Doctoral program title</source>
+                <target>Titel der Promotion</target>
+            </trans-unit>
+
+            <!-- TCA Tab Labels -->
+            <trans-unit id="tab.keyfact_type" resname="tab.keyfact_type">
+                <source>General</source>
+                <target>Allgemein</target>
+            </trans-unit>
+            <trans-unit id="tab.system" resname="tab.system">
+                <source>System</source>
+                <target>System</target>
+            </trans-unit>
+
             <trans-unit id="doctoralProgram.courseOfStudy" resname="doctoralProgram.courseOfStudy">
                 <source>course of study</source>
                 <target>Studiengang</target>

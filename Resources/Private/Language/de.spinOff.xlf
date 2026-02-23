@@ -33,6 +33,20 @@
                 <source>Spin-off title</source>
                 <target>Titel der Ausgründung</target>
             </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_spinoff.name" resname="tx_hiotypo3connector_domain_model_spinoff.name">
+                <source>Spin-off name</source>
+                <target>Name der Ausgründung</target>
+            </trans-unit>
+
+            <!-- TCA Tab Labels -->
+            <trans-unit id="tab.keyfact_type" resname="tab.keyfact_type">
+                <source>General</source>
+                <target>Allgemein</target>
+            </trans-unit>
+            <trans-unit id="tab.system" resname="tab.system">
+                <source>System</source>
+                <target>System</target>
+            </trans-unit>
 
         </body>
     </file>

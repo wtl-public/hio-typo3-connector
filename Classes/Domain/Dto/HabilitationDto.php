@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto;
 
+use Wtl\HioTypo3Connector\Domain\Dto\Habilitation\HabilitationTypeDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Habilitation\OrgUnitDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Habilitation\PersonDto;
 use Wtl\HioTypo3Connector\Trait\WithDetails;
@@ -13,7 +14,6 @@ use Wtl\HioTypo3Connector\Trait\WithSearchIndex;
 use Wtl\HioTypo3Connector\Trait\WithStartDate;
 use Wtl\HioTypo3Connector\Trait\WithStatus;
 use Wtl\HioTypo3Connector\Trait\WithTitle;
-use Wtl\HioTypo3Connector\Trait\WithType;
 
 class HabilitationDto
 {
@@ -25,7 +25,6 @@ class HabilitationDto
     use WithStartDate;
     use WithStatus;
     use WithTitle;
-    use WithType;
 
     protected ?\DateTime $admissionDate = null;
     protected ?\DateTime $certificateDate = null;
@@ -46,6 +45,7 @@ class HabilitationDto
     protected array $researchAreas = [];
     protected ?\DateTime $startDate = null;
     protected array $subjectAreas = [];
+    protected ?HabilitationTypeDto $habilitationTypeDto;
 
     public function getAdmissionDate(): ?\DateTime
     {
@@ -110,6 +110,17 @@ class HabilitationDto
         $this->subjectAreas = $subjectAreas;
     }
 
+    public function getHabilitationTypeDto(): ?HabilitationTypeDto
+    {
+        return $this->habilitationTypeDto;
+    }
+
+    public function setHabilitationTypeDto(?HabilitationTypeDto $habilitationTypeDto): HabilitationDto
+    {
+        $this->habilitationTypeDto = $habilitationTypeDto;
+        return $this;
+    }
+
     static public function fromArray(array $data): HabilitationDto
     {
         $habilitationDto = new self();
@@ -136,7 +147,7 @@ class HabilitationDto
             $habilitationDto->setStartDate(new \DateTime($data['startDate']));
         }
         $habilitationDto->setTitle($data['title']);
-        $habilitationDto->setType($data['type'] ?? '');
+        $habilitationDto->setHabilitationTypeDto($data['habilitationType'] ? HabilitationTypeDto::fromArray($data['habilitationType']) : null);
 
         return $habilitationDto;
     }

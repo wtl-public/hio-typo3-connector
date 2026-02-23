@@ -289,6 +289,90 @@
                 <source>Receive publication data from HIO Middleware</source>
             </trans-unit>
 
+            <!-- TCA Tab Labels -->
+            <trans-unit id="tab.keyfact_type" resname="tab.keyfact_type">
+                <source>General</source>
+            </trans-unit>
+            <trans-unit id="tab.system" resname="tab.system">
+                <source>System</source>
+            </trans-unit>
+
+            <!-- Publication TCA Labels -->
+            <trans-unit id="tx_hiotypo3connector_domain_model_publication.object_id" resname="tx_hiotypo3connector_domain_model_publication.object_id">
+                <source>Publication HISinOne-ID</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_publication.title" resname="tx_hiotypo3connector_domain_model_publication.title">
+                <source>Publication title</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_publication.type" resname="tx_hiotypo3connector_domain_model_publication.type">
+                <source>Publication type</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_publication.release_year" resname="tx_hiotypo3connector_domain_model_publication.release_year">
+                <source>Release year</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_publication.details" resname="tx_hiotypo3connector_domain_model_publication.details">
+                <source>Details</source>
+            </trans-unit>
+
+            <!-- Patent TCA Labels -->
+            <trans-unit id="tx_hiotypo3connector_domain_model_patent.object_id" resname="tx_hiotypo3connector_domain_model_patent.object_id">
+                <source>Patent HISinOne-ID</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_patent.title" resname="tx_hiotypo3connector_domain_model_patent.title">
+                <source>Patent title</source>
+            </trans-unit>
+
+            <!-- Project TCA Labels -->
+            <trans-unit id="tx_hiotypo3connector_domain_model_project.object_id" resname="tx_hiotypo3connector_domain_model_project.object_id">
+                <source>Project HISinOne-ID</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_project.title" resname="tx_hiotypo3connector_domain_model_project.title">
+                <source>Project title</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_project.name" resname="tx_hiotypo3connector_domain_model_project.name">
+                <source>Project name</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_project.budgetSourceTypes" resname="tx_hiotypo3connector_domain_model_project.budgetSourceTypes">
+                <source>Budget source types</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_project.endDate" resname="tx_hiotypo3connector_domain_model_project.endDate">
+                <source>End date</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_project.startDate" resname="tx_hiotypo3connector_domain_model_project.startDate">
+                <source>Start date</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_project.status" resname="tx_hiotypo3connector_domain_model_project.status">
+                <source>Project status</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_project.type" resname="tx_hiotypo3connector_domain_model_project.type">
+                <source>Project type</source>
+            </trans-unit>
+
+            <!-- Person TCA Labels -->
+            <trans-unit id="tx_hiotypo3connector_domain_model_person.publications" resname="tx_hiotypo3connector_domain_model_person.publications">
+                <source>Related publications</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_person.projects" resname="tx_hiotypo3connector_domain_model_person.projects">
+                <source>Related projects</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_person.patents" resname="tx_hiotypo3connector_domain_model_person.patents">
+                <source>Related patents</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_person.doctoralPrograms" resname="tx_hiotypo3connector_domain_model_person.doctoralPrograms">
+                <source>Related doctoral programs</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_person.habilitations" resname="tx_hiotypo3connector_domain_model_person.habilitations">
+                <source>Related habilitations</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_person.orgunits" resname="tx_hiotypo3connector_domain_model_person.orgunits">
+                <source>Related organization units</source>
+            </trans-unit>
+
+            <!-- Citation Style TCA Labels -->
+            <trans-unit id="tx_hiotypo3connector_domain_model_citationstyle.label" resname="tx_hiotypo3connector_domain_model_citationstyle.label">
+                <source>Citation style label</source>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>

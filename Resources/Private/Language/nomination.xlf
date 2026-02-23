@@ -49,6 +49,26 @@
             <trans-unit id="tx_hiotypo3connector_domain_model_nomination.nominees" resname="tx_hiotypo3connector_domain_model_nomination.nominees">
                 <source>Related nominees</source>
             </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_nomination.scope" resname="tx_hiotypo3connector_domain_model_nomination.scope">
+                <source>Scope</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_nomination.status" resname="tx_hiotypo3connector_domain_model_nomination.status">
+                <source>Status</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_nomination.type" resname="tx_hiotypo3connector_domain_model_nomination.type">
+                <source>Type</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_nomination.visibility" resname="tx_hiotypo3connector_domain_model_nomination.visibility">
+                <source>Visibility</source>
+            </trans-unit>
+
+            <!-- TCA Tab Labels -->
+            <trans-unit id="tab.keyfact_type" resname="tab.keyfact_type">
+                <source>General</source>
+            </trans-unit>
+            <trans-unit id="tab.system" resname="tab.system">
+                <source>System</source>
+            </trans-unit>
 
             <trans-unit id="flexform.nominationlist.orderBy" resname="flexform.nominationlist.orderBy">
                 <source>sort order</source>
