@@ -288,6 +288,10 @@
             <trans-unit id="receive-hio-publications_reaction" resname="receive-hio-publications_reaction">
                 <source>Receive publication data from HIO Middleware</source>
             </trans-unit>
+            
+            <trans-unit id="plugin.group.hio_publisher" resname="plugin.group.hio_publisher">
+                <source>HIO-Publisher</source>
+            </trans-unit>
 
             <!-- TCA Tab Labels -->
             <trans-unit id="tab.keyfact_type" resname="tab.keyfact_type">

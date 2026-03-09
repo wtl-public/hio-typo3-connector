@@ -1,5 +1,7 @@
 mod.wizards.newContentElement.wizardItems {
-    plugins {
+    hio-publisher {
+        header = LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:plugin.group.hio_publisher
+        after = common
         elements {
             hio-typo3-connector_publications-for-person {
                 iconIdentifier = tx-hio_typo3_connector-publications
@@ -205,5 +207,6 @@ mod.wizards.newContentElement.wizardItems {
                 }
             }
         }
+        show = *
     }
 }

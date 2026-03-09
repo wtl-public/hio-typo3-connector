@@ -5,65 +5,88 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
 defined('TYPO3') or die();
 
+ExtensionManagementUtility::addTcaSelectItemGroup(
+    'tt_content',
+    'list_type',
+    'hio-publisher',
+    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:plugin.group.hio_publisher'
+);
+ExtensionManagementUtility::addTcaSelectItemGroup(
+    'tt_content',
+    'CType',
+    'hio-publisher',
+    'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:plugin.group.hio_publisher'
+);
+
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
     'Publicationlist',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePublications',
     'tx-hio_typo3_connector-list-of-publications',
+    'hio-publisher',
 );
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
     'Projectlist',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titleProjects',
     'tx-hio_typo3_connector-list-of-projects',
+    'hio-publisher',
 );
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
     'Personlist',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePersons',
     'tx-hio_typo3_connector-list-of-persons',
+    'hio-publisher',
 );
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
     'Nominationlist',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/nomination.xlf:titleNominations',
     'tx-hio_typo3_connector-list-of-nominations',
+    'hio-publisher',
 );
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
     'Patentlist',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:titlePatents',
     'tx-hio_typo3_connector-list-of-patents',
+    'hio-publisher',
 );
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
     'Doctoralprogramlist',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/doctoralProgram.xlf:titleDoctoralPrograms',
     'tx-hio_typo3_connector-list-of-doctoral-programs',
+    'hio-publisher',
 );
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
     'Habilitationlist',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/habilitation.xlf:titleHabilitations',
     'tx-hio_typo3_connector-list-of-habilitations',
+    'hio-publisher',
 );
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
     'Orgunitlist',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/orgUnit.xlf:titleOrgUnits',
     'tx-hio_typo3_connector-list-of-org-units',
+    'hio-publisher',
 );
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
     'Researchinfrastructurelist',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/researchInfrastructure.xlf:titleResearchInfrastructures',
     'tx-hio_typo3_connector-list-of-research-infrastructures',
+    'hio-publisher',
 );
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
     'Spinofflist',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/spinOff.xlf:titleSpinOffs',
     'tx-hio_typo3_connector-list-of-spin-offs',
+    'hio-publisher',
 );
 
 
@@ -72,18 +95,21 @@ ExtensionUtility::registerPlugin(
     'Selectedpersonhabilitationlist',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonHabilitations',
     'tx-hio_typo3_connector-habilitations',
+    'hio-publisher',
 );
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
     'Selectedpersonpatentlist',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonPatents',
     'tx-hio_typo3_connector-patents',
+    'hio-publisher',
 );
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
     'Selectedpersonorgunitlist',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonOrgUnits',
     'tx-hio_typo3_connector-org-units',
+    'hio-publisher',
 );
 
 ExtensionUtility::registerPlugin(
@@ -91,18 +117,21 @@ ExtensionUtility::registerPlugin(
     'Selectedpersondoctoralprogramlist',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonDoctoralPrograms',
     'tx-hio_typo3_connector-doctoral-programs',
+    'hio-publisher',
 );
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
     'Selectedpersonprojectlist',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonProjects',
     'tx-hio_typo3_connector-projects',
+    'hio-publisher',
 );
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
     'Selectedpersonpublicationlist',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedPerson.xlf:titlePersonPublications',
     'tx-hio_typo3_connector-publications',
+    'hio-publisher',
 );
 
 ExtensionUtility::registerPlugin(
@@ -110,24 +139,28 @@ ExtensionUtility::registerPlugin(
     'SelectedOrgUnitPersonList',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedOrgUnit.xlf:titleOrgUnitPersons',
     'tx-hio_typo3_connector-persons',
+    'hio-publisher',
 );
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
     'SelectedOrgUnitPublicationList',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedOrgUnit.xlf:titleOrgUnitPublications',
     'tx-hio_typo3_connector-publications',
+    'hio-publisher',
 );
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
     'SelectedOrgUnitProjectList',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedOrgUnit.xlf:titleOrgUnitProjects',
     'tx-hio_typo3_connector-projects',
+    'hio-publisher',
 );
 ExtensionUtility::registerPlugin(
     'HioTypo3Connector',
     'SelectedOrgUnitPatentList',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedOrgUnit.xlf:titleOrgUnitPatents',
     'tx-hio_typo3_connector-patents',
+    'hio-publisher',
 );
 
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['hiotypo3connector_selectedpersondoctoralprogramlist'] = 'pi_flexform';
@@ -209,6 +242,7 @@ ExtensionUtility::registerPlugin(
     'ProjectHighlights',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/projectHighlights.xlf:flexform.plugin.title',
     'tx-hio_typo3_connector-project-highlights',
+    'hio-publisher',
 );
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['hiotypo3connector_projecthighlights'] = 'pi_flexform';
 ExtensionManagementUtility::addPiFlexFormValue(
@@ -221,6 +255,7 @@ ExtensionUtility::registerPlugin(
     'PublicationHighlights',
     'LLL:EXT:hio_typo3_connector/Resources/Private/Language/publicationHighlights.xlf:flexform.plugin.title',
     'tx-hio_typo3_connector-publication-highlights',
+    'hio-publisher',
 );
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['hiotypo3connector_publicationhighlights'] = 'pi_flexform';
 ExtensionManagementUtility::addPiFlexFormValue(
