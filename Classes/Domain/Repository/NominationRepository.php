@@ -51,10 +51,7 @@ class NominationRepository extends BaseRepository
 
         $constraints = [];
         if ($filter->getSearchTerm()) {
-            $searchTerm = trim($filter->getSearchTerm());
-            $constraints[] = $query->logicalOr(
-                $query->like('searchIndex', '%' . strtolower($searchTerm) . '%'),
-            );
+            $constraints[] = $this->getSearchTermQuery($query, $filter->getSearchTerm());
         }
 
         if (!empty($constraints)) {

@@ -41,8 +41,8 @@ class RequestHioImportCommand extends Command
         );
 
         $response = $this->hioMiddlewareRequestImportService->requestImport(static::REQUESTED_ENTITY_TYPE);
-        if ($response->getStatusCode() !== 200) {
-            $output->writeln('Error requesting data import from HIO Middleware API: ' . $response->getBody());
+        if (!$response || $response->getStatusCode() !== 200) {
+            $output->writeln('Error requesting data import from HIO Middleware API: ' . $response->getBody() ?? 'No response body found');
             return Command::FAILURE;
         }
         $output->writeln('Data import requested successfully.');

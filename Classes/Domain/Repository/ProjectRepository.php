@@ -59,10 +59,7 @@ class ProjectRepository extends BaseRepository
         $constraints = [];
 
         if ($filter->getSearchTerm()) {
-            $searchTerm = trim($filter->getSearchTerm());
-            $constraints[] = $query->logicalOr(
-                $query->like('searchIndex', '%' . strtolower($searchTerm) . '%'),
-            );
+            $constraints[] = $this->getSearchTermQuery($query, $filter->getSearchTerm());
         }
         if ($filter->getStartDateFrom()) {
             $constraints[] = $query->greaterThanOrEqual('startDate', $filter->getStartDateFrom());

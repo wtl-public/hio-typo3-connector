@@ -10,7 +10,7 @@ trait WithSearchIndex
 
     public function getSearchIndex(): string
     {
-        return strtolower(json_encode($this->searchIndex));
+        return mb_strtolower(json_encode($this->searchIndex, JSON_UNESCAPED_UNICODE));
     }
 
     public function setSearchIndex($searchIndex): void

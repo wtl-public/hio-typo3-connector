@@ -2,8 +2,8 @@
 
 namespace Wtl\HioTypo3Connector\Domain\Repository;
 
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Extbase\Persistence\Generic\Qom\OrInterface;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 use Wtl\HioTypo3Connector\Domain\Dto\Filter\FilterDto;
 
@@ -22,11 +22,8 @@ class BaseRepository extends Repository
         $query->getQuerySettings()->setRespectStoragePage(false);
 
         if ($filter->getSearchTerm()) {
-            $searchTerm = trim($filter->getSearchTerm());
             $query->matching(
-                $query->logicalOr(
-                    $query->like('searchIndex', '%' . strtolower($searchTerm) . '%'),
-                )
+                $this->getSearchTermQuery($query, $filter->getSearchTerm())
             );
         }
         if ($ordering) {
@@ -34,5 +31,14 @@ class BaseRepository extends Repository
         }
 
         return $query->execute();
+    }
+    
+    protected function getSearchTermQuery(QueryInterface $query, string $searchTerm): OrInterface
+    {
+        $term = trim(mb_strtolower($searchTerm));
+        
+        return  $query->logicalOr(
+            $query->like('searchIndex', '%' . $term . '%'),
+        );
     }
 }
