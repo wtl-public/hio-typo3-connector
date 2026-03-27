@@ -4,36 +4,28 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\EventListener;
 
-use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
-use Wtl\HioTypo3Connector\Domain\Repository\HabilitationRepository;
-use Wtl\HioTypo3Connector\Domain\Repository\OrgUnitRepository;
 use Wtl\HioTypo3Connector\Event\AttachHioOrgUnitToHioHabilitationsEvent;
+use Wtl\HioTypo3Connector\Services\MmRelationService;
 
+/** @see AttachHioPublicationToHioPersonsListener for the performance rationale. */
 class AttachHioOrgUnitToHioHabilitationsListener
 {
-    public function __construct(
-        protected readonly HabilitationRepository $habilitationRepository,
-        protected readonly OrgUnitRepository          $orgUnitRepository,
-        protected readonly PersistenceManager        $persistenceManager,
-    )
-    {
-    }
+    private const OWNER_TABLE    = 'tx_hiotypo3connector_domain_model_orgunit';
+    private const RELATED_TABLE  = 'tx_hiotypo3connector_domain_model_habilitation';
+    private const MM_TABLE       = 'tx_hiotypo3connector_orgunit_habilitation_mm';
+    private const COUNTER_COLUMN = 'habilitations';
+
+    public function __construct(private readonly MmRelationService $mmRelationService) {}
 
     public function __invoke(AttachHioOrgUnitToHioHabilitationsEvent $event): void
     {
-        $orgUnit = $this->orgUnitRepository->findByObjectId($event->getHioOrgUnitObjectId());
-        if ($orgUnit === null) {
-            return;
-        }
-
-        foreach ($event->getHioHabilitationObjectIds() as $hioHabilitationObjectId) {
-            $habilitation = $this->habilitationRepository->findByObjectId($hioHabilitationObjectId);
-            if ($habilitation === null) {
-                continue;
-            }
-            $orgUnit->addHabilitation($habilitation);
-            $this->orgUnitRepository->update($orgUnit);
-            $this->persistenceManager->persistAll();
-        }
+        $this->mmRelationService->syncRelationsOfOwner(
+            ownerTable:         self::OWNER_TABLE,
+            ownerObjectId:      $event->getHioOrgUnitObjectId(),
+            relatedTable:       self::RELATED_TABLE,
+            relatedObjectIds:   $event->getHioHabilitationObjectIds(),
+            mmTable:            self::MM_TABLE,
+            ownerCounterColumn: self::COUNTER_COLUMN,
+        );
     }
 }

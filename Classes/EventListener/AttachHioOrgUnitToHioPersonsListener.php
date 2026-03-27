@@ -4,35 +4,28 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\EventListener;
 
-use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
-use Wtl\HioTypo3Connector\Domain\Repository\OrgUnitRepository;
-use Wtl\HioTypo3Connector\Domain\Repository\PersonRepository;
 use Wtl\HioTypo3Connector\Event\AttachHioOrgUnitToHioPersonsEvent;
+use Wtl\HioTypo3Connector\Services\MmRelationService;
 
+/** @see AttachHioPublicationToHioPersonsListener for the performance rationale. */
 class AttachHioOrgUnitToHioPersonsListener
 {
-    public function __construct(
-        protected readonly OrgUnitRepository $orgUnitRepository,
-        protected readonly PersonRepository $personRepository,
-        protected readonly PersistenceManager $persistenceManager,
-    )
-    {
-    }
+    private const OWNER_TABLE    = 'tx_hiotypo3connector_domain_model_orgunit';
+    private const RELATED_TABLE  = 'tx_hiotypo3connector_domain_model_person';
+    private const MM_TABLE       = 'tx_hiotypo3connector_orgunit_person_mm';
+    private const COUNTER_COLUMN = 'persons';
+
+    public function __construct(private readonly MmRelationService $mmRelationService) {}
+
     public function __invoke(AttachHioOrgUnitToHioPersonsEvent $event): void
     {
-        $orgUnit = $this->orgUnitRepository->findByObjectId($event->getHioOrgUnitObjectId());
-        if ($orgUnit === null) {
-            return;
-        }
-
-        foreach ($event->getHioPersonObjectIds() as $hioPersonObjectId) {
-            $person = $this->personRepository->findByObjectId($hioPersonObjectId);
-            if ($person === null) {
-                continue;
-            }
-            $orgUnit->addPerson($person);
-            $this->orgUnitRepository->update($orgUnit);
-            $this->persistenceManager->persistAll();
-        }
+        $this->mmRelationService->syncRelationsOfOwner(
+            ownerTable:         self::OWNER_TABLE,
+            ownerObjectId:      $event->getHioOrgUnitObjectId(),
+            relatedTable:       self::RELATED_TABLE,
+            relatedObjectIds:   $event->getHioPersonObjectIds(),
+            mmTable:            self::MM_TABLE,
+            ownerCounterColumn: self::COUNTER_COLUMN,
+        );
     }
 }

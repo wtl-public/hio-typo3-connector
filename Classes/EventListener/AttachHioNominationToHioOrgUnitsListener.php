@@ -4,35 +4,28 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\EventListener;
 
-use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
-use Wtl\HioTypo3Connector\Domain\Repository\NominationRepository;
-use Wtl\HioTypo3Connector\Domain\Repository\OrgUnitRepository;
 use Wtl\HioTypo3Connector\Event\AttachHioNominationToHioOrgUnitsEvent;
+use Wtl\HioTypo3Connector\Services\MmRelationService;
 
+/** @see AttachHioPublicationToHioPersonsListener for the performance rationale. */
 class AttachHioNominationToHioOrgUnitsListener
 {
-    public function __construct(
-        protected readonly NominationRepository $nominationRepository,
-        protected readonly OrgUnitRepository $orgUnitRepository,
-        protected readonly PersistenceManager $persistenceManager,
-    )
-    {
-    }
+    private const OWNER_TABLE    = 'tx_hiotypo3connector_domain_model_nomination';
+    private const RELATED_TABLE  = 'tx_hiotypo3connector_domain_model_orgunit';
+    private const MM_TABLE       = 'tx_hiotypo3connector_nomination_orgunit_mm';
+    private const COUNTER_COLUMN = 'org_units';
+
+    public function __construct(private readonly MmRelationService $mmRelationService) {}
+
     public function __invoke(AttachHioNominationToHioOrgUnitsEvent $event): void
     {
-        $nomination = $this->nominationRepository->findByObjectId($event->getHioNominationObjectId());
-        if ($nomination === null) {
-            return;
-        }
-
-        foreach ($event->getHioOrgUnitObjectIds() as $hioOrgunitObjectId) {
-            $orgUnit = $this->orgUnitRepository->findByObjectId($hioOrgunitObjectId);
-            if ($orgUnit === null) {
-                continue;
-            }
-            $nomination->addOrgUnit($orgUnit);
-            $this->nominationRepository->update($nomination);
-            $this->persistenceManager->persistAll();
-        }
+        $this->mmRelationService->syncRelationsOfOwner(
+            ownerTable:         self::OWNER_TABLE,
+            ownerObjectId:      $event->getHioNominationObjectId(),
+            relatedTable:       self::RELATED_TABLE,
+            relatedObjectIds:   $event->getHioOrgUnitObjectIds(),
+            mmTable:            self::MM_TABLE,
+            ownerCounterColumn: self::COUNTER_COLUMN,
+        );
     }
 }

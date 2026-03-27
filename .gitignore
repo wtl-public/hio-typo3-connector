@@ -10,4 +10,5 @@
 /Documentation-GENERATED-temp
 
 /.cache/
+/.phpunit.cache
 /Build/testing-docker/.env

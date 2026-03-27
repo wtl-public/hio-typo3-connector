@@ -9,14 +9,32 @@
         {
             "name": "Jan Bager",
             "email": "jan.bager@wtl.de"
+        },
+        {
+            "name": "Steffen Eißmann",
+            "email": "steffen.eissmann@wtl.de"
         }
     ],
+    "config": {
+        "allow-plugins": {
+            "typo3/class-alias-loader": true,
+            "typo3/cms-composer-installers": true
+        }
+    },
     "require": {
         "typo3/cms-core": "^12.4 || ^13.0"
+    },
+    "require-dev": {
+        "typo3/testing-framework": "^7.0 || ^8.2"
     },
     "autoload": {
         "psr-4": {
             "Wtl\\HioTypo3Connector\\": "Classes/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Wtl\\HioTypo3Connector\\Tests\\": "Tests/"
         }
     },
     "extra": {

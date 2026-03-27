@@ -4,37 +4,28 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\EventListener;
 
-use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
-use Wtl\HioTypo3Connector\Domain\Repository\DoctoralProgramRepository;
-use Wtl\HioTypo3Connector\Domain\Repository\OrgUnitRepository;
 use Wtl\HioTypo3Connector\Event\AttachHioOrgUnitToHioDoctoralProgramsEvent;
+use Wtl\HioTypo3Connector\Services\MmRelationService;
 
+/** @see AttachHioPublicationToHioPersonsListener for the performance rationale. */
 class AttachHioOrgUnitToHioDoctoralProgramsListener
 {
-    public function __construct(
-        protected readonly DoctoralProgramRepository $doctoralProgramRepository,
-        protected readonly OrgUnitRepository          $orgUnitRepository,
-        protected readonly PersistenceManager        $persistenceManager,
-    )
-    {
-    }
+    private const OWNER_TABLE    = 'tx_hiotypo3connector_domain_model_orgunit';
+    private const RELATED_TABLE  = 'tx_hiotypo3connector_domain_model_doctoralprogram';
+    private const MM_TABLE       = 'tx_hiotypo3connector_orgunit_doctoralprogram_mm';
+    private const COUNTER_COLUMN = 'doctoral_programs';
+
+    public function __construct(private readonly MmRelationService $mmRelationService) {}
 
     public function __invoke(AttachHioOrgUnitToHioDoctoralProgramsEvent $event): void
     {
-        $orgUnit = $this->orgUnitRepository->findByObjectId($event->getHioOrgUnitObjectId());
-//        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($orgUnit, 'Received Org Unit event');
-        if ($orgUnit === null) {
-            return;
-        }
-
-        foreach ($event->getHioDoctoralProgramsObjectIds() as $hioDoctoralProgramsObjectId) {
-            $doctoralProgram = $this->doctoralProgramRepository->findByObjectId($hioDoctoralProgramsObjectId);
-            if ($doctoralProgram === null) {
-                continue;
-            }
-            $orgUnit->addDoctoralProgram($doctoralProgram);
-            $this->orgUnitRepository->update($orgUnit);
-            $this->persistenceManager->persistAll();
-        }
+        $this->mmRelationService->syncRelationsOfOwner(
+            ownerTable:         self::OWNER_TABLE,
+            ownerObjectId:      $event->getHioOrgUnitObjectId(),
+            relatedTable:       self::RELATED_TABLE,
+            relatedObjectIds:   $event->getHioDoctoralProgramsObjectIds(),
+            mmTable:            self::MM_TABLE,
+            ownerCounterColumn: self::COUNTER_COLUMN,
+        );
     }
 }

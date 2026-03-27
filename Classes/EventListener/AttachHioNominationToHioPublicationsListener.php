@@ -4,36 +4,28 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\EventListener;
 
-use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
-use Wtl\HioTypo3Connector\Domain\Repository\NominationRepository;
-use Wtl\HioTypo3Connector\Domain\Repository\PublicationRepository;
 use Wtl\HioTypo3Connector\Event\AttachHioNominationToHioPublicationsEvent;
+use Wtl\HioTypo3Connector\Services\MmRelationService;
 
+/** @see AttachHioPublicationToHioPersonsListener for the performance rationale. */
 class AttachHioNominationToHioPublicationsListener
 {
-    public function __construct(
-        protected readonly PublicationRepository            $publicationRepository,
-        protected readonly NominationRepository           $nominationRepository,
-        protected readonly PersistenceManager        $persistenceManager,
-    )
-    {
-    }
+    private const OWNER_TABLE    = 'tx_hiotypo3connector_domain_model_nomination';
+    private const RELATED_TABLE  = 'tx_hiotypo3connector_domain_model_publication';
+    private const MM_TABLE       = 'tx_hiotypo3connector_nomination_publication_mm';
+    private const COUNTER_COLUMN = 'publications';
+
+    public function __construct(private readonly MmRelationService $mmRelationService) {}
 
     public function __invoke(AttachHioNominationToHioPublicationsEvent $event): void
     {
-        $nomination = $this->nominationRepository->findByObjectId($event->getHioNominationObjectId());
-        if ($nomination === null) {
-            return;
-        }
-
-        foreach ($event->getHioPublicationObjectIds() as $hioPublicationObjectId) {
-            $publication = $this->publicationRepository->findByObjectId($hioPublicationObjectId);
-            if ($publication === null) {
-                continue;
-            }
-            $nomination->addPublication($publication);
-            $this->nominationRepository->update($nomination);
-            $this->persistenceManager->persistAll();
-        }
+        $this->mmRelationService->syncRelationsOfOwner(
+            ownerTable:         self::OWNER_TABLE,
+            ownerObjectId:      $event->getHioNominationObjectId(),
+            relatedTable:       self::RELATED_TABLE,
+            relatedObjectIds:   $event->getHioPublicationObjectIds(),
+            mmTable:            self::MM_TABLE,
+            ownerCounterColumn: self::COUNTER_COLUMN,
+        );
     }
 }
