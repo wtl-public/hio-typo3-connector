@@ -2,32 +2,39 @@
 
 namespace Wtl\HioTypo3Connector\Domain\Repository;
 
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Wtl\HioTypo3Connector\Domain\Dto\PatentDto;
 use Wtl\HioTypo3Connector\Domain\Model\Patent;
 
 class PatentRepository extends BaseRepository
 {
+    private const TABLE = 'tx_hiotypo3connector_domain_model_patent';
+
     public function save(PatentDto $patentDto, $storagePageId): void
     {
-        $patentModel = $this->findByObjectId($patentDto->getObjectId());
+        $connection = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getConnectionForTable(self::TABLE);
 
-        if ($patentModel === null) {
-            $patentModel = new Patent();
-            $patentModel->setObjectId($patentDto->getObjectId());
-            $patentModel->setTitle($patentDto->getTitle());
-            $patentModel->setDetails($patentDto->getDetails());
-            $patentModel->setSearchIndex($patentDto->getSearchIndex());
-            $patentModel->setPid($storagePageId);
+        $existing = $connection->select(
+            ['uid'], self::TABLE,
+            ['object_id' => $patentDto->getObjectId(), 'deleted' => 0]
+        )->fetchAssociative();
 
-            $this->add($patentModel);
+        $data = [
+            'object_id'    => $patentDto->getObjectId(),
+            'title'        => (string)$patentDto->getTitle(),
+            'details'      => json_encode($patentDto->getDetails(), JSON_UNESCAPED_UNICODE),
+            'search_index' => (string)$patentDto->getSearchIndex(),
+        ];
+
+        if ($existing === false) {
+            $connection->insert(self::TABLE, array_merge($data, [
+                'pid' => $storagePageId, 'hidden' => 0, 'deleted' => 0,
+            ]));
         } else {
-            $patentModel->setObjectId($patentDto->getObjectId());
-            $patentModel->setTitle($patentDto->getTitle());
-            $patentModel->setDetails($patentDto->getDetails());
-            $patentModel->setSearchIndex($patentDto->getSearchIndex());
-            $this->update($patentModel);
+            $connection->update(self::TABLE, $data, ['uid' => $existing['uid']]);
         }
-        $this->persistenceManager->persistAll();
     }
 
     public function findByObjectId(int $objectId): ?Patent

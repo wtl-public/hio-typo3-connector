@@ -45,7 +45,7 @@ class Project extends AbstractEntity
         $budgetSourceTypes = '';
         if ($projectDetails && isset($projectDetails['fundingPrograms'])) {
             $budgetSourceTypes = [];
-            foreach ($this->getDetails()['fundingPrograms'] as $fundingProgram) {
+            foreach ($projectDetails['fundingPrograms'] as $fundingProgram) {
                 if (isset($fundingProgram['budgetSourceType'])) {
                     $budgetSourceTypes[] = $fundingProgram['budgetSourceType'];
                 }

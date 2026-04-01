@@ -2,32 +2,39 @@
 
 namespace Wtl\HioTypo3Connector\Domain\Repository;
 
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Wtl\HioTypo3Connector\Domain\Dto\SpinOffDto;
 use Wtl\HioTypo3Connector\Domain\Model\SpinOff;
 
 class SpinOffRepository extends BaseRepository
 {
+    private const TABLE = 'tx_hiotypo3connector_domain_model_spinoff';
+
     public function save(SpinOffDto $spinOffDto, $storagePageId): void
     {
-        $spinOffModel = $this->findByObjectId($spinOffDto->getObjectId());
+        $connection = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getConnectionForTable(self::TABLE);
 
-        if ($spinOffModel === null) {
-            $spinOffModel = new SpinOff();
-            $spinOffModel->setObjectId($spinOffDto->getObjectId());
-            $spinOffModel->setName($spinOffDto->getName());
-            $spinOffModel->setDetails($spinOffDto->getDetails());
-            $spinOffModel->setSearchIndex($spinOffDto->getSearchIndex());
-            $spinOffModel->setPid($storagePageId);
+        $existing = $connection->select(
+            ['uid'], self::TABLE,
+            ['object_id' => $spinOffDto->getObjectId(), 'deleted' => 0]
+        )->fetchAssociative();
 
-            $this->add($spinOffModel);
+        $data = [
+            'object_id'    => $spinOffDto->getObjectId(),
+            'name'         => (string)$spinOffDto->getName(),
+            'details'      => json_encode($spinOffDto->getDetails(), JSON_UNESCAPED_UNICODE),
+            'search_index' => (string)$spinOffDto->getSearchIndex(),
+        ];
+
+        if ($existing === false) {
+            $connection->insert(self::TABLE, array_merge($data, [
+                'pid' => $storagePageId, 'hidden' => 0, 'deleted' => 0,
+            ]));
         } else {
-            $spinOffModel->setObjectId($spinOffDto->getObjectId());
-            $spinOffModel->setName($spinOffDto->getName());
-            $spinOffModel->setDetails($spinOffDto->getDetails());
-            $spinOffModel->setSearchIndex($spinOffDto->getSearchIndex());
-            $this->update($spinOffModel);
+            $connection->update(self::TABLE, $data, ['uid' => $existing['uid']]);
         }
-        $this->persistenceManager->persistAll();
     }
 
     public function findByObjectId(int $objectId): ?SpinOff

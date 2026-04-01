@@ -2,6 +2,8 @@
 
 namespace Wtl\HioTypo3Connector\Domain\Repository;
 
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Wtl\HioTypo3Connector\Domain\Dto\Filter\FilterDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Filter\ProjectFilter;
 use Wtl\HioTypo3Connector\Domain\Dto\ProjectDto;
@@ -9,41 +11,52 @@ use Wtl\HioTypo3Connector\Domain\Model\Project;
 
 class ProjectRepository extends BaseRepository
 {
+    private const TABLE = 'tx_hiotypo3connector_domain_model_project';
+
     public function save(ProjectDto $projectDto, $storagePageId): void
     {
-        $projectModel = $this->findByObjectId($projectDto->getObjectId());
+        $connection = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getConnectionForTable(self::TABLE);
 
-        if ($projectModel === null) {
-            $projectModel = new Project();
-            $projectModel->setPid($storagePageId);
-            $projectModel->setObjectId($projectDto->getObjectId());
-            $projectModel->setDetails($projectDto->getDetails());
-            $projectModel->setSearchIndex($projectDto->getSearchIndex());
+        $existing = $connection->select(
+            ['uid'], self::TABLE,
+            ['object_id' => $projectDto->getObjectId(), 'deleted' => 0]
+        )->fetchAssociative();
 
-            $budgetSourceTypes = $projectModel->extractBudgetSourceTypes($projectDto->getDetails());
-            $projectModel->setBudgetSourceTypes($budgetSourceTypes);
-            $projectModel->setEndDate($projectDto->getEndDate());
-            $projectModel->setStartDate($projectDto->getStartDate());
-            $projectModel->setStatus($projectDto->getStatus()->getName());
-            $projectModel->setTitle($projectDto->getTitle());
-            $projectModel->setType($projectDto->getType());
-            $this->add($projectModel);
+        $details = $projectDto->getDetails();
+        $data = [
+            'object_id'          => $projectDto->getObjectId(),
+            'title'              => (string)$projectDto->getTitle(),
+            'status'             => (string)$projectDto->getStatus()->getName(),
+            'type'               => (string)$projectDto->getType(),
+            'start_date'         => $projectDto->getStartDate()?->format('Y-m-d H:i:s'),
+            'end_date'           => $projectDto->getEndDate()?->format('Y-m-d H:i:s'),
+            'budget_source_types' => $this->extractBudgetSourceTypes($details),
+            'details'            => json_encode($details, JSON_UNESCAPED_UNICODE),
+            'search_index'       => (string)$projectDto->getSearchIndex(),
+        ];
+
+        if ($existing === false) {
+            $connection->insert(self::TABLE, array_merge($data, [
+                'pid' => $storagePageId, 'hidden' => 0, 'deleted' => 0,
+            ]));
         } else {
-            $projectModel->setObjectId($projectDto->getObjectId());
-            $projectModel->setDetails($projectDto->getDetails());
-            $projectModel->setSearchIndex($projectDto->getSearchIndex());
-
-            $budgetSourceTypes = $projectModel->extractBudgetSourceTypes($projectDto->getDetails());
-            $projectModel->setBudgetSourceTypes($budgetSourceTypes);
-            $projectModel->setEndDate($projectDto->getEndDate());
-            $projectModel->setStartDate($projectDto->getStartDate());
-            $projectModel->setStatus($projectDto->getStatus()->getName());
-            $projectModel->setTitle($projectDto->getTitle());
-            $projectModel->setType($projectDto->getType());
-            $this->update($projectModel);
+            $connection->update(self::TABLE, $data, ['uid' => $existing['uid']]);
         }
+    }
 
-        $this->persistenceManager->persistAll();
+    private function extractBudgetSourceTypes(array $details): string
+    {
+        if (!isset($details['fundingPrograms'])) {
+            return '';
+        }
+        $types = [];
+        foreach ($details['fundingPrograms'] as $fp) {
+            if (isset($fp['budgetSourceType'])) {
+                $types[] = $fp['budgetSourceType'];
+            }
+        }
+        return implode(',', array_unique($types));
     }
 
     public function findByObjectId(int $objectId): ?Project

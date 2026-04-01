@@ -2,8 +2,8 @@
 
 namespace Wtl\HioTypo3Connector\Domain\Repository;
 
-use Psr\Http\Message\ResponseInterface;
-use Psr\Log\LoggerInterface;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Wtl\HioTypo3Connector\Domain\Dto\Filter\FilterDto as FilterDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Filter\PublicationFilter;
 use Wtl\HioTypo3Connector\Domain\Dto\PublicationDto;
@@ -13,31 +13,34 @@ use Wtl\HioTypo3Connector\Domain\Model\Publication;
 
 class PublicationRepository extends BaseRepository
 {
+    private const TABLE = 'tx_hiotypo3connector_domain_model_publication';
+
     public function save(PublicationDto $publicationDto, int $storagePid = 0): void
     {
-        $publicationModel = $this->findByObjectId($publicationDto->getObjectId());
-        if ($publicationModel === null) {
-            $publicationModel = new Publication();
-            $publicationModel->setObjectId($publicationDto->getObjectId());
-            $publicationModel->setTitle($publicationDto->getTitle());
-            $publicationModel->setType($publicationDto->getPublicationType()->getName());
-            $publicationModel->setDetails($publicationDto->getDetails());
-            $publicationModel->setSearchIndex($publicationDto->getSearchIndex());
-            $publicationModel->setPid($storagePid);
-            $publicationModel->setReleaseYear($publicationDto->getReleaseYear());
+        $connection = GeneralUtility::makeInstance(ConnectionPool::class)
+            ->getConnectionForTable(self::TABLE);
 
-            $this->add($publicationModel);
+        $existing = $connection->select(
+            ['uid'], self::TABLE,
+            ['object_id' => $publicationDto->getObjectId(), 'deleted' => 0]
+        )->fetchAssociative();
+
+        $data = [
+            'object_id'    => $publicationDto->getObjectId(),
+            'title'        => (string)$publicationDto->getTitle(),
+            'type'         => (string)$publicationDto->getPublicationType()->getName(),
+            'release_year' => $publicationDto->getReleaseYear(),
+            'details'      => json_encode($publicationDto->getDetails(), JSON_UNESCAPED_UNICODE),
+            'search_index' => (string)$publicationDto->getSearchIndex(),
+        ];
+
+        if ($existing === false) {
+            $connection->insert(self::TABLE, array_merge($data, [
+                'pid' => $storagePid, 'hidden' => 0, 'deleted' => 0,
+            ]));
         } else {
-            $publicationModel->setObjectId($publicationDto->getObjectId());
-            $publicationModel->setTitle($publicationDto->getTitle());
-            $publicationModel->setType($publicationDto->getPublicationType()->getName());
-            $publicationModel->setDetails($publicationDto->getDetails());
-            $publicationModel->setSearchIndex($publicationDto->getSearchIndex());
-            $publicationModel->setReleaseYear($publicationDto->getReleaseYear());
-
-            $this->update($publicationModel);
+            $connection->update(self::TABLE, $data, ['uid' => $existing['uid']]);
         }
-        $this->persistenceManager->persistAll();
     }
 
     public function findByObjectId(int $objectId): ?Publication
