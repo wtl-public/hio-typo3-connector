@@ -70,7 +70,7 @@
             <trans-unit id="descriptionPersons" resname="descriptionPersons">
                 <source>List of persons available in HISinOne</source>
             </trans-unit>
-
+            
             <trans-unit id="ListPaginationPrevious" resname="ListPaginationPrevious">
                 <source>Previous</source>
             </trans-unit>

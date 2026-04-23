@@ -57,7 +57,7 @@ class HioApiService
     }
 
     public function fetch($page=1): ApiResponse {
-        $requestUrl = $this->url . '?page=' . $page;
+        $requestUrl = $this->url . (str_contains($this->url, '?') ? '&' : '?') . 'page=' . $page;
         try {
             $response = $this->requestFactory->request($requestUrl, 'GET', [
                 'headers' => $this->headers,

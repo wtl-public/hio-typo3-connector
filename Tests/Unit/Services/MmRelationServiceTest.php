@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Wtl\HioTypo3Connector\Tests\Unit\Services;
 
 use Doctrine\DBAL\Result;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Database\ConnectionPool;
@@ -23,6 +24,7 @@ use Wtl\HioTypo3Connector\Services\MmRelationService;
  *  - Fast-path B: nothing to do because the current MM set is already identical.
  *  - Slow-path inserts and deletes with counter-column updates.
  */
+#[CoversClass(MmRelationService::class)]
 final class MmRelationServiceTest extends UnitTestCase
 {
     // Fixtures – a person ↔ publication many-to-many relation
@@ -176,6 +178,7 @@ final class MmRelationServiceTest extends UnitTestCase
 
         $ownerConn = $this->createMock(Connection::class);
         $ownerConn->expects(self::never())->method('update');
+        $ownerConn->expects(self::never())->method('select');
 
         $mmConn = $this->createMock(Connection::class);
         $mmConn->expects(self::never())->method('count');
@@ -198,6 +201,7 @@ final class MmRelationServiceTest extends UnitTestCase
 
         $ownerConn = $this->createMock(Connection::class);
         $ownerConn->expects(self::never())->method('update');
+        $ownerConn->expects(self::never())->method('select');
 
         $mmConn = $this->createMock(Connection::class);
         $mmConn->method('count')->willReturn(0); // MM table already empty
@@ -292,7 +296,7 @@ final class MmRelationServiceTest extends UnitTestCase
     /** Result returning a single row with 'uid' => $uid. */
     private function makeFoundResult(int $uid): Result
     {
-        $result = $this->createMock(Result::class);
+        $result = $this->createStub(Result::class);
         $result->method('fetchAssociative')->willReturn(['uid' => $uid]);
         return $result;
     }
@@ -300,7 +304,7 @@ final class MmRelationServiceTest extends UnitTestCase
     /** Result returning false – simulates a "record not found" lookup. */
     private function makeNotFoundResult(): Result
     {
-        $result = $this->createMock(Result::class);
+        $result = $this->createStub(Result::class);
         $result->method('fetchAssociative')->willReturn(false);
         return $result;
     }
@@ -308,37 +312,37 @@ final class MmRelationServiceTest extends UnitTestCase
     /** Result whose fetchAllAssociative() returns the given rows. */
     private function makeSelectAllResult(array $rows): Result
     {
-        $result = $this->createMock(Result::class);
+        $result = $this->createStub(Result::class);
         $result->method('fetchAllAssociative')->willReturn($rows);
         return $result;
     }
 
-    /** Connection mock that returns $selectResult from select(). */
+    /** Connection mock that expects exactly one select() call and returns $selectResult. */
     private function makeConnection(Result $selectResult): Connection
     {
         $conn = $this->createMock(Connection::class);
-        $conn->method('select')->willReturn($selectResult);
+        $conn->expects(self::once())->method('select')->willReturn($selectResult);
         return $conn;
     }
 
     /**
-     * QueryBuilder mock whose full fluent chain terminates in a Result that
+     * QueryBuilder stub whose full fluent chain terminates in a Result that
      * delivers $fetchAllRows from fetchAllAssociative() and $fetchOneValue
      * from fetchOne().
      */
     private function makeQueryBuilder(array $fetchAllRows = [], mixed $fetchOneValue = null): QueryBuilder
     {
-        $result = $this->createMock(Result::class);
+        $result = $this->createStub(Result::class);
         $result->method('fetchAllAssociative')->willReturn($fetchAllRows);
         if ($fetchOneValue !== null) {
             $result->method('fetchOne')->willReturn($fetchOneValue);
         }
 
-        $expr = $this->createMock(ExpressionBuilder::class);
+        $expr = $this->createStub(ExpressionBuilder::class);
         $expr->method('in')->willReturn('1=1');
         $expr->method('eq')->willReturn('1=1');
 
-        $qb = $this->createMock(QueryBuilder::class);
+        $qb = $this->createStub(QueryBuilder::class);
         $qb->method('select')->willReturnSelf();
         $qb->method('count')->willReturnSelf();
         $qb->method('from')->willReturnSelf();
@@ -351,11 +355,12 @@ final class MmRelationServiceTest extends UnitTestCase
     }
 
     /**
-     * ConnectionPool mock that routes getConnectionForTable / getQueryBuilderForTable
+     * ConnectionPool stub that routes getConnectionForTable / getQueryBuilderForTable
      * calls to the supplied per-table doubles.
      *
-     * Passing null for a slot is intentional: a bare createMock() is returned
-     * so PHPUnit can still track unexpected calls as test failures.
+     * Passing null for a slot is intentional: a bare createStub() is returned
+     * so the test can still verify unexpected calls via mock expectations on
+     * explicitly passed Connection instances.
      */
     private function makePool(
         ?Connection   $ownerConn   = null,
@@ -365,14 +370,14 @@ final class MmRelationServiceTest extends UnitTestCase
         ?QueryBuilder $relatedQb   = null,
         ?QueryBuilder $mmQb        = null,
     ): ConnectionPool {
-        $pool = $this->createMock(ConnectionPool::class);
+        $pool = $this->createStub(ConnectionPool::class);
 
         $pool->method('getConnectionForTable')
             ->willReturnCallback(
                 fn(string $t) => match ($t) {
-                    self::OWNER_TABLE   => $ownerConn   ?? $this->createMock(Connection::class),
-                    self::RELATED_TABLE => $relatedConn ?? $this->createMock(Connection::class),
-                    self::MM_TABLE      => $mmConn      ?? $this->createMock(Connection::class),
+                    self::OWNER_TABLE   => $ownerConn   ?? $this->createStub(Connection::class),
+                    self::RELATED_TABLE => $relatedConn ?? $this->createStub(Connection::class),
+                    self::MM_TABLE      => $mmConn      ?? $this->createStub(Connection::class),
                     default             => throw new \RuntimeException("Unexpected table in getConnectionForTable: $t"),
                 }
             );
@@ -380,9 +385,9 @@ final class MmRelationServiceTest extends UnitTestCase
         $pool->method('getQueryBuilderForTable')
             ->willReturnCallback(
                 fn(string $t) => match ($t) {
-                    self::OWNER_TABLE   => $ownerQb   ?? $this->createMock(QueryBuilder::class),
-                    self::RELATED_TABLE => $relatedQb ?? $this->createMock(QueryBuilder::class),
-                    self::MM_TABLE      => $mmQb      ?? $this->createMock(QueryBuilder::class),
+                    self::OWNER_TABLE   => $ownerQb   ?? $this->createStub(QueryBuilder::class),
+                    self::RELATED_TABLE => $relatedQb ?? $this->createStub(QueryBuilder::class),
+                    self::MM_TABLE      => $mmQb      ?? $this->createStub(QueryBuilder::class),
                     default             => throw new \RuntimeException("Unexpected table in getQueryBuilderForTable: $t"),
                 }
             );

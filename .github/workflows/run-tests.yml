@@ -23,6 +23,9 @@ jobs:
           - php-version: '8.4'
             typo3-version: '^13.4'
             testing-framework: '^8.2'
+          - php-version: '8.4'
+            typo3-version: '^14.2'
+            testing-framework: '^9.0'
           
 
     steps:
