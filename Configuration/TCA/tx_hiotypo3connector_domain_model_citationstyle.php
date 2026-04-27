@@ -55,13 +55,13 @@ return [
                 'size' => 50,
                 'generatorOptions' => [
                     'fields' => [
-                        'label', // add additional fields
+                        'label',
                     ],
                     'fieldSeparator' => '/',
                     'prefixParentPageSlug' => true,
                 ],
                 'fallbackCharacter' => '-',
-                'eval' => 'uniqueInSite', //  uniqueInSite, uniqueInPid, unique !!!
+                'eval' => 'uniqueInSite',
                 'default' => '',
             ],
         ],
@@ -95,7 +95,7 @@ return [
     ],
     'palettes' => [
         'palette_general' => [
-            'showitem' => 'type, label, --linebreak--',
+            'showitem' => 'type, label, --linebreak--, slug',
         ],
         'palette_system' => [
             'showitem' => 'hidden',

@@ -56,13 +56,14 @@ return [
                 'size' => 50,
                 'generatorOptions' => [
                     'fields' => [
-                        'object_id', // add additional fields
+                        'nomination_year',
+                        'title',
                     ],
                     'fieldSeparator' => '/',
                     'prefixParentPageSlug' => true,
                 ],
                 'fallbackCharacter' => '-',
-                'eval' => 'uniqueInSite', //  uniqueInSite, uniqueInPid, unique !!!
+                'eval' => 'uniqueInSite',
                 'default' => '',
             ],
         ],
@@ -212,7 +213,7 @@ return [
     ],
     'palettes' => [
         'palette_general' => [
-            'showitem' => 'type, object_id, --linebreak--',
+            'showitem' => 'type, object_id, --linebreak--, nomination_year, title, --linebreak--, slug',
         ],
         'palette_system' => [
             'showitem' => 'hidden',

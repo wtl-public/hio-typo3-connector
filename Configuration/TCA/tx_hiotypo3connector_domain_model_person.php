@@ -56,13 +56,13 @@ return [
                 'size' => 50,
                 'generatorOptions' => [
                     'fields' => [
-                        'object_id', // add additional fields
+                        'name',
                     ],
                     'fieldSeparator' => '/',
                     'prefixParentPageSlug' => true,
                 ],
                 'fallbackCharacter' => '-',
-                'eval' => 'uniqueInSite', //  uniqueInSite, uniqueInPid, unique !!!
+                'eval' => 'uniqueInSite',
                 'default' => '',
             ],
         ],
@@ -176,7 +176,7 @@ return [
     ],
     'palettes' => [
         'palette_general' => [
-            'showitem' => 'object_id,  --linebreak--, publications, --linebreak--, projects, --linebreak--',
+            'showitem' => 'object_id, --linebreak--, publications, --linebreak--, projects, --linebreak--, name, --linebreak--, slug',
         ],
         'palette_system' => [
             'showitem' => 'hidden',

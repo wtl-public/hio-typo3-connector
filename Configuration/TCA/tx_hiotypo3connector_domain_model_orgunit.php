@@ -56,13 +56,13 @@ return [
                 'size' => 50,
                 'generatorOptions' => [
                     'fields' => [
-                        'object_id', // add additional fields
+                        'title',
                     ],
                     'fieldSeparator' => '/',
                     'prefixParentPageSlug' => true,
                 ],
                 'fallbackCharacter' => '-',
-                'eval' => 'uniqueInSite', //  uniqueInSite, uniqueInPid, unique !!!
+                'eval' => 'uniqueInSite',
                 'default' => '',
             ],
         ],
@@ -193,7 +193,7 @@ return [
     ],
     'palettes' => [
         'palette_general' => [
-            'showitem' => 'type, object_id, --linebreak--',
+            'showitem' => 'type, object_id, --linebreak--, title, --linebreak--, slug',
         ],
         'palette_system' => [
             'showitem' => 'hidden',
