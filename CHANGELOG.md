@@ -6,6 +6,101 @@ Die Versionierung folgt [Semantic Versioning](https://semver.org/lang/de/).
 
 ---
 
+## [1.3.0] – 2026-05-12
+
+### ⚠️ Breaking Change – ID-Handling für Detail-Links geändert
+
+Bisher wurden Detail-Links (z. B. zur Personen-Detailseite) über die **HISinOne `object_id`**
+aufgelöst. Ab dieser Version werden Links über die **TYPO3-interne `uid`** des Datensatzes
+generiert und aufgelöst.
+
+**Was bedeutet das konkret?**
+
+- Bestehende URLs, die eine `object_id` als Parameter enthalten (z. B.
+  `?tx_hiotypo3connector_selectedperson[objectId]=12345`), werden **nicht mehr korrekt
+  aufgelöst** und liefern eine leere Detailseite oder einen 404-Fehler.
+- Dies betrifft insbesondere **gespeicherte/geteilte Links** sowie
+  **externe Verlinkungen** auf Detailseiten.
+
+**Migrationsschritte:**
+
+1. Prüfen, ob externe Systeme (z. B. CMS, Newsletter, Social Media) auf HIO-Publisher-
+   Detailseiten verlinken.
+2. Betroffene Links durch die neuen, sprechenden URLs ersetzen (siehe „Slugs und
+   RouteEnhancer" weiter unten).
+3. Ggf. `.htaccess`-Weiterleitungen oder TYPO3-Redirects für bekannte Altlinks einrichten.
+
+> Dieses Verhalten wurde analog zum `wtl/hio-typo3-connector-frontend`-Paket umgesetzt,
+> das in Version 1.3.0 dieselbe Umstellung vollzogen hat.
+
+---
+
+### Hinweise für Redakteure
+
+- Die Suche nach Begriffen mit Umlauten (ä, ö, ü, ß) funktioniert nun zuverlässig. Zuvor
+  konnten Suchtreffer fehlen, wenn der Suchbegriff Umlaute enthielt, die in der Datenbank
+  in normalisierter Form gespeichert waren.
+- Alle HIO-Datensätze (Personen, Publikationen, Projekte, Patente, Organisationseinheiten,
+  Habilitationen, Promotionsprogramme, Nominierungen, Forschungsinfrastrukturen, Spin-offs)
+  erhalten beim Import automatisch einen **Slug** (sprechende URL-Kennung). Dieser Slug
+  wird im Backend sichtbar und kann bei Bedarf manuell angepasst werden.
+
+### Hinweise für Agentur-Entwickler
+
+#### BUGFIX: Umlautsuche (HIO-414)
+
+Die Volltextsuche in `BaseRepository` wurde um einen `UmlautSearchVariantBuilder` erweitert.
+Dieser erzeugt automatisch alle relevanten Schreibvarianten eines Suchbegriffs
+(z. B. `ae`/`ä`, `oe`/`ö`, `ue`/`ü`, `ss`/`ß`) und kombiniert sie in der Datenbankabfrage,
+sodass Suchanfragen mit Umlauten auch dann treffen, wenn der gespeicherte Wert in einer
+anderen Schreibweise vorliegt.
+
+Die neue Klasse `Classes/Search/UmlautSearchVariantBuilder.php` ist als TYPO3-Service
+registriert (`Configuration/Services.yaml`) und vollständig durch Unit-Tests abgedeckt
+(`Tests/Unit/Search/UmlautSearchVariantBuilderTest.php`).
+
+#### FEATURE: Slugs und Vorbereitung auf RouteEnhancer (HIO-347)
+
+Alle Domain-Modelle erhalten ein neues `slug`-Feld, das beim Import über den
+`SlugHelperFactory`-Dienst (`Classes/DataHandling/SlugHelperFactory.php`) automatisch
+befüllt wird. Das Feld ist in den TCA-Definitionen aller Modelle eingetragen und per
+Datenbankmigration (`ext_tables.sql`) verfügbar.
+
+**Neues Trait:** `HasSlugFieldTrait` (`Classes/Domain/Model/Trait/HasSlugFieldTrait.php`)
+stellt Getter und Setter für das `slug`-Feld bereit und wird von allen betroffenen Modellen
+eingebunden.
+
+**Breaking Change (Detail-Links):** Der `PersonController` und der `OrgUnitController`
+lösen Detailseiten-Requests nun über die **TYPO3-`uid`** statt der `object_id` auf.
+Alte URLs mit `objectId`-Parameter sind nicht mehr kompatibel (siehe Abschnitt
+„Breaking Change" oben).
+
+#### Beispiel-Konfigurationen
+
+Unter `ExampleConfigs/` liegen zwei neue Musterdateien:
+
+| Datei | Inhalt |
+|---|---|
+| `ExampleConfigs/RouteEnhancer.yaml` | Vollständige RouteEnhancer-Konfiguration für alle HIO-Publisher-Detailseiten (Personen, Publikationen, Projekte, Patente, Organisationseinheiten, …). Als Ausgangsbasis für `config/sites/<site>/config.yaml` geeignet. |
+| `ExampleConfigs/constants.typoscript` | Beispiel-TypoScript-Konstanten für die Seiten-PIDs aller HIO-Publisher-Plugins. Erleichtert die Erstkonfiguration neuer Projekte. |
+
+> **Hinweis:** Die Beispieldateien sind **nicht produktiv aktiv** und müssen bewusst in die
+> eigene Site-Konfiguration kopiert und angepasst werden.
+
+#### Datenbankschema aktualisieren
+
+Nach dem Update muss das Datenbankschema aktualisiert werden, damit die neuen `slug`-Felder
+angelegt werden:
+
+```bash
+ddev exec vendor/bin/typo3 database:updateschema
+```
+
+Anschließend sollten die Slugs für bestehende Datensätze durch einen erneuten Import
+oder einen manuellen DB-Update-Lauf befüllt werden.
+
+---
+
 ## [1.2.0] – 2026-04-22
 
 ### Hinweise für Redakteure
@@ -174,6 +269,7 @@ Alle HIO-Publisher-Plugins werden dann **ausschließlich als eigenständige CTyp
    als eigener Upgrade-Wizard oder DB-Script bereitstellen.
 
 ---
+
 
 ## [1.1.2] – 2025-xx-xx
 

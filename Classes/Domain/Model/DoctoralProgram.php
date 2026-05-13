@@ -4,9 +4,15 @@ declare(strict_types=1);
 namespace Wtl\HioTypo3Connector\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use Wtl\HioTypo3Connector\Domain\Model\Trait\HasPersonsTrait;
+use Wtl\HioTypo3Connector\Domain\Model\Trait\HasSlugFieldTrait;
 
 class DoctoralProgram extends AbstractEntity
 {
+    use HasPersonsTrait;
+    use HasSlugFieldTrait;
+    
     protected int $objectId = 0;
 
     protected string $title = '';
@@ -20,6 +26,16 @@ class DoctoralProgram extends AbstractEntity
      * @var string
      */
     protected mixed $searchIndex;
+
+    public function __construct()
+    {
+        $this->initializeObject();
+    }
+
+    public function initializeObject(): void
+    {
+        $this->persons = new ObjectStorage();
+    }
 
     public function getObjectId(): int
     {

@@ -15,19 +15,21 @@ Die Extension unterstützt aktuell die folgenden Datentypen:
 Damit die Extension genutzt werden kann, muss die Middleware "HIO-Publisher - Publisher für HISinOne" installiert und konfiguriert sein.
 Nähere Informationen dazu finden Sie hier https://hio-publisher.de.
 
+➡️ **[Changelog](CHANGELOG.md)** – Alle Änderungen, neue Features und Breaking Changes
+
 ## Für Agenturen
 Die HISinOne TYPO3 Connector Extension ist eine Open Source TYPO3 Extension, die von der WEBTEAM LEIPZIG GmbH entwickelt wurde. 
 Sie ist für den Einsatz in TYPO3 Version 12.4 und höher geeignet und kann von Agenturen und TYPO3 Entwicklerinnen und Entwicklern genutzt werden,
 um Forschungsdaten aus HISinOne in TYPO3 zu integrieren.
 
-Solltet Euch bei der Integration der HISinOne TYPO3 Connector Extension in Euer Projekt Unterstützung benötigen, 
+Solltet Ihr bei der Integration der HISinOne TYPO3 Connector Extension in Euer Projekt Unterstützung benötigen, 
 könnt Ihr Euch gerne an uns wenden.
 
 **WEBTEAM LEIPZIG GmbH**  
 Gutenbergplatz 1  
 04103 Leipzig
 
-Email: <mailto:info+hio@wtl.de>  
+Email: [info+hio@wtl.de](mailto:info+hio@wtl.de)  
 Web: <https://hio-publisher.de>
 
 ## Initiales Setup
@@ -152,6 +154,7 @@ Im TYPO3 Backend:
   * `API Basic auth password` - das basic authentication password zum Zugriff auf die API
   * `TYPO3 Webhook URl` - die URl des TYPO3 Webhooks (TYPO3 Reaction), der die importierten Datensätze anlegt oder aktualisiert
   * `TYPO3 X-API-KEY` - das Autorisierungs-Token zum Zugriff auf den TYPO3 Webhook (TYPO3 Reaction)
+
 
 
 ## Frontend plugins

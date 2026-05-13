@@ -41,5 +41,8 @@
         "typo3/cms": {
             "extension-key": "hio_typo3_connector"
         }
+    },
+    "support": {
+        "changelog": "https://github.com/wtl-public/hio-typo3-connector/blob/main/CHANGELOG.md"
     }
 }

@@ -70,25 +70,21 @@ class OrgUnitController extends BaseController
 
     public function initializeShowAction(): void
     {
-        if ($this->request->hasArgument('orgUnitObjectId')) {
-            $orgUnitObjectId = (int)$this->request->getArgument('orgUnitObjectId');
-            $orgUnit = $this->orgUnitRepository->findByObjectId($orgUnitObjectId);
-            if ($orgUnit instanceof OrgUnit) {
-                $this->request = $this->request->withArgument('orgUnit',  $orgUnit);
-            } else {
-                $this->logger->error('OrgUnit with objectId ' . $orgUnitObjectId . ' not found.');
-                throw new \RuntimeException('OrgUnit not found', 404);
-            }
-        }
         $filter = $this->getFilterFromRequest();
         $this->request = $this->request->withArgument('filter',  $filter);
     }
 
     public function showAction(OrgUnit $orgUnit): ResponseInterface
     {
+        $childObjectIds = array_map(
+            fn($child) => (int)($child['id'] ?? 0),
+            (array)($orgUnit->getDetails()['children'] ?? [])
+        );
+
         $this->view->assignMultiple(
             [
                 'orgUnit' => $orgUnit,
+                'children' => $this->orgUnitRepository->findByObjectIds($childObjectIds),
                 'currentPageNumber' => $this->getCurrentPageNumberFromRequest(),
                 'filter' => $this->getFilterFromRequest(),
             ]

@@ -17,7 +17,7 @@ class PatentRepository extends BaseRepository
             ->getConnectionForTable(self::TABLE);
 
         $existing = $connection->select(
-            ['uid'], self::TABLE,
+            ['uid','slug'], self::TABLE,
             ['object_id' => $patentDto->getObjectId(), 'deleted' => 0]
         )->fetchAssociative();
 
@@ -29,10 +29,15 @@ class PatentRepository extends BaseRepository
         ];
 
         if ($existing === false) {
+            $data['slug'] = $this->generateSlug(self::TABLE, 'slug', $data, $storagePageId);
             $connection->insert(self::TABLE, array_merge($data, [
                 'pid' => $storagePageId, 'hidden' => 0, 'deleted' => 0,
             ]));
         } else {
+            // Generate slug if missing (e.g. records imported before slug field existed)
+            if (empty($existing['slug'])) {
+                $data['slug'] = $this->generateSlug(self::TABLE, 'slug', $data, $storagePageId, $existing['uid']);
+            }
             $connection->update(self::TABLE, $data, ['uid' => $existing['uid']]);
         }
     }

@@ -19,7 +19,7 @@ class ProjectRepository extends BaseRepository
             ->getConnectionForTable(self::TABLE);
 
         $existing = $connection->select(
-            ['uid'], self::TABLE,
+            ['uid', 'slug'], self::TABLE,
             ['object_id' => $projectDto->getObjectId(), 'deleted' => 0]
         )->fetchAssociative();
 
@@ -37,10 +37,14 @@ class ProjectRepository extends BaseRepository
         ];
 
         if ($existing === false) {
+            $data['slug'] = $this->generateSlug(self::TABLE, 'slug', $data, $storagePageId);
             $connection->insert(self::TABLE, array_merge($data, [
                 'pid' => $storagePageId, 'hidden' => 0, 'deleted' => 0,
             ]));
         } else {
+            if (empty($existing['slug'])) {
+                $data['slug'] = $this->generateSlug(self::TABLE, 'slug', $data, $storagePageId, $existing['uid']);
+            }
             $connection->update(self::TABLE, $data, ['uid' => $existing['uid']]);
         }
     }

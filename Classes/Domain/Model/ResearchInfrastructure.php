@@ -4,9 +4,13 @@ declare(strict_types=1);
 namespace Wtl\HioTypo3Connector\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use Wtl\HioTypo3Connector\Domain\Model\Trait\HasSlugFieldTrait;
 
 class ResearchInfrastructure extends AbstractEntity
 {
+    use HasSlugFieldTrait;
+    
+    
     protected int $objectId = 0;
 
     protected string $title = '';

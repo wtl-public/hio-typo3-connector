@@ -30,6 +30,10 @@
                 <source>Habilitation title</source>
                 <target>Titel</target>
             </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_habilitation.persons" resname="tx_hiotypo3connector_domain_model_habilitation.persons">
+                <source>Related persons</source>
+                <target>Verknüpfte Personen</target>
+            </trans-unit>
 
             <!-- TCA Tab Labels -->
             <trans-unit id="tab.keyfact_type" resname="tab.keyfact_type">

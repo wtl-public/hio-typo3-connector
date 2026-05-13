@@ -4,6 +4,9 @@ declare(strict_types=1);
 namespace Wtl\HioTypo3Connector\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use Wtl\HioTypo3Connector\Domain\Model\Trait\HasPersonsTrait;
+use Wtl\HioTypo3Connector\Domain\Model\Trait\HasSlugFieldTrait;
 use Wtl\HioTypo3Connector\Trait\WithEndDate;
 use Wtl\HioTypo3Connector\Trait\WithStartDate;
 
@@ -11,6 +14,8 @@ class Project extends AbstractEntity
 {
     use WithEndDate;
     use WithStartDate;
+    use HasSlugFieldTrait;
+    use HasPersonsTrait;
 
     protected string $budgetSourceTypes = '';
 
@@ -30,6 +35,16 @@ class Project extends AbstractEntity
      * @var string
      */
     protected mixed $searchIndex;
+
+    public function __construct()
+    {
+        $this->initializeObject();
+    }
+
+    public function initializeObject(): void
+    {
+        $this->persons = new ObjectStorage();
+    }
 
     public function getBudgetSourceTypes(): string
     {

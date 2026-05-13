@@ -1,0 +1,34 @@
+plugin.tx_hiotypo3connector {
+    settings {
+        publications {
+            personTargetPageUid = 2
+        }
+        persons {
+            publicationTargetPageUid = 16
+            projectTargetPageUid = 15
+            patentTargetPageUid = 23
+            
+        }
+        orgUnits {
+            personTargetPageUid = 2
+            publicationTargetPageUid = 16
+            projectTargetPageUid = 15
+        }
+        doctoralPrograms {
+            personTargetPageUid = 2
+        }
+        patents {
+            personTargetPageUid = 2
+        }
+        projects {
+            personTargetPageUid = 2
+        }
+        projectDetails {
+            personTargetPageUid = 2
+            persons {
+                filterProjectLead = Projektleiter/-in
+            }
+        }
+    }
+}
+

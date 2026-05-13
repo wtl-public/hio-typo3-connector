@@ -5,9 +5,12 @@ namespace Wtl\HioTypo3Connector\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use Wtl\HioTypo3Connector\Domain\Model\Trait\HasSlugFieldTrait;
 
 class Nomination extends AbstractEntity
 {
+    use HasSlugFieldTrait;
+    
     public const ORDERABLE_COLUMNS = ['title', 'type', 'nominationYear', 'status'];
 
     protected ?int $nominationYear = null;

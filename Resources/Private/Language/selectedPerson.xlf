@@ -135,6 +135,9 @@
             <trans-unit id="flexform.habilitationlist.displayType.supervisor" resname="flexform.habilitationlist.displayType.supervisor">
                 <source>supervised habilitations</source>
             </trans-unit>
+            <trans-unit id="flexform.habilitationlist.displayType.other" resname="flexform.habilitationlist.displayType.other">
+                <source>supervised habilitations</source>
+            </trans-unit>
 
         </body>
     </file>

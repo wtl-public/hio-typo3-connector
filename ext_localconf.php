@@ -25,7 +25,7 @@ ExtensionUtility::configurePlugin(
     // all actions
     [PublicationController::class => 'index, show, search'],
     // non-cacheable actions
-    [PublicationController::class => 'search'],
+    [PublicationController::class => 'index, search'],
 );
 
 ExtensionUtility::configurePlugin(
@@ -36,7 +36,7 @@ ExtensionUtility::configurePlugin(
     // all actions
     [ProjectController::class => 'index, show, search'],
     // non-cacheable actions
-    [ProjectController::class => 'search'],
+    [ProjectController::class => 'index, search'],
 );
 
 ExtensionUtility::configurePlugin(
@@ -58,7 +58,7 @@ ExtensionUtility::configurePlugin(
     // all actions
     [PatentController::class => 'index, show, search'],
     // non-cacheable actions
-    [PatentController::class => 'search'],
+    [PatentController::class => 'index, search'],
 );
 ExtensionUtility::configurePlugin(
     // extension name, matching the PHP namespaces (but without the vendor)
@@ -68,7 +68,7 @@ ExtensionUtility::configurePlugin(
     // all actions
     [DoctoralProgramController::class => 'index, show, search'],
     // non-cacheable actions
-    [DoctoralProgramController::class => 'search'],
+    [DoctoralProgramController::class => 'index, search'],
 );
 ExtensionUtility::configurePlugin(
     // extension name, matching the PHP namespaces (but without the vendor)
@@ -78,7 +78,7 @@ ExtensionUtility::configurePlugin(
     // all actions
     [HabilitationController::class => 'index, show, search'],
     // non-cacheable actions
-    [HabilitationController::class => 'search'],
+    [HabilitationController::class => 'index, search'],
 );
 ExtensionUtility::configurePlugin(
 // extension name, matching the PHP namespaces (but without the vendor)
@@ -88,7 +88,7 @@ ExtensionUtility::configurePlugin(
     // all actions
     [OrgUnitController::class => 'index, show, search'],
     // non-cacheable actions
-    [OrgUnitController::class => 'search'],
+    [OrgUnitController::class => 'index, search'],
 );
 ExtensionUtility::configurePlugin(
 // extension name, matching the PHP namespaces (but without the vendor)
@@ -98,7 +98,7 @@ ExtensionUtility::configurePlugin(
     // all actions
     [ResearchInfrastructureController::class => 'index, show, search'],
     // non-cacheable actions
-    [ResearchInfrastructureController::class => 'search'],
+    [ResearchInfrastructureController::class => 'index, search'],
 );
 ExtensionUtility::configurePlugin(
 // extension name, matching the PHP namespaces (but without the vendor)
@@ -108,7 +108,7 @@ ExtensionUtility::configurePlugin(
     // all actions
     [SpinOffController::class => 'index, show, search'],
     // non-cacheable actions
-    [SpinOffController::class => 'search'],
+    [SpinOffController::class => 'index, search'],
 );
 ExtensionUtility::configurePlugin(
     'HioTypo3Connector',

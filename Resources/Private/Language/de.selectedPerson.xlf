@@ -176,6 +176,10 @@
                 <source>supervised habilitations</source>
                 <target>betreute Habilitationen</target>
             </trans-unit>
+            <trans-unit id="flexform.habilitationlist.displayType.supervisor" resname="flexform.habilitationlist.displayType.supervisor">
+                <source>supervised habilitations</source>
+                <target>Betreute Habilitationen</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

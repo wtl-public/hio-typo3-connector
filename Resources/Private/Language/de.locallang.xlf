@@ -151,6 +151,19 @@
 
             <trans-unit id="hio.show.project.projectLead" resname="hio.show.project.projectLead">
                 <source>Project lead</source>
+                <target>Projektleitung</target>
+            </trans-unit>
+            <trans-unit id="hio.list.project.status" resname="hio.list.project.status">
+                <source>Status</source>
+                <target>Status</target>
+            </trans-unit>
+            <trans-unit id="hio.list.project.visibility" resname="hio.list.project.visibility">
+                <source>Sichtbarkeit</source>
+                <target>Sichtbarkeit</target>
+            </trans-unit>
+            <trans-unit id="hio.list.project.startDate" resname="hio.list.project.startDate">
+                <source>Beginn</source>
+                <target>Beginn</target>
             </trans-unit>
             <trans-unit id="hio.show.project.type" resname="hio.show.project.type">
                 <source>Type</source>
@@ -301,6 +314,14 @@
                 <source>Persons</source>
                 <target>Personen</target>
             </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_person.object_id" resname="tx_hiotypo3connector_domain_model_person.object_id">
+                <source>Object ID</source>
+                <target>Objekt-ID</target>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_person.name" resname="tx_hiotypo3connector_domain_model_person.name">
+                <source>Name</source>
+                <target>Name</target>
+            </trans-unit>
             <trans-unit id="tx_hiotypo3connector_domain_model_project" resname="tx_hiotypo3connector_domain_model_project">
                 <source>Projects</source>
                 <target>Projekte</target>
@@ -387,6 +408,14 @@
                 <source>Publication title</source>
                 <target>Titel der Publikation</target>
             </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_publication.details" resname="tx_hiotypo3connector_domain_model_publication.details">
+                <source>Publication details</source>
+                <target>Publikationsdetails</target>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_publication.persons" resname="tx_hiotypo3connector_domain_model_publication.persons">
+                <source>Related persons</source>
+                <target>Verknüpfte Personen</target>
+            </trans-unit>
             <trans-unit id="tx_hiotypo3connector_domain_model_publication.type" resname="tx_hiotypo3connector_domain_model_publication.type">
                 <source>Publication type</source>
                 <target>Publikationstyp</target>
@@ -408,6 +437,10 @@
             <trans-unit id="tx_hiotypo3connector_domain_model_patent.title" resname="tx_hiotypo3connector_domain_model_patent.title">
                 <source>Patent title</source>
                 <target>Patenttitel</target>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_patent.persons" resname="tx_hiotypo3connector_domain_model_patent.persons">
+                <source>Related persons</source>
+                <target>Verknüpfte Personen</target>
             </trans-unit>
 
             <!-- Project TCA Labels -->
@@ -442,6 +475,10 @@
             <trans-unit id="tx_hiotypo3connector_domain_model_project.type" resname="tx_hiotypo3connector_domain_model_project.type">
                 <source>Project type</source>
                 <target>Projekttyp</target>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_project.persons" resname="tx_hiotypo3connector_domain_model_project.persons">
+                <source>Related persons</source>
+                <target>Verknüpfte Personen</target>
             </trans-unit>
 
             <!-- Person TCA Labels -->

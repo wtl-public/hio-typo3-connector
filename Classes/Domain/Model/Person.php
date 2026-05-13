@@ -5,9 +5,12 @@ namespace Wtl\HioTypo3Connector\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use Wtl\HioTypo3Connector\Domain\Model\Trait\HasSlugFieldTrait;
 
 class Person extends AbstractEntity
 {
+    use HasSlugFieldTrait;
+
     protected int $objectId;
 
     protected string $name = '';

@@ -56,9 +56,9 @@ return [
                 'size' => 50,
                 'generatorOptions' => [
                     'fields' => [
-                        'object_id', // add additional fields
+                        'title', // add additional fields
                     ],
-                    'fieldSeparator' => '/',
+                    'fieldSeparator' => '-',
                     'prefixParentPageSlug' => true,
                 ],
                 'fallbackCharacter' => '-',
@@ -121,7 +121,7 @@ return [
     ],
     'palettes' => [
         'palette_general' => [
-            'showitem' => 'type, object_id, --linebreak--',
+            'showitem' => 'type, object_id, --linebreak--, slug',
         ],
         'palette_system' => [
             'showitem' => 'hidden',

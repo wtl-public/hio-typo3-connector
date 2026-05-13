@@ -56,9 +56,9 @@ return [
                 'size' => 50,
                 'generatorOptions' => [
                     'fields' => [
-                        'object_id', // add additional fields
+                        'title', // add additional fields
                     ],
-                    'fieldSeparator' => '/',
+                    'fieldSeparator' => '-',
                     'prefixParentPageSlug' => true,
                 ],
                 'fallbackCharacter' => '-',
@@ -147,6 +147,16 @@ return [
                 'notnull' => false,
             ],
         ],
+        'persons' => [
+            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_project.persons',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'foreign_table' => 'tx_hiotypo3connector_domain_model_person',
+                'MM' => 'tx_hiotypo3connector_person_project_mm',
+                'MM_opposite_field' => 'projects',
+            ],
+        ],
     ],
     'types' => [
         0 => [
@@ -160,7 +170,7 @@ return [
     ],
     'palettes' => [
         'palette_general' => [
-            'showitem' => 'type, object_id, --linebreak--',
+            'showitem' => 'type, object_id, --linebreak--, slug',
         ],
         'palette_system' => [
             'showitem' => 'hidden',

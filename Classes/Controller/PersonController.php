@@ -65,7 +65,7 @@ class PersonController extends BaseController
         $this->view->assignMultiple([
             'paginator' => $paginator,
             'pagination' => new SlidingWindowPagination($paginator, 12),
-            'filter' => $filter,
+            'filter' => $filter->toArray(),
         ]);
 
         return $this->htmlResponse();
@@ -73,16 +73,8 @@ class PersonController extends BaseController
 
     public function initializeShowAction(): void
     {
-        // ensure the show action works with the person object_id as argument
-        if ($this->request->hasArgument('person')) {
-            $personArgument = trim($this->request->getArgument('person'));
-            if (MathUtility::canBeInterpretedAsInteger($personArgument)) {
-                $person = $this->personRepository->findOneBy(['objectId' => (int)$personArgument]);
-                $this->request = $this->request->withArgument('person', $person);
-            }
-        }
         $filter = $this->getFilterFromRequest();
-        $this->request = $this->request->withArgument('filter', $filter);
+        $this->request = $this->request->withArgument('filter',  $filter);
     }
 
     /**

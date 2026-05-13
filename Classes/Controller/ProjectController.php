@@ -57,7 +57,7 @@ class ProjectController extends BaseController
         $this->view->assignMultiple([
             'paginator' => $paginator,
             'pagination' => new SlidingWindowPagination($paginator, 12),
-            'filter' => $this->getFilterFromRequest(),
+            'filter' => $filter->toArray(),
             'budgetSourceTypeOptions' => $this->getProjectBudgetSourceTypeOptions(),
             'statusOptions' => $this->getProjectStatusOptions(),
             'typeOptions' => $this->getProjectTypeOptions(),

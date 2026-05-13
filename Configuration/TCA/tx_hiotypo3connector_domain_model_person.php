@@ -56,13 +56,13 @@ return [
                 'size' => 50,
                 'generatorOptions' => [
                     'fields' => [
-                        'object_id', // add additional fields
+                        'name',
                     ],
-                    'fieldSeparator' => '/',
+                    'fieldSeparator' => '-',
                     'prefixParentPageSlug' => true,
                 ],
                 'fallbackCharacter' => '-',
-                'eval' => 'uniqueInSite', //  uniqueInSite, uniqueInPid, unique !!!
+                'eval' => 'uniqueInSite',
                 'default' => '',
             ],
         ],
@@ -74,7 +74,7 @@ return [
         ],
         'object_id' => [
             'exclude' => true,
-            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_project.object_id',
+            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_person.object_id',
             'config' => [
                 'type' => 'input',
                 'size' => 60,
@@ -85,7 +85,7 @@ return [
             ],
         ],
         'name' => [
-            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_project.name',
+            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_person.name',
             'config' => [
                 'type' => 'input',
                 'size' => 60,
@@ -176,7 +176,7 @@ return [
     ],
     'palettes' => [
         'palette_general' => [
-            'showitem' => 'object_id,  --linebreak--, publications, --linebreak--, projects, --linebreak--',
+            'showitem' => 'object_id, --linebreak--, name, --linebreak--, slug, --linebreak--, publications, --linebreak--, projects, --linebreak--',
         ],
         'palette_system' => [
             'showitem' => 'hidden',

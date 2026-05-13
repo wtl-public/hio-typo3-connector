@@ -1,0 +1,113 @@
+routeEnhancers:
+  HioPersonList:
+    type: Extbase
+    limitToPages: [13]
+    extension: 'HioTypo3Connector'
+    plugin: 'PersonList'
+    routes:
+      - routePath: '/'
+        _controller: 'Person::index'
+      - routePath: '/detail/{person}'
+        _controller: 'Person::show'
+        _arguments:
+          person: 'person'
+      - routePath: '/{page}'
+        _controller: 'Person::index'
+        _arguments:
+          page: 'currentPageNumber'
+    defaultController: 'Person::index'
+    defaults:
+      page: '1'
+    aspects:
+      person:
+        type: PersistedAliasMapper
+        tableName: tx_hiotypo3connector_domain_model_person
+        routeFieldName: slug
+      page:
+        type: StaticRangeMapper
+        start: '1'
+        end: '1000'
+  HioProjectList:
+    type: Extbase
+    limitToPages: [15]
+    extension: 'HioTypo3Connector'
+    plugin: 'ProjectList'
+    routes:
+      - routePath: '/'
+        _controller: 'Project::index'
+      - routePath: '/detail/{project}'
+        _controller: 'Project::show'
+        _arguments:
+          project: 'project'
+      - routePath: '/{page}'
+        _controller: 'Project::index'
+        _arguments:
+          page: 'currentPageNumber'
+    defaultController: 'Project::index'
+    defaults:
+      page: '1'
+    aspects:
+      project:
+        type: PersistedAliasMapper
+        tableName: tx_hiotypo3connector_domain_model_project
+        routeFieldName: slug
+      page:
+        type: StaticRangeMapper
+        start: '1'
+        end: '1000'
+  HioPublicationList:
+    type: Extbase
+    limitToPages: [14]
+    extension: 'HioTypo3Connector'
+    plugin: 'PublicationList'
+    routes:
+      - routePath: '/'
+        _controller: 'Publication::index'
+      - routePath: '/detail/{publication}'
+        _controller: 'Publication::show'
+        _arguments:
+          publication: 'publication'
+      - routePath: '/{page}'
+        _controller: 'Publication::index'
+        _arguments:
+          page: 'currentPageNumber'
+    defaultController: 'Publication::index'
+    defaults:
+      page: '1'
+    aspects:
+      publication:
+        type: PersistedAliasMapper
+        tableName: tx_hiotypo3connector_domain_model_publication
+        routeFieldName: slug
+      page:
+        type: StaticRangeMapper
+        start: '1'
+        end: '1000'
+  HioOrgUnitList:
+    type: Extbase
+    limitToPages: [ 19 ]
+    extension: 'HioTypo3Connector'
+    plugin: 'OrgUnitList'
+    routes:
+      - routePath: '/'
+        _controller: 'OrgUnit::index'
+      - routePath: '/detail/{orgunit}'
+        _controller: 'OrgUnit::show'
+        _arguments:
+          orgunit: 'orgUnit'
+      - routePath: '/{page}'
+        _controller: 'OrgUnit::index'
+        _arguments:
+          page: 'currentPageNumber'
+    defaultController: 'OrgUnit::index'
+    defaults:
+      page: '1'
+    aspects:
+      orgunit:
+        type: PersistedAliasMapper
+        tableName: tx_hiotypo3connector_domain_model_orgunit
+        routeFieldName: slug
+      page:
+        type: StaticRangeMapper
+        start: '1'
+        end: '1000'

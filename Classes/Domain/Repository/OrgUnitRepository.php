@@ -17,7 +17,7 @@ class OrgUnitRepository extends BaseRepository
             ->getConnectionForTable(self::TABLE);
 
         $existing = $connection->select(
-            ['uid'],
+            ['uid', 'slug'],
             self::TABLE,
             ['object_id' => $orgUnitDto->getObjectId(), 'deleted' => 0]
         )->fetchAssociative();
@@ -30,12 +30,17 @@ class OrgUnitRepository extends BaseRepository
         ];
 
         if ($existing === false) {
+            $data['slug'] = $this->generateSlug(self::TABLE, 'slug', $data, $storagePageId);
             $connection->insert(self::TABLE, array_merge($data, [
                 'pid'     => $storagePageId,
                 'hidden'  => 0,
                 'deleted' => 0,
             ]));
         } else {
+            // Generate slug if missing (e.g. records imported before slug field existed)
+            if (empty($existing['slug'])) {
+                $data['slug'] = $this->generateSlug(self::TABLE, 'slug', $data, $storagePageId, $existing['uid']);
+            }
             $connection->update(self::TABLE, $data, ['uid' => $existing['uid']]);
         }
     }
@@ -43,5 +48,18 @@ class OrgUnitRepository extends BaseRepository
     public function findByObjectId(int $objectId): ?OrgUnit
     {
         return $this->findOneBy(['objectId' => $objectId]);
+    }
+
+    /**
+     * @param int[] $objectIds
+     */
+    public function findByObjectIds(array $objectIds): array
+    {
+        if (empty($objectIds)) {
+            return [];
+        }
+        $query = $this->createQuery();
+        $query->matching($query->in('objectId', $objectIds));
+        return $query->execute()->toArray();
     }
 }

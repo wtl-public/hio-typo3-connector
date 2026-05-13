@@ -31,6 +31,12 @@
             <trans-unit id="tx_hiotypo3connector_domain_model_person" resname="tx_hiotypo3connector_domain_model_person">
                 <source>Persons</source>
             </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_person.object_id" resname="tx_hiotypo3connector_domain_model_person.object_id">
+                <source>Object ID</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_person.name" resname="tx_hiotypo3connector_domain_model_person.name">
+                <source>Name</source>
+            </trans-unit>
             <trans-unit id="tx_hiotypo3connector_domain_model_project" resname="tx_hiotypo3connector_domain_model_project">
                 <source>Projects</source>
             </trans-unit>
@@ -308,6 +314,12 @@
             <trans-unit id="tx_hiotypo3connector_domain_model_publication.title" resname="tx_hiotypo3connector_domain_model_publication.title">
                 <source>Publication title</source>
             </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_publication.details" resname="tx_hiotypo3connector_domain_model_publication.details">
+                <source>Publication details</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_publication.persons" resname="tx_hiotypo3connector_domain_model_publication.persons">
+                <source>Related persons</source>
+            </trans-unit>
             <trans-unit id="tx_hiotypo3connector_domain_model_publication.type" resname="tx_hiotypo3connector_domain_model_publication.type">
                 <source>Publication type</source>
             </trans-unit>
@@ -324,6 +336,9 @@
             </trans-unit>
             <trans-unit id="tx_hiotypo3connector_domain_model_patent.title" resname="tx_hiotypo3connector_domain_model_patent.title">
                 <source>Patent title</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_patent.persons" resname="tx_hiotypo3connector_domain_model_patent.persons">
+                <source>Related persons</source>
             </trans-unit>
 
             <!-- Project TCA Labels -->
@@ -350,6 +365,9 @@
             </trans-unit>
             <trans-unit id="tx_hiotypo3connector_domain_model_project.type" resname="tx_hiotypo3connector_domain_model_project.type">
                 <source>Project type</source>
+            </trans-unit>
+            <trans-unit id="tx_hiotypo3connector_domain_model_project.persons" resname="tx_hiotypo3connector_domain_model_project.persons">
+                <source>Related persons</source>
             </trans-unit>
 
             <!-- Person TCA Labels -->

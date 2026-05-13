@@ -174,6 +174,22 @@
                 <source>Select organization unit please</source>
                 <target>Bitte Organisationseinheit auswählen</target>
             </trans-unit>
+            <trans-unit id="flexform.habilitationlist.displayType" resname="flexform.habilitationlist.displayType">
+                <source>Select a role please</source>
+                <target>Bitte Rolle auswählen</target>
+            </trans-unit>
+            <trans-unit id="flexform.habilitationlist.displayType.all" resname="flexform.habilitationlist.displayType.all">
+                <source>all</source>
+                <target>alle</target>
+            </trans-unit>
+            <trans-unit id="flexform.habilitationlist.displayType.doctoral" resname="flexform.habilitationlist.displayType.doctoral">
+                <source>own habilitation</source>
+                <target>Eigene Habilitation</target>
+            </trans-unit>
+            <trans-unit id="flexform.habilitationlist.displayType.supervisor" resname="flexform.habilitationlist.displayType.supervisor">
+                <source>supervised habilitations</source>
+                <target>Betreute Habilitationen</target>
+            </trans-unit>
 
         </body>
     </file>

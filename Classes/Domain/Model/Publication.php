@@ -5,9 +5,14 @@ namespace Wtl\HioTypo3Connector\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use Wtl\HioTypo3Connector\Domain\Model\Trait\HasPersonsTrait;
+use Wtl\HioTypo3Connector\Domain\Model\Trait\HasSlugFieldTrait;
 
 class Publication extends AbstractEntity
 {
+    use HasPersonsTrait;
+    use HasSlugFieldTrait;
+    
     public const ORDERABLE_COLUMNS = ['title', 'type', 'releaseYear'];
     
     protected int $objectId = 0;
@@ -41,6 +46,7 @@ class Publication extends AbstractEntity
     public function initializeObject(): void
     {
         $this->citationStyles = new ObjectStorage();
+        $this->persons = new ObjectStorage();
     }
 
     public function getCitationStyles(): ObjectStorage

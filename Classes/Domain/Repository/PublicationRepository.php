@@ -21,7 +21,7 @@ class PublicationRepository extends BaseRepository
             ->getConnectionForTable(self::TABLE);
 
         $existing = $connection->select(
-            ['uid'], self::TABLE,
+            ['uid', 'slug'], self::TABLE,
             ['object_id' => $publicationDto->getObjectId(), 'deleted' => 0]
         )->fetchAssociative();
 
@@ -35,10 +35,14 @@ class PublicationRepository extends BaseRepository
         ];
 
         if ($existing === false) {
+            $data['slug'] = $this->generateSlug(self::TABLE, 'slug', $data, $storagePid);
             $connection->insert(self::TABLE, array_merge($data, [
                 'pid' => $storagePid, 'hidden' => 0, 'deleted' => 0,
             ]));
         } else {
+            if (empty($existing['slug'])) {
+                $data['slug'] = $this->generateSlug(self::TABLE, 'slug', $data, $storagePid, $existing['uid']);
+            }
             $connection->update(self::TABLE, $data, ['uid' => $existing['uid']]);
         }
     }

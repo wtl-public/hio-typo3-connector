@@ -5,6 +5,16 @@ services:
     public: false
   Wtl\HioTypo3Connector\:
     resource: '../Classes/*'
+
+  Wtl\HioTypo3Connector\Search\UmlautSearchVariantBuilder:
+    arguments:
+      $charMap:
+        'ä': 'ae'
+        'ö': 'oe'
+        'ü': 'ue'
+      $oneWayMap:
+        'ñ': 'n'
+
   Wtl\HioTypo3Connector\Controller\PublicationController:
     tags: [ 'backend.controller' ]
   Wtl\HioTypo3Connector\Controller\ProjectController:
