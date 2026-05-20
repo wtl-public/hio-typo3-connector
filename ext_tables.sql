@@ -11,6 +11,7 @@ CREATE TABLE tx_hiotypo3connector_domain_model_project
     end_date            DATETIME     DEFAULT NULL,
     persons      INT(11)      DEFAULT '0' NOT NULL,
     slug         VARCHAR(2048) DEFAULT NULL,
+    KEY object_id (object_id),
 );
 
 CREATE TABLE tx_hiotypo3connector_domain_model_publication
@@ -23,6 +24,7 @@ CREATE TABLE tx_hiotypo3connector_domain_model_publication
     release_year VARCHAR(255) DEFAULT NULL,
     persons      INT(11)      DEFAULT '0' NOT NULL,
     slug         VARCHAR(2048) DEFAULT NULL,
+    KEY object_id (object_id),
 );
 
 CREATE TABLE tx_hiotypo3connector_domain_model_person
@@ -38,6 +40,7 @@ CREATE TABLE tx_hiotypo3connector_domain_model_person
     habilitations     INT(11) DEFAULT '0' NOT NULL,
     org_units         INT(11) DEFAULT '0' NOT NULL,
     slug         VARCHAR(2048) DEFAULT NULL,
+    KEY object_id (object_id),
 );
 
 CREATE TABLE tx_hiotypo3connector_domain_model_patent
@@ -48,6 +51,7 @@ CREATE TABLE tx_hiotypo3connector_domain_model_patent
     search_index MEDIUMBLOB,
     persons      INT(11)      DEFAULT '0' NOT NULL,
     slug         VARCHAR(2048) DEFAULT NULL,
+    KEY object_id (object_id),
 );
 
 CREATE TABLE tx_hiotypo3connector_domain_model_doctoralprogram
@@ -58,6 +62,7 @@ CREATE TABLE tx_hiotypo3connector_domain_model_doctoralprogram
     search_index MEDIUMBLOB,
     persons      INT(11)      DEFAULT '0' NOT NULL,
     slug         VARCHAR(2048) DEFAULT NULL,
+    KEY object_id (object_id),
 );
 
 CREATE TABLE tx_hiotypo3connector_domain_model_habilitation
@@ -68,6 +73,7 @@ CREATE TABLE tx_hiotypo3connector_domain_model_habilitation
     search_index MEDIUMBLOB,
     persons      INT(11)      DEFAULT '0' NOT NULL,
     slug         VARCHAR(2048) DEFAULT NULL,
+    KEY object_id (object_id),
 );
 
 CREATE TABLE tx_hiotypo3connector_domain_model_citationstyle
@@ -91,6 +97,7 @@ CREATE TABLE tx_hiotypo3connector_domain_model_orgunit
     research_infrastructures INT(11) DEFAULT '0' NOT NULL,
     spin_offs                INT(11) DEFAULT '0' NOT NULL,
     slug         VARCHAR(2048) DEFAULT NULL,
+    KEY object_id (object_id),
 );
 
 CREATE TABLE tx_hiotypo3connector_domain_model_spinoff
@@ -100,6 +107,7 @@ CREATE TABLE tx_hiotypo3connector_domain_model_spinoff
     details      MEDIUMBLOB,
     search_index MEDIUMBLOB,
     slug         VARCHAR(2048) DEFAULT NULL,
+    KEY object_id (object_id),
 );
 
 CREATE TABLE tx_hiotypo3connector_domain_model_researchinfrastructure
@@ -108,7 +116,8 @@ CREATE TABLE tx_hiotypo3connector_domain_model_researchinfrastructure
     title        LONGTEXT DEFAULT '',
     details      MEDIUMBLOB,
     search_index MEDIUMBLOB,
-    slug         VARCHAR(2048) DEFAULT NULL, 
+    slug         VARCHAR(2048) DEFAULT NULL,
+    KEY object_id (object_id),
 );
 
 CREATE TABLE tx_hiotypo3connector_domain_model_nomination
@@ -127,4 +136,5 @@ CREATE TABLE tx_hiotypo3connector_domain_model_nomination
     details         MEDIUMBLOB,
     search_index    MEDIUMBLOB,
     slug         VARCHAR(2048) DEFAULT NULL,
+    KEY object_id (object_id),
 );
