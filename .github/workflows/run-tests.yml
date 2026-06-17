@@ -44,7 +44,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer require --no-interaction --no-progress --prefer-dist \
+          composer config --no-interaction policy.advisories.block false
+          composer require --no-interaction --no-progress --prefer-dist --no-audit \
             "typo3/cms-core:${{ matrix.typo3-version }}" \
             "typo3/testing-framework:${{ matrix.testing-framework }}"
 

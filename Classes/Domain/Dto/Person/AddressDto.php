@@ -4,6 +4,7 @@ namespace Wtl\HioTypo3Connector\Domain\Dto\Person;
 
 use Wtl\HioTypo3Connector\Domain\Dto\Misc\AddressTagDto;
 use Wtl\HioTypo3Connector\Domain\Dto\Misc\NotificationCategoryDto;
+use Wtl\HioTypo3Connector\Utility\DataUtility;
 
 class AddressDto
 {
@@ -148,7 +149,7 @@ class AddressDto
             $dto->setAddressTag(AddressTagDto::fromArray($data['addressTag']) ?? null);
         }
         $dto->setCity($data['city'] ?? null);
-        $dto->setCountry($data['country'] ?? null);
+        $dto->setCountry(DataUtility::coerceString($data['country'] ?? null, 'name'));
         $dto->setEmail($data['email'] ?? null);
         $dto->setHyperlink($data['hyperlink'] ?? null);
         $dto->setMessenger($data['messenger'] ?? null);

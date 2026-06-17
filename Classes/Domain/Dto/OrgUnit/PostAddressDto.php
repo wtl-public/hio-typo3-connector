@@ -3,6 +3,7 @@
 namespace Wtl\HioTypo3Connector\Domain\Dto\OrgUnit;
 
 use Wtl\HioTypo3Connector\Domain\Dto\Misc\AddressTagDto;
+use Wtl\HioTypo3Connector\Utility\DataUtility;
 
 class PostAddressDto
 {
@@ -133,7 +134,7 @@ class PostAddressDto
         $dto->setAddressAddition($data['addressAddition'] ?? null);
         $dto->setAddressTag(isset($data['addressTag']) ? AddressTagDto::fromArray($data['addressTag']) : null);
         $dto->setCity($data['city'] ?? null);
-        $dto->setCountry($data['country'] ?? null);
+        $dto->setCountry(DataUtility::coerceString($data['country'] ?? null, 'name'));
         $dto->setPostOfficeBox($data['postOfficeBox'] ?? null);
         $dto->setPostcode($data['postcode'] ?? null);
         $dto->setState($data['state'] ?? null);
