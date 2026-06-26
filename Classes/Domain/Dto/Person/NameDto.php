@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Dto\Person;
 
+use Wtl\HioTypo3Connector\Utility\DataUtility;
+
 class  NameDto
 {
     protected ?string $academicDegree = null;
@@ -111,8 +113,8 @@ class  NameDto
     {
         $dto = new self();
 
-        $dto->setTitle($data['title'] ?? null);
-        $dto->setAcademicDegree($data['academicDegree'] ?? null);
+        $dto->setTitle(DataUtility::coerceString($data['title'] ?? null, 'shorttext', null));
+        $dto->setAcademicDegree( DataUtility::coerceString($data['academicDegree'] ?? null, 'shorttext', null));
         $dto->setAcademicDegreeSuffix($data['academicDegreeSuffix'] ?? null);
         $dto->setArtistName($data['artistName'] ?? null);
         $dto->setDisplayName($data['displayName'] ?? '');
