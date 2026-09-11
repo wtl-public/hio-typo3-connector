@@ -4,6 +4,7 @@ namespace Wtl\HioTypo3Connector\Services;
 
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Log\Logger;
+use Wtl\HioTypo3Connector\Configuration\BasicAuthConfiguration;
 
 class HioMiddlewareRequestImportService
 {
@@ -29,7 +30,10 @@ class HioMiddlewareRequestImportService
     protected string $webhookUrl;
     protected string $xApiKey;
 
-    public function __construct(RequestFactory $requestFactory)
+    public function __construct(
+        RequestFactory $requestFactory,
+        private readonly BasicAuthConfiguration $basicAuthConfiguration
+    )
     {
         $this->headers = ['Content-Type' => 'application/json'];
         $this->requestFactory = $requestFactory;
@@ -48,13 +52,12 @@ class HioMiddlewareRequestImportService
         bool $verifySsl,
         string $webhookUrl,
         string $xApiKey,
-        int $batchSize
+        int $batchSize,
+        bool $disableBasicAuth = false
     ): void
     {
         $this->url = $apiUrl;
-        if ($apiUsername && $apiPassword) {
-            $this->auth = [$apiUsername, $apiPassword];
-        }
+        $this->auth = $this->basicAuthConfiguration->resolve($apiUsername, $apiPassword, $disableBasicAuth);
         $this->verifySsl = $verifySsl;
         $this->webhookUrl = $webhookUrl;
         $this->xApiKey = $xApiKey;

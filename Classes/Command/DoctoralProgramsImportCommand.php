@@ -39,7 +39,8 @@ class DoctoralProgramsImportCommand extends Command
             $input->getArgument('username'),
             $input->getArgument('password'),
             $input->getArgument('storagePageId'),
-            (bool)$input->getOption('verify-ssl')
+            (bool)$input->getOption('verify-ssl'),
+            (bool)$input->getOption('no-basic-auth')
         );
 
         $currentPage = 1;

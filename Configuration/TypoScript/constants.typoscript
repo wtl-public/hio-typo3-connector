@@ -1,5 +1,56 @@
 plugin.tx_hiotypo3connector {
   settings {
+    # Optional fallback detail page
     singleViewPageUid =
+
+    # Target pages for cross links between detail and list views
+    publications {
+      personTargetPageUid =
+    }
+    persons {
+      publicationTargetPageUid =
+      projectTargetPageUid =
+      patentTargetPageUid =
+      doctoralProgramTargetPageUid =
+    }
+    orgUnits {
+      personTargetPageUid =
+      publicationTargetPageUid =
+      projectTargetPageUid =
+      patentTargetPageUid =
+      doctoralProgramTargetPageUid =
+    }
+    doctoralPrograms {
+      personTargetPageUid =
+    }
+    habilitations {
+      personTargetPageUid =
+    }
+    patents {
+      personTargetPageUid =
+    }
+    projects {
+      personTargetPageUid =
+    }
+    nominations {
+      personTargetPageUid =
+      orgUnitTargetPageUid =
+      projectTargetPageUid =
+      publicationTargetPageUid =
+    }
+    spinoffs {
+      personTargetPageUid =
+    }
+    projectDetails {
+      persons {
+        filterProjectLead =
+      }
+    }
+    featuredProjects {
+      projectTargetPageUid =
+    }
+    featuredPublications {
+      publicationTargetPageUid =
+    }
   }
 }

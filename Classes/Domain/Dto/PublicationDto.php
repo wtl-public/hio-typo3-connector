@@ -25,6 +25,7 @@ use Wtl\HioTypo3Connector\Trait\WithStatus;
 use Wtl\HioTypo3Connector\Trait\WithTitle;
 use Wtl\HioTypo3Connector\Trait\WithType;
 use Wtl\HioTypo3Connector\Trait\WithVisibility;
+use Wtl\HioTypo3Connector\Utility\ApiPayload;
 
 class PublicationDto
 {
@@ -229,6 +230,8 @@ class PublicationDto
 
     static public function fromArray(array $data): PublicationDto
     {
+        $data = ApiPayload::personRoles($data);
+
         $dto = new self();
         $dto->setObjectId($data['id']);
         $dto->setDetails($data);

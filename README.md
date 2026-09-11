@@ -36,44 +36,80 @@ Web: <https://hio-publisher.de>
 
 Im TYPO3 Backend:
 * unter `Admin Tools` -> `Extensions` -> `Extension Manager` die Extension `hio-typo3-connector` installieren
-* im Modul `Page` die Speicherseiten (Storage pages) `HISinOne Personen`, `HISinOne Projekte` und `HISinOne Publikationen` anlegen
+* im Modul `Page` die benötigten Speicherseiten (Storage pages) für die importierten Datentypen anlegen
+
+Empfohlen ist je Datentyp eine eigene Speicherseite, zum Beispiel:
+
+* `HISinOne Personen`
+* `HISinOne Projekte`
+* `HISinOne Publikationen`
+* `HISinOne Organisationseinheiten`
+* `HISinOne Promotionen`
+* `HISinOne Habilitationen`
+* `HISinOne Patente`
+* `HISinOne Nominierungen`
+* `HISinOne Forschungsinfrastrukturen`
+* `HISinOne Ausgründungen`
+
+Diese Speicherseiten werden für die Import-Tasks und Reactions als `Storage page ID`
+verwendet. Sie sind nicht dasselbe wie die Zielseiten im Frontend.
 
 ## Configuration
 
 Im TYPO3 Backend:
-* Anpassung der TypoScript Konfiguration für die jeweiligen Details der einzelnen Datentypen.
-* Beispielkonfiguration:
+* Anpassung der TypoScript-Konstanten für die Zielseiten der einzelnen Datentypen
+* bei Nutzung von Site Sets: Set `HIO TYPO3 Connector` einbinden; die Datei `Configuration/Sets/HioTypo3Connector/constants.typoscript` wird dann mitgeladen
+* ohne Site Sets: `Configuration/TypoScript/constants.typoscript` als Grundlage einbinden
+
+Wichtig:
+
+* `Storage page ID` in Scheduler-Tasks und Reactions verweist auf die Systemordner mit den importierten Datensätzen
+* `...TargetPageUid` in TypoScript verweist auf die Frontend-Seite, auf die aus Listen- und Detailansichten verlinkt wird
+
+Die Zahlen in der Konfiguration stehen also nicht für die Import-Speicherorte, sondern für
+Zielseiten im Frontend.
+
+Beispielkonfiguration:
 
 ```
 plugin.tx_hiotypo3connector {
   settings {
-    doctoralPrograms {
-      publicationTargetPageUid = 7
-      projectTargetPageUid = 6
-      personTargetPageUid = 9
-      patentTargetPageUid = 12
-      doctoralProgramTargetPageUid = 15
-    }
-    habilitations {
-      personTargetPageUid = 9
-    }
-    orgUnits {
-      personTargetPageUid = 9
-    }
-    patents {
-      personTargetPageUid = 9
+    publications {
+      personTargetPageUid = 110
     }
     persons {
-      publicationTargetPageUid = 7
-      projectTargetPageUid = 6
-      patentTargetPageUid = 12
-      doctoralProgramTargetPageUid = 15
+      publicationTargetPageUid = 120
+      projectTargetPageUid = 130
+      patentTargetPageUid = 140
+      doctoralProgramTargetPageUid = 150
+    }
+    orgUnits {
+      personTargetPageUid = 110
+      publicationTargetPageUid = 120
+      projectTargetPageUid = 130
+      patentTargetPageUid = 140
+      doctoralProgramTargetPageUid = 150
+    }
+    doctoralPrograms {
+      personTargetPageUid = 110
+    }
+    habilitations {
+      personTargetPageUid = 110
+    }
+    patents {
+      personTargetPageUid = 110
     }
     projects {
-      personTargetPageUid = 9
+      personTargetPageUid = 110
     }
-    publications {
-      personTargetPageUid = 9
+    nominations {
+      personTargetPageUid = 110
+      orgUnitTargetPageUid = 160
+      projectTargetPageUid = 130
+      publicationTargetPageUid = 120
+    }
+    spinoffs {
+      personTargetPageUid = 110
     }
     projectDetails {
       persons {
@@ -81,14 +117,17 @@ plugin.tx_hiotypo3connector {
       }
     }
     featuredProjects {
-      projectTargetPageUid = 6
+      projectTargetPageUid = 130
     }
     featuredPublications {
-      publicationTargetPageUid = 7
+      publicationTargetPageUid = 120
     }
   }
 }
 ```
+
+Die Datei [ExampleConfigs/constants.typoscript](ExampleConfigs/constants.typoscript)
+enthält dieselbe Beispielstruktur als kopierbare Vorlage.
 
 ## Konfiguration HIO-Publisher - Direktimport Kommandos (Middleware - Pull)
 
@@ -109,8 +148,27 @@ Im TYPO3 Backend:
 * jeder der genannten Tasks hat folgende Parameter:
   * `Storage page ID` - die Speicherseite, unter der die importierten Datensätze gespeichert werden
   * `URL` - die URL des `Publisher für HISinOne` REST API Endpoints
-  * `username` - der basic authentication username zum Zugriff auf die API
-  * `password` - das basic authentication password zum Zugriff auf die API
+  * `username` - optionaler BasicAuth-Username zum Zugriff auf die API; leer lassen, um den Umgebungsvariablen-Fallback zu verwenden
+  * `password` - optionales BasicAuth-Passwort zum Zugriff auf die API; leer lassen, um den Umgebungsvariablen-Fallback zu verwenden
+  * `--no-basic-auth` - optional, deaktiviert BasicAuth für diesen Task; Scheduler- und Umgebungsvariablen-Zugangsdaten werden ignoriert
+
+BasicAuth kann zentral über Prozess-Umgebungsvariablen konfiguriert werden:
+
+```dotenv
+HIO_TYPO3_CONNECTOR_BASIC_AUTH_USERNAME="username"
+HIO_TYPO3_CONNECTOR_BASIC_AUTH_PASSWORD="password"
+```
+
+Eine `.env`-Datei wird von dieser Extension nicht selbst geladen. Der Fallback greift nur,
+wenn diese Werte bereits als Umgebungsvariablen im PHP-Prozess verfügbar sind, zum Beispiel
+weil das Projekt, das Hosting oder ein Bootstrap eine `.env`-Datei lädt.
+
+Die BasicAuth-Konfiguration wird in dieser Reihenfolge aufgelöst:
+
+1. Wenn `--no-basic-auth` im Scheduler-Task gesetzt ist, wird kein BasicAuth verwendet.
+2. Wenn `username` und `password` im Scheduler-Task gesetzt sind, werden diese Werte verwendet.
+3. Wenn beide Umgebungsvariablen gesetzt sind, werden diese Werte verwendet.
+4. Andernfalls wird kein BasicAuth verwendet.
 
 ## Konfiguration HIO-Publisher - Asynchroner Import (Middleware - Push)
 
@@ -118,6 +176,9 @@ Die Middleware des "Publisher für HISinOne" ist in der Lage große Mengen an Fo
 Dazu wird ein Webhook (Reaction) in TYPO3 benötigt, der die importierten Datensätze anlegt oder aktualisiert sowie ein 
 TYPO3 Scheduler Tasks der Import des jeweiligen Datentyps (Projekt, Publikation, Person, ...) anstösst.
 Die Middleware ermittelt die zu importierenden Datensätze und übergibt diese in frei definierbaren "Paketgrößen" an den TYPO3 Webhook.
+
+Voraussetzung für diesen Push-Mechanismus ist die installierte und aktive System-Extension
+`reactions`.
 
 Im TYPO3 Backend:
 
@@ -150,10 +211,13 @@ Im TYPO3 Backend:
 
 * jeder der genannten Tasks hat folgende Parameter:
   * `API Endpoint URl` - die URL des `Publisher für HISinOne` REST API Endpoints
-  * `API Basic auth username` - der basic authentication username zum Zugriff auf die API
-  * `API Basic auth password` - das basic authentication password zum Zugriff auf die API
+  * `API Basic auth username` - optionaler API-BasicAuth-Username; leer lassen, um den Umgebungsvariablen-Fallback zu verwenden
+  * `API Basic auth password` - optionales API-BasicAuth-Passwort; leer lassen, um den Umgebungsvariablen-Fallback zu verwenden
+  * `--api-no-basic-auth` - optional, deaktiviert API-BasicAuth für diesen Task; Scheduler- und Umgebungsvariablen-Zugangsdaten werden ignoriert
   * `TYPO3 Webhook URl` - die URl des TYPO3 Webhooks (TYPO3 Reaction), der die importierten Datensätze anlegt oder aktualisiert
   * `TYPO3 X-API-KEY` - das Autorisierungs-Token zum Zugriff auf den TYPO3 Webhook (TYPO3 Reaction)
+
+Für BasicAuth gelten dieselben Umgebungsvariablen und dieselbe Auflösungsreihenfolge wie bei den Direktimport-Kommandos.
 
 
 
@@ -178,3 +242,16 @@ Im Module `Page` können die folgenden Frontend-Plugins eingefügt werden:
   * `HISinOne Projekte der Person` - zeigt die Liste aller freigegebenen Projekte einer ausgewählten Person an
   * `HISinOne Promotionen der Person` - zeigt die Liste aller freigegebenen Promotionen einer ausgewählten Person an
   * `HISinOne Publikationen der Person` - zeigt die Liste aller freigegebenen Publikationen einer ausgewählten Person an
+
+## Legacy-Plugins
+
+Die Plugins `Display selected projects` und `Display selected publications` sind
+deprecated. Sie bleiben aus Kompatibilitätsgründen technisch registriert, damit
+bestehende Inhaltselemente weiter funktionieren.
+
+Für neue Inhalte sind diese beiden Legacy-Plugins im Backend jedoch bewusst ausgeblendet.
+Neue Konfigurationen sollen stattdessen über die Container-Elemente `featuredProjects` und
+`featuredPublications` aus `wtl/hio-typo3-connector-frontend` aufgebaut werden.
+
+Beide Legacy-Plugins sind nur noch als Übergangslösung vorhanden und werden in `v2`
+vollständig entfernt.

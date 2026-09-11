@@ -24,6 +24,10 @@
     "require": {
         "typo3/cms-core": "^12.4 || ^13.0 || ^14.3"
     },
+    "suggest": {
+        "helhum/dotenv-connector": "Loads .env files into the PHP process environment so the BasicAuth fallback variables can be used.",
+        "typo3/cms-reactions": "Required for the asynchronous push import via TYPO3 reactions."
+    },
     "require-dev": {
         "typo3/testing-framework": "^7.0 || ^8.2 || ^9.0"
     },

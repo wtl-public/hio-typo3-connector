@@ -1,34 +1,52 @@
 plugin.tx_hiotypo3connector {
-    settings {
-        publications {
-            personTargetPageUid = 2
-        }
-        persons {
-            publicationTargetPageUid = 16
-            projectTargetPageUid = 15
-            patentTargetPageUid = 23
-            
-        }
-        orgUnits {
-            personTargetPageUid = 2
-            publicationTargetPageUid = 16
-            projectTargetPageUid = 15
-        }
-        doctoralPrograms {
-            personTargetPageUid = 2
-        }
-        patents {
-            personTargetPageUid = 2
-        }
-        projects {
-            personTargetPageUid = 2
-        }
-        projectDetails {
-            personTargetPageUid = 2
-            persons {
-                filterProjectLead = Projektleiter/-in
-            }
-        }
+  settings {
+    publications {
+      personTargetPageUid = 110
     }
+    persons {
+      publicationTargetPageUid = 120
+      projectTargetPageUid = 130
+      patentTargetPageUid = 140
+      doctoralProgramTargetPageUid = 150
+    }
+    orgUnits {
+      personTargetPageUid = 110
+      publicationTargetPageUid = 120
+      projectTargetPageUid = 130
+      patentTargetPageUid = 140
+      doctoralProgramTargetPageUid = 150
+    }
+    doctoralPrograms {
+      personTargetPageUid = 110
+    }
+    habilitations {
+      personTargetPageUid = 110
+    }
+    patents {
+      personTargetPageUid = 110
+    }
+    projects {
+      personTargetPageUid = 110
+    }
+    nominations {
+      personTargetPageUid = 110
+      orgUnitTargetPageUid = 160
+      projectTargetPageUid = 130
+      publicationTargetPageUid = 120
+    }
+    spinoffs {
+      personTargetPageUid = 110
+    }
+    projectDetails {
+      persons {
+        filterProjectLead = Projektleiter/-in
+      }
+    }
+    featuredProjects {
+      projectTargetPageUid = 130
+    }
+    featuredPublications {
+      publicationTargetPageUid = 120
+    }
+  }
 }
-

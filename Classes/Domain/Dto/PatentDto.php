@@ -15,6 +15,7 @@ use Wtl\HioTypo3Connector\Trait\WithSearchIndex;
 use Wtl\HioTypo3Connector\Trait\WithStatus;
 use Wtl\HioTypo3Connector\Trait\WithTitle;
 use Wtl\HioTypo3Connector\Trait\WithVisibility;
+use Wtl\HioTypo3Connector\Utility\ApiPayload;
 
 class PatentDto
 {
@@ -132,6 +133,8 @@ class PatentDto
 
     static public function fromArray(array $data): PatentDto
     {
+        $data = ApiPayload::personRoles($data);
+
         $patentDto = new self();
         $patentDto->setObjectId($data['id']);
         $patentDto->setDetails($data);

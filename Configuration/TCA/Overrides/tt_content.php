@@ -333,3 +333,27 @@ $registerFlexForm(
     'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/PublicationHighlights.xml',
     true
 );
+
+$removeLegacyPluginItems = static function (string $fieldName, array $hiddenValues): void {
+    $items = $GLOBALS['TCA']['tt_content']['columns'][$fieldName]['config']['items'] ?? null;
+    if (!is_array($items)) {
+        return;
+    }
+
+    $GLOBALS['TCA']['tt_content']['columns'][$fieldName]['config']['items'] = array_values(array_filter(
+        $items,
+        static fn(array $item): bool => !in_array((string)($item['value'] ?? ''), $hiddenValues, true)
+    ));
+};
+
+if ($typo3MajorVersion < 14) {
+    $removeLegacyPluginItems('list_type', [
+        'hiotypo3connector_projecthighlights',
+        'hiotypo3connector_publicationhighlights',
+    ]);
+} else {
+    $removeLegacyPluginItems('CType', [
+        'hiotypo3connector_projecthighlights',
+        'hiotypo3connector_publicationhighlights',
+    ]);
+}

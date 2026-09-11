@@ -7,6 +7,7 @@ namespace Wtl\HioTypo3Connector\Services;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Log\Logger;
 use Psr\EventDispatcher\EventDispatcherInterface;
+use Wtl\HioTypo3Connector\Configuration\BasicAuthConfiguration;
 use Wtl\HioTypo3Connector\Publisher\ApiMeta;
 use Wtl\HioTypo3Connector\Publisher\ApiResponse;
 
@@ -36,7 +37,8 @@ class HioApiService
 
     public function __construct(
         RequestFactory $requestFactory,
-        protected readonly EventDispatcherInterface $eventDispatcher
+        protected readonly EventDispatcherInterface $eventDispatcher,
+        private readonly BasicAuthConfiguration $basicAuthConfiguration
     )
     {
         $this->headers = ['Content-Type' => 'application/json'];
@@ -46,12 +48,17 @@ class HioApiService
         $this->storagePageId = 0; // configure this in the scheduler task
     }
 
-    public function configure(string $url, string $username, string $password, string $storagePageId, bool $verifySsl): void
+    public function configure(
+        string $url,
+        string $username,
+        string $password,
+        string $storagePageId,
+        bool $verifySsl,
+        bool $disableBasicAuth = false
+    ): void
     {
         $this->url = $url;
-        if ($username && $password) {
-            $this->auth = [$username, $password];
-        }
+        $this->auth = $this->basicAuthConfiguration->resolve($username, $password, $disableBasicAuth);
         $this->storagePageId = (int)$storagePageId;
         $this->verifySsl = $verifySsl;
     }

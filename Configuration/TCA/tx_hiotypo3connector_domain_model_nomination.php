@@ -85,7 +85,8 @@ return [
         ],
         'object_id' => [
             'exclude' => true,
-            'label' => $lllPrefix . 'tx_hiotypo3connector_domain_model_nomination.object_id',
+            'label' => 'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:hio.objectId',
+            'description' => 'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:hio.objectId.description.nomination',
             'config' => [
                 'type' => 'input',
                 'size' => 60,

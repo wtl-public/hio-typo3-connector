@@ -34,6 +34,39 @@
             <trans-unit id="tx_hiotypo3connector_domain_model_person.object_id" resname="tx_hiotypo3connector_domain_model_person.object_id">
                 <source>Object ID</source>
             </trans-unit>
+            <trans-unit id="hio.objectId" resname="hio.objectId">
+<source>HISinOne-ID</source>
+            </trans-unit>
+            <trans-unit id="hio.objectId.description.doctoralProgram" resname="hio.objectId.description.doctoralProgram">
+                <source>ID of a doctoral program in HISinOne</source>
+            </trans-unit>
+            <trans-unit id="hio.objectId.description.habilitation" resname="hio.objectId.description.habilitation">
+                <source>ID of a habilitation in HISinOne</source>
+            </trans-unit>
+            <trans-unit id="hio.objectId.description.nomination" resname="hio.objectId.description.nomination">
+                <source>ID of a nomination in HISinOne</source>
+            </trans-unit>
+            <trans-unit id="hio.objectId.description.orgUnit" resname="hio.objectId.description.orgUnit">
+                <source>ID of an organisation unit in HISinOne</source>
+            </trans-unit>
+            <trans-unit id="hio.objectId.description.patent" resname="hio.objectId.description.patent">
+                <source>ID of a patent in HISinOne</source>
+            </trans-unit>
+            <trans-unit id="hio.objectId.description.person" resname="hio.objectId.description.person">
+                <source>ID of a person in HISinOne</source>
+            </trans-unit>
+            <trans-unit id="hio.objectId.description.project" resname="hio.objectId.description.project">
+                <source>ID of a project in HISinOne</source>
+            </trans-unit>
+            <trans-unit id="hio.objectId.description.publication" resname="hio.objectId.description.publication">
+                <source>ID of a publication in HISinOne</source>
+            </trans-unit>
+            <trans-unit id="hio.objectId.description.researchInfrastructure" resname="hio.objectId.description.researchInfrastructure">
+                <source>ID of a research infrastructure in HISinOne</source>
+            </trans-unit>
+            <trans-unit id="hio.objectId.description.spinOff" resname="hio.objectId.description.spinOff">
+                <source>ID of a spin-off in HISinOne</source>
+            </trans-unit>
             <trans-unit id="tx_hiotypo3connector_domain_model_person.name" resname="tx_hiotypo3connector_domain_model_person.name">
                 <source>Name</source>
             </trans-unit>
@@ -393,6 +426,26 @@
             <!-- Citation Style TCA Labels -->
             <trans-unit id="tx_hiotypo3connector_domain_model_citationstyle.label" resname="tx_hiotypo3connector_domain_model_citationstyle.label">
                 <source>Citation style label</source>
+            </trans-unit>
+
+            <!-- Scheduler command labels -->
+            <trans-unit id="scheduler.import.argument.username.description" resname="scheduler.import.argument.username.description">
+                <source>Optional BasicAuth username. Leave empty to use HIO_TYPO3_CONNECTOR_BASIC_AUTH_USERNAME from the process environment if available; otherwise no BasicAuth is used.</source>
+            </trans-unit>
+            <trans-unit id="scheduler.import.argument.password.description" resname="scheduler.import.argument.password.description">
+                <source>Optional BasicAuth password. Leave empty to use HIO_TYPO3_CONNECTOR_BASIC_AUTH_PASSWORD from the process environment if available; otherwise no BasicAuth is used.</source>
+            </trans-unit>
+            <trans-unit id="scheduler.import.option.noBasicAuth.description" resname="scheduler.import.option.noBasicAuth.description">
+                <source>Disable BasicAuth for this task. Scheduler and process environment credentials are ignored.</source>
+            </trans-unit>
+            <trans-unit id="scheduler.requestImport.argument.apiUsername.description" resname="scheduler.requestImport.argument.apiUsername.description">
+                <source>Optional API BasicAuth username. Leave empty to use HIO_TYPO3_CONNECTOR_BASIC_AUTH_USERNAME from the process environment if available; otherwise no BasicAuth is used.</source>
+            </trans-unit>
+            <trans-unit id="scheduler.requestImport.argument.apiPassword.description" resname="scheduler.requestImport.argument.apiPassword.description">
+                <source>Optional API BasicAuth password. Leave empty to use HIO_TYPO3_CONNECTOR_BASIC_AUTH_PASSWORD from the process environment if available; otherwise no BasicAuth is used.</source>
+            </trans-unit>
+            <trans-unit id="scheduler.requestImport.option.apiNoBasicAuth.description" resname="scheduler.requestImport.option.apiNoBasicAuth.description">
+                <source>Disable API BasicAuth for this task. Scheduler and process environment credentials are ignored.</source>
             </trans-unit>
 
         </body>

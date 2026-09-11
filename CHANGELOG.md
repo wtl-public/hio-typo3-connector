@@ -6,6 +6,47 @@ Die Versionierung folgt [Semantic Versioning](https://semver.org/lang/de/).
 
 ---
 
+## [Unreleased]
+
+### Hinweise für Redakteure
+
+- Die Legacy-Plugins `Display selected projects` und `Display selected publications`
+  sind deprecated und werden im Backend nicht mehr für neue Inhalte angeboten.
+- Bestehende Inhaltselemente mit diesen Plugin-Typen bleiben weiterhin lauffähig und
+  editierbar.
+- Beide Legacy-Plugins werden mit `v2` vollständig aus dem Paket entfernt.
+
+### Hinweise zur Einrichtung
+
+- BasicAuth für Import- und Request-Import-Kommandos kann nun zentral über
+  `HIO_TYPO3_CONNECTOR_BASIC_AUTH_USERNAME` und
+  `HIO_TYPO3_CONNECTOR_BASIC_AUTH_PASSWORD` konfiguriert werden, wenn diese Werte bereits
+  als Umgebungsvariablen im PHP-Prozess verfügbar sind. Werte aus Scheduler-Tasks haben
+  Vorrang; mit `--no-basic-auth` bzw. `--api-no-basic-auth` kann BasicAuth pro Task
+  explizit deaktiviert werden.
+- Die Scheduler-Beschreibungen der neuen BasicAuth-Argumente und Optionen sind in
+  `locallang.xlf` und `de.locallang.xlf` hinterlegt.
+
+### Hinweise für Agentur-Entwickler
+
+- Die beiden Legacy-Plugins `hiotypo3connector_projecthighlights` und
+  `hiotypo3connector_publicationhighlights` bleiben registriert, werden aber nach der
+  Registrierung aus den auswählbaren TCA-Items entfernt.
+- Hintergrund ist ein sauberes Migrationsverhalten: Altdaten bleiben kompatibel, während
+  neue Konfigurationen über `featuredProjects` und `featuredPublications` im
+  Frontend-Paket aufgebaut werden sollen.
+- Die Registrierung ist damit ausdrücklich nur noch Übergangskompatibilität bis `v2`.
+- Die Extension empfiehlt `reactions` nun ausdrücklich für den asynchronen Push-Import,
+  deklariert die System-Extension aber nicht als harte Pflicht für Installationen, die nur
+  den Pull-Import nutzen.
+- Die Dokumentation zum initialen Setup und zur TypoScript-Konfiguration trennt nun klar
+  zwischen Import-Speicherorten (`Storage page ID`) und Frontend-Zielseiten
+  (`...TargetPageUid`) und verweist auf die bereitgestellte Konstanten-Vorlage.
+- Die Datenbankschema-Aktualisierung kann je nach Datenbestand einige Minuten dauern, da
+  bestehende `search_index`-Spalten migriert werden.
+
+---
+
 ## [1.3.0] – 2026-05-12
 
 ### ⚠️ Breaking Change – ID-Handling für Detail-Links geändert
@@ -291,4 +332,3 @@ Alle HIO-Publisher-Plugins werden dann **ausschließlich als eigenständige CTyp
 - Plugins: Publikationen, Projekte, Personen, Patente, Nominierungen, Promotionsprogramme,
   Habilitationen, Organisationseinheiten, Forschungsinfrastrukturen, Spin-offs
 - `SelectedPerson*`-Plugins für personenbezogene Detailseiten
-

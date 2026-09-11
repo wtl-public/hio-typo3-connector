@@ -38,6 +38,7 @@ class RequestHioImportCommand extends Command
             $input->getArgument('t3-webhook-url'),
             $input->getArgument('t3-x-api-key'),
             (int)$input->getArgument('t3-batch-size'),
+            (bool)$input->getOption('api-no-basic-auth'),
         );
 
         $response = $this->hioMiddlewareRequestImportService->requestImport(static::REQUESTED_ENTITY_TYPE);

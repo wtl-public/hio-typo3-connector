@@ -21,6 +21,7 @@ use Wtl\HioTypo3Connector\Domain\Repository\CitationStyleRepository;
 use Wtl\HioTypo3Connector\Domain\Repository\PersonRepository;
 use Wtl\HioTypo3Connector\Domain\Repository\PublicationRepository;
 use Wtl\HioTypo3Connector\Services\Statistics\PersonStats;
+use Wtl\HioTypo3Connector\Utility\DataUtility;
 
 #[AsController]
 class PersonController extends BaseController
@@ -226,12 +227,15 @@ class PersonController extends BaseController
         $selectedPerson = $this->personRepository->findByUid($this->settings['personUid']);
 
         $habilitations = $selectedPerson->getHabilitations() ?? [];
+        // A role in `details` is the object `ApiPayload` leaves behind. A row written
+        // before that change still carries the bare name, so both filters below take
+        // the role through the same coercion the DTOs use.
         // if display only the own publications
         if ($this->settings['displayType'] && $this->settings['displayType'] == 'doctoral') {
             $ownHabilitations = [];
             foreach ($habilitations as $habilitation) {
                 foreach ($habilitation->getDetails()['persons'] as $person) {
-                    if ($person['id'] === $selectedPerson->getObjectId() && $person['role'] === 'doctoral') {
+                    if ($person['id'] === $selectedPerson->getObjectId() && DataUtility::coerceString($person['role'] ?? null) === 'doctoral') {
                         $ownHabilitations[] = $habilitation;
                     }
                 }
@@ -243,7 +247,7 @@ class PersonController extends BaseController
             $supervisedHabilitations = [];
             foreach ($habilitations as $habilitation) {
                 foreach ($habilitation->getDetails()['persons'] as $person) {
-                    if ($person['id'] === $selectedPerson->getObjectId() && $person['role'] !== 'doctoral') {
+                    if ($person['id'] === $selectedPerson->getObjectId() && DataUtility::coerceString($person['role'] ?? null) !== 'doctoral') {
                         $supervisedHabilitations[] = $habilitation;
                     }
                 }

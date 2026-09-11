@@ -20,6 +20,7 @@ use Wtl\HioTypo3Connector\Trait\WithObjectId;
 use Wtl\HioTypo3Connector\Trait\WithSearchIndex;
 use Wtl\HioTypo3Connector\Trait\WithStartDate;
 use Wtl\HioTypo3Connector\Trait\WithTitle;
+use Wtl\HioTypo3Connector\Utility\ApiPayload;
 
 class DoctoralProgramDto
 {
@@ -139,6 +140,8 @@ class DoctoralProgramDto
 
     static public function fromArray(array $data): DoctoralProgramDto
     {
+        $data = ApiPayload::doctoralProgram($data);
+
         $dto = new self();
         $dto->setObjectId($data['id']);
         $dto->setDetails($data);
@@ -153,7 +156,7 @@ class DoctoralProgramDto
         $dto->setResearchAreas(array_map(fn($item) => ResearchAreaDto::fromArray($item), $data['researchAreas'] ?? []));
         $dto->setResearchAreasKdsf(array_map(fn($item) => ResearchAreaKdsfDto::fromArray($item), $data['researchAreasKdsf'] ?? []));
         $dto->setPersons(array_map(fn($item) => PersonDto::fromArray($item), $data['persons'] ?? []));
-        $dto->setOrgUnits(array_map(fn($item) => OrgUnitDto::fromArray($item), $data['organizations'] ?? []));
+        $dto->setOrgUnits(array_map(fn($item) => OrgUnitDto::fromArray($item), $data['orgUnits'] ?? []));
         $dto->setScholarshipAvailable(isset($data['scholarshipAvailable']) ? ScholarshipAvailableDto::fromArray($data['scholarshipAvailable']) : null);
         $dto->setStartDate(isset($data['startDate']) ? new \DateTime($data['startDate']) : null);
         $dto->setTitle($data['title'] ?? '');

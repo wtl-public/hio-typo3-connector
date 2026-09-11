@@ -23,6 +23,8 @@ use Wtl\HioTypo3Connector\Trait\WithStatus;
 use Wtl\HioTypo3Connector\Trait\WithTitle;
 use Wtl\HioTypo3Connector\Trait\WithType;
 use Wtl\HioTypo3Connector\Trait\WithVisibility;
+use Wtl\HioTypo3Connector\Utility\ApiPayload;
+use Wtl\HioTypo3Connector\Utility\DataUtility;
 
 class ProjectDto
 {
@@ -160,12 +162,14 @@ class ProjectDto
 
     static public function fromArray(array $data): ProjectDto
     {
+        $data = ApiPayload::project($data);
+
         $project = new self();
         $project->setObjectId($data['id']);
         $project->setDetails($data);
         $project->setSearchIndex($data);
 
-        $project->setAbstract($data['abstract'] ?? '');
+        $project->setAbstract($data['description'] ?? '');
         $project->setDynamicObjects($data['dynamicObjects'] ?? []);
         if (isset($data['endDate'])) {
             $project->setEndDate(new \DateTime($data['endDate']));
@@ -176,11 +180,11 @@ class ProjectDto
             $project->setStartDate(new \DateTime($data['startDate']));
         }
         $project->setResearchAreas(array_map(fn($item) => ResearchAreaDto::fromArray($item), $data['researchAreas'] ?? []));
-        $project->setResearchAreasKdsf(array_map(fn($item) => ResearchAreaKdsfDto::fromArray($item), $data['researchAreasKdfs'] ?? []));
+        $project->setResearchAreasKdsf(array_map(fn($item) => ResearchAreaKdsfDto::fromArray($item), $data['researchAreasKdsf'] ?? []));
         $project->setShorttext($data['shorttext'] ?? '');
         $project->setStatus(isset($data['status']) ? StatusDto::fromArray($data['status']) : null);
         $project->setTitle($data['title'] ?? '');
-        $project->setType($data['type'] ?? '');
+        $project->setType(DataUtility::coerceString($data['projectType'] ?? null, 'name', ''));
         $project->setUniquename($data['uniquename'] ?? '');
         $project->setVisibility(isset($data['visibility']) ? VisibilityDto::fromArray($data['visibility']) : null);
 

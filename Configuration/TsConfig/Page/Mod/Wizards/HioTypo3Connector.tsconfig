@@ -149,25 +149,6 @@ mod.wizards.newContentElement.wizardItems {
                 }
             }
 
-            hio-typo3-connector_project-highlights {
-                iconIdentifier = tx-hio_typo3_connector-project-highlights
-                title = LLL:EXT:hio_typo3_connector/Resources/Private/Language/projectHighlights.xlf:flexform.plugin.title
-                description = LLL:EXT:hio_typo3_connector/Resources/Private/Language/projectHighlights.xlf:flexform.plugin.description
-                tt_content_defValues {
-                    CType = list
-                    list_type = hiotypo3connector_projecthighlights
-                }
-            }
-            hio-typo3-connector_publication-highlights {
-                iconIdentifier = tx-hio_typo3_connector-publication-highlights
-                title = LLL:EXT:hio_typo3_connector/Resources/Private/Language/publicationHighlights.xlf:flexform.plugin.title
-                description = LLL:EXT:hio_typo3_connector/Resources/Private/Language/publicationHighlights.xlf:flexform.plugin.description
-                tt_content_defValues {
-                    CType = list
-                    list_type = hiotypo3connector_publicationhighlights
-                }
-            }
-
             hio-typo3-connector_publications-for-orgunit {
                 iconIdentifier = tx-hio_typo3_connector-publications
                 title = LLL:EXT:hio_typo3_connector/Resources/Private/Language/selectedOrgUnit.xlf:titleOrgUnitPublications
@@ -209,8 +190,13 @@ mod.wizards.newContentElement.wizardItems {
     }
 }
 
+# Keep the plugin active for existing content, but hide it from new selections in the backend.
+mod.wizards.newContentElement.wizardItems.hio-publisher.removeItems := addToList(hio-typo3-connector_project-highlights, hio-typo3-connector_publication-highlights)
+TCEFORM.tt_content.list_type.removeItems := addToList(hiotypo3connector_projecthighlights, hiotypo3connector_publicationhighlights)
+
 # TYPO3 v14+: Plugins sind als eigene CType registriert, kein list_type mehr nötig
 [compatVersion("14.0.0")]
+TCEFORM.tt_content.CType.removeItems := addToList(hiotypo3connector_projecthighlights, hiotypo3connector_publicationhighlights)
 mod.wizards.newContentElement.wizardItems.hio-publisher.elements {
     hio-typo3-connector_publications-for-person.tt_content_defValues {
         CType = hiotypo3connector_selectedpersonpublicationlist
@@ -276,14 +262,6 @@ mod.wizards.newContentElement.wizardItems.hio-publisher.elements {
         CType = hiotypo3connector_spinofflist
         list_type =
     }
-    hio-typo3-connector_project-highlights.tt_content_defValues {
-        CType = hiotypo3connector_projecthighlights
-        list_type =
-    }
-    hio-typo3-connector_publication-highlights.tt_content_defValues {
-        CType = hiotypo3connector_publicationhighlights
-        list_type =
-    }
     hio-typo3-connector_publications-for-orgunit.tt_content_defValues {
         CType = hiotypo3connector_selectedorgunitpublicationlist
         list_type =
@@ -302,4 +280,3 @@ mod.wizards.newContentElement.wizardItems.hio-publisher.elements {
     }
 }
 [END]
-

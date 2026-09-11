@@ -14,6 +14,7 @@ use Wtl\HioTypo3Connector\Trait\WithSearchIndex;
 use Wtl\HioTypo3Connector\Trait\WithStartDate;
 use Wtl\HioTypo3Connector\Trait\WithStatus;
 use Wtl\HioTypo3Connector\Trait\WithTitle;
+use Wtl\HioTypo3Connector\Utility\ApiPayload;
 
 class HabilitationDto
 {
@@ -123,6 +124,8 @@ class HabilitationDto
 
     static public function fromArray(array $data): HabilitationDto
     {
+        $data = ApiPayload::personRoles($data);
+
         $habilitationDto = new self();
         $habilitationDto->setObjectId($data['id']);
         $habilitationDto->setDetails($data);
