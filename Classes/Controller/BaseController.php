@@ -38,13 +38,20 @@ class BaseController extends AbstractController
         return $filter;
     }
 
-    protected function getPaginator(QueryResultInterface $queryResult, int $resultsPerPage = 10): QueryResultPaginator
+    protected function getPaginator(QueryResultInterface $queryResult, ?int $resultsPerPage = null): QueryResultPaginator
     {
         return new QueryResultPaginator(
             $queryResult,
             $this->getCurrentPageNumberFromRequest(),
-            $resultsPerPage,
+            $resultsPerPage ?? $this->getResultsPerPageFromSettings(),
         );
+    }
+
+    protected function getResultsPerPageFromSettings(): int
+    {
+        $resultsPerPage = (int)($this->settings['resultsPerPage'] ?? 10);
+
+        return $resultsPerPage > 0 ? $resultsPerPage : 10;
     }
 
     protected function getNominationOrderingFromProperty(string $property): array

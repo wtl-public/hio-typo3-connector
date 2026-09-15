@@ -144,6 +144,10 @@
                 <source>Next</source>
                 <target>Weiter</target>
             </trans-unit>
+            <trans-unit id="flexform.list.resultsPerPage" resname="flexform.list.resultsPerPage">
+                <source>Results per page</source>
+                <target>Treffer pro Seite</target>
+            </trans-unit>
             <trans-unit id="ShowBackToList" resname="ShowBackToList">
                 <source>Back</source>
                 <target>Zurück</target>

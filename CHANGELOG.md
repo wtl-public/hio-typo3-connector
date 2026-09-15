@@ -6,7 +6,24 @@ Die Versionierung folgt [Semantic Versioning](https://semver.org/lang/de/).
 
 ---
 
-## [Unreleased]
+## [1.4.1]
+
+### Hinweise für Redakteure
+
+- Die Anzahl der Treffer pro Seite ist für die Listen-Plugins im Inhaltselement
+  einstellbar. Ohne explizite Einstellung bleibt der bisherige Standard von 10 Treffern pro
+  Seite erhalten.
+
+### Hinweise zur Einrichtung
+
+- Die TypoScript-Konstanten der Zielseiten sind jetzt für den Constant Editor annotiert.
+  Wer `Configuration/TypoScript/constants.typoscript` einbindet, findet sie im Backend
+  unter `Web -> TypoScript -> Constant Editor` in der Kategorie `HIO TYPO3 Connector`
+  und kann sie dort ausfüllen, statt sie von Hand zu schreiben.
+
+---
+
+## [1.4.0]
 
 ### Hinweise für Redakteure
 

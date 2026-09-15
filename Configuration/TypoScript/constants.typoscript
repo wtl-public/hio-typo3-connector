@@ -5,51 +5,73 @@ plugin.tx_hiotypo3connector {
 
     # Target pages for cross links between detail and list views
     publications {
+      # cat=HIO TYPO3 Connector/links/010; type=int+; label= Publication to person: Target page for links from a publication to a person
       personTargetPageUid =
     }
     persons {
+      # cat=HIO TYPO3 Connector/links/020; type=int+; label= Person to publication: Target page for links from a person to a publication
       publicationTargetPageUid =
+      # cat=HIO TYPO3 Connector/links/021; type=int+; label= Person to project: Target page for links from a person to a project
       projectTargetPageUid =
+      # cat=HIO TYPO3 Connector/links/022; type=int+; label= Person to patent: Target page for links from a person to a patent
       patentTargetPageUid =
+      # cat=HIO TYPO3 Connector/links/023; type=int+; label= Person to doctoral program: Target page for links from a person to a doctoral program
       doctoralProgramTargetPageUid =
     }
     orgUnits {
+      # cat=HIO TYPO3 Connector/links/030; type=int+; label= Organisation unit to person: Target page for links from an organisation unit to a person
       personTargetPageUid =
+      # cat=HIO TYPO3 Connector/links/031; type=int+; label= Organisation unit to publication: Target page for links from an organisation unit to a publication
       publicationTargetPageUid =
+      # cat=HIO TYPO3 Connector/links/032; type=int+; label= Organisation unit to project: Target page for links from an organisation unit to a project
       projectTargetPageUid =
+      # cat=HIO TYPO3 Connector/links/033; type=int+; label= Organisation unit to patent: Target page for links from an organisation unit to a patent
       patentTargetPageUid =
+      # cat=HIO TYPO3 Connector/links/034; type=int+; label= Organisation unit to doctoral program: Target page for links from an organisation unit to a doctoral program
       doctoralProgramTargetPageUid =
     }
     doctoralPrograms {
+      # cat=HIO TYPO3 Connector/links/040; type=int+; label= Doctoral program to person: Target page for links from a doctoral program to a person
       personTargetPageUid =
     }
     habilitations {
+      # cat=HIO TYPO3 Connector/links/050; type=int+; label= Habilitation to person: Target page for links from a habilitation to a person
       personTargetPageUid =
     }
     patents {
+      # cat=HIO TYPO3 Connector/links/060; type=int+; label= Patent to person: Target page for links from a patent to a person
       personTargetPageUid =
     }
     projects {
+      # cat=HIO TYPO3 Connector/links/070; type=int+; label= Project to person: Target page for links from a project to a person
       personTargetPageUid =
     }
     nominations {
+      # cat=HIO TYPO3 Connector/links/080; type=int+; label= Nomination to person: Target page for links from a nomination to a person
       personTargetPageUid =
+      # cat=HIO TYPO3 Connector/links/081; type=int+; label= Nomination to organisation unit: Target page for links from a nomination to an organisation unit
       orgUnitTargetPageUid =
+      # cat=HIO TYPO3 Connector/links/082; type=int+; label= Nomination to project: Target page for links from a nomination to a project
       projectTargetPageUid =
+      # cat=HIO TYPO3 Connector/links/083; type=int+; label= Nomination to publication: Target page for links from a nomination to a publication
       publicationTargetPageUid =
     }
     spinoffs {
+      # cat=HIO TYPO3 Connector/links/090; type=int+; label= Spin-off to person: Target page for links from a spin-off to a person
       personTargetPageUid =
     }
     projectDetails {
       persons {
+        # cat=HIO TYPO3 Connector//100; type=string; label= Project lead role: Name of the role that marks a person as project lead, as it arrives from HISinOne
         filterProjectLead =
       }
     }
     featuredProjects {
+      # cat=HIO TYPO3 Connector/links/110; type=int+; label= Featured project to project: Target page for links from a featured project to the project
       projectTargetPageUid =
     }
     featuredPublications {
+      # cat=HIO TYPO3 Connector/links/120; type=int+; label= Featured publication to publication: Target page for links from a featured publication to the publication
       publicationTargetPageUid =
     }
   }

@@ -8,6 +8,8 @@ Die Extension unterstützt aktuell die folgenden Datentypen:
 * Publikationen
 * Organisationseinheiten
 * Promotionen
+* Nominierungen
+* Forschungsinfrastrukturen
 * Ausgründungen
 * Habilitationen
 * Patente
@@ -32,84 +34,105 @@ Gutenbergplatz 1
 Email: [info+hio@wtl.de](mailto:info+hio@wtl.de)  
 Web: <https://hio-publisher.de>
 
-## Initiales Setup
+## Initiales Setup und Konfiguration
 
-Im TYPO3 Backend:
-* unter `Admin Tools` -> `Extensions` -> `Extension Manager` die Extension `hio-typo3-connector` installieren
-* im Modul `Page` die benötigten Speicherseiten (Storage pages) für die importierten Datentypen anlegen
+### 1. Extension installieren
 
-Empfohlen ist je Datentyp eine eigene Speicherseite, zum Beispiel:
+Installieren und aktivieren Sie im TYPO3 Backend unter `Admin Tools` -> `Extensions` ->
+`Extension Manager` die Extension `hio-typo3-connector`.
 
-* `HISinOne Personen`
-* `HISinOne Projekte`
-* `HISinOne Publikationen`
-* `HISinOne Organisationseinheiten`
-* `HISinOne Promotionen`
-* `HISinOne Habilitationen`
-* `HISinOne Patente`
-* `HISinOne Nominierungen`
-* `HISinOne Forschungsinfrastrukturen`
-* `HISinOne Ausgründungen`
+### 2. Speicherseiten für Importdaten anlegen
 
-Diese Speicherseiten werden für die Import-Tasks und Reactions als `Storage page ID`
-verwendet. Sie sind nicht dasselbe wie die Zielseiten im Frontend.
+Legen Sie im Modul `Page` die benötigten Speicherseiten an. Empfohlen ist je Datentyp eine
+eigene Speicherseite:
 
-## Configuration
+| Speicherseite | Inhalt |
+| --- | --- |
+| `HISinOne Personen` | importierte Personen |
+| `HISinOne Projekte` | importierte Projekte |
+| `HISinOne Publikationen` | importierte Publikationen |
+| `HISinOne Organisationseinheiten` | importierte Organisationseinheiten |
+| `HISinOne Promotionen` | importierte Promotionen |
+| `HISinOne Habilitationen` | importierte Habilitationen |
+| `HISinOne Patente` | importierte Patente |
+| `HISinOne-Preisanerkennungen` | importierte Preisanerkennungen, fachlich auch Nominierungen |
+| `HISinOne Forschungsinfrastrukturen` | importierte Forschungsinfrastrukturen |
+| `HISinOne Ausgründungen` | importierte Ausgründungen |
 
-Im TYPO3 Backend:
-* Anpassung der TypoScript-Konstanten für die Zielseiten der einzelnen Datentypen
-* bei Nutzung von Site Sets: Set `HIO TYPO3 Connector` einbinden; die Datei `Configuration/Sets/HioTypo3Connector/constants.typoscript` wird dann mitgeladen
-* ohne Site Sets: `Configuration/TypoScript/constants.typoscript` als Grundlage einbinden
+Diese Seiten werden in Scheduler-Tasks und Reactions als `Storage page ID` verwendet. Sie
+sind reine Datenablagen und nicht identisch mit den sichtbaren Frontend-Zielseiten.
 
-Wichtig:
+### 3. Frontend-Zielseiten anlegen
 
-* `Storage page ID` in Scheduler-Tasks und Reactions verweist auf die Systemordner mit den importierten Datensätzen
-* `...TargetPageUid` in TypoScript verweist auf die Frontend-Seite, auf die aus Listen- und Detailansichten verlinkt wird
+Legen Sie die Seiten an, auf denen Listen- und Detailansichten im Frontend erreichbar sein
+sollen. Typische Seiten sind:
 
-Die Zahlen in der Konfiguration stehen also nicht für die Import-Speicherorte, sondern für
-Zielseiten im Frontend.
+| Frontend-Zielseite | Verwendung |
+| --- | --- |
+| `Personendetail` | Zielseite für Links zu Personen |
+| `Publikationsdetail` | Zielseite für Links zu Publikationen |
+| `Projektdetail` | Zielseite für Links zu Projekten |
+| `Patentdetail` | Zielseite für Links zu Patenten |
+| `Promotiondetail` | Zielseite für Links zu Promotionen |
+| `Organisationseinheit-Detail` | Zielseite für Links zu Organisationseinheiten |
 
-Beispielkonfiguration:
+### 4. Site Set oder TypoScript einbinden
+
+Bei Nutzung von Site Sets binden Sie das Set `HIO TYPO3 Connector` in der Site-Konfiguration
+ein. Die Datei `Configuration/Sets/HioTypo3Connector/constants.typoscript` wird dann
+automatisch geladen.
+
+Ohne Site Sets binden Sie `Configuration/TypoScript/constants.typoscript` als Grundlage in
+Ihr Projekt-TypoScript ein.
+
+### 5. Zielseiten in den Konstanten konfigurieren
+
+Tragen Sie in den TypoScript-Konstanten die Frontend-Zielseiten ein. Die Werte der
+`...TargetPageUid`-Konfigurationen zeigen immer auf sichtbare Frontend-Seiten, nicht auf
+die Import-Speicherseiten.
+
+Beispiel mit sprechenden UID-Platzhaltern. Ersetzen Sie die Werte in spitzen Klammern durch
+die tatsächlichen TYPO3-Seiten-UIDs Ihrer Frontend-Zielseiten:
 
 ```
 plugin.tx_hiotypo3connector {
   settings {
     publications {
-      personTargetPageUid = 110
+      personTargetPageUid = <UID der Seite Personendetail>
     }
     persons {
-      publicationTargetPageUid = 120
-      projectTargetPageUid = 130
-      patentTargetPageUid = 140
-      doctoralProgramTargetPageUid = 150
+      publicationTargetPageUid = <UID der Seite Publikationsdetail>
+      projectTargetPageUid = <UID der Seite Projektdetail>
+      patentTargetPageUid = <UID der Seite Patentdetail>
+      doctoralProgramTargetPageUid = <UID der Seite Promotiondetail>
     }
     orgUnits {
-      personTargetPageUid = 110
-      publicationTargetPageUid = 120
-      projectTargetPageUid = 130
-      patentTargetPageUid = 140
-      doctoralProgramTargetPageUid = 150
+      personTargetPageUid = <UID der Seite Personendetail>
+      publicationTargetPageUid = <UID der Seite Publikationsdetail>
+      projectTargetPageUid = <UID der Seite Projektdetail>
+      patentTargetPageUid = <UID der Seite Patentdetail>
+      doctoralProgramTargetPageUid = <UID der Seite Promotiondetail>
     }
     doctoralPrograms {
-      personTargetPageUid = 110
+      personTargetPageUid = <UID der Seite Personendetail>
     }
     habilitations {
-      personTargetPageUid = 110
+      personTargetPageUid = <UID der Seite Personendetail>
     }
     patents {
-      personTargetPageUid = 110
+      personTargetPageUid = <UID der Seite Personendetail>
     }
     projects {
-      personTargetPageUid = 110
+      personTargetPageUid = <UID der Seite Personendetail>
     }
     nominations {
-      personTargetPageUid = 110
-      orgUnitTargetPageUid = 160
-      projectTargetPageUid = 130
-      publicationTargetPageUid = 120
+      personTargetPageUid = <UID der Seite Personendetail>
+      orgUnitTargetPageUid = <UID der Seite Organisationseinheit-Detail>
+      projectTargetPageUid = <UID der Seite Projektdetail>
+      publicationTargetPageUid = <UID der Seite Publikationsdetail>
     }
     spinoffs {
-      personTargetPageUid = 110
+      personTargetPageUid = <UID der Seite Personendetail>
     }
     projectDetails {
       persons {
@@ -117,17 +140,17 @@ plugin.tx_hiotypo3connector {
       }
     }
     featuredProjects {
-      projectTargetPageUid = 130
+      projectTargetPageUid = <UID der Seite Projektdetail>
     }
     featuredPublications {
-      publicationTargetPageUid = 120
+      publicationTargetPageUid = <UID der Seite Publikationsdetail>
     }
   }
 }
 ```
 
 Die Datei [ExampleConfigs/constants.typoscript](ExampleConfigs/constants.typoscript)
-enthält dieselbe Beispielstruktur als kopierbare Vorlage.
+enthält dieselbe Konfigurationsstruktur als kopierbare Vorlage.
 
 ## Konfiguration HIO-Publisher - Direktimport Kommandos (Middleware - Pull)
 
@@ -225,15 +248,18 @@ Für BasicAuth gelten dieselben Umgebungsvariablen und dieselbe Auflösungsreihe
 
 Im TYPO3 Backend:
 
-Im Module `Page` können die folgenden Frontend-Plugins eingefügt werden:
+Im Modul `Page` können die folgenden Frontend-Plugins eingefügt werden:
 
   * `HISinOne Habilitationen` - zeigt eine Liste von Habilitationen aus HISinOne an
+  * `HISinOne Forschungsinfrastrukturen` - zeigt eine Liste von Forschungsinfrastrukturen aus HISinOne an
+  * `HISinOne-Preisanerkennungen` - zeigt eine Liste von Preisanerkennungen, fachlich auch Nominierungen, aus HISinOne an
   * `HISinOne Organisationseinheiten` - zeigt eine Liste von Organisationseinheiten aus HISinOne an
   * `HISinOne Patente` - zeigt eine Liste von Patenten aus HISinOne an
   * `HISinOne Personen` - zeigt eine Liste von Personen aus HISinOne an
   * `HISinOne Projekte` - zeigt eine Liste von Projekten aus HISinOne an
   * `HISinOne Promotionen` - zeigt eine Liste von Promotionen aus HISinOne an
   * `HISinOne Publikationen` - zeigt eine Liste von Publikationen aus HISinOne an
+  * `HISinOne Ausgründungen` - zeigt eine Liste von Ausgründungen aus HISinOne an
 
 
   * `HISinOne Habilitationen der Person` - zeigt die Liste aller freigegebenen Habilitationen einer ausgewählten Person an
@@ -242,6 +268,30 @@ Im Module `Page` können die folgenden Frontend-Plugins eingefügt werden:
   * `HISinOne Projekte der Person` - zeigt die Liste aller freigegebenen Projekte einer ausgewählten Person an
   * `HISinOne Promotionen der Person` - zeigt die Liste aller freigegebenen Promotionen einer ausgewählten Person an
   * `HISinOne Publikationen der Person` - zeigt die Liste aller freigegebenen Publikationen einer ausgewählten Person an
+  * `HISinOne Personen der Organisationseinheit` - zeigt die Liste aller freigegebenen Personen einer ausgewählten Organisationseinheit an
+  * `HISinOne Patente der Organisationseinheit` - zeigt die Liste aller freigegebenen Patente einer ausgewählten Organisationseinheit an
+  * `HISinOne Projekte der Organisationseinheit` - zeigt die Liste aller freigegebenen Projekte einer ausgewählten Organisationseinheit an
+  * `HISinOne Publikationen der Organisationseinheit` - zeigt die Liste aller freigegebenen Publikationen einer ausgewählten Organisationseinheit an
+
+## Frontend-Templates und Rendering
+
+Die vorliegende Extension (`hio-typo3-connector`) übernimmt den Import und die Datenverwaltung.
+Sie stellt TYPO3-Frontend-Plugins mit Platzhalter-Templates als Integrationspunkte für eine separate Frontend-Integration bereit.
+
+Das **Frontend-Rendering** (die Anzeige der Daten) muss durch eine der folgenden Methoden gelöst werden:
+
+### Option 1: Beispiel-Frontend-Extension als Basis
+
+Die WEBTEAM LEIPZIG GmbH stellt eine Beispiel-Frontend-Extension zur Verfügung:
+- **wtl/hio-typo3-connector-frontend** - Templates und Fluid-Plugins als Ausgangspunkt für die Anzeige der Datentypen
+
+Diese kann direkt genutzt werden oder als Vorlage für eine eigene Frontend-Integration dienen.
+
+### Option 2: Eigenes Frontend mit Template-Überschreibungen
+
+Falls die Beispiel-Extension nicht den Anforderungen entspricht, können Sie ein eigenes Frontend aufbauen.
+
+Ohne eine dieser Implementierungen werden die importierten Datensätze im Frontend nicht angezeigt.
 
 ## Legacy-Plugins
 

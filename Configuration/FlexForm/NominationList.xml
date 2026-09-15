@@ -8,6 +8,20 @@
                 </sheetTitle>
                 <type>array</type>
                 <el>
+                    <settings.resultsPerPage>
+                        <label>
+                            LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:flexform.list.resultsPerPage
+                        </label>
+                        <config>
+                            <type>number</type>
+                            <size>5</size>
+                            <format>integer</format>
+                            <range>
+                                <lower>1</lower>
+                            </range>
+                            <default>10</default>
+                        </config>
+                    </settings.resultsPerPage>
                     <settings.orderBy>
                         <label>
                             LLL:EXT:hio_typo3_connector/Resources/Private/Language/nomination.xlf:flexform.nominationlist.orderBy

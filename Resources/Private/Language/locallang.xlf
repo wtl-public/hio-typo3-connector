@@ -116,6 +116,9 @@
             <trans-unit id="ListPaginationNext" resname="ListPaginationNext">
                 <source>Next</source>
             </trans-unit>
+            <trans-unit id="flexform.list.resultsPerPage" resname="flexform.list.resultsPerPage">
+                <source>Results per page</source>
+            </trans-unit>
             <trans-unit id="ShowBackToList" resname="ShowBackToList">
                 <source>Back</source>
             </trans-unit>

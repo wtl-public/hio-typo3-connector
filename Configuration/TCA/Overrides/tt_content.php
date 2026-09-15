@@ -255,48 +255,21 @@ $registerFlexForm(
     'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/PublicationList.xml',
     true
 );
-ExtensionManagementUtility::addToAllTCAtypes(
-    'tt_content',
-    '--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.plugin, pages, recursive',
+foreach ([
     'hiotypo3connector_projectlist',
-    'after:palette:headers'
-);
-ExtensionManagementUtility::addToAllTCAtypes(
-    'tt_content',
-    '--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.plugin, pages, recursive',
     'hiotypo3connector_orgunitlist',
-    'after:palette:headers'
-);
-ExtensionManagementUtility::addToAllTCAtypes(
-    'tt_content',
-    '--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.plugin, pages, recursive',
     'hiotypo3connector_spinofflist',
-    'after:palette:headers'
-);
-ExtensionManagementUtility::addToAllTCAtypes(
-    'tt_content',
-    '--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.plugin, pages, recursive',
     'hiotypo3connector_researchinfrastructurelist',
-    'after:palette:headers'
-);
-ExtensionManagementUtility::addToAllTCAtypes(
-    'tt_content',
-    '--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.plugin, pages, recursive',
     'hiotypo3connector_doctoralprogramlist',
-    'after:palette:headers'
-);
-ExtensionManagementUtility::addToAllTCAtypes(
-    'tt_content',
-    '--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.plugin, pages, recursive',
     'hiotypo3connector_habilitationlist',
-    'after:palette:headers'
-);
-ExtensionManagementUtility::addToAllTCAtypes(
-    'tt_content',
-    '--div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.plugin, pages, recursive',
     'hiotypo3connector_patentlist',
-    'after:palette:headers'
-);
+] as $listPluginSignature) {
+    $registerFlexForm(
+        $listPluginSignature,
+        'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/List.xml',
+        true
+    );
+}
 $registerFlexForm(
     'hiotypo3connector_personlist',
     'FILE:EXT:hio_typo3_connector/Configuration/FlexForm/PersonList.xml',
