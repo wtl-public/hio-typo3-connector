@@ -67,7 +67,7 @@ class PrizeDto
         $instance->setEndowed(isset($data['endowed']) ? EndowedDto::fromArray($data['endowed']) : null);
         $instance->setId($data['id'] ?? null);
         $instance->setStatus(isset($data['status']) ? StatusDto::fromArray($data['status']) : null);
-        $instance->setTitle($data['title'] ?? null);
+        $instance->setTitle($data['title'] ?? '');
         $instance->setPrizeType(isset($data['prizeType']) ? TypeDto::fromArray($data['prizeType']) : null);
         return $instance;
     }

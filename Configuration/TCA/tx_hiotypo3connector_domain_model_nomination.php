@@ -17,6 +17,7 @@ return [
         'hideTable' => false,
         'default_sortby' => 'title ASC',
         'sortby' => 'sorting',
+        'tstamp' => 'tstamp',
         'delete' => 'deleted',
         'enablecolumns' => [
             'disabled' => 'hidden',
@@ -68,6 +69,18 @@ return [
         ],
         'sorting' => [
             'label' => 'sorting',
+            'config' => [
+                'type' => 'passthrough',
+            ],
+        ],
+        'last_seen_at' => [
+            'label' => 'last_seen_at',
+            'config' => [
+                'type' => 'passthrough',
+            ],
+        ],
+        'soft_deleted_at' => [
+            'label' => 'soft_deleted_at',
             'config' => [
                 'type' => 'passthrough',
             ],
@@ -126,6 +139,7 @@ return [
                 'eval' => 'trim',
                 'readOnly' => true,
                 'required' => false,
+                'default' => '',
             ],
         ],
         'type' => [

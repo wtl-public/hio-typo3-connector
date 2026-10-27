@@ -13,6 +13,7 @@ use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use Wtl\HioTypo3Connector\Domain\Dto\PersonDto;
 use Wtl\HioTypo3Connector\Event\ReceiveHioPersonEvent;
 use Wtl\HioTypo3Connector\Services\HioPersonService;
+use Wtl\HioTypo3Connector\Services\RecordLifecycle\RecordLifecycleService;
 use Wtl\HioTypo3Connector\Trait\WithConfigureImportCommandTrait;
 
 class PersonsImportCommand extends Command
@@ -23,7 +24,8 @@ class PersonsImportCommand extends Command
 
     public function __construct(
         protected readonly HioPersonService $hioPersonService,
-        protected readonly EventDispatcherInterface $eventDispatcher
+        protected readonly EventDispatcherInterface $eventDispatcher,
+        private readonly RecordLifecycleService $recordLifecycleService
     )
     {
         parent::__construct();
@@ -44,6 +46,11 @@ class PersonsImportCommand extends Command
             (bool)$input->getOption('verify-ssl'),
             (bool)$input->getOption('no-basic-auth')
         );
+        $recordLifecycle = $this->recordLifecycleService->startRun(
+            $this->hioPersonService,
+            'tx_hiotypo3connector_domain_model_person',
+            $input
+        );
 
         $currentPage = 1;
         do {
@@ -53,6 +60,7 @@ class PersonsImportCommand extends Command
                 $output->writeln('No new persons found');
                 return Command::SUCCESS;
             }
+            $persons = $recordLifecycle->beforeDispatch($persons);
 
             foreach ($persons as $person) {
                 $this->eventDispatcher->dispatch(
@@ -60,10 +68,12 @@ class PersonsImportCommand extends Command
                 );
             }
 
+            $recordLifecycle->afterDispatch();
+
             $currentPage++;
         } while ($currentPage <= $this->hioPersonService->getMeta()->getLastPage());
 
-        $output->writeln($this->hioPersonService->getMeta()->getTotal() . ' Persons imported successfully');
+        $recordLifecycle->finish($output, 'Persons');
         return Command::SUCCESS;
     }
 }

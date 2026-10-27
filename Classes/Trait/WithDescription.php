@@ -6,7 +6,7 @@ namespace Wtl\HioTypo3Connector\Trait;
 
 trait WithDescription
 {
-    protected ?string $description;
+    protected ?string $description = null;
 
     public function getDescription(): ?string
     {

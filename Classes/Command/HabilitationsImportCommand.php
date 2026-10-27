@@ -12,6 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use Wtl\HioTypo3Connector\Event\ReceiveHioHabilitationEvent;
 use Wtl\HioTypo3Connector\Services\HioHabilitationService;
+use Wtl\HioTypo3Connector\Services\RecordLifecycle\RecordLifecycleService;
 use Wtl\HioTypo3Connector\Trait\WithConfigureImportCommandTrait;
 
 class HabilitationsImportCommand extends Command
@@ -22,7 +23,8 @@ class HabilitationsImportCommand extends Command
 
     public function __construct(
         protected readonly HioHabilitationService   $hioHabilitationService,
-        protected readonly EventDispatcherInterface $eventDispatcher
+        protected readonly EventDispatcherInterface $eventDispatcher,
+        private readonly RecordLifecycleService $recordLifecycleService
     )
     {
         parent::__construct();
@@ -43,6 +45,11 @@ class HabilitationsImportCommand extends Command
             (bool)$input->getOption('verify-ssl'),
             (bool)$input->getOption('no-basic-auth')
         );
+        $recordLifecycle = $this->recordLifecycleService->startRun(
+            $this->hioHabilitationService,
+            'tx_hiotypo3connector_domain_model_habilitation',
+            $input
+        );
 
         $currentPage = 1;
         do {
@@ -52,6 +59,7 @@ class HabilitationsImportCommand extends Command
                 $output->writeln('No new habilitations found');
                 return Command::SUCCESS;
             }
+            $habilitations = $recordLifecycle->beforeDispatch($habilitations);
 
             foreach ($habilitations as $habilitation) {
                 $this->eventDispatcher->dispatch(
@@ -59,10 +67,12 @@ class HabilitationsImportCommand extends Command
                 );
             }
 
+            $recordLifecycle->afterDispatch();
+
             $currentPage++;
         } while ($currentPage <= $this->hioHabilitationService->getMeta()->getLastPage());
 
-        $output->writeln($this->hioHabilitationService->getMeta()->getTotal() . ' Habilitations imported successfully');
+        $recordLifecycle->finish($output, 'Habilitations');
         return Command::SUCCESS;
     }
 }

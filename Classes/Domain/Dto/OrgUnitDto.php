@@ -26,6 +26,7 @@ class OrgUnitDto
     use WithSearchIndex;
     use WithTitle;
 
+    protected ?PostAddressDto $address = null;
     protected array $eAddresses = [];
     protected array $doctoralPrograms = [];
     protected array $habilitations = [];

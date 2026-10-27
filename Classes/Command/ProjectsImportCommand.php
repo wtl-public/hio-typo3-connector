@@ -12,6 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use Wtl\HioTypo3Connector\Event\ReceiveHioProjectEvent;
 use Wtl\HioTypo3Connector\Services\HioProjectService;
+use Wtl\HioTypo3Connector\Services\RecordLifecycle\RecordLifecycleService;
 use Wtl\HioTypo3Connector\Trait\WithConfigureImportCommandTrait;
 
 class ProjectsImportCommand extends Command
@@ -22,7 +23,8 @@ class ProjectsImportCommand extends Command
 
     public function __construct(
         private readonly HioProjectService $hioProjectService,
-        protected readonly EventDispatcherInterface $eventDispatcher)
+        protected readonly EventDispatcherInterface $eventDispatcher,
+        private readonly RecordLifecycleService $recordLifecycleService)
     {
         parent::__construct();
     }
@@ -42,6 +44,11 @@ class ProjectsImportCommand extends Command
             (bool)$input->getOption('verify-ssl'),
             (bool)$input->getOption('no-basic-auth')
         );
+        $recordLifecycle = $this->recordLifecycleService->startRun(
+            $this->hioProjectService,
+            'tx_hiotypo3connector_domain_model_project',
+            $input
+        );
 
         $currentPage = 1;
         do {
@@ -51,6 +58,7 @@ class ProjectsImportCommand extends Command
                 $output->writeln('No new projects found');
                 return Command::SUCCESS;
             }
+            $projects = $recordLifecycle->beforeDispatch($projects);
 
             foreach ($projects as $project) {
                 $this->eventDispatcher->dispatch(
@@ -58,10 +66,12 @@ class ProjectsImportCommand extends Command
                 );
             }
 
+            $recordLifecycle->afterDispatch();
+
             $currentPage++;
         } while ($currentPage <= $this->hioProjectService->getMeta()->getLastPage());
 
-        $output->writeln($this->hioProjectService->getMeta()->getTotal() . ' Projects imported successfully');
+        $recordLifecycle->finish($output, 'Projects');
         return Command::SUCCESS;
     }
 }

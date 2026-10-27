@@ -140,7 +140,7 @@ class HabilitationDto
         if (isset($data['endDate'])) {
             $habilitationDto->setEndDate(new \DateTime($data['endDate']));
         }
-        $habilitationDto->setOrgUnits(array_map(fn($item) => OrgUnitDto::fromArray($item), $data['persons'] ?? []));
+        $habilitationDto->setOrgUnits(array_map(fn($item) => OrgUnitDto::fromArray($item), $data['orgUnits'] ?? []));
         $habilitationDto->setPersons(array_map(fn($item) => PersonDto::fromArray($item), $data['persons'] ?? []));
 
         if (isset($data['registrationDate'])) {
@@ -149,8 +149,8 @@ class HabilitationDto
         if (isset($data['startDate'])) {
             $habilitationDto->setStartDate(new \DateTime($data['startDate']));
         }
-        $habilitationDto->setTitle($data['title']);
-        $habilitationDto->setHabilitationTypeDto($data['habilitationType'] ? HabilitationTypeDto::fromArray($data['habilitationType']) : null);
+        $habilitationDto->setTitle($data['title'] ?? '');
+        $habilitationDto->setHabilitationTypeDto(isset($data['habilitationType']) ? HabilitationTypeDto::fromArray($data['habilitationType']) : null);
 
         return $habilitationDto;
     }

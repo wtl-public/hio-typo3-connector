@@ -47,7 +47,7 @@ class ProjectDto
         $dto->setObjective($data['objective'] ?? '');
         $dto->setStartDate(isset($data['startDate']) ? new \DateTime($data['startDate']) : null);
         $dto->setStatus(isset($data['status']) ? StatusDto::fromArray($data['status']) : null);
-        $dto->setTitle($data['title']);
+        $dto->setTitle($data['title'] ?? '');
         $dto->setType($data['type'] ?? null);
         $dto->setVisibility(isset($data['visibility']) ? VisibilityDto::fromArray($data['visibility']) : null);
         return $dto;

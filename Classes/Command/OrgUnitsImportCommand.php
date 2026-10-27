@@ -13,6 +13,7 @@ use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use Wtl\HioTypo3Connector\Domain\Dto\OrgUnitDto;
 use Wtl\HioTypo3Connector\Event\ReceiveHioOrgUnitEvent;
 use Wtl\HioTypo3Connector\Services\HioOrgUnitService;
+use Wtl\HioTypo3Connector\Services\RecordLifecycle\RecordLifecycleService;
 use Wtl\HioTypo3Connector\Trait\WithConfigureImportCommandTrait;
 
 class OrgUnitsImportCommand extends Command
@@ -23,7 +24,8 @@ class OrgUnitsImportCommand extends Command
 
     public function __construct(
         private readonly HioOrgUnitService $orgUnitService,
-        protected readonly EventDispatcherInterface $eventDispatcher
+        protected readonly EventDispatcherInterface $eventDispatcher,
+        private readonly RecordLifecycleService $recordLifecycleService
     )
     {
         parent::__construct();
@@ -44,6 +46,11 @@ class OrgUnitsImportCommand extends Command
             (bool)$input->getOption('verify-ssl'),
             (bool)$input->getOption('no-basic-auth')
         );
+        $recordLifecycle = $this->recordLifecycleService->startRun(
+            $this->orgUnitService,
+            'tx_hiotypo3connector_domain_model_orgunit',
+            $input
+        );
 
         $currentPage = 1;
         do {
@@ -53,6 +60,7 @@ class OrgUnitsImportCommand extends Command
                 $output->writeln('No new organisation units found');
                 return Command::SUCCESS;
             }
+            $orgUnits = $recordLifecycle->beforeDispatch($orgUnits);
 
             foreach ($orgUnits as $orgUnit) {
                 $this->eventDispatcher->dispatch(
@@ -60,10 +68,12 @@ class OrgUnitsImportCommand extends Command
                 );
             }
 
+            $recordLifecycle->afterDispatch();
+
             $currentPage++;
         } while ($currentPage <= $this->orgUnitService->getMeta()->getLastPage());
 
-        $output->writeln($this->orgUnitService->getMeta()->getTotal() . ' Organisation units imported successfully');
+        $recordLifecycle->finish($output, 'Organisation units');
         return Command::SUCCESS;
     }
 }

@@ -13,6 +13,7 @@ use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use Wtl\HioTypo3Connector\Domain\Dto\ResearchInfrastructureDto;
 use Wtl\HioTypo3Connector\Event\ReceiveHioResearchInfrastructureEvent;
 use Wtl\HioTypo3Connector\Services\HioResearchInfrastructureService;
+use Wtl\HioTypo3Connector\Services\RecordLifecycle\RecordLifecycleService;
 use Wtl\HioTypo3Connector\Trait\WithConfigureImportCommandTrait;
 
 class ResearchInfrastructuresImportCommand extends Command
@@ -23,7 +24,8 @@ class ResearchInfrastructuresImportCommand extends Command
 
     public function __construct(
         private readonly HioResearchInfrastructureService $service,
-        protected readonly EventDispatcherInterface $eventDispatcher
+        protected readonly EventDispatcherInterface $eventDispatcher,
+        private readonly RecordLifecycleService $recordLifecycleService
     )
     {
         parent::__construct();
@@ -44,6 +46,11 @@ class ResearchInfrastructuresImportCommand extends Command
             (bool)$input->getOption('verify-ssl'),
             (bool)$input->getOption('no-basic-auth')
         );
+        $recordLifecycle = $this->recordLifecycleService->startRun(
+            $this->service,
+            'tx_hiotypo3connector_domain_model_researchinfrastructure',
+            $input
+        );
 
         $currentPage = 1;
         do {
@@ -53,6 +60,7 @@ class ResearchInfrastructuresImportCommand extends Command
                 $output->writeln('No new research infrastructures found');
                 return Command::SUCCESS;
             }
+            $researchInfrastructureDtos = $recordLifecycle->beforeDispatch($researchInfrastructureDtos);
 
             foreach ($researchInfrastructureDtos as $researchInfrastructureDto) {
                 $this->eventDispatcher->dispatch(
@@ -60,10 +68,12 @@ class ResearchInfrastructuresImportCommand extends Command
                 );
             }
 
+            $recordLifecycle->afterDispatch();
+
             $currentPage++;
         } while ($currentPage <= $this->service->getMeta()->getLastPage());
 
-        $output->writeln($this->service->getMeta()->getTotal() . ' research infrastructures imported successfully');
+        $recordLifecycle->finish($output, 'research infrastructures');
         return Command::SUCCESS;
     }
 }

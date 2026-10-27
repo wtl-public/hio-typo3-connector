@@ -6,7 +6,7 @@ namespace Wtl\HioTypo3Connector\Trait;
 
 trait WithId
 {
-    protected ?int $id;
+    protected ?int $id = null;
 
     public function getId(): ?int
     {

@@ -1,16 +1,18 @@
 CREATE TABLE tx_hiotypo3connector_domain_model_project
 (
     object_id           INT(11)  DEFAULT '0' NOT NULL,
-    title               LONGTEXT     DEFAULT '',
+    title               LONGTEXT,
     details             MEDIUMBLOB,
     search_index        MEDIUMTEXT,
-    budget_source_types LONGTEXT     DEFAULT '',
+    budget_source_types LONGTEXT,
     status              VARCHAR(255) DEFAULT '',
     type                VARCHAR(255) DEFAULT '',
     start_date          DATETIME     DEFAULT NULL,
     end_date            DATETIME     DEFAULT NULL,
     persons      INT(11)      DEFAULT '0' NOT NULL,
     slug         VARCHAR(2048) DEFAULT NULL,
+    last_seen_at INT(11) DEFAULT '0' NOT NULL,
+    soft_deleted_at INT(11) DEFAULT '0' NOT NULL,
     KEY object_id (object_id),
     KEY slug (slug(255)),
 );
@@ -18,13 +20,15 @@ CREATE TABLE tx_hiotypo3connector_domain_model_project
 CREATE TABLE tx_hiotypo3connector_domain_model_publication
 (
     object_id    INT(11)      DEFAULT '0' NOT NULL,
-    title        LONGTEXT     DEFAULT '',
+    title        LONGTEXT,
     details      MEDIUMBLOB,
     search_index MEDIUMTEXT,
     type         VARCHAR(255) DEFAULT '',
     release_year VARCHAR(255) DEFAULT NULL,
     persons      INT(11)      DEFAULT '0' NOT NULL,
     slug         VARCHAR(2048) DEFAULT NULL,
+    last_seen_at INT(11) DEFAULT '0' NOT NULL,
+    soft_deleted_at INT(11) DEFAULT '0' NOT NULL,
     KEY object_id (object_id),
     KEY type (type),
     KEY release_year (release_year),
@@ -34,7 +38,7 @@ CREATE TABLE tx_hiotypo3connector_domain_model_publication
 CREATE TABLE tx_hiotypo3connector_domain_model_person
 (
     object_id         INT(11)  DEFAULT '0' NOT NULL,
-    name              LONGTEXT DEFAULT '',
+    name              LONGTEXT,
     details           MEDIUMBLOB,
     search_index      MEDIUMTEXT,
     publications      INT(11) DEFAULT '0' NOT NULL,
@@ -44,6 +48,8 @@ CREATE TABLE tx_hiotypo3connector_domain_model_person
     habilitations     INT(11) DEFAULT '0' NOT NULL,
     org_units         INT(11) DEFAULT '0' NOT NULL,
     slug         VARCHAR(2048) DEFAULT NULL,
+    last_seen_at INT(11) DEFAULT '0' NOT NULL,
+    soft_deleted_at INT(11) DEFAULT '0' NOT NULL,
     KEY object_id (object_id),
     KEY slug (slug(255)),
 );
@@ -51,11 +57,13 @@ CREATE TABLE tx_hiotypo3connector_domain_model_person
 CREATE TABLE tx_hiotypo3connector_domain_model_patent
 (
     object_id    INT(11)  DEFAULT '0' NOT NULL,
-    title        LONGTEXT DEFAULT '',
+    title        LONGTEXT,
     details      MEDIUMBLOB,
     search_index MEDIUMTEXT,
     persons      INT(11)      DEFAULT '0' NOT NULL,
     slug         VARCHAR(2048) DEFAULT NULL,
+    last_seen_at INT(11) DEFAULT '0' NOT NULL,
+    soft_deleted_at INT(11) DEFAULT '0' NOT NULL,
     KEY object_id (object_id),
     KEY slug (slug(255)),
 );
@@ -63,11 +71,13 @@ CREATE TABLE tx_hiotypo3connector_domain_model_patent
 CREATE TABLE tx_hiotypo3connector_domain_model_doctoralprogram
 (
     object_id    INT(11)  DEFAULT '0' NOT NULL,
-    title        LONGTEXT DEFAULT '',
+    title        LONGTEXT,
     details      MEDIUMBLOB,
     search_index MEDIUMTEXT,
     persons      INT(11)      DEFAULT '0' NOT NULL,
     slug         VARCHAR(2048) DEFAULT NULL,
+    last_seen_at INT(11) DEFAULT '0' NOT NULL,
+    soft_deleted_at INT(11) DEFAULT '0' NOT NULL,
     KEY object_id (object_id),
     KEY slug (slug(255)),
 );
@@ -75,11 +85,13 @@ CREATE TABLE tx_hiotypo3connector_domain_model_doctoralprogram
 CREATE TABLE tx_hiotypo3connector_domain_model_habilitation
 (
     object_id    INT(11)  DEFAULT '0' NOT NULL,
-    title        LONGTEXT DEFAULT '',
+    title        LONGTEXT,
     details      MEDIUMBLOB,
     search_index MEDIUMTEXT,
     persons      INT(11)      DEFAULT '0' NOT NULL,
     slug         VARCHAR(2048) DEFAULT NULL,
+    last_seen_at INT(11) DEFAULT '0' NOT NULL,
+    soft_deleted_at INT(11) DEFAULT '0' NOT NULL,
     KEY object_id (object_id),
     KEY slug (slug(255)),
 );
@@ -94,7 +106,7 @@ CREATE TABLE tx_hiotypo3connector_domain_model_citationstyle
 CREATE TABLE tx_hiotypo3connector_domain_model_orgunit
 (
     object_id                INT(11)  DEFAULT '0' NOT NULL,
-    title                    LONGTEXT DEFAULT '',
+    title                    LONGTEXT,
     details                  MEDIUMBLOB,
     search_index             MEDIUMTEXT,
     publications             INT(11) DEFAULT '0' NOT NULL,
@@ -106,6 +118,8 @@ CREATE TABLE tx_hiotypo3connector_domain_model_orgunit
     research_infrastructures INT(11) DEFAULT '0' NOT NULL,
     spin_offs                INT(11) DEFAULT '0' NOT NULL,
     slug         VARCHAR(2048) DEFAULT NULL,
+    last_seen_at INT(11) DEFAULT '0' NOT NULL,
+    soft_deleted_at INT(11) DEFAULT '0' NOT NULL,
     KEY object_id (object_id),
     KEY slug (slug(255)),
 );
@@ -113,10 +127,12 @@ CREATE TABLE tx_hiotypo3connector_domain_model_orgunit
 CREATE TABLE tx_hiotypo3connector_domain_model_spinoff
 (
     object_id    INT(11)  DEFAULT '0' NOT NULL,
-    name         LONGTEXT DEFAULT '',
+    name         LONGTEXT,
     details      MEDIUMBLOB,
     search_index MEDIUMTEXT,
     slug         VARCHAR(2048) DEFAULT NULL,
+    last_seen_at INT(11) DEFAULT '0' NOT NULL,
+    soft_deleted_at INT(11) DEFAULT '0' NOT NULL,
     KEY object_id (object_id),
     KEY slug (slug(255)),
 );
@@ -124,10 +140,12 @@ CREATE TABLE tx_hiotypo3connector_domain_model_spinoff
 CREATE TABLE tx_hiotypo3connector_domain_model_researchinfrastructure
 (
     object_id    INT(11)  DEFAULT '0' NOT NULL,
-    title        LONGTEXT DEFAULT '',
+    title        LONGTEXT,
     details      MEDIUMBLOB,
     search_index MEDIUMTEXT,
     slug         VARCHAR(2048) DEFAULT NULL,
+    last_seen_at INT(11) DEFAULT '0' NOT NULL,
+    soft_deleted_at INT(11) DEFAULT '0' NOT NULL,
     KEY object_id (object_id),
     KEY slug (slug(255)),
 );
@@ -135,7 +153,7 @@ CREATE TABLE tx_hiotypo3connector_domain_model_researchinfrastructure
 CREATE TABLE tx_hiotypo3connector_domain_model_nomination
 (
     object_id       INT(11)  DEFAULT '0' NOT NULL,
-    title           LONGTEXT     DEFAULT '',
+    title           LONGTEXT,
     nominees        INT(11) DEFAULT '0' NOT NULL,
     org_units       INT(11) DEFAULT '0' NOT NULL,
     projects        INT(11) DEFAULT '0' NOT NULL,
@@ -148,6 +166,8 @@ CREATE TABLE tx_hiotypo3connector_domain_model_nomination
     details         MEDIUMBLOB,
     search_index    MEDIUMTEXT,
     slug         VARCHAR(2048) DEFAULT NULL,
+    last_seen_at INT(11) DEFAULT '0' NOT NULL,
+    soft_deleted_at INT(11) DEFAULT '0' NOT NULL,
     KEY object_id (object_id),
     KEY slug (slug(255)),
 );

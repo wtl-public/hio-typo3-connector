@@ -254,7 +254,7 @@ class PublicationDto
         $dto->setResearchAreasKdsf(array_map(fn($item) => ResearchAreaKdsfDto::fromArray($item), $data['researchAreasKdsf'] ?? []));
         $dto->setStatus(isset($data['status']) ? StatusDto::fromArray($data['status']) : null);
         $dto->setSubjectAreas(array_map(fn($item) => SubjectAreaDto::fromArray($item), $data['subjectAreas'] ?? []));
-        $dto->setTitle($data['title']);
+        $dto->setTitle($data['title'] ?? '');
         $dto->setVisibility(isset($data['visibility']) ? VisibilityDto::fromArray($data['visibility']) : null);
         return $dto;
     }

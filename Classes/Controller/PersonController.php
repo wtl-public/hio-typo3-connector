@@ -9,7 +9,7 @@ use Psr\Log\LoggerInterface;
 use TYPO3\CMS\Backend\Attribute\AsController;
 use TYPO3\CMS\Backend\Template\ModuleTemplateFactory;
 use TYPO3\CMS\Core\Error\Http\PageNotFoundException;
-use TYPO3\CMS\Core\Http\ImmediateResponseException;
+use TYPO3\CMS\Core\Http\PropagateResponseException;
 use TYPO3\CMS\Core\Pagination\SlidingWindowPagination;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Core\Utility\MathUtility;
@@ -79,14 +79,16 @@ class PersonController extends BaseController
     }
 
     /**
-     * @throws ImmediateResponseException
+     * @throws PropagateResponseException
      * @throws PageNotFoundException
      */
     public function showAction(?Person $person = null): ResponseInterface
     {
         if ($person === null) {
             $response = GeneralUtility::makeInstance(ErrorController::class)->pageNotFoundAction($this->request, 'Person not found');
-            throw new ImmediateResponseException($response, 1234567890);
+            // Not ImmediateResponseException: TYPO3 catches that one in the
+            // Application alone, so it bypasses every outer middleware.
+            throw new PropagateResponseException($response, 1234567890);
         }
         $this->view->assignMultiple(
             [

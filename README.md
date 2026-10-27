@@ -174,6 +174,9 @@ Im TYPO3 Backend:
   * `username` - optionaler BasicAuth-Username zum Zugriff auf die API; leer lassen, um den Umgebungsvariablen-Fallback zu verwenden
   * `password` - optionales BasicAuth-Passwort zum Zugriff auf die API; leer lassen, um den Umgebungsvariablen-Fallback zu verwenden
   * `--no-basic-auth` - optional, deaktiviert BasicAuth für diesen Task; Scheduler- und Umgebungsvariablen-Zugangsdaten werden ignoriert
+  * `--with-trashed` - optional, ruft auch die in der Middleware gelöschten Datensätze ab und verbirgt sie; setzt die beiden folgenden Optionen standardmäßig auf 7 bzw. 30 Tage
+  * `--soft-delete-after-days=N` - optional, verbirgt Datensätze, deren `lastSeenAt` mehr als N Tage zurückliegt, auch solche, die die Middleware nicht mehr liefert
+  * `--hard-delete-after-days=N` - optional, verschiebt vom Import verborgene Datensätze in den TYPO3-Papierkorb, sobald ihr Lösch-Zeitpunkt mehr als N Tage zurückliegt
 
 BasicAuth kann zentral über Prozess-Umgebungsvariablen konfiguriert werden:
 
@@ -192,6 +195,24 @@ Die BasicAuth-Konfiguration wird in dieser Reihenfolge aufgelöst:
 2. Wenn `username` und `password` im Scheduler-Task gesetzt sind, werden diese Werte verwendet.
 3. Wenn beide Umgebungsvariablen gesetzt sind, werden diese Werte verwendet.
 4. Andernfalls wird kein BasicAuth verwendet.
+
+### Nicht mehr gelieferte Datensätze verbergen und löschen
+
+Ohne die drei Optionen verbirgt und löscht der Import wie bisher nichts. Sie setzen eine
+Middleware mit `lastSeenAt` voraus, `--with-trashed` zusätzlich `filter[trashed]=with`.
+
+* Verborgen wird per `hidden=1`, gelöscht per `deleted=1` (TYPO3-Papierkorb, endgültig
+  leeren mit `cleanup:deletedrecords --min-age=<Tage>`).
+* Die N Tage der Optionen zählen ab dem neuesten `lastSeenAt` bzw. `deletedAt` des Laufs,
+  nicht ab jetzt.
+* Lösch-Zeitpunkt ist `deletedAt` bzw. `lastSeenAt` plus die Soft-Delete-Tage. Liefert die
+  Middleware einen vom Import verborgenen Datensatz mit einem späteren `lastSeenAt`, wird
+  er wieder angezeigt.
+* Betroffen sind nur Datensätze auf der Speicherseite des Tasks. Von Redakteuren
+  verborgene Datensätze zeigt der Import nicht wieder an und löscht sie nicht.
+* **Beim späteren Aktivieren beachten:** `last_seen_at` wird ab dem Update in jedem Lauf
+  gepflegt. Der erste Lauf mit `--with-trashed` verbirgt deshalb sofort, was seit mehr als
+  7 Tagen fehlt, und verschiebt, was seit mehr als 37 Tagen fehlt, in den Papierkorb.
 
 ## Konfiguration HIO-Publisher - Asynchroner Import (Middleware - Push)
 

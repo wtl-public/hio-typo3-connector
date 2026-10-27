@@ -574,6 +574,18 @@
                 <source>Disable BasicAuth for this task. Scheduler and process environment credentials are ignored.</source>
                 <target>BasicAuth für diesen Task deaktivieren. Zugangsdaten aus Scheduler und Prozessumgebung werden ignoriert.</target>
             </trans-unit>
+            <trans-unit id="scheduler.import.option.withTrashed.description" resname="scheduler.import.option.withTrashed.description">
+                <source>Also fetch the records the middleware has trashed and hide them in the storage folder (soft delete). Records hidden this way are shown again once the middleware delivers them again. Unless set otherwise, also hides records not received for 7 days and moves them to the recycle bin 30 days later.</source>
+                <target>Auch die von der Middleware gelöschten Datensätze abrufen und im Speicherordner verbergen (Soft Delete). So verborgene Datensätze werden wieder angezeigt, sobald die Middleware sie wieder liefert. Sofern nicht anders angegeben, werden zusätzlich seit 7 Tagen nicht mehr erhaltene Datensätze verborgen und 30 Tage später in den Papierkorb verschoben.</target>
+            </trans-unit>
+            <trans-unit id="scheduler.import.option.softDeleteAfterDays.description" resname="scheduler.import.option.softDeleteAfterDays.description">
+                <source>Hide records in the storage folder (soft delete) that the middleware last received from HISinOne more than this many days before the newest record of the run, including records it no longer delivers at all. Defaults to 7 with --with-trashed.</source>
+                <target>Datensätze im Speicherordner verbergen (Soft Delete), die die Middleware mehr als so viele Tage vor dem neuesten Datensatz des Laufs zuletzt aus HISinOne erhalten hat, auch solche, die sie gar nicht mehr liefert. Mit --with-trashed standardmäßig 7.</target>
+            </trans-unit>
+            <trans-unit id="scheduler.import.option.hardDeleteAfterDays.description" resname="scheduler.import.option.hardDeleteAfterDays.description">
+                <source>Move records the import hid (soft delete) to the recycle bin (hard delete) this many days later. Records hidden by an editor are never deleted. Defaults to 30 with --with-trashed.</source>
+                <target>Vom Import verborgene Datensätze (Soft Delete) so viele Tage später in den Papierkorb verschieben (Hard Delete). Von Redakteuren verborgene Datensätze werden nie gelöscht. Mit --with-trashed standardmäßig 30.</target>
+            </trans-unit>
             <trans-unit id="scheduler.requestImport.argument.apiUsername.description" resname="scheduler.requestImport.argument.apiUsername.description">
                 <source>Optional API BasicAuth username. Leave empty to use HIO_TYPO3_CONNECTOR_BASIC_AUTH_USERNAME from the process environment if available; otherwise no BasicAuth is used.</source>
                 <target>Optionaler API-BasicAuth-Username. Leer lassen, um HIO_TYPO3_CONNECTOR_BASIC_AUTH_USERNAME aus der Prozessumgebung zu verwenden, falls verfügbar; andernfalls wird kein BasicAuth verwendet.</target>

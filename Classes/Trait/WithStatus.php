@@ -8,7 +8,7 @@ use Wtl\HioTypo3Connector\Domain\Dto\Misc\StatusDto;
 
 trait WithStatus
 {
-    protected ?StatusDto $status;
+    protected ?StatusDto $status = null;
 
     public function getStatus(): ?StatusDto
     {

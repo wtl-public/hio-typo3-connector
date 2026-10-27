@@ -8,7 +8,7 @@ use Wtl\HioTypo3Connector\Domain\Dto\Misc\VisibilityDto;
 
 trait WithVisibility
 {
-    protected ?VisibilityDto $visibility;
+    protected ?VisibilityDto $visibility = null;
 
     public function getVisibility(): ?VisibilityDto
     {

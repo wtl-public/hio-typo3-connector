@@ -6,7 +6,7 @@ namespace Wtl\HioTypo3Connector\Trait;
 
 trait WithType
 {
-    protected ?string $type;
+    protected ?string $type = null;
 
     public function getType(): string|null
     {

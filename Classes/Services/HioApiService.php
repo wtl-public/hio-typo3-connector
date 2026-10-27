@@ -35,6 +35,8 @@ class HioApiService
 
     protected $verifySsl = false;
 
+    protected bool $withTrashed = false;
+
     public function __construct(
         RequestFactory $requestFactory,
         protected readonly EventDispatcherInterface $eventDispatcher,
@@ -63,8 +65,19 @@ class HioApiService
         $this->verifySsl = $verifySsl;
     }
 
+    /**
+     * Also fetch the records the middleware has trashed (filter[trashed]=with).
+     */
+    public function setWithTrashed(bool $withTrashed): void
+    {
+        $this->withTrashed = $withTrashed;
+    }
+
     public function fetch($page=1): ApiResponse {
         $requestUrl = $this->url . (str_contains($this->url, '?') ? '&' : '?') . 'page=' . $page;
+        if ($this->withTrashed) {
+            $requestUrl .= '&filter[trashed]=with';
+        }
         try {
             $response = $this->requestFactory->request($requestUrl, 'GET', [
                 'headers' => $this->headers,
@@ -98,6 +111,11 @@ class HioApiService
         }
 
         return $apiResponse->getData();
+    }
+
+    public function getResponse(): ApiResponse
+    {
+        return $this->responseBody;
     }
 
     public function getMeta(): ApiMeta|null {

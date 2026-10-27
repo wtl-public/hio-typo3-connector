@@ -12,6 +12,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use Wtl\HioTypo3Connector\Event\ReceiveHioDoctoralProgramEvent;
 use Wtl\HioTypo3Connector\Services\HioDoctoralProgramService;
+use Wtl\HioTypo3Connector\Services\RecordLifecycle\RecordLifecycleService;
 use Wtl\HioTypo3Connector\Trait\WithConfigureImportCommandTrait;
 
 class DoctoralProgramsImportCommand extends Command
@@ -22,7 +23,8 @@ class DoctoralProgramsImportCommand extends Command
 
     public function __construct(
         protected readonly HioDoctoralProgramService $hioDoctoralProgramService,
-        protected readonly EventDispatcherInterface  $eventDispatcher)
+        protected readonly EventDispatcherInterface  $eventDispatcher,
+        private readonly RecordLifecycleService $recordLifecycleService)
     {
         parent::__construct();
     }
@@ -42,6 +44,11 @@ class DoctoralProgramsImportCommand extends Command
             (bool)$input->getOption('verify-ssl'),
             (bool)$input->getOption('no-basic-auth')
         );
+        $recordLifecycle = $this->recordLifecycleService->startRun(
+            $this->hioDoctoralProgramService,
+            'tx_hiotypo3connector_domain_model_doctoralprogram',
+            $input
+        );
 
         $currentPage = 1;
         do {
@@ -50,6 +57,7 @@ class DoctoralProgramsImportCommand extends Command
                 $output->writeln('No new doctoral programs found');
                 return Command::SUCCESS;
             }
+            $doctoralPrograms = $recordLifecycle->beforeDispatch($doctoralPrograms);
 
             foreach ($doctoralPrograms as $doctoralProgram) {
                 $this->eventDispatcher->dispatch(
@@ -57,10 +65,12 @@ class DoctoralProgramsImportCommand extends Command
                 );
             }
 
+            $recordLifecycle->afterDispatch();
+
             $currentPage++;
         } while ($currentPage <= $this->hioDoctoralProgramService->getMeta()->getLastPage());
 
-        $output->writeln($this->hioDoctoralProgramService->getMeta()->getTotal() . ' doctoral programs imported successfully');
+        $recordLifecycle->finish($output, 'doctoral programs');
         return Command::SUCCESS;
     }
 }

@@ -6,6 +6,58 @@ Die Versionierung folgt [Semantic Versioning](https://semver.org/lang/de/).
 
 ---
 
+## [1.5.0]
+
+### Hinweise für Redakteure
+
+- HIO-Datensätze, die die Middleware nicht mehr liefert, kann der Import automatisch
+  verbergen und später in den Papierkorb verschieben, sofern das in der Einrichtung
+  aktiviert ist.
+- Von Redakteuren verborgene Datensätze zeigt der Import weder wieder an noch löscht er
+  sie. Macht ein Redakteur einen vom Import verborgenen Datensatz sichtbar, verbirgt der
+  Import ihn erneut, solange die Middleware ihn als gelöscht oder veraltet meldet.
+
+### Hinweise zur Einrichtung
+
+- Die Direktimport-Kommandos `hio:*:import` haben die neuen Optionen `--with-trashed`,
+  `--soft-delete-after-days=N` und `--hard-delete-after-days=N`. Zum Aktivieren genügt
+  `--with-trashed` im Scheduler-Task: Der Import verbirgt dann in der Middleware gelöschte
+  Datensätze sofort und fehlende nach 7 Tagen. In den Papierkorb verschiebt er sie 30 Tage
+  nach `deletedAt` bzw. 37 Tage nach dem letzten `lastSeenAt`. Ohne die Optionen verbirgt
+  und löscht er wie bisher nichts. Details stehen im README.
+- **Beim späteren Aktivieren beachten:** `last_seen_at` wird ab dem Update bei jedem Lauf
+  gepflegt, auch ohne die Optionen. Die Fristen greifen deshalb schon im ersten Lauf mit
+  `--with-trashed` rückwirkend.
+- `--with-trashed` setzt eine Middleware voraus, die `filter[trashed]=with` und
+  `lastSeenAt` unterstützt.
+
+### Hinweise für Agentur-Entwickler
+
+- `ApiResponse::getData()` enthält keine in der Middleware gelöschten Einträge mehr. Neu
+  sind `getTrashed()` und `getLastSeen()` (`deletedAt` bzw. `lastSeenAt` je `object_id`
+  als Unix-Zeitstempel oder `null`). `HioApiService` hat die neuen Methoden
+  `setWithTrashed()` und `getResponse()`.
+- Die Logik liegt in den neuen Klassen `RecordLifecycleService` und `RecordLifecycleRun`
+  (`Classes/Services/RecordLifecycle/`). Die zehn Import-Kommandos erhalten
+  `RecordLifecycleService` als zusätzlichen Konstruktorparameter (Autowiring). Anzupassen
+  ist nur Code, der die Kommandos selbst instanziiert oder von ihnen erbt.
+- Die Zusammenfassung am Ende des Laufs zählt in der Middleware gelöschte und ausgelassene
+  Datensätze nicht mehr zu den importierten und nennt je nach Optionen auch wieder
+  angezeigte, verborgene und in den Papierkorb verschobene Datensätze.
+
+#### Datenbankschema aktualisieren
+
+Nach dem Update muss das Datenbankschema aktualisiert werden, damit die neuen Spalten
+`last_seen_at`, `soft_deleted_at` und `tstamp` in den zehn Tabellen der Import-Kommandos
+angelegt werden. Ohne sie bricht der Import mit einem SQL-Fehler ab, auch ohne die neuen
+Optionen.
+
+```bash
+ddev exec vendor/bin/typo3 database:updateschema
+```
+
+---
+
 ## [1.4.1]
 
 ### Hinweise für Redakteure

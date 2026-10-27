@@ -8,7 +8,7 @@ use Wtl\HioTypo3Connector\Domain\Dto\Misc\LanguageDto;
 
 trait WithLanguage
 {
-    protected ?LanguageDto $language;
+    protected ?LanguageDto $language = null;
 
     public function getLanguage(): ?LanguageDto
     {

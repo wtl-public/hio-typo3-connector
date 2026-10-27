@@ -62,7 +62,7 @@ class PatentDto
         $dto->setPatentNumber($data['patentNumber'] ?? '');
         $dto->setRegistrationDate(isset($data['registrationDate']) ? new \DateTime($data['registrationDate']) : null);
         $dto->setStatus(isset($data['status']) ? StatusDto::fromArray($data['status']) : null);
-        $dto->setTitle($data['title']);
+        $dto->setTitle($data['title'] ?? '');
         $dto->setVisibility(isset($data['visibility']) ? VisibilityDto::fromArray($data['visibility']) : null);
         return $dto;
     }

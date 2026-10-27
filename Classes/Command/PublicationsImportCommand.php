@@ -14,6 +14,7 @@ use Wtl\HioTypo3Connector\Domain\Dto\PublicationDto;
 use Wtl\HioTypo3Connector\Domain\Repository\CitationStyleRepository;
 use Wtl\HioTypo3Connector\Event\ReceiveHioPublicationEvent;
 use Wtl\HioTypo3Connector\Services\HioPublicationService;
+use Wtl\HioTypo3Connector\Services\RecordLifecycle\RecordLifecycleService;
 use Wtl\HioTypo3Connector\Trait\WithConfigureImportCommandTrait;
 
 class PublicationsImportCommand extends Command
@@ -25,7 +26,8 @@ class PublicationsImportCommand extends Command
     public function __construct(
         private readonly HioPublicationService $hioPublicationService,
         protected readonly CitationStyleRepository $citationStyleRepository,
-        protected readonly EventDispatcherInterface $eventDispatcher
+        protected readonly EventDispatcherInterface $eventDispatcher,
+        private readonly RecordLifecycleService $recordLifecycleService
     )
     {
         parent::__construct();
@@ -46,6 +48,11 @@ class PublicationsImportCommand extends Command
             (bool)$input->getOption('verify-ssl'),
             (bool)$input->getOption('no-basic-auth')
         );
+        $recordLifecycle = $this->recordLifecycleService->startRun(
+            $this->hioPublicationService,
+            'tx_hiotypo3connector_domain_model_publication',
+            $input
+        );
 
         $currentPage = 1;
         $firstPublication = null;
@@ -56,8 +63,9 @@ class PublicationsImportCommand extends Command
                 $output->writeln('No new publications found');
                 return Command::SUCCESS;
             }
+            $publications = $recordLifecycle->beforeDispatch($publications);
             if ($firstPublication === null) {
-                $firstPublication = $publications[0];
+                $firstPublication = $publications[0] ?? null;
             }
 
             foreach ($publications as $publication) {
@@ -66,6 +74,8 @@ class PublicationsImportCommand extends Command
                 );
             }
 
+            $recordLifecycle->afterDispatch();
+
             $currentPage++;
         } while ($currentPage <= $this->hioPublicationService->getMeta()->getLastPage());
 
@@ -73,7 +83,7 @@ class PublicationsImportCommand extends Command
             $this->citationStyleRepository->saveCitationStyles($firstPublication->getCitations());
         }
 
-        $output->writeln($this->hioPublicationService->getMeta()->getTotal() . ' Publications imported successfully');
+        $recordLifecycle->finish($output, 'Publications');
         return Command::SUCCESS;
     }
 }

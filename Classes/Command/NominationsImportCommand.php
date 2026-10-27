@@ -13,6 +13,7 @@ use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use Wtl\HioTypo3Connector\Domain\Dto\NominationDto;
 use Wtl\HioTypo3Connector\Event\ReceiveHioNominationEvent;
 use Wtl\HioTypo3Connector\Services\HioNominationService;
+use Wtl\HioTypo3Connector\Services\RecordLifecycle\RecordLifecycleService;
 use Wtl\HioTypo3Connector\Trait\WithConfigureImportCommandTrait;
 
 class NominationsImportCommand extends Command
@@ -23,7 +24,8 @@ class NominationsImportCommand extends Command
 
     public function __construct(
         private readonly HioNominationService $nominationService,
-        protected readonly EventDispatcherInterface $eventDispatcher
+        protected readonly EventDispatcherInterface $eventDispatcher,
+        private readonly RecordLifecycleService $recordLifecycleService
     )
     {
         parent::__construct();
@@ -44,6 +46,11 @@ class NominationsImportCommand extends Command
             (bool)$input->getOption('verify-ssl'),
             (bool)$input->getOption('no-basic-auth')
         );
+        $recordLifecycle = $this->recordLifecycleService->startRun(
+            $this->nominationService,
+            'tx_hiotypo3connector_domain_model_nomination',
+            $input
+        );
 
         $currentPage = 1;
         do {
@@ -53,6 +60,7 @@ class NominationsImportCommand extends Command
                 $output->writeln('No new nominations found');
                 return Command::SUCCESS;
             }
+            $nominations = $recordLifecycle->beforeDispatch($nominations);
 
             foreach ($nominations as $nomination) {
                 $this->eventDispatcher->dispatch(
@@ -60,10 +68,12 @@ class NominationsImportCommand extends Command
                 );
             }
 
+            $recordLifecycle->afterDispatch();
+
             $currentPage++;
         } while ($currentPage <= $this->nominationService->getMeta()->getLastPage());
 
-        $output->writeln($this->nominationService->getMeta()->getTotal() . ' Nominations imported successfully');
+        $recordLifecycle->finish($output, 'Nominations');
         return Command::SUCCESS;
     }
 }

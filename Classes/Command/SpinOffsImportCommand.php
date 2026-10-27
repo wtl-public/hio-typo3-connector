@@ -13,6 +13,7 @@ use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
 use Wtl\HioTypo3Connector\Domain\Dto\SpinOffDto;
 use Wtl\HioTypo3Connector\Event\ReceiveHioSpinOffEvent;
 use Wtl\HioTypo3Connector\Services\HioSpinOffService;
+use Wtl\HioTypo3Connector\Services\RecordLifecycle\RecordLifecycleService;
 use Wtl\HioTypo3Connector\Trait\WithConfigureImportCommandTrait;
 
 class SpinOffsImportCommand extends Command
@@ -23,7 +24,8 @@ class SpinOffsImportCommand extends Command
 
     public function __construct(
         private readonly HioSpinOffService $service,
-        protected readonly EventDispatcherInterface $eventDispatcher
+        protected readonly EventDispatcherInterface $eventDispatcher,
+        private readonly RecordLifecycleService $recordLifecycleService
     )
     {
         parent::__construct();
@@ -44,6 +46,11 @@ class SpinOffsImportCommand extends Command
             (bool)$input->getOption('verify-ssl'),
             (bool)$input->getOption('no-basic-auth')
         );
+        $recordLifecycle = $this->recordLifecycleService->startRun(
+            $this->service,
+            'tx_hiotypo3connector_domain_model_spinoff',
+            $input
+        );
 
         $currentPage = 1;
         do {
@@ -53,6 +60,7 @@ class SpinOffsImportCommand extends Command
                 $output->writeln('No new spin-offs found');
                 return Command::SUCCESS;
             }
+            $spinOffs = $recordLifecycle->beforeDispatch($spinOffs);
 
             foreach ($spinOffs as $spinOff) {
                 $this->eventDispatcher->dispatch(
@@ -60,10 +68,12 @@ class SpinOffsImportCommand extends Command
                 );
             }
 
+            $recordLifecycle->afterDispatch();
+
             $currentPage++;
         } while ($currentPage <= $this->service->getMeta()->getLastPage());
 
-        $output->writeln($this->service->getMeta()->getTotal() . ' spin-offs imported successfully');
+        $recordLifecycle->finish($output, 'spin-offs');
         return Command::SUCCESS;
     }
 }

@@ -70,7 +70,7 @@ class PrizeDto
         $instance->setId($data['id'] ?? null);
         $instance->setOrgUnits(array_map(fn($item) => OrgUnitDto::fromArray($item), $data['orgUnits'] ?? []));
         $instance->setStatus(isset($data['status']) ? StatusDto::fromArray($data['status']) : null);
-        $instance->setTitle($data['title'] ?? null);
+        $instance->setTitle($data['title'] ?? '');
         $instance->setPrizeType(isset($data['prizeType']) ? PrizeTypeDto::fromArray($data['prizeType']) : null);
         return $instance;
     }

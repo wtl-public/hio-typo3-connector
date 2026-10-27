@@ -17,6 +17,7 @@ return [
         'hideTable' => false,
         'default_sortby' => 'name ASC',
         'sortby' => 'sorting',
+        'tstamp' => 'tstamp',
         'delete' => 'deleted',
         'enablecolumns' => [
             'disabled' => 'hidden',
@@ -72,6 +73,18 @@ return [
                 'type' => 'passthrough',
             ],
         ],
+        'last_seen_at' => [
+            'label' => 'last_seen_at',
+            'config' => [
+                'type' => 'passthrough',
+            ],
+        ],
+        'soft_deleted_at' => [
+            'label' => 'soft_deleted_at',
+            'config' => [
+                'type' => 'passthrough',
+            ],
+        ],
         'object_id' => [
             'exclude' => true,
             'label' => 'LLL:EXT:hio_typo3_connector/Resources/Private/Language/locallang.xlf:hio.objectId',
@@ -93,6 +106,7 @@ return [
                 'eval' => 'trim',
                 'readOnly' => true,
                 'required' => false,
+                'default' => '',
             ],
         ],
         'details' => [
