@@ -54,17 +54,25 @@ class PatentsImportCommand extends Command
         $currentPage = 1;
         do {
             /** @var PatentDto[] $patents */
-            $patents = $this->hioPatentService->getPatents($currentPage);
+            $patents = $this->hioPatentService->getPatents(
+                $currentPage,
+                $recordLifecycle->recordFailure(...)
+            );
             if ($this->hioPatentService->getMeta()->getTotal() === 0) {
                 $output->writeln('No new patents found');
-                return Command::SUCCESS;
+                break;
             }
             $patents = $recordLifecycle->beforeDispatch($patents);
 
             foreach ($patents as $patent) {
-                $this->eventDispatcher->dispatch(
-                    new ReceiveHioPatentEvent($patent, (int)$input->getArgument('storagePageId'))
-                );
+                try {
+                    $this->eventDispatcher->dispatch(
+                        new ReceiveHioPatentEvent($patent, (int)$input->getArgument('storagePageId'))
+                    );
+                    $recordLifecycle->recordImported();
+                } catch (\Throwable $exception) {
+                    $recordLifecycle->recordFailure($patent->getObjectId(), $exception);
+                }
             }
 
             $recordLifecycle->afterDispatch();
@@ -73,6 +81,6 @@ class PatentsImportCommand extends Command
         } while ($currentPage <= $this->hioPatentService->getMeta()->getLastPage());
 
         $recordLifecycle->finish($output, 'Patents');
-        return Command::SUCCESS;
+        return $recordLifecycle->hasFailures() ? Command::FAILURE : Command::SUCCESS;
     }
 }

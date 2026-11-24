@@ -5,6 +5,9 @@ services:
     public: false
   Wtl\HioTypo3Connector\:
     resource: '../Classes/*'
+    exclude:
+      - '../Classes/Scheduler/ImportResultTaskRepository.php'
+      - '../Classes/Scheduler/ReadonlyImportResultTaskRepository.php'
 
   Wtl\HioTypo3Connector\Search\UmlautSearchVariantBuilder:
     arguments:

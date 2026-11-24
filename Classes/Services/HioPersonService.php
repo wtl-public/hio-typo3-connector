@@ -6,21 +6,18 @@ use Wtl\HioTypo3Connector\Domain\Dto\PersonDto;
 
 class HioPersonService extends HioApiService
 {
-    public function getPersons(int $page = 1): array
+    /**
+     * @param (callable(?int, \Throwable): void)|null $onMappingFailure
+     * @return PersonDto[]
+     */
+    public function getPersons(int $page = 1, ?callable $onMappingFailure = null): array
     {
-        $apiResponse = $this->fetch($page);
-
-        if ($apiResponse->getMeta()->getTotal() === 0) {
-            return [];
-        }
-
-        $result = $apiResponse->getData();
-        foreach ($result as $person) {
-            if (!$person['name']['displayName']) {
-                continue;
-            }
-            $persons[] = PersonDto::fromArray($person);
-        }
-        return $persons ?? [];
+        return $this->fetchMappedPage(
+            $page,
+            static function (array $person): ?PersonDto {
+                return $person['name']['displayName'] ? PersonDto::fromArray($person) : null;
+            },
+            $onMappingFailure
+        );
     }
 }

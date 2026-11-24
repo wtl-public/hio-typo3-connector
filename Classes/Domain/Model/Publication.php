@@ -85,6 +85,14 @@ class Publication extends AbstractEntity
     {
         return $this->title;
     }
+    public function getDetailsTitle(): string
+    {
+        $details = isset($this->details) ? $this->getDetails() : null;
+        $title = $details['title'] ?? null;
+
+        return is_string($title) && $title !== '' ? $title : $this->getTitle();
+    }
+
     public function setTitle($title): void
     {
         $this->title = $title;

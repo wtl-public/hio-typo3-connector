@@ -55,17 +55,25 @@ class ResearchInfrastructuresImportCommand extends Command
         $currentPage = 1;
         do {
             /** @var ResearchInfrastructureDto[] $researchInfrastructureDtos */
-            $researchInfrastructureDtos = $this->service->getResearchInfrastructures($currentPage);
+            $researchInfrastructureDtos = $this->service->getResearchInfrastructures(
+                $currentPage,
+                $recordLifecycle->recordFailure(...)
+            );
             if ($this->service->getMeta()->getTotal() === 0) {
                 $output->writeln('No new research infrastructures found');
-                return Command::SUCCESS;
+                break;
             }
             $researchInfrastructureDtos = $recordLifecycle->beforeDispatch($researchInfrastructureDtos);
 
             foreach ($researchInfrastructureDtos as $researchInfrastructureDto) {
-                $this->eventDispatcher->dispatch(
-                    new ReceiveHioResearchInfrastructureEvent($researchInfrastructureDto, (int)$input->getArgument('storagePageId'))
-                );
+                try {
+                    $this->eventDispatcher->dispatch(
+                        new ReceiveHioResearchInfrastructureEvent($researchInfrastructureDto, (int)$input->getArgument('storagePageId'))
+                    );
+                    $recordLifecycle->recordImported();
+                } catch (\Throwable $exception) {
+                    $recordLifecycle->recordFailure($researchInfrastructureDto->getObjectId(), $exception);
+                }
             }
 
             $recordLifecycle->afterDispatch();
@@ -74,6 +82,6 @@ class ResearchInfrastructuresImportCommand extends Command
         } while ($currentPage <= $this->service->getMeta()->getLastPage());
 
         $recordLifecycle->finish($output, 'research infrastructures');
-        return Command::SUCCESS;
+        return $recordLifecycle->hasFailures() ? Command::FAILURE : Command::SUCCESS;
     }
 }

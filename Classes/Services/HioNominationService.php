@@ -6,19 +6,16 @@ use Wtl\HioTypo3Connector\Domain\Dto\NominationDto;
 
 class HioNominationService extends HioApiService
 {
-    public function getNominations(int $page = 1): array
+    /**
+     * @param (callable(?int, \Throwable): void)|null $onMappingFailure
+     * @return NominationDto[]
+     */
+    public function getNominations(int $page = 1, ?callable $onMappingFailure = null): array
     {
-        $apiResponse = $this->fetch($page);
-
-        if ($apiResponse->getMeta()->getTotal() === 0) {
-            return [];
-        }
-
-        $result = $apiResponse->getData();
-        $nominations = [];
-        foreach ($result as $nomination) {
-            $nominations[] = NominationDto::fromArray($nomination);
-        }
-        return $nominations;
+        return $this->fetchMappedPage(
+            $page,
+            NominationDto::fromArray(...),
+            $onMappingFailure
+        );
     }
 }

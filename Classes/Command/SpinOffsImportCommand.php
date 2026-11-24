@@ -55,17 +55,25 @@ class SpinOffsImportCommand extends Command
         $currentPage = 1;
         do {
             /** @var SpinOffDto[] $spinOffs */
-            $spinOffs = $this->service->getSpinOffs($currentPage);
+            $spinOffs = $this->service->getSpinOffs(
+                $currentPage,
+                $recordLifecycle->recordFailure(...)
+            );
             if ($this->service->getMeta()->getTotal() === 0) {
                 $output->writeln('No new spin-offs found');
-                return Command::SUCCESS;
+                break;
             }
             $spinOffs = $recordLifecycle->beforeDispatch($spinOffs);
 
             foreach ($spinOffs as $spinOff) {
-                $this->eventDispatcher->dispatch(
-                    new ReceiveHioSpinOffEvent($spinOff, (int)$input->getArgument('storagePageId'))
-                );
+                try {
+                    $this->eventDispatcher->dispatch(
+                        new ReceiveHioSpinOffEvent($spinOff, (int)$input->getArgument('storagePageId'))
+                    );
+                    $recordLifecycle->recordImported();
+                } catch (\Throwable $exception) {
+                    $recordLifecycle->recordFailure($spinOff->getObjectId(), $exception);
+                }
             }
 
             $recordLifecycle->afterDispatch();
@@ -74,6 +82,6 @@ class SpinOffsImportCommand extends Command
         } while ($currentPage <= $this->service->getMeta()->getLastPage());
 
         $recordLifecycle->finish($output, 'spin-offs');
-        return Command::SUCCESS;
+        return $recordLifecycle->hasFailures() ? Command::FAILURE : Command::SUCCESS;
     }
 }

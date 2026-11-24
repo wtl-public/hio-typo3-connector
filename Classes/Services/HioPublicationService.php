@@ -8,20 +8,20 @@ use Wtl\HioTypo3Connector\Domain\Dto\PublicationDto;
 
 class HioPublicationService extends HioApiService
 {
-    public function getPublications(int $page = 1): array {
-        $apiResponse = $this->fetch($page);
-
-        if ($apiResponse->getMeta()->getTotal() === 0) {
-            return [];
-        }
-
-        $result = $apiResponse->getData();
-        foreach ($result as $publication) {
-            $releaseYear = $publication['journal']['releaseYear'] ?? null;
-            $dto = PublicationDto::fromArray($publication);
-            $dto->setReleaseYear($releaseYear);
-            $publications[] = $dto;
-        }
-        return $publications??[];
+    /**
+     * @param (callable(?int, \Throwable): void)|null $onMappingFailure
+     * @return PublicationDto[]
+     */
+    public function getPublications(int $page = 1, ?callable $onMappingFailure = null): array
+    {
+        return $this->fetchMappedPage(
+            $page,
+            static function (array $publication): PublicationDto {
+                $dto = PublicationDto::fromArray($publication);
+                $dto->setReleaseYear($publication['journal']['releaseYear'] ?? null);
+                return $dto;
+            },
+            $onMappingFailure
+        );
     }
 }

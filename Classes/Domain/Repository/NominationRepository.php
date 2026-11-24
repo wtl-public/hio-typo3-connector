@@ -33,6 +33,8 @@ class NominationRepository extends BaseRepository
             'search_index'    => (string)$dto->getSearchIndex(),
         ];
 
+        $data = $this->prepareImportData(self::TABLE, $data);
+
         if ($existing === false) {
             $data['slug'] = $this->generateSlug(self::TABLE, 'slug', $data, $storagePageId);
             $connection->insert(self::TABLE, array_merge($data, [

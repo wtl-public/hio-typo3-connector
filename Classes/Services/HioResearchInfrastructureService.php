@@ -6,18 +6,16 @@ use Wtl\HioTypo3Connector\Domain\Dto\ResearchInfrastructureDto;
 
 class HioResearchInfrastructureService extends HioApiService
 {
-    public function getResearchInfrastructures(int $page = 1): array
+    /**
+     * @param (callable(?int, \Throwable): void)|null $onMappingFailure
+     * @return ResearchInfrastructureDto[]
+     */
+    public function getResearchInfrastructures(int $page = 1, ?callable $onMappingFailure = null): array
     {
-        $apiResponse = $this->fetch($page);
-
-        if ($apiResponse->getMeta()->getTotal() === 0) {
-            return [];
-        }
-
-        $result = $apiResponse->getData();
-        foreach ($result as $researchInfrastructure) {
-            $researchInfrastructures[] = ResearchInfrastructureDto::fromArray($researchInfrastructure);
-        }
-        return $researchInfrastructures ?? [];
+        return $this->fetchMappedPage(
+            $page,
+            ResearchInfrastructureDto::fromArray(...),
+            $onMappingFailure
+        );
     }
 }

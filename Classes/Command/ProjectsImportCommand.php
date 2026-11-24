@@ -53,17 +53,25 @@ class ProjectsImportCommand extends Command
         $currentPage = 1;
         do {
             /** @var ProjectDto[] $projects */
-            $projects = $this->hioProjectService->getProjects($currentPage);
+            $projects = $this->hioProjectService->getProjects(
+                $currentPage,
+                $recordLifecycle->recordFailure(...)
+            );
             if ($this->hioProjectService->getMeta()->getTotal() === 0) {
                 $output->writeln('No new projects found');
-                return Command::SUCCESS;
+                break;
             }
             $projects = $recordLifecycle->beforeDispatch($projects);
 
             foreach ($projects as $project) {
-                $this->eventDispatcher->dispatch(
-                    new ReceiveHioProjectEvent($project, (int)$input->getArgument('storagePageId'))
-                );
+                try {
+                    $this->eventDispatcher->dispatch(
+                        new ReceiveHioProjectEvent($project, (int)$input->getArgument('storagePageId'))
+                    );
+                    $recordLifecycle->recordImported();
+                } catch (\Throwable $exception) {
+                    $recordLifecycle->recordFailure($project->getObjectId(), $exception);
+                }
             }
 
             $recordLifecycle->afterDispatch();
@@ -72,6 +80,6 @@ class ProjectsImportCommand extends Command
         } while ($currentPage <= $this->hioProjectService->getMeta()->getLastPage());
 
         $recordLifecycle->finish($output, 'Projects');
-        return Command::SUCCESS;
+        return $recordLifecycle->hasFailures() ? Command::FAILURE : Command::SUCCESS;
     }
 }

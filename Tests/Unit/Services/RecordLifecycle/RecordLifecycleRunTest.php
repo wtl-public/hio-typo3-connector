@@ -32,6 +32,8 @@ use Wtl\HioTypo3Connector\Services\RecordLifecycle\RecordLifecycleRun;
 #[CoversClass(RecordLifecycleRun::class)]
 final class RecordLifecycleRunTest extends UnitTestCase
 {
+    protected bool $resetSingletonInstances = true;
+
     private const TABLE = 'tx_hiotypo3connector_domain_model_project';
     private const STORAGE_PAGE_ID = 42;
     private const LABEL = 'Projects';
@@ -92,7 +94,7 @@ final class RecordLifecycleRunTest extends UnitTestCase
     // =========================================================================
 
     #[Test]
-    public function finish_runWithoutOptionsAndTimestamps_printsOnlyTheImportedLine(): void
+    public function finish_runWithoutOptionsAndTimestamps_printsImportAndFailureCounts(): void
     {
         $response = $this->makeResponse([['id' => 1], ['id' => 2]]);
         $queryBuilder = $this->makeQueryBuilder();
@@ -101,7 +103,7 @@ final class RecordLifecycleRunTest extends UnitTestCase
 
         $output = $this->runPage($this->makeRun($response, $queryBuilder, $connection), [1, 2]);
 
-        self::assertSame("2 Projects imported successfully\n", $output);
+        self::assertSame("2 Projects imported successfully\n0 Projects failed\n", $output);
     }
 
     #[Test]
@@ -117,6 +119,7 @@ final class RecordLifecycleRunTest extends UnitTestCase
 
         self::assertSame(
             "2 Projects imported successfully\n"
+            . "0 Projects failed\n"
             . "0 Projects soft deleted successfully\n"
             . "0 Projects hard deleted successfully\n",
             $output
@@ -151,7 +154,8 @@ final class RecordLifecycleRunTest extends UnitTestCase
         $output = $this->runPage($run, [1, 2, 3]);
 
         self::assertSame(
-            "8 Projects imported successfully (1 restored)\n"
+            "2 Projects imported successfully (1 restored)\n"
+            . "0 Projects failed\n"
             . "3 Projects soft deleted successfully\n"
             . "3 Projects hard deleted successfully\n",
             $output
@@ -169,7 +173,10 @@ final class RecordLifecycleRunTest extends UnitTestCase
      */
     private function runPage(RecordLifecycleRun $run, array $objectIds): string
     {
-        $run->beforeDispatch($this->makeRecords(...$objectIds));
+        $records = $run->beforeDispatch($this->makeRecords(...$objectIds));
+        foreach ($records as $record) {
+            $run->recordImported();
+        }
         $run->afterDispatch();
         $output = new BufferedOutput();
         $run->finish($output, self::LABEL);

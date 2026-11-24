@@ -28,6 +28,8 @@ class ResearchInfrastructureRepository extends BaseRepository
             'search_index' => (string)$dto->getSearchIndex(),
         ];
 
+        $data = $this->prepareImportData(self::TABLE, $data);
+
         if ($existing === false) {
             // Generate slug if missing (e.g. records imported before slug field existed)
             $data['slug'] = $this->generateSlug(self::TABLE, 'slug', $data, $storagePageId);

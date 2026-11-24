@@ -460,6 +460,12 @@
                 <source>Disable API BasicAuth for this task. Scheduler and process environment credentials are ignored.</source>
             </trans-unit>
 
+            <trans-unit id="scheduler.import.lastResult">
+                <source>Last import – %d imported, %d failed</source>
+            </trans-unit>
+            <trans-unit id="scheduler.import.abortedResult">
+                <source>Last import aborted – %d imported, %d failed</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -55,23 +55,32 @@ class PublicationsImportCommand extends Command
         );
 
         $currentPage = 1;
-        $firstPublication = null;
+        $citationStylesSaved = false;
         do {
             /** @var PublicationDto[] $publications */
-            $publications = $this->hioPublicationService->getPublications($currentPage);
+            $publications = $this->hioPublicationService->getPublications(
+                $currentPage,
+                $recordLifecycle->recordFailure(...)
+            );
             if ($this->hioPublicationService->getMeta()->getTotal() === 0) {
                 $output->writeln('No new publications found');
-                return Command::SUCCESS;
+                break;
             }
             $publications = $recordLifecycle->beforeDispatch($publications);
-            if ($firstPublication === null) {
-                $firstPublication = $publications[0] ?? null;
-            }
 
             foreach ($publications as $publication) {
-                $this->eventDispatcher->dispatch(
-                    new ReceiveHioPublicationEvent($publication, (int)$input->getArgument('storagePageId')),
-                );
+                try {
+                    $this->eventDispatcher->dispatch(
+                        new ReceiveHioPublicationEvent($publication, (int)$input->getArgument('storagePageId')),
+                    );
+                    if (!$citationStylesSaved) {
+                        $this->citationStyleRepository->saveCitationStyles($publication->getCitations());
+                        $citationStylesSaved = true;
+                    }
+                    $recordLifecycle->recordImported();
+                } catch (\Throwable $exception) {
+                    $recordLifecycle->recordFailure($publication->getObjectId(), $exception);
+                }
             }
 
             $recordLifecycle->afterDispatch();
@@ -79,11 +88,7 @@ class PublicationsImportCommand extends Command
             $currentPage++;
         } while ($currentPage <= $this->hioPublicationService->getMeta()->getLastPage());
 
-        if ($firstPublication !== null) {
-            $this->citationStyleRepository->saveCitationStyles($firstPublication->getCitations());
-        }
-
         $recordLifecycle->finish($output, 'Publications');
-        return Command::SUCCESS;
+        return $recordLifecycle->hasFailures() ? Command::FAILURE : Command::SUCCESS;
     }
 }

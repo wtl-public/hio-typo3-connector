@@ -6,18 +6,16 @@ use Wtl\HioTypo3Connector\Domain\Dto\DoctoralProgramDto;
 
 class HioDoctoralProgramService extends HioApiService
 {
-    public function getDoctoralPrograms(int $page = 1): array
+    /**
+     * @param (callable(?int, \Throwable): void)|null $onMappingFailure
+     * @return DoctoralProgramDto[]
+     */
+    public function getDoctoralPrograms(int $page = 1, ?callable $onMappingFailure = null): array
     {
-        $apiResponse = $this->fetch($page);
-
-        if ($apiResponse->getMeta()->getTotal() === 0) {
-            return [];
-        }
-
-        $result = $apiResponse->getData();
-        foreach ($result as $doctoralProgram) {
-            $doctoralPrograms[] = DoctoralProgramDto::fromArray($doctoralProgram);
-        }
-        return $doctoralPrograms ?? [];
+        return $this->fetchMappedPage(
+            $page,
+            DoctoralProgramDto::fromArray(...),
+            $onMappingFailure
+        );
     }
 }

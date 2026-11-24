@@ -6,18 +6,16 @@ use Wtl\HioTypo3Connector\Domain\Dto\HabilitationDto;
 
 class HioHabilitationService extends HioApiService
 {
-    public function getHabilitations(int $page = 1): array
+    /**
+     * @param (callable(?int, \Throwable): void)|null $onMappingFailure
+     * @return HabilitationDto[]
+     */
+    public function getHabilitations(int $page = 1, ?callable $onMappingFailure = null): array
     {
-        $apiResponse = $this->fetch($page);
-
-        if ($apiResponse->getMeta()->getTotal() === 0) {
-            return [];
-        }
-
-        $result = $apiResponse->getData();
-        foreach ($result as $habilitation) {
-            $habilitations[] = HabilitationDto::fromArray($habilitation);
-        }
-        return $habilitations ?? [];
+        return $this->fetchMappedPage(
+            $page,
+            HabilitationDto::fromArray(...),
+            $onMappingFailure
+        );
     }
 }

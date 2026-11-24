@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Wtl\HioTypo3Connector\Domain\Repository;
 
+use TYPO3\CMS\Core\Log\LogManager;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Wtl\HioTypo3Connector\Utility\NonBmpNormalizer;
 use TYPO3\CMS\Extbase\Persistence\Generic\Qom\OrInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
@@ -15,6 +17,23 @@ use Wtl\HioTypo3Connector\Search\UmlautSearchVariantBuilder;
 
 class BaseRepository extends Repository
 {
+    protected function prepareImportData(string $table, array $data): array
+    {
+        $changed = false;
+        foreach (['title', 'search_index', 'slug'] as $field) {
+            if (isset($data[$field])) {
+                $normalized = NonBmpNormalizer::normalize($data[$field]);
+                $changed = $changed || $normalized !== $data[$field];
+                $data[$field] = $normalized;
+            }
+        }
+        if ($changed) {
+            GeneralUtility::makeInstance(LogManager::class)->getLogger(static::class)
+                ->warning('Simplified non-BMP characters for database storage', ['table' => $table, 'object_id' => $data['object_id']]);
+        }
+        return $data;
+    }
+
     protected UmlautSearchVariantBuilder $umlautSearchVariantBuilder;
   
     protected SlugHelperFactory $slugHelperFactory;
@@ -69,8 +88,15 @@ class BaseRepository extends Repository
      */
     protected function generateSlug(string $table, string $field, array $recordData, int $pid, int $uid = 0): string
     {
+        foreach (['title', 'name'] as $key) {
+            if (isset($recordData[$key])) {
+                $recordData[$key] = NonBmpNormalizer::normalize($recordData[$key]);
+            }
+        }
         $slugHelper = $this->slugHelperFactory->create($table, $field);
-        $value = $slugHelper->generate(array_merge($recordData, ['pid' => $pid]), $pid);
+        $value = NonBmpNormalizer::normalize(
+            $slugHelper->generate(array_merge($recordData, ['pid' => $pid]), $pid)
+        );
 
         $state = RecordStateFactory::forName($table)
             ->fromArray(array_merge($recordData, ['uid' => $uid, 'pid' => $pid]), $pid, $uid);

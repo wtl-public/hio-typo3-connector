@@ -55,17 +55,25 @@ class OrgUnitsImportCommand extends Command
         $currentPage = 1;
         do {
             /** @var OrgUnitDto[] $orgUnits */
-            $orgUnits = $this->orgUnitService->getOrgUnits($currentPage);
+            $orgUnits = $this->orgUnitService->getOrgUnits(
+                $currentPage,
+                $recordLifecycle->recordFailure(...)
+            );
             if ($this->orgUnitService->getMeta()->getTotal() === 0) {
                 $output->writeln('No new organisation units found');
-                return Command::SUCCESS;
+                break;
             }
             $orgUnits = $recordLifecycle->beforeDispatch($orgUnits);
 
             foreach ($orgUnits as $orgUnit) {
-                $this->eventDispatcher->dispatch(
-                    new ReceiveHioOrgUnitEvent($orgUnit, (int)$input->getArgument('storagePageId'))
-                );
+                try {
+                    $this->eventDispatcher->dispatch(
+                        new ReceiveHioOrgUnitEvent($orgUnit, (int)$input->getArgument('storagePageId'))
+                    );
+                    $recordLifecycle->recordImported();
+                } catch (\Throwable $exception) {
+                    $recordLifecycle->recordFailure($orgUnit->getObjectId(), $exception);
+                }
             }
 
             $recordLifecycle->afterDispatch();
@@ -74,6 +82,6 @@ class OrgUnitsImportCommand extends Command
         } while ($currentPage <= $this->orgUnitService->getMeta()->getLastPage());
 
         $recordLifecycle->finish($output, 'Organisation units');
-        return Command::SUCCESS;
+        return $recordLifecycle->hasFailures() ? Command::FAILURE : Command::SUCCESS;
     }
 }

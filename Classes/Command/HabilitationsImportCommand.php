@@ -54,17 +54,25 @@ class HabilitationsImportCommand extends Command
         $currentPage = 1;
         do {
             /** @var HabilitationDto[] $habilitations */
-            $habilitations = $this->hioHabilitationService->getHabilitations($currentPage);
+            $habilitations = $this->hioHabilitationService->getHabilitations(
+                $currentPage,
+                $recordLifecycle->recordFailure(...)
+            );
             if ($this->hioHabilitationService->getMeta()->getTotal() === 0) {
                 $output->writeln('No new habilitations found');
-                return Command::SUCCESS;
+                break;
             }
             $habilitations = $recordLifecycle->beforeDispatch($habilitations);
 
             foreach ($habilitations as $habilitation) {
-                $this->eventDispatcher->dispatch(
-                    new ReceiveHioHabilitationEvent($habilitation, (int)$input->getArgument('storagePageId'))
-                );
+                try {
+                    $this->eventDispatcher->dispatch(
+                        new ReceiveHioHabilitationEvent($habilitation, (int)$input->getArgument('storagePageId'))
+                    );
+                    $recordLifecycle->recordImported();
+                } catch (\Throwable $exception) {
+                    $recordLifecycle->recordFailure($habilitation->getObjectId(), $exception);
+                }
             }
 
             $recordLifecycle->afterDispatch();
@@ -73,6 +81,6 @@ class HabilitationsImportCommand extends Command
         } while ($currentPage <= $this->hioHabilitationService->getMeta()->getLastPage());
 
         $recordLifecycle->finish($output, 'Habilitations');
-        return Command::SUCCESS;
+        return $recordLifecycle->hasFailures() ? Command::FAILURE : Command::SUCCESS;
     }
 }

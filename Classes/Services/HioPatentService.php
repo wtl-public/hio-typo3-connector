@@ -6,18 +6,16 @@ use Wtl\HioTypo3Connector\Domain\Dto\PatentDto;
 
 class HioPatentService extends HioApiService
 {
-    public function getPatents(int $page = 1): array
+    /**
+     * @param (callable(?int, \Throwable): void)|null $onMappingFailure
+     * @return PatentDto[]
+     */
+    public function getPatents(int $page = 1, ?callable $onMappingFailure = null): array
     {
-        $apiResponse = $this->fetch($page);
-
-        if ($apiResponse->getMeta()->getTotal() === 0) {
-            return [];
-        }
-
-        $result = $apiResponse->getData();
-        foreach ($result as $patent) {
-            $projects[] = PatentDto::fromArray($patent);
-        }
-        return $projects ?? [];
+        return $this->fetchMappedPage(
+            $page,
+            PatentDto::fromArray(...),
+            $onMappingFailure
+        );
     }
 }

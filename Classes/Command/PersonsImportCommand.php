@@ -55,17 +55,25 @@ class PersonsImportCommand extends Command
         $currentPage = 1;
         do {
             /** @var PersonDto[] $persons */
-            $persons = $this->hioPersonService->getPersons($currentPage);
+            $persons = $this->hioPersonService->getPersons(
+                $currentPage,
+                $recordLifecycle->recordFailure(...)
+            );
             if ($this->hioPersonService->getMeta()->getTotal() === 0) {
                 $output->writeln('No new persons found');
-                return Command::SUCCESS;
+                break;
             }
             $persons = $recordLifecycle->beforeDispatch($persons);
 
             foreach ($persons as $person) {
-                $this->eventDispatcher->dispatch(
-                    new ReceiveHioPersonEvent($person, (int)$input->getArgument('storagePageId')),
-                );
+                try {
+                    $this->eventDispatcher->dispatch(
+                        new ReceiveHioPersonEvent($person, (int)$input->getArgument('storagePageId')),
+                    );
+                    $recordLifecycle->recordImported();
+                } catch (\Throwable $exception) {
+                    $recordLifecycle->recordFailure($person->getObjectId(), $exception);
+                }
             }
 
             $recordLifecycle->afterDispatch();
@@ -74,6 +82,6 @@ class PersonsImportCommand extends Command
         } while ($currentPage <= $this->hioPersonService->getMeta()->getLastPage());
 
         $recordLifecycle->finish($output, 'Persons');
-        return Command::SUCCESS;
+        return $recordLifecycle->hasFailures() ? Command::FAILURE : Command::SUCCESS;
     }
 }

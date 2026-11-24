@@ -55,17 +55,25 @@ class NominationsImportCommand extends Command
         $currentPage = 1;
         do {
             /** @var NominationDto[] $orgUnits */
-            $nominations = $this->nominationService->getNominations($currentPage);
+            $nominations = $this->nominationService->getNominations(
+                $currentPage,
+                $recordLifecycle->recordFailure(...)
+            );
             if ($this->nominationService->getMeta()->getTotal() === 0) {
                 $output->writeln('No new nominations found');
-                return Command::SUCCESS;
+                break;
             }
             $nominations = $recordLifecycle->beforeDispatch($nominations);
 
             foreach ($nominations as $nomination) {
-                $this->eventDispatcher->dispatch(
-                    new ReceiveHioNominationEvent($nomination, (int)$input->getArgument('storagePageId'))
-                );
+                try {
+                    $this->eventDispatcher->dispatch(
+                        new ReceiveHioNominationEvent($nomination, (int)$input->getArgument('storagePageId'))
+                    );
+                    $recordLifecycle->recordImported();
+                } catch (\Throwable $exception) {
+                    $recordLifecycle->recordFailure($nomination->getObjectId(), $exception);
+                }
             }
 
             $recordLifecycle->afterDispatch();
@@ -74,6 +82,6 @@ class NominationsImportCommand extends Command
         } while ($currentPage <= $this->nominationService->getMeta()->getLastPage());
 
         $recordLifecycle->finish($output, 'Nominations');
-        return Command::SUCCESS;
+        return $recordLifecycle->hasFailures() ? Command::FAILURE : Command::SUCCESS;
     }
 }

@@ -102,6 +102,38 @@ class HioApiService
         return $this->responseBody;
     }
 
+    /**
+     * @template T of object
+     * @param callable(array): (T|null) $mapRecord Returns null to skip a record.
+     * @param (callable(?int, \Throwable): void)|null $onMappingFailure
+     * @return list<T>
+     */
+    protected function fetchMappedPage(int $page, callable $mapRecord, ?callable $onMappingFailure): array
+    {
+        $response = $this->fetch($page);
+        if ($response->getMeta()->getTotal() === 0) {
+            return [];
+        }
+
+        $records = [];
+        foreach ($response->getData() as $row) {
+            try {
+                $record = $mapRecord($row);
+            } catch (\Throwable $exception) {
+                if ($onMappingFailure === null) {
+                    throw $exception;
+                }
+                $id = filter_var($row['id'] ?? null, FILTER_VALIDATE_INT, FILTER_NULL_ON_FAILURE);
+                $onMappingFailure($id, $exception);
+                continue;
+            }
+            if ($record !== null) {
+                $records[] = $record;
+            }
+        }
+        return $records;
+    }
+
     public function getData($page=1): array
     {
         $apiResponse = $this->fetch($page);

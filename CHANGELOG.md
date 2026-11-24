@@ -6,6 +6,22 @@ Die Versionierung folgt [Semantic Versioning](https://semver.org/lang/de/).
 
 ---
 
+## [Latest]
+
+### Fehlerbehebungen beim Import
+
+- Beim Import werden Nicht-BMP-Zeichen in `title`, `search_index` und neu erzeugten
+  Slugs grundsätzlich vereinfacht, unabhängig von Datenbanksystem und Zeichensatz.
+  BMP-Zeichen und `details` bleiben unverändert. Publikationslisten und Detailseiten
+  zeigen weiterhin den Originaltitel. Bestehende Slugs werden nicht verändert.
+  Die bisherige Datenbank-Probe und Auswertung bestimmter Fehlercodes entfallen.
+- Direktimporte setzen nach einem Datensatzfehler mit dem nächsten Datensatz fort.
+  Fehler werden mit Tabelle, `object_id` und Meldung protokolliert. Die Abschlussausgabe
+  nennt Erfolge, Fehler und betroffene IDs; bei Fehlern ist der Exit-Code 1.
+  Eine abschließende Exception nennt Anzahl, Tabelle und betroffene IDs auch in der
+  Scheduler-Fehlermeldung, da der Scheduler die normale Command-Ausgabe verwirft.
+  Bestehende gebündelte Relations- und Lifecycle-Verarbeitung bleibt erhalten.
+
 ## [1.5.0]
 
 ### Hinweise für Redakteure

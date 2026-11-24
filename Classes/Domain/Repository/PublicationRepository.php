@@ -34,6 +34,8 @@ class PublicationRepository extends BaseRepository
             'search_index' => (string)$publicationDto->getSearchIndex(),
         ];
 
+        $data = $this->prepareImportData(self::TABLE, $data);
+
         if ($existing === false) {
             $data['slug'] = $this->generateSlug(self::TABLE, 'slug', $data, $storagePid);
             $connection->insert(self::TABLE, array_merge($data, [

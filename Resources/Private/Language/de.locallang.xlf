@@ -599,6 +599,14 @@
                 <target>API-BasicAuth für diesen Task deaktivieren. Zugangsdaten aus Scheduler und Prozessumgebung werden ignoriert.</target>
             </trans-unit>
 
+            <trans-unit id="scheduler.import.lastResult" approved="yes">
+                <source>Last import – %d imported, %d failed</source>
+                <target>Letzter Import – %d importiert, %d fehlgeschlagen</target>
+            </trans-unit>
+            <trans-unit id="scheduler.import.abortedResult">
+                <source>Last import aborted – %d imported, %d failed</source>
+                <target>Letzter Import abgebrochen – %d importiert, %d fehlgeschlagen</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

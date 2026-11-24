@@ -6,9 +6,12 @@ namespace Wtl\HioTypo3Connector\Services\RecordLifecycle;
 
 use Doctrine\DBAL\ArrayParameterType;
 use Doctrine\DBAL\ParameterType;
+use TYPO3\CMS\Core\Log\LogManager;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use Symfony\Component\Console\Output\OutputInterface;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Database\Query\QueryBuilder;
+use Wtl\HioTypo3Connector\Scheduler\ImportResult;
 use Wtl\HioTypo3Connector\Services\HioApiService;
 
 /**
@@ -20,6 +23,33 @@ use Wtl\HioTypo3Connector\Services\HioApiService;
  */
 class RecordLifecycleRun
 {
+    /** @var list<int|string> */
+    private array $failedIds = [];
+
+    public function recordFailure(?int $objectId, \Throwable $exception): void
+    {
+        $this->failedIds[] = $objectId ?? 'unknown';
+        $this->reportProgress();
+        GeneralUtility::makeInstance(LogManager::class)
+            ->getLogger(self::class)->error('Import record failed', [
+                'table' => $this->table,
+                'object_id' => $objectId,
+                'message' => $exception->getMessage(),
+                'exception' => $exception,
+            ]);
+    }
+
+    public function recordImported(): void
+    {
+        ++$this->imported;
+        $this->reportProgress();
+    }
+
+    public function hasFailures(): bool
+    {
+        return $this->failedIds !== [];
+    }
+
     private const DAY = 86400;
 
     private int $restored = 0;
@@ -28,8 +58,8 @@ class RecordLifecycleRun
 
     private int $hardDeleted = 0;
 
-    /** Delivered records that were not imported: trashed ones and ones that stay deleted */
-    private int $notImported = 0;
+    /** Records successfully handled by the import command. */
+    private int $imported = 0;
 
     /** Newest lastSeenAt/deletedAt of the run, never "now": a stalled middleware sync must not age records out */
     private ?int $referenceTime = null;
@@ -67,12 +97,13 @@ class RecordLifecycleRun
             }
         }
 
-        $stillDeleted = $this->restoreDelivered($lastSeen);
+        // Only records that made it through mapping can be restored for dispatch.
+        $mappedIds = array_map(static fn(object $record): int => $record->getObjectId(), $records);
+        $stillDeleted = $this->restoreDelivered(array_intersect_key($lastSeen, array_fill_keys($mappedIds, true)));
         $toDispatch = array_values(array_filter(
             $records,
             static fn(object $record): bool => !isset($stillDeleted[$record->getObjectId()])
         ));
-        $this->notImported += count($trashed) + count($records) - count($toDispatch);
 
         return $toDispatch;
     }
@@ -111,16 +142,38 @@ class RecordLifecycleRun
 
         $output->writeln(sprintf(
             '%d %s imported successfully%s',
-            $this->apiService->getMeta()->getTotal() - $this->notImported,
+            $this->imported,
             $label,
             $this->restored > 0 ? sprintf(' (%d restored)', $this->restored) : ''
         ));
+        $output->writeln(sprintf('%d %s failed', count($this->failedIds), $label));
+        if ($this->hasFailures()) {
+            $output->writeln('Failed object IDs: ' . implode(', ', $this->failedIds));
+        }
         if ($this->softDeleteAfterDays !== null) {
             $output->writeln(sprintf('%d %s soft deleted successfully', $this->softDeleted, $label));
         }
         if ($this->hardDeleteAfterDays !== null) {
             $output->writeln(sprintf('%d %s hard deleted successfully', $this->hardDeleted, $label));
         }
+        $this->reportProgress(completed: true);
+
+        // Scheduler runs commands with NullOutput and only retains exception messages.
+        // Report failures after the complete run, including its lifecycle processing.
+        if ($this->hasFailures()) {
+            throw new \RuntimeException(sprintf(
+                '%d %s failed to import. Table: %s. Failed object IDs: %s',
+                count($this->failedIds),
+                $label,
+                $this->table,
+                implode(', ', $this->failedIds)
+            ), 1);
+        }
+    }
+
+    private function reportProgress(bool $completed = false): void
+    {
+        GeneralUtility::makeInstance(ImportResult::class)->record($this->imported, count($this->failedIds), $completed);
     }
 
     /**

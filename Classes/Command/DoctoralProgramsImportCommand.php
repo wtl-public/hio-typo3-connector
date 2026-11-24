@@ -52,17 +52,25 @@ class DoctoralProgramsImportCommand extends Command
 
         $currentPage = 1;
         do {
-            $doctoralPrograms = $this->hioDoctoralProgramService->getDoctoralPrograms($currentPage);
+            $doctoralPrograms = $this->hioDoctoralProgramService->getDoctoralPrograms(
+                $currentPage,
+                $recordLifecycle->recordFailure(...)
+            );
             if ($this->hioDoctoralProgramService->getMeta()->getTotal() === 0) {
                 $output->writeln('No new doctoral programs found');
-                return Command::SUCCESS;
+                break;
             }
             $doctoralPrograms = $recordLifecycle->beforeDispatch($doctoralPrograms);
 
             foreach ($doctoralPrograms as $doctoralProgram) {
-                $this->eventDispatcher->dispatch(
-                    new ReceiveHioDoctoralProgramEvent($doctoralProgram, (int)$input->getArgument('storagePageId'))
-                );
+                try {
+                    $this->eventDispatcher->dispatch(
+                        new ReceiveHioDoctoralProgramEvent($doctoralProgram, (int)$input->getArgument('storagePageId'))
+                    );
+                    $recordLifecycle->recordImported();
+                } catch (\Throwable $exception) {
+                    $recordLifecycle->recordFailure($doctoralProgram->getObjectId(), $exception);
+                }
             }
 
             $recordLifecycle->afterDispatch();
@@ -71,6 +79,6 @@ class DoctoralProgramsImportCommand extends Command
         } while ($currentPage <= $this->hioDoctoralProgramService->getMeta()->getLastPage());
 
         $recordLifecycle->finish($output, 'doctoral programs');
-        return Command::SUCCESS;
+        return $recordLifecycle->hasFailures() ? Command::FAILURE : Command::SUCCESS;
     }
 }
